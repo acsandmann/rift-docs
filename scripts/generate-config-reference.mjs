@@ -1,0 +1,222 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { execFileSync } from 'node:child_process';
+
+const here = path.dirname(fileURLToPath(import.meta.url));
+const docsRoot = path.resolve(here, '..');
+const riftRoot = process.env.RIFT_ROOT ? path.resolve(process.env.RIFT_ROOT) : path.resolve(docsRoot, '..');
+const sourcePath = path.join(riftRoot, 'src/common/config.rs');
+const source = fs.readFileSync(sourcePath, 'utf8');
+const overrides = JSON.parse(fs.readFileSync(path.join(docsRoot, 'config-docs.json'), 'utf8'));
+
+function blockAfter(text, start) {
+  const open = text.indexOf('{', start); let depth = 0;
+  for (let i = open; i < text.length; i++) { if (text[i] === '{') depth++; if (text[i] === '}' && --depth === 0) return text.slice(open + 1, i); }
+  throw new Error(`Unclosed block at ${start}`);
+}
+function rustTypes(text) {
+  const out = new Map();
+  for (const m of text.matchAll(/(?:pub\s+)?(struct|enum)\s+(\w+)/g)) out.set(m[2], { kind: m[1], body: blockAfter(text, m.index) });
+  return out;
+}
+const protocolSource = ['layout.rs', 'commands.rs'].map((file) =>
+  fs.readFileSync(path.join(riftRoot, 'crates/rift-protocol/src', file), 'utf8')).join('\n');
+const types = rustTypes(`${protocolSource}\n${source}`);
+types.set('crate::layout_engine::Orientation', types.get('Orientation'));
+function snake(name) { return name.replace(/[A-Z]/g, (c) => `_${c.toLowerCase()}`).replace(/^_/, ''); }
+function fields(typeName) {
+  const t = types.get(typeName); if (!t || t.kind !== 'struct') return [];
+  // Match the final comma on a field line so generic types such as
+  // `HashMap<String, String>` are not truncated at their inner comma.
+  return [...t.body.matchAll(/(?:^|\n)([ \t]*(?:(?:#\[[^\n]*\]|\/\/\/[^\n]*)\n[ \t]*)*)(?:pub\s+)?(\w+)\s*:\s*(.+),\s*$/gm)].map((m) => {
+    const attrs = m[1]; const rust = m[3].trim();
+    const description = [...attrs.matchAll(/\/\/\/ ?([^\n]*)/g)].map((x) => x[1].trim()).join(' ').replace(/\s+/g, ' ');
+    return { name: snake(m[2]), rust, description, flatten: /serde\(flatten\)/.test(attrs), skip: /serde\(skip/.test(attrs), hasDefault: /serde\(default(?:\s*(?:=|,|\)))/.test(attrs), default: (attrs.match(/serde\(default\s*=\s*"([^"]+)"/) || [])[1] || null };
+  }).filter((f) => !f.skip);
+}
+function enumValues(typeName) {
+  const t = types.get(typeName); if (!t || t.kind !== 'enum') return null;
+  return [...t.body.matchAll(/(?:^|\n)\s*(\w+)(?:\s*[,({])/g)].map((m) => snake(m[1]));
+}
+function baseType(rust) {
+  const optional = rust.startsWith('Option<'); const array = rust.startsWith('Vec<');
+  const inner = (optional || array) ? rust.slice(rust.indexOf('<') + 1, -1).trim() : rust;
+  if (inner === 'WorkspaceSelector') return { oneOf: [{ type: 'integer', minimum: 0 }, { type: 'string' }], optional, displayType: 'workspace name or zero-based index' };
+  let type = ({ bool: 'boolean', f64: 'number', f32: 'number', usize: 'integer', u32: 'integer', u64: 'integer', i32: 'integer', String: 'string', PathBuf: 'string', HotkeySpec: 'string' }[inner] || null);
+  const values = enumValues(inner); if (values) type = 'string';
+  const hashMap = inner.match(/^HashMap<\s*([^,]+),\s*(.+)>$/);
+  const schemaType = type;
+  const schema = type ? { type: schemaType, ...(values ? { enum: values } : {}) } : (hashMap ? { type: 'object', additionalProperties: {} } : { type: 'object' });
+  const displayType = hashMap ? `map of ${hashMap[1].trim()} to ${hashMap[2].trim()}` : undefined;
+  if (array) return { type: 'array', items: schema, optional, ...(displayType ? { displayType: `array of ${displayType}` } : {}) };
+  return { ...schema, optional, ...(displayType ? { displayType } : {}) };
+}
+function nestedStructType(rust) {
+  const arrayInner = rust.match(/^Vec<(.+)>$/)?.[1]?.trim();
+  const candidate = (arrayInner || rust).replace(/^Option<(.+)>$/, '$1').trim();
+  return types.get(candidate)?.kind === 'struct' ? candidate : null;
+}
+function schemaFor(typeName, seen = new Set(), prefix = []) {
+  if (seen.has(typeName)) return {};
+  const branchSeen = new Set(seen); branchSeen.add(typeName); const props = {}; const required = [];
+  for (const f of fields(typeName)) {
+    const pathParts = [...prefix, f.name];
+    if (f.flatten) { Object.assign(props, schemaFor(f.rust, new Set(branchSeen), prefix).properties || {}); continue; }
+    const s = baseType(f.rust); delete s.optional; delete s.displayType;
+    if (/^(usize|u32|u64)$/.test(f.rust.replace(/^Option<(.+)>$/, '$1'))) s.minimum = 0;
+    const nested = nestedStructType(f.rust);
+    if (nested) {
+      const nestedSchema = schemaFor(nested, new Set(branchSeen), pathParts);
+      if (s.type === 'array') s.items = nestedSchema;
+      else if (s.type === 'object' || (Array.isArray(s.type) && s.type.includes('object'))) Object.assign(s, nestedSchema, { type: s.type });
+    }
+    const mapValue = f.rust.match(/^HashMap<\s*[^,]+,\s*(.+)>$/)?.[1]?.trim();
+    if (mapValue && types.get(mapValue)?.kind === 'struct') {
+      s.additionalProperties = schemaFor(mapValue, new Set(branchSeen), pathParts);
+    }
+    const fieldOverride = overrides.overrides?.[pathParts.join('.')];
+    const description = fieldOverride?.description || f.description;
+    if (description) s.description = description;
+    if ((typeName === 'OuterGaps' || typeName === 'InnerGaps') && ['f64', 'f32'].includes(f.rust)) s.minimum = 0;
+    if (fieldOverride?.schema) Object.assign(s, fieldOverride.schema);
+    const defaultForSchema = defaultValue(f); if (defaultForSchema !== undefined && defaultForSchema !== null) s.default = defaultForSchema;
+    props[f.name] = s;
+    if (!f.hasDefault && !f.rust.startsWith('Option<')) required.push(f.name);
+  }
+  return { type: 'object', additionalProperties: false, properties: props, ...(required.length ? { required } : {}) };
+}
+const root = { type: 'object', additionalProperties: false, properties: {
+  settings: schemaFor('Settings', new Set(), ['settings']),
+  keys: { type: 'object', description: 'Hotkey strings mapped to Rift commands.', additionalProperties: {} },
+  virtual_workspaces: schemaFor('VirtualWorkspaceSettings', new Set(), ['virtual_workspaces']),
+  modifier_combinations: { type: 'object', description: 'Reusable modifier combinations.', additionalProperties: { type: 'string' } },
+}, required: ['settings', 'keys'] };
+function defaultValue(f) {
+  if (!f.hasDefault && !f.rust.startsWith('Option<')) return undefined;
+  if (f.default) {
+    const match = source.match(new RegExp(`fn ${f.default}\\(\\)\\s*->[^\\{]+\\{`));
+    if (!match) throw new Error(`Cannot locate default function ${f.default}`);
+    const body = blockAfter(source, match.index).trim();
+    if (/^(true|false|-?\d+(?:\.\d+)?)$/.test(body)) return JSON.parse(body);
+    const variant = body.match(/^\w+::(\w+)$/);
+    if (variant) return snake(variant[1]);
+    const string = body.match(/^PathBuf::from\((".*")\)$/);
+    if (string) return JSON.parse(string[1]);
+    if (body.startsWith('vec![')) return [...body.matchAll(/("[^"\n]*")\.to_string\(\)/g)].map((m) => JSON.parse(m[1]));
+    throw new Error(`Unsupported default expression for ${f.default}: ${body}`);
+  }
+  if (f.rust.startsWith('Option<')) return null;
+  if (f.rust.startsWith('HashMap<')) return {};
+  if (f.rust.startsWith('Vec<')) return [];
+  if (f.rust === 'bool') return false;
+  if (/^(f\d+|usize|u\d+|i\d+)$/.test(f.rust)) return 0;
+  const t = types.get(f.rust);
+  if (t?.kind === 'enum') {
+    const variant = t.body.match(/#\[default\]\s*(\w+)/)?.[1];
+    if (!variant) throw new Error(`No explicit default found for ${f.rust}`);
+    return snake(variant);
+  }
+  if (t?.kind === 'struct') return undefined; // Explain table defaults separately.
+  throw new Error(`Cannot determine default for ${f.name}: ${f.rust}`);
+}
+
+function friendlyType(rust, schema) {
+  if (rust.startsWith('Option<')) return `${friendlyType(rust.slice(7, -1), { ...schema, type: Array.isArray(schema.type) ? schema.type[0] : schema.type })} (optional)`;
+  if (schema.displayType) return schema.displayType.replace('String', 'text').replace('WmCommand', 'Rift command').replace('GapOverride', 'gap override tables');
+  if (schema.enum) return schema.enum.filter((value) => value !== null).map((value) => `\`${value}\``).join(' or ');
+  if (schema.type === 'array') return `list of ${({ string: 'text values', object: 'tables', number: 'numbers', integer: 'whole numbers' })[schema.items.type] || schema.items.type}`;
+  return ({ bool: 'boolean', f64: 'number', f32: 'number', usize: 'whole number', u32: 'whole number', u64: 'whole number', i32: 'whole number', String: 'text', PathBuf: 'path', HotkeySpec: 'hotkey' }[rust] || (schema.type === 'object' ? 'table' : schema.type) || 'table');
+}
+
+function shownDefault(value) {
+  if (value === undefined) return 'Required';
+  if (value === null) return 'Not set';
+  if (Array.isArray(value) && value.length === 0) return 'Empty list';
+  if (value && typeof value === 'object' && Object.keys(value).length === 0) return 'Empty table';
+  return `\`${JSON.stringify(value)}\``;
+}
+
+function tomlValue(value) {
+  if (value === null || value === undefined) return null;
+  if (value && typeof value === 'object' && !Array.isArray(value)) return null;
+  return JSON.stringify(value);
+}
+function markdownGroup(title, prefix, version) {
+  const rows = [];
+  const group = overrides.groups?.[title] || {};
+  const excludedPrefixes = {
+    General: ['settings.layout', 'settings.ui', 'settings.gestures', 'settings.run_on_start'],
+    Layouts: ['settings.layout.scrolling'],
+    'Virtual workspaces': ['virtual_workspaces.app_rules'],
+  }[title] || [];
+  function walk(typeName, parts, seen = new Set()) { if (seen.has(typeName)) return; const branchSeen = new Set(seen); branchSeen.add(typeName); const children = []; for (const f of fields(typeName)) {
+    if (f.flatten) { walk(f.rust, parts, new Set(branchSeen)); continue; } const p = [...parts, f.name]; const s = baseType(f.rust); const over = overrides.overrides[p.join('.')]; const value = defaultValue(f);
+    const exampleTable = p.slice(0, -1).join('.');
+    const nestedObjectField = p.some((part) => ['position', 'size'].includes(part)) && p.length > 2;
+    const exampleValue = tomlValue(value);
+    const example = exampleTable.includes('.app_rules') || exampleTable.includes('.workspace_rules') ? null : exampleValue === null || exampleValue === undefined || p.length < 2 || nestedObjectField ? null : `\`\`\`toml\n${exampleTable.includes('.app_rules') || exampleTable.includes('.workspace_rules') ? `[[${exampleTable}]]` : `[${exampleTable}]`}\n${p.at(-1)} = ${exampleValue}\n\`\`\``;
+    if (over?.hidden || (overrides.hidden || []).includes(p.join('.'))) continue;
+    rows.push({ path: p.join('.'), type: friendlyType(f.rust, s), container: types.get(f.rust)?.kind === 'struct', arrayContainer: Boolean(f.rust.match(/^Vec<(.+)>$/) && nestedStructType(f.rust)), description: over?.description || f.description || (() => { throw new Error(`Missing description: ${p.join('.')}`); })(), value, note: over?.note, customExample: over?.example, enum: s.enum?.filter((x) => x !== null), example });
+    const nested = nestedStructType(f.rust); if (nested) children.push([nested, p]);
+  } for (const [nested, p] of children) walk(nested, p, new Set(branchSeen)); }
+  walk('ConfigFile', []);
+  const filtered = rows.filter((r) => r.path === prefix || (r.path.startsWith(`${prefix}.`) && !excludedPrefixes.some((excluded) => r.path === excluded || r.path.startsWith(`${excluded}.`))));
+  let currentTable = null;
+  const content = [];
+  // Keep each table's description and fields together, even when the Rust
+  // declaration places a nested struct between scalar fields.
+  const tables = new Map();
+  for (const row of filtered) {
+    const key = row.container || row.arrayContainer || !row.path.includes('.')
+      ? row.path : row.path.split('.').slice(0, -1).join('.');
+    if (!tables.has(key)) tables.set(key, []);
+    tables.get(key).push(row);
+  }
+  for (const r of [...tables.values()].flat()) {
+    const parts = r.path.split('.');
+    if (r.arrayContainer) {
+      content.push(`## [[${r.path}]]\n\n${r.description}${r.customExample ? `\n\n\`\`\`toml\n${r.customExample}\n\`\`\`` : ''}`);
+      currentTable = r.path;
+      continue;
+    }
+    if (r.container) {
+      content.push(`## [${r.path}]\n\n${r.description}`);
+      currentTable = r.path;
+      continue;
+    }
+    if (parts.length === 1) {
+      content.push(`## [${r.path}]\n\n${r.description}\n\n**Value:** ${r.type}`);
+      currentTable = r.path;
+      continue;
+    }
+    const table = parts.slice(0, -1).join('.');
+    if (table !== currentTable) { content.push(`## [${table}]`); currentTable = table; }
+    content.push(`### \`${parts.at(-1)}\`\n\n${r.description}\n\n**Type:** ${r.enum?.length > 8 ? 'text; see accepted values below' : r.type} · **Default:** ${shownDefault(r.value)}${r.enum?.length > 8 ? `\n\n**Accepted values:** ${r.enum.map((value) => `\`${value}\``).join(', ')}.` : ''}${r.note ? `\n\n${r.note}` : ''}${r.customExample ? `\n\n\`\`\`toml\n${r.customExample}\n\`\`\`` : r.example ? `\n\n${r.example}` : ''}`);
+  }
+  const examples = {
+    General: '```toml\n[settings]\nhot_reload = true\n```',
+    Layouts: '```toml\n[settings.layout]\nmode = "master_stack"\n\n[settings.layout.gaps.inner]\nhorizontal = 8.0\nvertical = 8.0\n```',
+    'User interface': '```toml\n[settings.ui.menu_bar]\nenabled = true\ndisplay_style = "label"\nactive_label = "name"\n```',
+    'Scrolling layout': '```toml\n[settings.layout]\nmode = "scrolling"\n\n[settings.layout.scrolling]\ncolumn_width_ratio = 0.7\nalignment = "center"\n```',
+    Gestures: '```toml\n[settings.gestures]\nenabled = true\nfingers = 3\n```',
+    'Virtual workspaces': '```toml\n[virtual_workspaces]\ndefault_workspace_count = 3\nworkspace_names = ["Main", "Code", "Chat"]\ndefault_workspace = 0\n```',
+    Keybindings: '```toml\n[keys]\n"Alt + Z" = "toggle_space_activated"\n"Alt + H" = { move_focus = "left" }\n"Alt + Shift + H" = { move_node = "left" }\n"Alt + 1" = { switch_to_workspace = 0 }\n"Alt + Shift + Space" = "toggle_window_floating"\n```\n\nSimple commands are quoted strings. Commands that need a direction, workspace, amount, or other option use an inline table. A custom `[keys]` table is the entire active keymap, not an addition to the bundled bindings. The [keybindings guide](/rift-docs/guides/keybindings/) lists practical command shapes.',
+    'Modifier combinations': '```toml\n[modifier_combinations]\nmain = "Alt + Shift"\n\n[keys]\n"main + H" = { move_focus = "left" }\n```',
+    'Commands and startup': '```toml\n[settings]\nrun_on_start = [\n  "rift-cli subscribe cli --event workspace_changed --command sh --args -c --args \'echo $RIFT_WORKSPACE_NAME\'",\n]\n```',
+  };
+  const fragmentNote = ':::note[Examples are config fragments]\nMerge these examples into your config. If a table already exists, add or change its fields there; do not repeat its header. A complete custom file requires both `[settings]` and `[keys]`, and its `[keys]` table must contain every shortcut you want Rift to register.\n:::';
+  const intro = [group.description, group.next, fragmentNote, examples[title]].filter(Boolean).join('\n\n');
+  const appRuleIntro = title === 'App rules' ? 'Here is a minimal pair of rules. Add match fields only when you need to distinguish one window from another:\n\n```toml\n[[virtual_workspaces.app_rules]]\napp_id = "com.apple.Terminal"\nworkspace = "Development"\n\n[[virtual_workspaces.app_rules]]\napp_id = "com.apple.Calculator"\nfloating = true\n```' : '';
+  const commandNotes = title === 'Commands and startup' ? 'Each entry is launched once after Rift starts. Rift does not restart a command that exits, so use a launch agent for a helper that needs supervision. A CLI subscription can listen for `workspace_changed`, `windows_changed`, `window_title_changed`, `focused_window_changed`, `stacks_changed`, `layout_changed`, `selection_changed`, or `*`. Rift appends the event JSON as the command’s final argument. It also sets `RIFT_EVENT_TYPE` and whichever workspace, window, Space, or display variables apply to that event; `RIFT_EVENT_JSON` always contains the complete payload.' : '';
+  return `<!--\nGENERATED FILE. Do not edit directly.\nGenerated from Rift ${version}.\n-->\n\n${[intro, appRuleIntro, commandNotes, content.join('\n\n')].filter(Boolean).join('\n\n')}`;
+}
+let version = process.env.RIFT_REF || 'the checked-out Rift source';
+try { version = process.env.RIFT_REF || execFileSync('git', ['-C', riftRoot, 'describe', '--tags', '--always', '--dirty'], { encoding: 'utf8' }).trim(); } catch {}
+const schemaDir = path.join(docsRoot, 'public/schema'); fs.mkdirSync(schemaDir, { recursive: true });
+fs.writeFileSync(path.join(schemaDir, 'rift-config.schema.json'), JSON.stringify({ $schema: 'https://json-schema.org/draft/2020-12/schema', title: 'Rift configuration', description: `Generated from Rift ${version}.`, ...root }, null, 2) + '\n');
+const refDir = path.join(docsRoot, 'src/content/docs/reference/configuration'); fs.mkdirSync(refDir, { recursive: true });
+const groups = [['general', 'General', 'settings'], ['layouts', 'Layouts', 'settings.layout'], ['scrolling', 'Scrolling layout', 'settings.layout.scrolling'], ['gestures', 'Gestures', 'settings.gestures'], ['ui', 'User interface', 'settings.ui'], ['app-rules', 'App rules', 'virtual_workspaces.app_rules'], ['virtual-workspaces', 'Virtual workspaces', 'virtual_workspaces'], ['keybindings', 'Keybindings', 'keys'], ['modifiers', 'Modifier combinations', 'modifier_combinations'], ['commands', 'Commands and startup', 'settings.run_on_start']];
+for (const [file, title, prefix] of groups) fs.writeFileSync(path.join(refDir, `${file}.md`), `---\ntitle: ${title}\ndescription: ${JSON.stringify(overrides.groups[title].description)}\neditUrl: false\n---\n\n${markdownGroup(title, prefix, version)}\n`);
+fs.writeFileSync(path.join(refDir, 'index.md'), `---\ntitle: Configuration reference\ndescription: Find Rift settings, accepted values, defaults, and examples.\neditUrl: false\n---\n\n<!-- GENERATED FILE. Do not edit directly. -->\n\nLook up a setting, check its accepted values, and copy an example into your config. This reference is generated from Rift’s configuration source; the guides explain how to combine settings for a particular task.\n\nSource version: \`${version}\`. Match the reference to the Rift version you run; newer settings may not exist in older releases.\n\n:::caution[Keybindings are different]\nA custom config must contain \`[settings]\` and \`[keys]\`. Omitted settings use defaults, but \`[keys]\` replaces the bundled keymap. An empty table registers no keyboard shortcuts.\n:::\n\n## Find a setting\n\n| Category | What you can change |\n| --- | --- |\n| [General](/rift-docs/reference/configuration/general/) | Animation, focus, pointer behavior, activation, dragging |\n| [Layouts](/rift-docs/reference/configuration/layouts/) | Mode, gaps, Traditional, BSP, Stack, Master-stack |\n| [Scrolling](/rift-docs/reference/configuration/scrolling/) | Column widths, focus navigation, column gestures |\n| [Gestures](/rift-docs/reference/configuration/gestures/) | Trackpad workspace navigation |\n| [User interface](/rift-docs/reference/configuration/ui/) | Menu bar, stack indicators, Mission Control |\n| [Virtual workspaces](/rift-docs/reference/configuration/virtual-workspaces/) | Names, count, navigation, per-workspace layouts |\n| [App rules](/rift-docs/reference/configuration/app-rules/) | Match windows and control placement |\n| [Keybindings](/rift-docs/reference/configuration/keybindings/) | Keyboard shortcuts and command syntax |\n| [Modifiers](/rift-docs/reference/configuration/modifiers/) | Reusable shortcut combinations |\n| [Startup commands](/rift-docs/reference/configuration/commands/) | Launch helpers and event subscriptions |\n\n## How to use this reference\n\n1. Open the category that matches what you want to change.\n2. Merge the example into the matching table in your config. Do not repeat an existing table header.\n3. Change the value, save, and run \`rift-cli execute config reload\` if hot reload is disabled or the change does not appear.\n\nThe defaults shown here apply when the containing table is present and the field is omitted. Omitting a whole table can produce different defaults; affected fields include a note. The bundled \`rift.default.toml\` may explicitly choose a different value. **Not set** means an optional field has no value of its own. Its description explains when Rift inherits or derives an effective value. Omit optional fields to leave them unset: TOML has no \`null\` value. Required fields inside an optional table are required only when that table is supplied.\n\nThe [JSON Schema](/rift-docs/schema/rift-config.schema.json) describes setting names, types, and selected bounds for editor autocomplete. It does not check hotkey syntax, command payloads, or every relationship between settings. Reload Rift to run its own validation. The \`[keys]\` command values are documented in the [keybindings guide](/rift-docs/guides/keybindings/). For a working starting point, use the [Quick start](/rift-docs/quick-start/) or the [bundled config](https://github.com/acsandmann/rift/blob/main/rift.default.toml).\n`);
+console.log(`Generated schema and ${groups.length + 1} reference pages from ${sourcePath} (${version}).`);

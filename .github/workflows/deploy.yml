@@ -1,0 +1,60 @@
+name: Deploy Rift docs
+
+on:
+  workflow_dispatch:
+    inputs:
+      rift_ref:
+        description: Rift tag, branch, or commit to document
+        required: true
+        default: main
+  repository_dispatch:
+    types: [rift-release]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - name: Check out docs
+        uses: actions/checkout@v4
+      - name: Resolve Rift ref
+        id: ref
+        env:
+          INPUT_REF: ${{ github.event.inputs.rift_ref }}
+          EVENT_REF: ${{ github.event.client_payload.rift_ref }}
+        run: echo "rift_ref=${INPUT_REF:-${EVENT_REF:-main}}" >> "$GITHUB_OUTPUT"
+      - name: Check out Rift source
+        uses: actions/checkout@v4
+        with:
+          repository: acsandmann/rift
+          ref: ${{ steps.ref.outputs.rift_ref }}
+          path: rift
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install --frozen-lockfile
+      - name: Generate and build
+        env:
+          RIFT_ROOT: ${{ github.workspace }}/rift
+          RIFT_REF: ${{ steps.ref.outputs.rift_ref }}
+        run: |
+          bun run check
+          bun run build
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,900 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Rift configuration",
+  "description": "Generated from Rift v0.5.5-12-gbeeac0e-dirty.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "settings": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "animate": {
+          "type": "boolean",
+          "description": "Animate layout changes and focus transitions. Keep this off while troubleshooting layout behavior.",
+          "default": false
+        },
+        "animation_duration": {
+          "type": "number",
+          "description": "Animation duration in seconds when `animate` is enabled. Must not be negative.",
+          "minimum": 0,
+          "default": 0.3
+        },
+        "animation_fps": {
+          "type": "number",
+          "description": "Target animation frame rate. Higher values look smoother but use more CPU. Must be greater than zero.",
+          "exclusiveMinimum": 0,
+          "default": 100
+        },
+        "animation_easing": {
+          "type": "string",
+          "enum": [
+            "ease_in_out",
+            "linear",
+            "ease_in_sine",
+            "ease_out_sine",
+            "ease_in_out_sine",
+            "ease_in_quad",
+            "ease_out_quad",
+            "ease_in_out_quad",
+            "ease_in_cubic",
+            "ease_out_cubic",
+            "ease_in_out_cubic",
+            "ease_in_quart",
+            "ease_out_quart",
+            "ease_in_out_quart",
+            "ease_in_quint",
+            "ease_out_quint",
+            "ease_in_out_quint",
+            "ease_in_expo",
+            "ease_out_expo",
+            "ease_in_out_expo",
+            "ease_in_circ",
+            "ease_out_circ",
+            "ease_in_out_circ"
+          ],
+          "description": "Curve used to accelerate and decelerate animations.",
+          "default": "ease_in_out"
+        },
+        "default_disable": {
+          "type": "boolean",
+          "description": "Start each newly encountered macOS Space inactive. Press your activation key before Rift manages it.",
+          "default": true
+        },
+        "mouse_follows_focus": {
+          "type": "boolean",
+          "description": "Allow Rift to move the pointer with keyboard-driven focus and workspace changes.",
+          "default": true
+        },
+        "mouse_hides_on_focus": {
+          "type": "boolean",
+          "description": "Hide the pointer after Rift changes the focused window. Rift also hides it after a pointer warp when `mouse_follows_focus` is enabled.",
+          "default": true
+        },
+        "focus_follows_mouse": {
+          "type": "boolean",
+          "description": "Ask Rift to focus a managed window when the pointer moves over it.",
+          "default": true
+        },
+        "focus_follows_mouse_disable_hotkey": {
+          "type": "string",
+          "description": "Optional hotkey held to temporarily suspend focus-follows-mouse. Use a full hotkey such as `Ctrl + A` or a modifier such as `Ctrl`."
+        },
+        "auto_focus_blacklist": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Bundle identifiers that should not cause Rift to switch workspaces when those applications become active, such as Spotlight.",
+          "default": []
+        },
+        "layout": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "window_insertion_point": {
+              "type": "string",
+              "enum": [
+                "next_to_selection",
+                "end_of_tree"
+              ],
+              "description": "Where Rift inserts a newly managed window. A layout-specific value wins; if neither value is set, Rift uses `next_to_selection`."
+            },
+            "mode": {
+              "type": "string",
+              "enum": [
+                "traditional",
+                "bsp",
+                "stack",
+                "master_stack",
+                "scrolling"
+              ],
+              "description": "Layout used for a workspace that does not match a `virtual_workspaces.workspace_rules` entry.",
+              "default": "traditional"
+            },
+            "traditional": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "window_insertion_point": {
+                  "type": "string",
+                  "enum": [
+                    "next_to_selection",
+                    "end_of_tree"
+                  ],
+                  "description": "Override the layout-wide insertion point for Traditional. Leave it unset to inherit `[settings.layout].window_insertion_point`."
+                },
+                "equalize_nodes": {
+                  "type": "boolean",
+                  "description": "Give a new window the average share of its siblings when inserting it. When false, split the selected window’s share instead. Manual resizing remains available.",
+                  "default": true
+                }
+              },
+              "description": "Options specific to the Traditional tree layout."
+            },
+            "bsp": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "window_insertion_point": {
+                  "type": "string",
+                  "enum": [
+                    "next_to_selection",
+                    "end_of_tree"
+                  ],
+                  "description": "Override the layout-wide insertion point for BSP. Leave it unset to inherit `[settings.layout].window_insertion_point`."
+                }
+              },
+              "description": "Options specific to the BSP layout. Shared layout settings can still be set here."
+            },
+            "stack": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "window_insertion_point": {
+                  "type": "string",
+                  "enum": [
+                    "next_to_selection",
+                    "end_of_tree"
+                  ],
+                  "description": "Override the layout-wide insertion point for Stack. Leave it unset to inherit `[settings.layout].window_insertion_point`."
+                },
+                "stack_offset": {
+                  "type": "number",
+                  "description": "Number of pixels by which each window is offset from the previous window in a stack. Must not be negative.",
+                  "minimum": 0,
+                  "default": 40
+                },
+                "default_orientation": {
+                  "type": "string",
+                  "enum": [
+                    "perpendicular",
+                    "same",
+                    "horizontal",
+                    "vertical"
+                  ],
+                  "description": "Direction of a new stack. `perpendicular` uses the axis across its parent, `same` uses the parent's axis, and `horizontal` or `vertical` forces an axis.",
+                  "default": "perpendicular"
+                }
+              },
+              "description": "Options specific to the Stack layout."
+            },
+            "master_stack": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "window_insertion_point": {
+                  "type": "string",
+                  "enum": [
+                    "next_to_selection",
+                    "end_of_tree"
+                  ],
+                  "description": "Override the layout-wide insertion point for Master-stack. Leave it unset to inherit `[settings.layout].window_insertion_point`."
+                },
+                "master_ratio": {
+                  "type": "number",
+                  "description": "Fraction of the tiling area reserved for the master side. Valid range: `0.05` through `0.95`.",
+                  "minimum": 0.05,
+                  "maximum": 0.95,
+                  "default": 0.6
+                },
+                "master_count": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "description": "Number of windows kept on the master side. Must be at least `1`.",
+                  "default": 1
+                },
+                "master_side": {
+                  "type": "string",
+                  "enum": [
+                    "left",
+                    "right",
+                    "top",
+                    "bottom"
+                  ],
+                  "description": "Edge occupied by the master side: `left`, `right`, `top`, or `bottom`.",
+                  "default": "left"
+                },
+                "new_window_placement": {
+                  "type": "string",
+                  "enum": [
+                    "master",
+                    "stack",
+                    "focused"
+                  ],
+                  "description": "Where to insert a new window after the master area is full. `master` puts it in the main area and moves an existing window to the stack; `stack` keeps it in the supporting area; `focused` uses the focused area. Rift maintains `master_count`.",
+                  "default": "master"
+                },
+                "master_arrangement": {
+                  "type": "string",
+                  "enum": [
+                    "horizontal",
+                    "vertical"
+                  ],
+                  "description": "Optional direction used to divide multiple windows inside the master side. When omitted, Rift uses the direction perpendicular to the master/stack split."
+                },
+                "stack_arrangement": {
+                  "type": "string",
+                  "enum": [
+                    "horizontal",
+                    "vertical"
+                  ],
+                  "description": "Optional direction used to divide windows inside the stack side. When omitted, Rift uses the direction perpendicular to the master/stack split."
+                }
+              },
+              "description": "Options specific to the Master-stack layout."
+            },
+            "gaps": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "outer": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "top": {
+                      "type": "number",
+                      "description": "Gap at the top of the screen",
+                      "minimum": 0,
+                      "default": 0
+                    },
+                    "left": {
+                      "type": "number",
+                      "description": "Gap at the left of the screen",
+                      "minimum": 0,
+                      "default": 0
+                    },
+                    "bottom": {
+                      "type": "number",
+                      "description": "Gap at the bottom of the screen",
+                      "minimum": 0,
+                      "default": 0
+                    },
+                    "right": {
+                      "type": "number",
+                      "description": "Gap at the right of the screen",
+                      "minimum": 0,
+                      "default": 0
+                    }
+                  },
+                  "description": "Insets between the tiled area and each edge of the display. Gap values must not be negative."
+                },
+                "inner": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "horizontal": {
+                      "type": "number",
+                      "description": "Horizontal gap between windows",
+                      "minimum": 0,
+                      "default": 0
+                    },
+                    "vertical": {
+                      "type": "number",
+                      "description": "Vertical gap between windows",
+                      "minimum": 0,
+                      "default": 0
+                    }
+                  },
+                  "description": "Space between neighboring tiled windows. Gap values must not be negative."
+                },
+                "per_display": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "outer": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "top": {
+                            "type": "number",
+                            "description": "Gap at the top of the screen",
+                            "minimum": 0,
+                            "default": 0
+                          },
+                          "left": {
+                            "type": "number",
+                            "description": "Gap at the left of the screen",
+                            "minimum": 0,
+                            "default": 0
+                          },
+                          "bottom": {
+                            "type": "number",
+                            "description": "Gap at the bottom of the screen",
+                            "minimum": 0,
+                            "default": 0
+                          },
+                          "right": {
+                            "type": "number",
+                            "description": "Gap at the right of the screen",
+                            "minimum": 0,
+                            "default": 0
+                          }
+                        },
+                        "description": "Override outer gaps completely for the display"
+                      },
+                      "inner": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "horizontal": {
+                            "type": "number",
+                            "description": "Horizontal gap between windows",
+                            "minimum": 0,
+                            "default": 0
+                          },
+                          "vertical": {
+                            "type": "number",
+                            "description": "Vertical gap between windows",
+                            "minimum": 0,
+                            "default": 0
+                          }
+                        },
+                        "description": "Override inner gaps completely for the display"
+                      }
+                    }
+                  },
+                  "description": "Optional display-specific gap overrides keyed by display UUID. An override replaces the complete outer or inner gap group for that display.",
+                  "default": {}
+                }
+              },
+              "description": "Space between tiled windows and the screen edges, plus space between neighboring windows."
+            },
+            "scrolling": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "window_insertion_point": {
+                  "type": "string",
+                  "enum": [
+                    "next_to_selection",
+                    "end_of_tree"
+                  ],
+                  "description": "Override the layout-wide insertion point for Scrolling. Leave it unset to inherit `[settings.layout].window_insertion_point`."
+                },
+                "animate": {
+                  "type": "boolean",
+                  "description": "Override animation only for Scrolling workspaces. Leave it unset to inherit `settings.animate`."
+                },
+                "column_width_ratio": {
+                  "type": "number",
+                  "description": "Normal width of a column as a fraction of the tiling area. It must stay between `min_column_width_ratio` and `max_column_width_ratio`.",
+                  "minimum": 0,
+                  "maximum": 1,
+                  "default": 0.7
+                },
+                "min_column_width_ratio": {
+                  "type": "number",
+                  "description": "Smallest column width allowed by resize commands, from `0.0` through `1.0`.",
+                  "minimum": 0,
+                  "maximum": 1,
+                  "default": 0.3
+                },
+                "max_column_width_ratio": {
+                  "type": "number",
+                  "description": "Largest column width allowed by resize commands, from `0.0` through `1.0`.",
+                  "minimum": 0,
+                  "maximum": 1,
+                  "default": 0.9
+                },
+                "alignment": {
+                  "type": "string",
+                  "enum": [
+                    "left",
+                    "center",
+                    "right"
+                  ],
+                  "description": "Position used when aligning the focused column: left edge, center, or right edge. `focus_navigation_style` determines when that alignment is applied.",
+                  "default": "center"
+                },
+                "focus_navigation_style": {
+                  "type": "string",
+                  "enum": [
+                    "niri",
+                    "anchored"
+                  ],
+                  "description": "Choose how horizontal focus reveals a column. `niri` scrolls only as needed in the navigation direction; `anchored` always places the focused column at the chosen `alignment`.",
+                  "default": "niri"
+                },
+                "gestures": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean",
+                      "description": "Enable horizontal swipes for moving between columns in a Scrolling workspace.",
+                      "default": false
+                    },
+                    "invert_horizontal": {
+                      "type": "boolean",
+                      "description": "Reverse the meaning of left and right column swipes.",
+                      "default": false
+                    },
+                    "vertical_tolerance": {
+                      "type": "number",
+                      "description": "Maximum vertical movement allowed for a horizontal column swipe. Use a normalized fraction from `0.0` to `1.0`, or a percentage from `0` to `100`.",
+                      "default": 0.4
+                    },
+                    "fingers": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "description": "Number of fingers required for a column swipe.",
+                      "default": 3
+                    },
+                    "distance_pct": {
+                      "type": "number",
+                      "description": "Normalized horizontal distance required before a column change commits.",
+                      "default": 0.08
+                    },
+                    "propagate_to_workspace_swipe": {
+                      "type": "boolean",
+                      "description": "After reaching the end of the column strip, continue the gesture into the adjacent virtual workspace.",
+                      "default": false
+                    },
+                    "workspace_switch_threshold": {
+                      "type": "number",
+                      "description": "Overscroll, in normalized steps, required before the gesture switches workspaces.",
+                      "default": 0.15
+                    }
+                  },
+                  "description": "Optional horizontal gestures for moving between columns in a Scrolling workspace. The finger count is configurable."
+                }
+              },
+              "description": "Options specific to the Scrolling layout."
+            }
+          },
+          "description": "Choose the default layout and set options shared by every layout. A layout-specific table can override a shared option."
+        },
+        "ui": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "menu_bar": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "enabled": {
+                  "type": "boolean",
+                  "description": "Enable the menu bar workspace indicator.",
+                  "default": false
+                },
+                "show_empty": {
+                  "type": "boolean",
+                  "description": "Include workspaces that currently have no windows.",
+                  "default": false
+                },
+                "mode": {
+                  "type": "string",
+                  "enum": [
+                    "all",
+                    "active"
+                  ],
+                  "description": "Show every workspace or only the active one.",
+                  "default": "all"
+                },
+                "active_label": {
+                  "type": "string",
+                  "enum": [
+                    "index",
+                    "name"
+                  ],
+                  "description": "Label a workspace with its one-based workspace number or its configured name.",
+                  "default": "index"
+                },
+                "display_style": {
+                  "type": "string",
+                  "enum": [
+                    "layout",
+                    "label"
+                  ],
+                  "description": "Draw a miniature representation of each workspace’s windows (`layout`) or show a number or name (`label`).",
+                  "default": "layout"
+                },
+                "layout_folder": {
+                  "type": "string",
+                  "description": "Folder containing saved `.ron` layouts shown in the menu bar’s restore menus. `~` expands to your home directory.",
+                  "default": "~/.config/rift/layouts"
+                }
+              },
+              "description": "Show workspace status in the macOS menu bar."
+            },
+            "stack_line": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "enabled": {
+                  "type": "boolean",
+                  "description": "Enable the stack-line indicator.",
+                  "default": false
+                },
+                "hover": {
+                  "type": "string",
+                  "enum": [
+                    "click",
+                    "hover"
+                  ],
+                  "description": "Choose whether the indicator responds to a click or pointer hover.",
+                  "default": "hover"
+                },
+                "thickness": {
+                  "type": "number",
+                  "description": "Thickness of the stack-line indicator in points.",
+                  "default": 20
+                },
+                "horiz_placement": {
+                  "type": "string",
+                  "enum": [
+                    "top",
+                    "bottom"
+                  ],
+                  "description": "Place the stack line at the top or bottom edge of the window.",
+                  "default": "top"
+                },
+                "vert_placement": {
+                  "type": "string",
+                  "enum": [
+                    "left",
+                    "right"
+                  ],
+                  "description": "Place the stack line at the left or right edge of the window.",
+                  "default": "left"
+                },
+                "spacing": {
+                  "type": "number",
+                  "description": "Distance to position the stack line away from the window edge (in points) This creates spacing between the window and the stack line",
+                  "default": 1
+                }
+              },
+              "description": "Show a small edge indicator for stacked windows."
+            },
+            "mission_control": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "enabled": {
+                  "type": "boolean",
+                  "description": "Enable Rift’s Mission Control helper.",
+                  "default": false
+                },
+                "fade_enabled": {
+                  "type": "boolean",
+                  "description": "Fade managed windows during Mission Control transitions.",
+                  "default": false
+                },
+                "fade_duration_ms": {
+                  "type": "number",
+                  "description": "Fade duration in milliseconds.",
+                  "default": 180
+                }
+              },
+              "description": "Rift’s own Mission Control-style workspace overview."
+            }
+          },
+          "description": "Optional visual indicators. All UI helpers are disabled by default."
+        },
+        "gestures": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "description": "Enable horizontal trackpad swipes for switching virtual workspaces.",
+              "default": false
+            },
+            "consume_dock_swipe": {
+              "type": "boolean",
+              "description": "Prevent macOS or the foreground app from also handling a swipe Rift consumed.",
+              "default": true
+            },
+            "invert_horizontal_swipe": {
+              "type": "boolean",
+              "description": "Reverse the meaning of left and right swipes.",
+              "default": false
+            },
+            "swipe_vertical_tolerance": {
+              "type": "number",
+              "description": "Maximum vertical movement allowed for a horizontal swipe. Use a normalized fraction from `0.0` to `1.0`, or a percentage from `0` to `100`; smaller values require a straighter swipe.",
+              "default": 0.4
+            },
+            "skip_empty": {
+              "type": "boolean",
+              "description": "Skip workspaces with no windows when swiping.",
+              "default": false
+            },
+            "fingers": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Number of fingers required for a workspace swipe.",
+              "default": 3
+            },
+            "distance_pct": {
+              "type": "number",
+              "description": "Normalized horizontal distance required before a swipe commits. `0.08` means roughly eight percent of the display width.",
+              "default": 0.08
+            },
+            "haptics_enabled": {
+              "type": "boolean",
+              "description": "Provide haptic feedback when a swipe commits.",
+              "default": true
+            },
+            "haptic_pattern": {
+              "type": "string",
+              "enum": [
+                "generic",
+                "alignment",
+                "level_change"
+              ],
+              "description": "Haptic pattern used when a swipe commits.",
+              "default": "level_change"
+            }
+          },
+          "description": "Optional horizontal gestures for switching virtual workspaces. The finger count is configurable."
+        },
+        "window_snapping": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "drag_swap_fraction": {
+              "type": "number",
+              "description": "Overlap needed to select a drag-swap target. Rift divides the intersection area by the union area of the two windows. Lower values make swaps easier to trigger.",
+              "default": 0.3
+            }
+          },
+          "description": "Mouse-drag behavior for swapping tiled windows."
+        },
+        "run_on_start": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Command lines to run once Rift starts. Rift splits quoted arguments and launches the executable directly; use `sh -c` explicitly when shell syntax is required.",
+          "default": []
+        },
+        "hot_reload": {
+          "type": "boolean",
+          "description": "Reload the config file when it changes. Even when this is false, Rift watches for keymap changes and reloads when the parsed bindings differ.",
+          "default": true
+        }
+      }
+    },
+    "keys": {
+      "type": "object",
+      "description": "Hotkey strings mapped to Rift commands.",
+      "additionalProperties": {}
+    },
+    "virtual_workspaces": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "description": "Reserved configuration field. Rift currently parses this value but does not consult it at runtime, so changing it has no effect.",
+          "default": true
+        },
+        "default_workspace_count": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Number of virtual workspaces to create by default. Must be at least 1 and no more than 128.",
+          "maximum": 128,
+          "default": 4
+        },
+        "auto_assign_windows": {
+          "type": "boolean",
+          "description": "Reserved configuration field. Rift currently parses this value but does not consult it at runtime; app rules and normal window assignment still run regardless of it.",
+          "default": true
+        },
+        "preserve_focus_per_workspace": {
+          "type": "boolean",
+          "description": "Reserved configuration field. Rift currently parses this value but does not consult it at runtime, so changing it has no effect.",
+          "default": true
+        },
+        "workspace_auto_back_and_forth": {
+          "type": "boolean",
+          "description": "Switching to the workspace you are already on returns to the previously active workspace.",
+          "default": false
+        },
+        "prevent_wrapping": {
+          "type": "boolean",
+          "description": "Stop at the first and last workspace instead of wrapping around.",
+          "default": false
+        },
+        "workspace_names": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Names for workspaces in index order. Names make app and workspace rules easier to read; the list cannot be longer than `default_workspace_count`.",
+          "default": [
+            "Main",
+            "Development",
+            "Communication",
+            "Utilities"
+          ]
+        },
+        "default_workspace": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Zero-based workspace selected when a new macOS Space is first managed. It must be less than `default_workspace_count`.",
+          "default": 0
+        },
+        "reapply_app_rules_on_title_change": {
+          "type": "boolean",
+          "description": "Re-check title-based app rules when a window title changes. Useful for apps that finish naming a window after launch, but it can move a window again later.",
+          "default": false
+        },
+        "app_rules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "app_id": {
+                "type": "string",
+                "description": "Application bundle ID, matched without regard to letter case. For example, `com.apple.Terminal`."
+              },
+              "workspace": {
+                "oneOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "description": "Destination workspace name or zero-based index. Omit it to use the active workspace. Use a name from `workspace_names`."
+              },
+              "floating": {
+                "type": "boolean",
+                "description": "Keep matching windows outside the tiled layout. A winning rule with this field omitted uses `false`; actions are not inherited from other rules.",
+                "default": false
+              },
+              "position": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "x": {
+                    "type": "number",
+                    "description": "Horizontal position: `0.0` is the left edge and `1.0` is the right edge.",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  "y": {
+                    "type": "number",
+                    "description": "Vertical position: `0.0` is the top edge and `1.0` is the bottom edge.",
+                    "minimum": 0,
+                    "maximum": 1
+                  }
+                },
+                "required": [
+                  "x",
+                  "y"
+                ],
+                "description": "Initial normalized position for a floating window. Both `x` and `y` are between `0.0` and `1.0`; position is only valid when `floating = true`."
+              },
+              "size": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "w": {
+                    "type": "number",
+                    "description": "Initial width in logical pixels. Must be positive when provided.",
+                    "exclusiveMinimum": 0
+                  },
+                  "h": {
+                    "type": "number",
+                    "description": "Initial height in logical pixels. Must be positive when provided.",
+                    "exclusiveMinimum": 0
+                  }
+                },
+                "description": "Initial size in logical pixels. Set `w`, `h`, or both; this is applied once when the rule matches."
+              },
+              "focus": {
+                "type": "boolean",
+                "description": "Focus the window after applying this rule, switching virtual workspaces if needed.",
+                "default": false
+              },
+              "manage": {
+                "type": "boolean",
+                "description": "Set `false` to exclude matching windows from Rift. Set `true` to override the normal manageability checks for visible windows. Omit it to keep the normal checks. With `false`, omit placement and focus actions because they are ignored."
+              },
+              "app_name": {
+                "type": "string",
+                "description": "Case-insensitive containment match against the app name. Rift matches when the rule contains the app name or the app name contains the rule. Prefer `app_id` for an exact application match."
+              },
+              "title_regex": {
+                "type": "string",
+                "description": "Case-insensitive regular expression matched against the window title. Use `title_substring` when you do not need a pattern."
+              },
+              "title_substring": {
+                "type": "string",
+                "description": "Case-insensitive text matched anywhere in the window title."
+              },
+              "ax_role": {
+                "type": "string",
+                "description": "Exact macOS Accessibility role, such as `AXWindow`. Useful when an app creates several kinds of windows."
+              },
+              "ax_subrole": {
+                "type": "string",
+                "description": "Exact macOS Accessibility subrole, such as `AXDialog`, to distinguish dialogs from normal windows."
+              }
+            }
+          },
+          "description": "One rule per `[[virtual_workspaces.app_rules]]` entry. Match fields are combined with AND; the most specific matching rule wins.",
+          "default": []
+        },
+        "workspace_rules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "workspace": {
+                "oneOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "description": "Workspace name or zero-based index to match."
+              },
+              "layout": {
+                "type": "string",
+                "enum": [
+                  "traditional",
+                  "bsp",
+                  "stack",
+                  "master_stack",
+                  "scrolling"
+                ],
+                "description": "Layout to use in the matching workspace."
+              }
+            },
+            "required": [
+              "workspace",
+              "layout"
+            ]
+          },
+          "description": "Rules that select a layout for a workspace by name or zero-based index.",
+          "default": []
+        }
+      }
+    },
+    "modifier_combinations": {
+      "type": "object",
+      "description": "Reusable modifier combinations.",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "settings",
+    "keys"
+  ]
+}

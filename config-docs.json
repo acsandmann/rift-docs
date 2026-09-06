@@ -1,0 +1,452 @@
+{
+  "hidden": [
+    "settings.key_specs"
+  ],
+  "groups": {
+    "General": {
+      "description": "Animation, pointer behavior, Space activation, hot reload, and dragging tiled windows.",
+      "next": "Start here if you want to change how Rift feels before tuning a specific layout."
+    },
+    "Layouts": {
+      "description": "Choose a default layout and tune spacing, insertion, and layout-specific behavior.",
+      "next": "Use the [layout comparison](/rift-docs/layouts/) to choose a mode before changing its values."
+    },
+    "Scrolling layout": {
+      "description": "Settings for the scrolling-column layout and its optional trackpad gestures.",
+      "next": "The [Scrolling layout guide](/rift-docs/layouts/scrolling/) explains how the ratios feel on screen."
+    },
+    "Gestures": {
+      "description": "Horizontal trackpad swipes between virtual workspaces. The default finger count is three and can be changed.",
+      "next": "Gestures are off by default; enable them only after keyboard navigation is working."
+    },
+    "User interface": {
+      "description": "Optional indicators for the menu bar, stack line, and Mission Control.",
+      "next": "These features are independent, so enable one section at a time."
+    },
+    "App rules": {
+      "description": "Rules that run when Rift discovers a window. Each array entry can match a window and then place, float, focus, resize, or ignore it.",
+      "next": "Read the [App rules guide](/rift-docs/guides/app-rules/) for matching and precedence before adding several rules."
+    },
+    "Virtual workspaces": {
+      "description": "Workspace count, names, focus behavior, and rules for assigning windows to workspaces.",
+      "next": "A macOS Space is a desktop managed by macOS. Rift virtual workspaces organize windows within that Space. See the [workspace guide](/rift-docs/guides/workspaces/) for setup and navigation."
+    },
+    "Keybindings": {
+      "description": "Assign keyboard shortcuts to Rift commands in the `[keys]` table.",
+      "next": "A custom `[keys]` table replaces the bundled keymap. Use the [keybindings guide](/rift-docs/guides/keybindings/) before creating one."
+    },
+    "Modifier combinations": {
+      "description": "Reusable names for modifier strings such as `Alt + Shift`. Use them at the beginning of a keybinding to keep a large keymap consistent.",
+      "next": "This section is optional; ordinary key strings work without it."
+    },
+    "Commands and startup": {
+      "description": "Commands Rift runs after startup. This is useful for subscriptions and small integrations.",
+      "next": "For interactive commands, use the [CLI reference](https://github.com/acsandmann/rift/wiki/CLI)."
+    }
+  },
+  "overrides": {
+    "keys": {
+      "description": "A map whose keys are hotkey strings and whose values are Rift commands. This table replaces the bundled keymap; it is not merged. An empty map registers no keyboard shortcuts."
+    },
+    "modifier_combinations": {
+      "description": "A map from a short name to a modifier string. For example, `main = \"Alt + Shift\"` lets you write `main + H` in the `[keys]` table."
+    },
+    "settings": {
+      "description": "Global behavior shared by the active layout and the rest of Rift."
+    },
+    "settings.animate": {
+      "description": "Animate layout changes and focus transitions. Keep this off while troubleshooting layout behavior."
+    },
+    "settings.animation_duration": {
+      "description": "Animation duration in seconds when `animate` is enabled. Must not be negative.",
+      "schema": {
+        "minimum": 0
+      }
+    },
+    "settings.animation_fps": {
+      "description": "Target animation frame rate. Higher values look smoother but use more CPU. Must be greater than zero.",
+      "schema": {
+        "exclusiveMinimum": 0
+      }
+    },
+    "settings.animation_easing": {
+      "description": "Curve used to accelerate and decelerate animations."
+    },
+    "settings.default_disable": {
+      "description": "Start each newly encountered macOS Space inactive. Press your activation key before Rift manages it."
+    },
+    "settings.mouse_follows_focus": {
+      "description": "Allow Rift to move the pointer with keyboard-driven focus and workspace changes."
+    },
+    "settings.mouse_hides_on_focus": {
+      "description": "Hide the pointer after Rift changes the focused window. Rift also hides it after a pointer warp when `mouse_follows_focus` is enabled."
+    },
+    "settings.focus_follows_mouse": {
+      "description": "Ask Rift to focus a managed window when the pointer moves over it."
+    },
+    "settings.focus_follows_mouse_disable_hotkey": {
+      "description": "Optional hotkey held to temporarily suspend focus-follows-mouse. Use a full hotkey such as `Ctrl + A` or a modifier such as `Ctrl`.",
+      "example": "[settings]\nfocus_follows_mouse_disable_hotkey = \"Ctrl\""
+    },
+    "settings.auto_focus_blacklist": {
+      "description": "Bundle identifiers that should not cause Rift to switch workspaces when those applications become active, such as Spotlight."
+    },
+    "settings.hot_reload": {
+      "description": "Reload the config file when it changes. Even when this is false, Rift watches for keymap changes and reloads when the parsed bindings differ."
+    },
+    "settings.layout": {
+      "description": "Choose the default layout and set options shared by every layout. A layout-specific table can override a shared option."
+    },
+    "settings.layout.window_insertion_point": {
+      "description": "Where Rift inserts a newly managed window. A layout-specific value wins; if neither value is set, Rift uses `next_to_selection`."
+    },
+    "settings.layout.mode": {
+      "description": "Layout used for a workspace that does not match a `virtual_workspaces.workspace_rules` entry."
+    },
+    "settings.layout.traditional": {
+      "description": "Options specific to the Traditional tree layout."
+    },
+    "settings.layout.traditional.window_insertion_point": {
+      "description": "Override the layout-wide insertion point for Traditional. Leave it unset to inherit `[settings.layout].window_insertion_point`."
+    },
+    "settings.layout.bsp": {
+      "description": "Options specific to the BSP layout. Shared layout settings can still be set here."
+    },
+    "settings.layout.bsp.window_insertion_point": {
+      "description": "Override the layout-wide insertion point for BSP. Leave it unset to inherit `[settings.layout].window_insertion_point`."
+    },
+    "settings.layout.stack": {
+      "description": "Options specific to the Stack layout."
+    },
+    "settings.layout.stack.window_insertion_point": {
+      "description": "Override the layout-wide insertion point for Stack. Leave it unset to inherit `[settings.layout].window_insertion_point`."
+    },
+    "settings.layout.stack.stack_offset": {
+      "description": "Number of pixels by which each window is offset from the previous window in a stack. Must not be negative.",
+      "schema": {
+        "minimum": 0
+      }
+    },
+    "settings.layout.stack.default_orientation": {
+      "description": "Direction of a new stack. `perpendicular` uses the axis across its parent, `same` uses the parent's axis, and `horizontal` or `vertical` forces an axis."
+    },
+    "settings.layout.master_stack": {
+      "description": "Options specific to the Master-stack layout."
+    },
+    "settings.layout.master_stack.window_insertion_point": {
+      "description": "Override the layout-wide insertion point for Master-stack. Leave it unset to inherit `[settings.layout].window_insertion_point`."
+    },
+    "settings.layout.gaps": {
+      "description": "Space between tiled windows and the screen edges, plus space between neighboring windows."
+    },
+    "settings.layout.gaps.outer": {
+      "description": "Insets between the tiled area and each edge of the display. Gap values must not be negative."
+    },
+    "settings.layout.gaps.inner": {
+      "description": "Space between neighboring tiled windows. Gap values must not be negative."
+    },
+    "settings.layout.gaps.per_display": {
+      "description": "Optional display-specific gap overrides keyed by display UUID. An override replaces the complete outer or inner gap group for that display.",
+      "example": "[settings.layout.gaps.per_display.\"YOUR-DISPLAY-UUID\".outer]\ntop = 8.0\nbottom = 8.0\nleft = 16.0\nright = 16.0",
+      "note": "Run `rift-cli query displays` and replace `YOUR-DISPLAY-UUID` with the display UUID. Set any of `top`, `bottom`, `left`, and `right` in an `outer` table, or `horizontal` and `vertical` in an `inner` table. Omitted values within an overridden group become `0`; omitting the entire group inherits the global group."
+    },
+    "settings.layout.master_stack.master_ratio": {
+      "description": "Fraction of the tiling area reserved for the master side. Valid range: `0.05` through `0.95`.",
+      "schema": {
+        "minimum": 0.05,
+        "maximum": 0.95
+      }
+    },
+    "settings.layout.master_stack.master_count": {
+      "description": "Number of windows kept on the master side. Must be at least `1`.",
+      "schema": {
+        "minimum": 1
+      }
+    },
+    "settings.layout.master_stack.master_side": {
+      "description": "Edge occupied by the master side: `left`, `right`, `top`, or `bottom`."
+    },
+    "settings.layout.master_stack.new_window_placement": {
+      "description": "Where to insert a new window after the master area is full. `master` puts it in the main area and moves an existing window to the stack; `stack` keeps it in the supporting area; `focused` uses the focused area. Rift maintains `master_count`."
+    },
+    "settings.layout.master_stack.master_arrangement": {
+      "description": "Optional direction used to divide multiple windows inside the master side. When omitted, Rift uses the direction perpendicular to the master/stack split."
+    },
+    "settings.layout.master_stack.stack_arrangement": {
+      "description": "Optional direction used to divide windows inside the stack side. When omitted, Rift uses the direction perpendicular to the master/stack split."
+    },
+    "settings.layout.scrolling": {
+      "description": "Options specific to the Scrolling layout."
+    },
+    "settings.layout.scrolling.window_insertion_point": {
+      "description": "Override the layout-wide insertion point for Scrolling. Leave it unset to inherit `[settings.layout].window_insertion_point`."
+    },
+    "settings.layout.scrolling.animate": {
+      "description": "Override animation only for Scrolling workspaces. Leave it unset to inherit `settings.animate`."
+    },
+    "settings.layout.scrolling.column_width_ratio": {
+      "description": "Normal width of a column as a fraction of the tiling area. It must stay between `min_column_width_ratio` and `max_column_width_ratio`.",
+      "schema": {
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    "settings.layout.scrolling.min_column_width_ratio": {
+      "description": "Smallest column width allowed by resize commands, from `0.0` through `1.0`.",
+      "schema": {
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    "settings.layout.scrolling.max_column_width_ratio": {
+      "description": "Largest column width allowed by resize commands, from `0.0` through `1.0`.",
+      "schema": {
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    "settings.layout.scrolling.gestures": {
+      "description": "Optional horizontal gestures for moving between columns in a Scrolling workspace. The finger count is configurable."
+    },
+    "settings.gestures": {
+      "description": "Optional horizontal gestures for switching virtual workspaces. The finger count is configurable."
+    },
+    "settings.window_snapping": {
+      "description": "Mouse-drag behavior for swapping tiled windows."
+    },
+    "settings.window_snapping.drag_swap_fraction": {
+      "description": "Overlap needed to select a drag-swap target. Rift divides the intersection area by the union area of the two windows. Lower values make swaps easier to trigger.",
+      "note": "With this table present, the default is `0.3`. If the whole `[settings.window_snapping]` table is omitted, Rust initializes the field to `0.0`; set it explicitly for predictable behavior.",
+      "example": "[settings.window_snapping]\ndrag_swap_fraction = 0.3"
+    },
+    "settings.run_on_start": {
+      "description": "Command lines to run once Rift starts. Rift splits quoted arguments and launches the executable directly; use `sh -c` explicitly when shell syntax is required.",
+      "note": "Reloading does not run these entries again. Restart Rift after changing startup commands. Commands launch independently, so do not rely on list order to wait for another helper."
+    },
+    "settings.ui": {
+      "description": "Optional visual indicators. All UI helpers are disabled by default."
+    },
+    "settings.ui.menu_bar": {
+      "description": "Show workspace status in the macOS menu bar."
+    },
+    "settings.ui.menu_bar.enabled": {
+      "description": "Enable the menu bar workspace indicator."
+    },
+    "settings.ui.menu_bar.show_empty": {
+      "description": "Include workspaces that currently have no windows."
+    },
+    "settings.ui.menu_bar.mode": {
+      "description": "Show every workspace or only the active one."
+    },
+    "settings.ui.menu_bar.active_label": {
+      "description": "Label a workspace with its one-based workspace number or its configured name."
+    },
+    "settings.ui.menu_bar.display_style": {
+      "description": "Draw a miniature representation of each workspace\u2019s windows (`layout`) or show a number or name (`label`)."
+    },
+    "settings.ui.menu_bar.layout_folder": {
+      "description": "Folder containing saved `.ron` layouts shown in the menu bar\u2019s restore menus. `~` expands to your home directory."
+    },
+    "settings.ui.stack_line": {
+      "description": "Show a small edge indicator for stacked windows."
+    },
+    "settings.ui.stack_line.enabled": {
+      "description": "Enable the stack-line indicator."
+    },
+    "settings.ui.stack_line.hover": {
+      "description": "Choose whether the indicator responds to a click or pointer hover."
+    },
+    "settings.ui.stack_line.thickness": {
+      "description": "Thickness of the stack-line indicator in points.",
+      "note": "If the containing table is omitted, this field is initialized to `0`. The default above applies when the table is present."
+    },
+    "settings.ui.stack_line.horiz_placement": {
+      "description": "Place the stack line at the top or bottom edge of the window."
+    },
+    "settings.ui.stack_line.vert_placement": {
+      "description": "Place the stack line at the left or right edge of the window."
+    },
+    "settings.ui.mission_control": {
+      "description": "Rift\u2019s own Mission Control-style workspace overview."
+    },
+    "settings.ui.mission_control.enabled": {
+      "description": "Enable Rift\u2019s Mission Control helper."
+    },
+    "settings.ui.mission_control.fade_enabled": {
+      "description": "Fade managed windows during Mission Control transitions."
+    },
+    "settings.ui.mission_control.fade_duration_ms": {
+      "description": "Fade duration in milliseconds.",
+      "note": "If the containing table is omitted, this field is initialized to `0`. The default above applies when the table is present."
+    },
+    "virtual_workspaces": {
+      "description": "Rift\u2019s named or numbered work areas. A workspace is a logical layer on top of a macOS Space."
+    },
+    "virtual_workspaces.enabled": {
+      "description": "Reserved configuration field. Rift currently parses this value but does not consult it at runtime, so changing it has no effect."
+    },
+    "virtual_workspaces.default_workspace_count": {
+      "description": "Number of virtual workspaces to create by default. Must be at least 1 and no more than 128.",
+      "schema": {
+        "minimum": 1,
+        "maximum": 128
+      }
+    },
+    "virtual_workspaces.auto_assign_windows": {
+      "description": "Reserved configuration field. Rift currently parses this value but does not consult it at runtime; app rules and normal window assignment still run regardless of it."
+    },
+    "virtual_workspaces.preserve_focus_per_workspace": {
+      "description": "Reserved configuration field. Rift currently parses this value but does not consult it at runtime, so changing it has no effect."
+    },
+    "virtual_workspaces.workspace_auto_back_and_forth": {
+      "description": "Switching to the workspace you are already on returns to the previously active workspace."
+    },
+    "virtual_workspaces.prevent_wrapping": {
+      "description": "Stop at the first and last workspace instead of wrapping around."
+    },
+    "virtual_workspaces.workspace_names": {
+      "description": "Names for workspaces in index order. Names make app and workspace rules easier to read; the list cannot be longer than `default_workspace_count`."
+    },
+    "virtual_workspaces.default_workspace": {
+      "description": "Zero-based workspace selected when a new macOS Space is first managed. It must be less than `default_workspace_count`."
+    },
+    "virtual_workspaces.reapply_app_rules_on_title_change": {
+      "description": "Re-check title-based app rules when a window title changes. Useful for apps that finish naming a window after launch, but it can move a window again later."
+    },
+    "virtual_workspaces.app_rules": {
+      "description": "One rule per `[[virtual_workspaces.app_rules]]` entry. Match fields are combined with AND; the most specific matching rule wins."
+    },
+    "virtual_workspaces.app_rules.position": {
+      "description": "Initial normalized position for a floating window. Both `x` and `y` are between `0.0` and `1.0`; position is only valid when `floating = true`.",
+      "example": "[[virtual_workspaces.app_rules]]\napp_id = \"com.apple.Calculator\"\nfloating = true\nposition = { x = 0.5, y = 0.5 }"
+    },
+    "virtual_workspaces.app_rules.position.x": {
+      "description": "Horizontal position: `0.0` is the left edge and `1.0` is the right edge.",
+      "schema": {
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    "virtual_workspaces.app_rules.position.y": {
+      "description": "Vertical position: `0.0` is the top edge and `1.0` is the bottom edge.",
+      "schema": {
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    "virtual_workspaces.app_rules.size": {
+      "description": "Initial size in logical pixels. Set `w`, `h`, or both; this is applied once when the rule matches.",
+      "example": "[[virtual_workspaces.app_rules]]\napp_id = \"com.apple.Calculator\"\nfloating = true\nsize = { w = 420.0, h = 680.0 }"
+    },
+    "virtual_workspaces.app_rules.size.w": {
+      "description": "Initial width in logical pixels. Must be positive when provided.",
+      "schema": {
+        "exclusiveMinimum": 0
+      }
+    },
+    "virtual_workspaces.app_rules.size.h": {
+      "description": "Initial height in logical pixels. Must be positive when provided.",
+      "schema": {
+        "exclusiveMinimum": 0
+      }
+    },
+    "virtual_workspaces.app_rules.app_name": {
+      "description": "Case-insensitive containment match against the app name. Rift matches when the rule contains the app name or the app name contains the rule. Prefer `app_id` for an exact application match."
+    },
+    "virtual_workspaces.app_rules.title_regex": {
+      "description": "Case-insensitive regular expression matched against the window title. Use `title_substring` when you do not need a pattern."
+    },
+    "virtual_workspaces.app_rules.title_substring": {
+      "description": "Case-insensitive text matched anywhere in the window title."
+    },
+    "virtual_workspaces.app_rules.ax_role": {
+      "description": "Exact macOS Accessibility role, such as `AXWindow`. Useful when an app creates several kinds of windows."
+    },
+    "virtual_workspaces.app_rules.ax_subrole": {
+      "description": "Exact macOS Accessibility subrole, such as `AXDialog`, to distinguish dialogs from normal windows."
+    },
+    "virtual_workspaces.workspace_rules": {
+      "description": "Rules that select a layout for a workspace by name or zero-based index.",
+      "example": "[[virtual_workspaces.workspace_rules]]\nworkspace = \"Development\"\nlayout = \"traditional\""
+    },
+    "virtual_workspaces.workspace_rules.workspace": {
+      "description": "Workspace name or zero-based index to match."
+    },
+    "virtual_workspaces.workspace_rules.layout": {
+      "description": "Layout to use in the matching workspace."
+    },
+    "settings.gestures.enabled": {
+      "description": "Enable horizontal trackpad swipes for switching virtual workspaces."
+    },
+    "settings.gestures.consume_dock_swipe": {
+      "description": "Prevent macOS or the foreground app from also handling a swipe Rift consumed."
+    },
+    "settings.gestures.invert_horizontal_swipe": {
+      "description": "Reverse the meaning of left and right swipes."
+    },
+    "settings.gestures.swipe_vertical_tolerance": {
+      "description": "Maximum vertical movement allowed for a horizontal swipe. Use a normalized fraction from `0.0` to `1.0`, or a percentage from `0` to `100`; smaller values require a straighter swipe."
+    },
+    "settings.gestures.skip_empty": {
+      "description": "Skip workspaces with no windows when swiping.",
+      "note": "If the entire `[settings.gestures]` table is omitted, this is `true`. With the table present and this field omitted, it is `false`. Set it explicitly when enabling gestures."
+    },
+    "settings.gestures.fingers": {
+      "description": "Number of fingers required for a workspace swipe."
+    },
+    "settings.gestures.distance_pct": {
+      "description": "Normalized horizontal distance required before a swipe commits. `0.08` means roughly eight percent of the display width."
+    },
+    "settings.gestures.haptics_enabled": {
+      "description": "Provide haptic feedback when a swipe commits."
+    },
+    "settings.gestures.haptic_pattern": {
+      "description": "Haptic pattern used when a swipe commits."
+    },
+    "settings.layout.scrolling.gestures.enabled": {
+      "description": "Enable horizontal swipes for moving between columns in a Scrolling workspace."
+    },
+    "settings.layout.scrolling.gestures.invert_horizontal": {
+      "description": "Reverse the meaning of left and right column swipes."
+    },
+    "settings.layout.scrolling.gestures.vertical_tolerance": {
+      "description": "Maximum vertical movement allowed for a horizontal column swipe. Use a normalized fraction from `0.0` to `1.0`, or a percentage from `0` to `100`."
+    },
+    "settings.layout.scrolling.gestures.fingers": {
+      "description": "Number of fingers required for a column swipe."
+    },
+    "settings.layout.scrolling.gestures.distance_pct": {
+      "description": "Normalized horizontal distance required before a column change commits."
+    },
+    "settings.layout.scrolling.gestures.propagate_to_workspace_swipe": {
+      "description": "After reaching the end of the column strip, continue the gesture into the adjacent virtual workspace."
+    },
+    "settings.layout.scrolling.gestures.workspace_switch_threshold": {
+      "description": "Overscroll, in normalized steps, required before the gesture switches workspaces."
+    },
+    "settings.ui.stack_line.spacing": {
+      "note": "If the containing table is omitted, this field is initialized to `0`. The default above applies when the table is present."
+    },
+    "virtual_workspaces.app_rules.app_id": {
+      "description": "Application bundle ID, matched without regard to letter case. For example, `com.apple.Terminal`."
+    },
+    "virtual_workspaces.app_rules.workspace": {
+      "description": "Destination workspace name or zero-based index. Omit it to use the active workspace. Use a name from `workspace_names`."
+    },
+    "virtual_workspaces.app_rules.floating": {
+      "description": "Keep matching windows outside the tiled layout. A winning rule with this field omitted uses `false`; actions are not inherited from other rules."
+    },
+    "virtual_workspaces.app_rules.manage": {
+      "description": "Set `false` to exclude matching windows from Rift. Set `true` to override the normal manageability checks for visible windows. Omit it to keep the normal checks. With `false`, omit placement and focus actions because they are ignored."
+    },
+    "settings.layout.traditional.equalize_nodes": {
+      "description": "Give a new window the average share of its siblings when inserting it. When false, split the selected window\u2019s share instead. Manual resizing remains available."
+    },
+    "settings.layout.scrolling.focus_navigation_style": {
+      "description": "Choose how horizontal focus reveals a column. `niri` scrolls only as needed in the navigation direction; `anchored` always places the focused column at the chosen `alignment`."
+    },
+    "settings.layout.scrolling.alignment": {
+      "description": "Position used when aligning the focused column: left edge, center, or right edge. `focus_navigation_style` determines when that alignment is applied."
+    }
+  }
+}
