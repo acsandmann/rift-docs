@@ -8,6 +8,7 @@
     "check": "bun run generate && node scripts/check-docs.mjs",
     "dev": "bun run generate && ASTRO_TELEMETRY_DISABLED=1 astro dev",
     "build": "bun run generate && ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "rewrite-base": "node scripts/rewrite-built-base.mjs",
     "preview": "bun run generate && ASTRO_TELEMETRY_DISABLED=1 astro preview",
     "check:rust": "bun run generate && node scripts/check-config-rust.mjs"
   },

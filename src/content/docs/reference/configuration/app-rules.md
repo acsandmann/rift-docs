@@ -6,7 +6,7 @@ editUrl: false
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.5.5-14-g6baa565-dirty.
+Generated from Rift v0.5.6-1-g9b4f133-dirty.
 -->
 
 Match windows and control their placement, size, focus, or management.

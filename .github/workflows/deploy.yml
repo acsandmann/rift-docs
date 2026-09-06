@@ -1,12 +1,13 @@
 name: Deploy Rift docs
 
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
     inputs:
-      rift_ref:
-        description: Rift tag, branch, or commit to document
-        required: true
-        default: main
+      stable_rift_ref:
+        description: Rift tag or commit to publish as stable (defaults to the latest release)
+        required: false
   repository_dispatch:
     types: [rift-release]
 
@@ -22,39 +23,81 @@ concurrency:
 jobs:
   build:
     runs-on: macos-14
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Check out docs
         uses: actions/checkout@v4
-      - name: Resolve Rift ref
-        id: ref
+
+      - name: Resolve stable Rift ref
+        id: stable
         env:
-          INPUT_REF: ${{ github.event.inputs.rift_ref }}
+          GH_TOKEN: ${{ github.token }}
+          INPUT_REF: ${{ github.event.inputs.stable_rift_ref }}
           EVENT_REF: ${{ github.event.client_payload.rift_ref }}
-        run: echo "rift_ref=${INPUT_REF:-${EVENT_REF:-main}}" >> "$GITHUB_OUTPUT"
-      - name: Check out Rift source
+        run: |
+          ref="${INPUT_REF:-${EVENT_REF:-}}"
+          if [[ -z "$ref" ]]; then
+            ref="$(gh api repos/acsandmann/rift/releases/latest --jq .tag_name)"
+          fi
+          if [[ -z "$ref" ]]; then
+            echo "Unable to resolve the latest Rift release." >&2
+            exit 1
+          fi
+          echo "rift_ref=$ref" >> "$GITHUB_OUTPUT"
+
+      - name: Check out stable Rift source
         uses: actions/checkout@v4
         with:
           repository: acsandmann/rift
-          ref: ${{ steps.ref.outputs.rift_ref }}
-          path: rift
+          ref: ${{ steps.stable.outputs.rift_ref }}
+          path: rift-stable
+
+      - name: Check out latest Rift source
+        uses: actions/checkout@v4
+        with:
+          repository: acsandmann/rift
+          ref: main
+          path: rift-latest
+
       - name: Set up Bun
         uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
+
       - run: bun install --frozen-lockfile
-      - name: Generate and build
+
+      - name: Build stable documentation
         env:
-          RIFT_ROOT: ${{ github.workspace }}/rift
-          RIFT_REF: ${{ steps.ref.outputs.rift_ref }}
+          RIFT_ROOT: ${{ github.workspace }}/rift-stable
+          RIFT_REF: ${{ steps.stable.outputs.rift_ref }}
+          SITE_BASE: /rift-docs
         run: |
           bun run check
           bun run build
+          mv dist site
+
+      - name: Build latest documentation
+        env:
+          RIFT_ROOT: ${{ github.workspace }}/rift-latest
+          RIFT_REF: main
+          SITE_BASE: /rift-docs/latest
+        run: |
+          bun run check
+          bun run build
+          bun run rewrite-base -- /rift-docs/ /rift-docs/latest/
+          mkdir -p site/latest
+          cp -R dist/. site/latest/
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: site
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
