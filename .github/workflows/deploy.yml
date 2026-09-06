@@ -9,7 +9,7 @@ on:
         description: Rift tag or commit to publish as stable (defaults to the latest release)
         required: false
   repository_dispatch:
-    types: [rift-release]
+    types: [rift-release, rift-main-updated]
 
 permissions:
   contents: read
@@ -18,7 +18,7 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -35,15 +35,31 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           INPUT_REF: ${{ github.event.inputs.stable_rift_ref }}
+          EVENT_TYPE: ${{ github.event.action }}
           EVENT_REF: ${{ github.event.client_payload.rift_ref }}
         run: |
-          ref="${INPUT_REF:-${EVENT_REF:-}}"
+          ref="$INPUT_REF"
+          if [[ -z "$ref" && "$EVENT_TYPE" == "rift-release" ]]; then
+            ref="$EVENT_REF"
+          fi
           if [[ -z "$ref" ]]; then
             ref="$(gh api repos/acsandmann/rift/releases/latest --jq .tag_name)"
           fi
           if [[ -z "$ref" ]]; then
             echo "Unable to resolve the latest Rift release." >&2
             exit 1
+          fi
+          echo "rift_ref=$ref" >> "$GITHUB_OUTPUT"
+
+      - name: Resolve latest Rift ref
+        id: latest
+        env:
+          EVENT_TYPE: ${{ github.event.action }}
+          EVENT_REF: ${{ github.event.client_payload.rift_ref }}
+        run: |
+          ref="main"
+          if [[ "$EVENT_TYPE" == "rift-main-updated" && -n "$EVENT_REF" ]]; then
+            ref="$EVENT_REF"
           fi
           echo "rift_ref=$ref" >> "$GITHUB_OUTPUT"
 
@@ -58,7 +74,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: acsandmann/rift
-          ref: main
+          ref: ${{ steps.latest.outputs.rift_ref }}
           path: rift-latest
 
       - name: Set up Bun
