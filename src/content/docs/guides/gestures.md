@@ -2,13 +2,14 @@
 title: Gestures
 description: Using trackpad gestures with Rift.
 ---
-Rift has two separate horizontal trackpad gestures: one switches virtual workspaces, and one moves between columns in the Scrolling layout. Both are off by default.
 
-The examples below are fragments to add to an existing config. Keep the required `[settings]` and `[keys]` tables in the complete file.
+Rift supports horizontal trackpad gestures for workspace switching and Scrolling-layout navigation. Both are disabled by default. The layout under the pointer determines which gesture Rift uses.
 
-## Enable workspace swipes
+Merge the examples into your existing config. If a table already exists, edit its fields instead of repeating the header.
 
-Add this to your config:
+## Swipe between workspaces
+
+For layouts other than Scrolling:
 
 ```toml
 [settings.gestures]
@@ -17,21 +18,11 @@ fingers = 3
 skip_empty = false
 ```
 
-Rift uses the swipe direction to choose the previous or next workspace. `skip_empty = true` skips workspaces with no windows.
+Swipe left for the next workspace and right for the previous one. `skip_empty = false` lets you reach workspaces before moving windows into them; set it to `true` to skip workspaces with no windows.
 
-Set `skip_empty = false` while testing so you can reach workspaces before moving windows into them. For the complete list of controls, see the [gesture reference](/rift-docs/reference/configuration/gestures/).
+## Scroll through columns
 
-## Useful options
-
-- `invert_horizontal_swipe = true` reverses left and right.
-- `consume_dock_swipe = true` prevents the same gesture from also being handled by macOS or the foreground app.
-- `distance_pct` is the horizontal distance needed to commit, as a fraction of the display width. The default `0.08` is about eight percent.
-- `swipe_vertical_tolerance` controls how much vertical movement is allowed. It accepts a fraction such as `0.4` or a percentage such as `40`.
-- `haptics_enabled` enables feedback when the swipe commits.
-
-## Scrolling-layout gestures
-
-The scrolling layout has a separate gesture setting. It moves between columns instead of workspaces:
+On a Scrolling workspace, enable column scrolling:
 
 ```toml
 [settings.layout.scrolling.gestures]
@@ -39,8 +30,16 @@ enabled = true
 fingers = 3
 ```
 
-You can set `propagate_to_workspace_swipe = true` if swiping past the end of the column strip should continue into the next or previous workspace.
+Add `propagate_to_workspace_swipe = true` in this table to switch workspaces when you scroll past the end of the column strip.
 
-## If gestures do not work
+## Adjust the response
 
-Check that the correct section is enabled, the configured finger count matches, and the current macOS Space is activated. If macOS or the foreground app also responds, keep `consume_dock_swipe = true` in `[settings.gestures]`.
+- Reverse workspace swipes with `invert_horizontal_swipe` in `[settings.gestures]`, or column scrolling with `invert_horizontal` in the Scrolling gesture table.
+- `distance_pct` measures finger travel on the trackpad, not movement across the display. Smaller values need less travel.
+- Keep `[settings.gestures].consume_dock_swipe = true` to prevent macOS or the foreground app from also handling a gesture Rift consumes. This applies to both kinds of gesture.
+
+See the [workspace gesture reference](/rift-docs/reference/configuration/gestures/) or [Scrolling reference](/rift-docs/reference/configuration/scrolling/) for thresholds and defaults.
+
+## If nothing happens
+
+Check that the Space is activated, the gesture settings for its layout are enabled, and the configured finger count matches your gesture. On multiple displays, place the pointer over the workspace you want to use.

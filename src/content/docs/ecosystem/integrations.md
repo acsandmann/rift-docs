@@ -3,13 +3,11 @@ title: Integrations
 description: Connect Rift to status bars, scripts, and other macOS tools.
 ---
 
-Rift exposes two integration points: `rift-cli` for one-off commands and event subscriptions for tools that should react when the workspace or windows change. Rust and Lua clients are available when you need a longer-lived connection.
-
-The `run_on_start` example below is a fragment to add to a complete config that already contains `[settings]` and `[keys]`.
+Use `rift-cli` to query or control Rift from Terminal and scripts. Event subscriptions run a command when something changes, such as the active workspace.
 
 ## Query and control Rift
 
-These are useful building blocks for scripts:
+Queries return JSON (structured text). The switch command below selects workspace index `2`, the third workspace:
 
 ```sh
 rift-cli query workspaces
@@ -25,7 +23,7 @@ The [CLI reference](https://github.com/acsandmann/rift/wiki/CLI) provides more q
 
 `rift-cli subscribe cli` runs a command whenever an event occurs. The event JSON is appended as the command’s final argument, and useful values are also available as environment variables.
 
-For example, refresh SketchyBar when the active workspace changes:
+If your SketchyBar configuration handles an event named `rift_workspace_changed`, send it workspace updates with:
 
 ```sh
 rift-cli subscribe cli \
@@ -35,11 +33,9 @@ rift-cli subscribe cli \
   --args 'sketchybar --trigger rift_workspace_changed RIFT_WORKSPACE_NAME="$RIFT_WORKSPACE_NAME" RIFT_WORKSPACE_ID="$RIFT_WORKSPACE_ID"'
 ```
 
-Repeat `--args` for each argument passed to the command. Rift then appends the event JSON after those arguments.
+Repeat `--args` for each command argument.
 
-Supported event names include `workspace_changed`, `windows_changed`, `window_title_changed`, `focused_window_changed`, `stacks_changed`, `layout_changed`, `selection_changed`, and `*` for all events.
-
-To keep a subscription across service restarts, add the command to `[settings].run_on_start`:
+To keep a subscription across service restarts, merge the command into `run_on_start` in your existing `[settings]` table:
 
 ```toml
 [settings]

@@ -30,7 +30,7 @@ export default defineConfig({
         label: 'Guides',
         collapsed: true,
         items: [
-          { label: 'Layout guide', slug: 'guides/layouts' },
+          { label: 'Adjust layouts', slug: 'guides/layouts' },
           { label: 'Window management', slug: 'guides/window-management' },
           { label: 'Virtual workspaces', slug: 'guides/workspaces' },
           { label: 'Keybindings', slug: 'guides/keybindings' },

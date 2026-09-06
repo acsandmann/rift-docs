@@ -1,20 +1,20 @@
 ---
 title: Modifier combinations
-description: "Reusable names for modifier strings such as `Alt + Shift`. Use them at the beginning of a keybinding to keep a large keymap consistent."
+description: "Name a combination of modifier keys, such as Option + Shift, and reuse it in shortcuts."
 editUrl: false
 ---
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.5.5-12-gbeeac0e-dirty.
+Generated from Rift v0.5.5-14-g6baa565-dirty.
 -->
 
-Reusable names for modifier strings such as `Alt + Shift`. Use them at the beginning of a keybinding to keep a large keymap consistent.
+Name a combination of modifier keys, such as Option + Shift, and reuse it in shortcuts.
 
-This section is optional; ordinary key strings work without it.
+Use spaces around `+` when referencing a name: `main + H`.
 
 :::note[Examples are config fragments]
-Merge these examples into your config. If a table already exists, add or change its fields there; do not repeat its header. A complete custom file requires both `[settings]` and `[keys]`, and its `[keys]` table must contain every shortcut you want Rift to register.
+Edit matching tables in your existing config; do not repeat their headers. Keep your `[keys]` shortcuts. For a complete file, start with [Quick start](/rift-docs/quick-start/).
 :::
 
 ```toml
@@ -24,9 +24,3 @@ main = "Alt + Shift"
 [keys]
 "main + H" = { move_focus = "left" }
 ```
-
-## [modifier_combinations]
-
-A map from a short name to a modifier string. For example, `main = "Alt + Shift"` lets you write `main + H` in the `[keys]` table.
-
-**Value:** map of text to String

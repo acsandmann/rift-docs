@@ -13,7 +13,7 @@ Before starting, turn on **Displays have separate Spaces** in **System Settings 
 brew install acsandmann/tap/rift
 ```
 
-Then install and start the per-user service:
+Install and start the background service:
 
 ```sh
 rift service install
@@ -39,8 +39,6 @@ sudo install -m 755 rift rift-cli /usr/local/bin/
 ```
 
 Replace `VERSION` with the version in the downloaded filename. Then run `rift service install` and `rift service start`, as shown above.
-
-Release archives are named `rift-universal-macos-VERSION.tar.gz` and contain the two binaries at the archive root.
 
 ## Give Rift Accessibility access
 
@@ -72,4 +70,4 @@ rift-cli query displays
 
 The first command should print paths for both binaries, and `rift --help` should show Rift's options. After the service is running, `rift-cli query displays` should return JSON describing your displays.
 
-If you have no custom config, press the bundled `Alt + Z` shortcut to activate the current Space. With a custom config, use the key you assigned to `toggle_space_activated`. Then run `rift-cli query workspaces`. If the query cannot connect, use the [troubleshooting guide](/rift-docs/guides/troubleshooting/).
+Continue with [Quick start](/rift-docs/quick-start/) to activate tiling. If the query cannot connect, see [Troubleshooting](/rift-docs/guides/troubleshooting/).

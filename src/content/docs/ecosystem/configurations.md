@@ -14,8 +14,4 @@ Open an [issue](https://github.com/acsandmann/rift-docs/issues) or pull request 
 - a short description of the workflow it supports; and
 - any required companion tools, such as SketchyBar or a launcher.
 
-Do not include secrets, machine-specific paths, or a full config copied from someone else without permission. A small, commented example is more useful than a large unexplained file.
-
-## Start your own config repository
-
-Keep `~/.config/rift/config.toml` in a private or public dotfiles repository, then symlink it into place. If you share it, document the macOS version, required permissions, and the keybinding conventions it assumes.
+Include comments explaining unusual bindings and required tools. Remove secrets and replace machine-specific paths with documented placeholders.

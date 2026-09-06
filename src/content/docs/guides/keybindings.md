@@ -2,21 +2,17 @@
 title: Keybindings
 description: Configure Rift keyboard shortcuts.
 ---
-Keybindings are the main way to control Rift. They live in the `[keys]` table, where the key on the left is the shortcut and the value on the right is the Rift command.
+A **keybinding** assigns a keyboard shortcut to a command. In `[keys]`, the shortcut goes on the left and the command on the right.
 
 :::caution[Your keymap is not merged]
-Rift uses the bundled keymap only when no custom config file exists. As soon as `~/.config/rift/config.toml` exists, only the bindings in that file are registered. `[keys]` is required, and an empty `[keys]` table gives you no keyboard controls. The CLI remains available; for example, `rift-cli execute space toggle-activated` can activate the current Space while you repair the keymap.
+A custom `[keys]` table replaces the bundled keymap. Keep an activation binding such as `"Alt + Z" = "toggle_space_activated"`. An empty table disables keyboard controls; you can still activate a Space from Terminal with `rift-cli execute space toggle-activated`.
 :::
-
-## Start with the bundled keymap
-
-Copy the bindings you want from `rift.default.toml`, or start with a small set you understand. Include `toggle_space_activated` when `default_disable = true`, otherwise you will not be able to activate a Space from the keyboard.
 
 ## Defining keys
 
 Merge these examples into an existing config; keep its `[settings]` table and all shortcuts you still need.
 
-Keys are quoted strings. Commands can be simple strings or command objects with options:
+Quote each shortcut. A command with no options is also quoted; a command with options uses braces:
 
 ```toml
 [keys]
@@ -26,7 +22,7 @@ Keys are quoted strings. Commands can be simple strings or command objects with 
 "Alt + R" = { resize_window_grow = "horizontal" }
 ```
 
-`Alt` is Option on macOS and `Meta` is Command. Rift also accepts `Ctrl` or `Control`, `Shift`, arrow names such as `Left` or `ArrowLeft`, and side-specific modifier variants. Spacing around `+` is optional for ordinary shortcuts. Named modifier combinations require the form `main + H`, with spaces around `+`.
+`Alt` is Option on macOS and `Meta` is Command. Rift also accepts `Ctrl` or `Control`, `Shift`, arrow names such as `Left` or `ArrowLeft`. Spacing around `+` is optional for ordinary shortcuts. Named modifier combinations require the form `main + H`, with spaces around `+`.
 
 ## Everyday commands
 
@@ -37,19 +33,15 @@ Keys are quoted strings. Commands can be simple strings or command objects with 
 | Switch virtual workspace | `{ switch_to_workspace = 0 }` |
 | Move a window to a workspace | `{ move_window_to_workspace = 0 }` |
 | Toggle floating | `"toggle_window_floating"` |
-| Toggle Rift fullscreen | `"toggle_fullscreen"` |
+| Fill the screen with the selection | `"toggle_fullscreen"` |
 | Grow along the nearest useful split | `{ resize_window_grow = "smart" }` |
 | Change the active workspace's layout | `{ set_workspace_layout = { mode = "scrolling" } }` |
 
 Directions are `left`, `right`, `up`, or `down`. Workspace indexes are zero-based, so `0` is the first workspace.
 
-## Test a shortcut
-
-Change one shortcut, reload, and try it before changing the next one. Keep related actions together in the file so it stays readable. If a key stops working, check that the command name and its options match the current default config.
-
 ## Reusable modifiers
 
-If you repeat the same modifiers, give the combination a name:
+**Modifiers** are keys such as Option, Shift, and Control held with another key. Give a repeated combination a name:
 
 ```toml
 [modifier_combinations]
@@ -70,6 +62,6 @@ rift-cli execute config reload
 
 If reload fails, read the reported command name or hotkey. Rift rejects the new config instead of partially installing its bindings.
 
-## Complete command list
+## More commands
 
 The checked-in [bundled config](https://github.com/acsandmann/rift/blob/main/rift.default.toml) lists Rift's starter keymap and documents additional command shapes in its comments. The [CLI reference](https://github.com/acsandmann/rift/wiki/CLI) covers terminal commands; CLI syntax and TOML keybinding syntax are related, but they are not interchangeable.

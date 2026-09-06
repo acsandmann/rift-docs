@@ -6,9 +6,9 @@ editUrl: false
 
 <!-- GENERATED FILE. Do not edit directly. -->
 
-Look up a setting, check its accepted values, and copy an example into your config. This reference is generated from Rift’s configuration source; the guides explain how to combine settings for a particular task.
+Look up setting names, accepted values, and defaults. For your first file, use [Quick start](/rift-docs/quick-start/).
 
-Source version: `v0.5.5-12-gbeeac0e-dirty`. Match the reference to the Rift version you run; newer settings may not exist in older releases.
+Source version: `v0.5.5-14-g6baa565-dirty`. Newer settings may not exist in older releases.
 
 :::caution[Keybindings are different]
 A custom config must contain `[settings]` and `[keys]`. Omitted settings use defaults, but `[keys]` replaces the bundled keymap. An empty table registers no keyboard shortcuts.
@@ -35,6 +35,11 @@ A custom config must contain `[settings]` and `[keys]`. Omitted settings use def
 2. Merge the example into the matching table in your config. Do not repeat an existing table header.
 3. Change the value, save, and run `rift-cli execute config reload` if hot reload is disabled or the change does not appear.
 
-The defaults shown here apply when the containing table is present and the field is omitted. Omitting a whole table can produce different defaults; affected fields include a note. The bundled `rift.default.toml` may explicitly choose a different value. **Not set** means an optional field has no value of its own. Its description explains when Rift inherits or derives an effective value. Omit optional fields to leave them unset: TOML has no `null` value. Required fields inside an optional table are required only when that table is supplied.
+## Read defaults and types
 
-The [JSON Schema](/rift-docs/schema/rift-config.schema.json) describes setting names, types, and selected bounds for editor autocomplete. It does not check hotkey syntax, command payloads, or every relationship between settings. Reload Rift to run its own validation. The `[keys]` command values are documented in the [keybindings guide](/rift-docs/guides/keybindings/). For a working starting point, use the [Quick start](/rift-docs/quick-start/) or the [bundled config](https://github.com/acsandmann/rift/blob/main/rift.default.toml).
+- **Default** applies when the containing table exists but the field is omitted. Notes explain exceptions when a whole table is omitted. The bundled config may set a different value.
+- **Not set** means an optional field is omitted. Its description explains any inherited value. TOML has no `null`.
+- **Required** means you must supply the field when using its containing table.
+- **Boolean** means `true` or `false`, without quotes. Text values need quotes; lists use square brackets.
+
+The [JSON Schema](/rift-docs/schema/rift-config.schema.json) supports editor autocomplete and checks names, types, and some bounds. Use config reload to also check shortcuts, commands, and relationships between settings.

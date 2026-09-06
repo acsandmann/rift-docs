@@ -1,25 +1,11 @@
 ---
-title: Layout guide
-description: Choose and tune the layout that matches the way you work.
+title: Adjust layouts
+description: Set a default layout, add gaps, and choose layouts by workspace.
 ---
 
-The [layout overview](/rift-docs/layouts/) is the quickest way to compare the shapes. This guide helps you decide what to try first and shows how to change layouts, gaps, and workspace overrides.
+Choose a layout in the [comparison](/rift-docs/layouts/), then use this guide to adjust it. Merge examples into your existing config; if a table already exists, edit it instead of repeating its header.
 
-## Choose by workflow
-
-| If you usually… | Start with… | Why |
-| --- | --- | --- |
-| keep an editor, terminal, and browser in a deliberate arrangement | [Traditional](/rift-docs/layouts/traditional/) | each split can have its own relationship |
-| give several windows equal importance | [BSP](/rift-docs/layouts/bsp/) | the screen is divided recursively without a permanent main window |
-| have one app that deserves most of the space | [Master-stack](/rift-docs/layouts/master-stack/) | the main area and supporting area are easy to reason about |
-| switch among a small group of related windows | [Stack](/rift-docs/layouts/stack/) | one window stays large while the others remain visible at the edge |
-| work through many windows one at a time | [Scrolling](/rift-docs/layouts/scrolling/) | the focused column stays readable instead of shrinking into a grid |
-
-Traditional is the default and a good first choice when you are unsure.
-
-## Change one setting at a time
-
-The examples below are fragments to add to an existing config. Do not replace your `[keys]` table with them.
+## Set the default layout
 
 Choose the layout in `[settings.layout]`, then reload:
 
@@ -32,7 +18,9 @@ mode = "master_stack"
 rift-cli execute config reload
 ```
 
-Add gaps if window boundaries are hard to see:
+## Add space between windows
+
+**Outer gaps** separate windows from display edges. **Inner gaps** separate neighboring windows. Values use macOS logical pixels, so they follow the display’s scaling rather than its physical pixel count:
 
 ```toml
 [settings.layout.gaps.outer]
@@ -62,9 +50,8 @@ Use a workspace name or a zero-based index. If a workspace rule does not match, 
 
 ## When a layout feels wrong
 
-- Windows too small: try Master-stack or Scrolling, or increase the active area ratio.
+- Windows too small: try Master-stack or Scrolling, or adjust `master_ratio` or `column_width_ratio` for those layouts.
 - Windows too tightly packed: add inner and outer gaps.
 - New windows appear in an unexpected place: check `window_insertion_point` and the layout-specific insertion setting.
-- You want one app to stay large: use Master-stack rather than trying to force Traditional into a fixed template.
 
 The [configuration reference](/rift-docs/reference/configuration/layouts/) lists layout settings, defaults, and accepted values.

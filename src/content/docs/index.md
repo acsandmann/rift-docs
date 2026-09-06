@@ -13,24 +13,18 @@ hero:
       icon: document
 ---
 
-Rift tiles windows on macOS and lets you focus, move, and resize them with keyboard shortcuts. Choose from five layouts, organize apps into virtual workspaces, and set rules for windows that need special treatment.
+Rift automatically arranges your macOS windows into layouts—a practice called **tiling**. Use keyboard shortcuts to choose a window, move it, or change its size. You can also group windows into workspaces and keep utility windows outside the tiled layout.
 
 ![Rift arranging and resizing windows on a macOS desktop](/rift-docs/rift-demo.webp)
 
-The demo shows Rift running on a real macOS desktop. The [layout comparison](/rift-docs/layouts/) explains Traditional, BSP, Master-stack, Stack, and Scrolling.
-
 ## Get a working desktop
 
-1. [Install Rift](/rift-docs/installation/).
-2. Follow the [Quick start](/rift-docs/quick-start/) to activate your first Space and confirm Rift can see your windows.
-3. Compare the [layouts](/rift-docs/layouts/), choose one that fits how you work, and change only the settings you need.
-
-Rift ships with a complete bundled config for trying it without a custom file. When you create your own config, its keymap replaces the bundled one, so include every keyboard command you still need.
+Follow the [Quick start](/rift-docs/quick-start/) to install Rift and arrange your first windows. No configuration file is needed to try it. Then [compare layouts](/rift-docs/layouts/) to choose how windows share your screen.
 
 ## Find your next answer
 
 - [Configuration concepts](/rift-docs/configuration/) explain how the TOML file is organized.
 - [Window management](/rift-docs/guides/window-management/) covers focus, movement, resizing, floating, and swapping.
-- [Keybindings](/rift-docs/guides/keybindings/) shows how to make the controls feel like yours.
+- [Keybindings](/rift-docs/guides/keybindings/) explains shortcut syntax and commands.
 - [Configuration reference](/rift-docs/reference/configuration/) explains setting names, accepted values, defaults, and examples.
 - [Rift on GitHub](https://github.com/acsandmann/rift) is the place for releases, issues, and source code.

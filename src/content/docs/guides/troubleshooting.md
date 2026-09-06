@@ -2,25 +2,17 @@
 title: Troubleshooting
 description: Diagnose common Rift setup and configuration issues.
 ---
-Start with three common causes: the current Space is not activated, macOS has not granted Accessibility permission, or the config file contains a setting Rift cannot load.
+Start with the symptom below. Most setup problems involve the service, Accessibility permission, Space activation, or the config file.
 
-## Before you begin
+## The terminal tool cannot connect
 
-First check that Rift is running. If you know the current Space is inactive, activate it with the key bound to `toggle_space_activated`. The bundled config uses `Alt + Z`, but a custom config must define this binding itself. Then ask Rift what it can see:
-
-```sh
-rift-cli query workspaces
-rift-cli query windows
-rift-cli query displays
-```
-
-If these commands cannot connect, restart the service:
+Run `rift-cli query displays`. A successful response lists displays as JSON, a structured text format. If it cannot connect, restart the background service:
 
 ```sh
 rift service restart
 ```
 
-If Rift exits immediately, also confirm **Displays have separate Spaces** is enabled in **System Settings → Desktop & Dock → Mission Control**.
+If Rift exits immediately, check the logs below and confirm **Displays have separate Spaces** is enabled in **System Settings → Desktop & Dock → Mission Control**.
 
 ## Windows are not being managed
 
@@ -28,15 +20,15 @@ Make sure Rift has Accessibility permission in **System Settings → Privacy & S
 
 ## A config change fails to reload
 
-Rift reads `~/.config/rift/config.toml`. If you launched Rift with `--config`, edit that file instead. TOML is sensitive to spelling, quotes, and table names. Check for a repeated table header after copying an example. When troubleshooting, temporarily remove the setting you just added and confirm that Rift starts again.
+Rift reads `~/.config/rift/config.toml`. If you launched Rift with `--config`, edit that file instead. TOML is sensitive to spelling, quotes, and table names. Check for a repeated table header after copying an example. If needed, undo the last edit and reload.
 
-Use the generated [configuration reference](/rift-docs/reference/configuration/) and keep the default config nearby for working examples. After fixing the file, reload it:
+Compare the reported field with the [configuration reference](/rift-docs/reference/configuration/), then reload:
 
 ```sh
 rift-cli execute config reload
 ```
 
-Unknown fields and invalid values are rejected. Rift reports the problem and keeps the last running configuration when a reload fails.
+Unknown fields and invalid values are rejected. Rift reports the problem and keeps the running configuration when a reload fails. `rift --validate` checks a saved layout snapshot; it does not validate this config file.
 
 ## Keyboard shortcuts do nothing
 
@@ -60,23 +52,9 @@ App rules use zero-based workspace indexes, so `workspace = 0` means the first w
 
 Start with only `app_id`, then add one matching condition at a time. See the [app rules reference](/rift-docs/reference/configuration/app-rules/).
 
-## Layout looks too cramped
+## Windows are too small or crowded
 
-Add this fragment to the existing config to increase the outer and inner gaps:
-
-```toml
-[settings.layout.gaps.outer]
-top = 8.0
-left = 8.0
-bottom = 8.0
-right = 8.0
-
-[settings.layout.gaps.inner]
-horizontal = 8.0
-vertical = 8.0
-```
-
-`rift --validate` checks the saved layout snapshot, not your TOML configuration. Use config reload to check a running setup.
+[Adjust the gaps](/rift-docs/guides/layouts/) if window edges are hard to distinguish. If windows need more room, try [Master-stack](/rift-docs/layouts/master-stack/) or [Scrolling](/rift-docs/layouts/scrolling/).
 
 ## Getting more help
 

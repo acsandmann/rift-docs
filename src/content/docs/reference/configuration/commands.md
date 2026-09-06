@@ -1,30 +1,28 @@
 ---
 title: Commands and startup
-description: "Commands Rift runs after startup. This is useful for subscriptions and small integrations."
+description: "Launch helper programs when Rift starts."
 editUrl: false
 ---
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.5.5-12-gbeeac0e-dirty.
+Generated from Rift v0.5.5-14-g6baa565-dirty.
 -->
 
-Commands Rift runs after startup. This is useful for subscriptions and small integrations.
-
-For interactive commands, use the [CLI reference](https://github.com/acsandmann/rift/wiki/CLI).
+Launch helper programs when Rift starts.
 
 :::note[Examples are config fragments]
-Merge these examples into your config. If a table already exists, add or change its fields there; do not repeat its header. A complete custom file requires both `[settings]` and `[keys]`, and its `[keys]` table must contain every shortcut you want Rift to register.
+Edit matching tables in your existing config; do not repeat their headers. Keep your `[keys]` shortcuts. For a complete file, start with [Quick start](/rift-docs/quick-start/).
 :::
+
+To open Terminal when Rift starts:
 
 ```toml
 [settings]
-run_on_start = [
-  "rift-cli subscribe cli --event workspace_changed --command sh --args -c --args 'echo $RIFT_WORKSPACE_NAME'",
-]
+run_on_start = ["open -a Terminal"]
 ```
 
-Each entry is launched once after Rift starts. Rift does not restart a command that exits, so use a launch agent for a helper that needs supervision. A CLI subscription can listen for `workspace_changed`, `windows_changed`, `window_title_changed`, `focused_window_changed`, `stacks_changed`, `layout_changed`, `selection_changed`, or `*`. Rift appends the event JSON as the command’s final argument. It also sets `RIFT_EVENT_TYPE` and whichever workspace, window, Space, or display variables apply to that event; `RIFT_EVENT_JSON` always contains the complete payload.
+For a helper that must restart after failure, use a macOS LaunchAgent (a background service). CLI subscriptions accept `workspace_changed`, `windows_changed`, `window_title_changed`, `focused_window_changed`, `stacks_changed`, `layout_changed`, `selection_changed`, or `*`. Each event’s JSON data is passed as the command’s final argument and in `RIFT_EVENT_JSON`. `RIFT_EVENT_TYPE` identifies the event; other variables depend on its contents. See [Integrations](/rift-docs/ecosystem/integrations/) for a working subscription.
 
 ## [settings]
 
@@ -35,8 +33,3 @@ Command lines to run once Rift starts. Rift splits quoted arguments and launches
 **Type:** list of text values · **Default:** Empty list
 
 Reloading does not run these entries again. Restart Rift after changing startup commands. Commands launch independently, so do not rely on list order to wait for another helper.
-
-```toml
-[settings]
-run_on_start = []
-```

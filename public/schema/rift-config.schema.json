@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Rift configuration",
-  "description": "Generated from Rift v0.5.5-12-gbeeac0e-dirty.",
+  "description": "Generated from Rift v0.5.5-14-g6baa565-dirty.",
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -434,7 +434,7 @@
                     },
                     "vertical_tolerance": {
                       "type": "number",
-                      "description": "Maximum vertical movement allowed for a horizontal column swipe. Use a normalized fraction from `0.0` to `1.0`, or a percentage from `0` to `100`.",
+                      "description": "Allowed vertical finger movement while recognizing the start of a column scroll. Measured in trackpad coordinates: `0.4` and `40` both mean 40% of the trackpad height.",
                       "default": 0.4
                     },
                     "fingers": {
@@ -445,7 +445,7 @@
                     },
                     "distance_pct": {
                       "type": "number",
-                      "description": "Normalized horizontal distance required before a column change commits.",
+                      "description": "Accumulated horizontal finger travel before Rift sends a scroll update, measured in trackpad coordinates. Smaller values send updates more often. Rift clamps the value to `0.01`–`1.0`.",
                       "default": 0.08
                     },
                     "propagate_to_workspace_swipe": {
@@ -563,7 +563,7 @@
                 },
                 "spacing": {
                   "type": "number",
-                  "description": "Distance to position the stack line away from the window edge (in points) This creates spacing between the window and the stack line",
+                  "description": "Distance from the window edge to the indicator, in macOS points.",
                   "default": 1
                 }
               },
@@ -615,7 +615,7 @@
             },
             "swipe_vertical_tolerance": {
               "type": "number",
-              "description": "Maximum vertical movement allowed for a horizontal swipe. Use a normalized fraction from `0.0` to `1.0`, or a percentage from `0` to `100`; smaller values require a straighter swipe.",
+              "description": "Allowed vertical finger travel, measured in trackpad coordinates. `0.4` and `40` both mean 40% of the trackpad height; smaller values require a straighter swipe.",
               "default": 0.4
             },
             "skip_empty": {
@@ -631,12 +631,12 @@
             },
             "distance_pct": {
               "type": "number",
-              "description": "Normalized horizontal distance required before a swipe commits. `0.08` means roughly eight percent of the display width.",
+              "description": "Horizontal finger travel needed to switch workspaces, measured in trackpad coordinates. `0.08` is roughly 8% of the trackpad width. Rift clamps the value to `0.01`–`1.0`.",
               "default": 0.08
             },
             "haptics_enabled": {
               "type": "boolean",
-              "description": "Provide haptic feedback when a swipe commits.",
+              "description": "Provide a tactile pulse when a workspace swipe is recognized.",
               "default": true
             },
             "haptic_pattern": {
@@ -646,7 +646,7 @@
                 "alignment",
                 "level_change"
               ],
-              "description": "Haptic pattern used when a swipe commits.",
+              "description": "Pattern of tactile feedback used for workspace swipes.",
               "default": "level_change"
             }
           },
@@ -690,7 +690,7 @@
       "properties": {
         "enabled": {
           "type": "boolean",
-          "description": "Reserved configuration field. Rift currently parses this value but does not consult it at runtime, so changing it has no effect.",
+          "description": "Currently has no effect.",
           "default": true
         },
         "default_workspace_count": {
@@ -702,12 +702,12 @@
         },
         "auto_assign_windows": {
           "type": "boolean",
-          "description": "Reserved configuration field. Rift currently parses this value but does not consult it at runtime; app rules and normal window assignment still run regardless of it.",
+          "description": "Currently has no effect.",
           "default": true
         },
         "preserve_focus_per_workspace": {
           "type": "boolean",
-          "description": "Reserved configuration field. Rift currently parses this value but does not consult it at runtime, so changing it has no effect.",
+          "description": "Currently has no effect.",
           "default": true
         },
         "workspace_auto_back_and_forth": {

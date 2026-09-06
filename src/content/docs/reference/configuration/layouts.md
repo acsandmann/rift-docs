@@ -6,15 +6,15 @@ editUrl: false
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.5.5-12-gbeeac0e-dirty.
+Generated from Rift v0.5.5-14-g6baa565-dirty.
 -->
 
 Choose a default layout and tune spacing, insertion, and layout-specific behavior.
 
-Use the [layout comparison](/rift-docs/layouts/) to choose a mode before changing its values.
+Compare [layouts](/rift-docs/layouts/) before choosing a mode.
 
 :::note[Examples are config fragments]
-Merge these examples into your config. If a table already exists, add or change its fields there; do not repeat its header. A complete custom file requires both `[settings]` and `[keys]`, and its `[keys]` table must contain every shortcut you want Rift to register.
+Edit matching tables in your existing config; do not repeat their headers. Keep your `[keys]` shortcuts. For a complete file, start with [Quick start](/rift-docs/quick-start/).
 :::
 
 ```toml
@@ -42,11 +42,6 @@ Layout used for a workspace that does not match a `virtual_workspaces.workspace_
 
 **Type:** `traditional` or `bsp` or `stack` or `master_stack` or `scrolling` · **Default:** `"traditional"`
 
-```toml
-[settings.layout]
-mode = "traditional"
-```
-
 ## [settings.layout.traditional]
 
 Options specific to the Traditional tree layout.
@@ -62,11 +57,6 @@ Override the layout-wide insertion point for Traditional. Leave it unset to inhe
 Give a new window the average share of its siblings when inserting it. When false, split the selected window’s share instead. Manual resizing remains available.
 
 **Type:** boolean · **Default:** `true`
-
-```toml
-[settings.layout.traditional]
-equalize_nodes = true
-```
 
 ## [settings.layout.bsp]
 
@@ -94,21 +84,11 @@ Number of pixels by which each window is offset from the previous window in a st
 
 **Type:** number · **Default:** `40`
 
-```toml
-[settings.layout.stack]
-stack_offset = 40
-```
-
 ### `default_orientation`
 
 Direction of a new stack. `perpendicular` uses the axis across its parent, `same` uses the parent's axis, and `horizontal` or `vertical` forces an axis.
 
 **Type:** `perpendicular` or `same` or `horizontal` or `vertical` · **Default:** `"perpendicular"`
-
-```toml
-[settings.layout.stack]
-default_orientation = "perpendicular"
-```
 
 ## [settings.layout.master_stack]
 
@@ -126,21 +106,11 @@ Fraction of the tiling area reserved for the master side. Valid range: `0.05` th
 
 **Type:** number · **Default:** `0.6`
 
-```toml
-[settings.layout.master_stack]
-master_ratio = 0.6
-```
-
 ### `master_count`
 
 Number of windows kept on the master side. Must be at least `1`.
 
 **Type:** whole number · **Default:** `1`
-
-```toml
-[settings.layout.master_stack]
-master_count = 1
-```
 
 ### `master_side`
 
@@ -148,21 +118,11 @@ Edge occupied by the master side: `left`, `right`, `top`, or `bottom`.
 
 **Type:** `left` or `right` or `top` or `bottom` · **Default:** `"left"`
 
-```toml
-[settings.layout.master_stack]
-master_side = "left"
-```
-
 ### `new_window_placement`
 
 Where to insert a new window after the master area is full. `master` puts it in the main area and moves an existing window to the stack; `stack` keeps it in the supporting area; `focused` uses the focused area. Rift maintains `master_count`.
 
 **Type:** `master` or `stack` or `focused` · **Default:** `"master"`
-
-```toml
-[settings.layout.master_stack]
-new_window_placement = "master"
-```
 
 ### `master_arrangement`
 
@@ -206,21 +166,11 @@ Gap at the top of the screen
 
 **Type:** number · **Default:** `0`
 
-```toml
-[settings.layout.gaps.outer]
-top = 0
-```
-
 ### `left`
 
 Gap at the left of the screen
 
 **Type:** number · **Default:** `0`
-
-```toml
-[settings.layout.gaps.outer]
-left = 0
-```
 
 ### `bottom`
 
@@ -228,21 +178,11 @@ Gap at the bottom of the screen
 
 **Type:** number · **Default:** `0`
 
-```toml
-[settings.layout.gaps.outer]
-bottom = 0
-```
-
 ### `right`
 
 Gap at the right of the screen
 
 **Type:** number · **Default:** `0`
-
-```toml
-[settings.layout.gaps.outer]
-right = 0
-```
 
 ## [settings.layout.gaps.inner]
 
@@ -254,18 +194,8 @@ Horizontal gap between windows
 
 **Type:** number · **Default:** `0`
 
-```toml
-[settings.layout.gaps.inner]
-horizontal = 0
-```
-
 ### `vertical`
 
 Vertical gap between windows
 
 **Type:** number · **Default:** `0`
-
-```toml
-[settings.layout.gaps.inner]
-vertical = 0
-```

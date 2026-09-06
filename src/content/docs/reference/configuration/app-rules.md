@@ -1,23 +1,23 @@
 ---
 title: App rules
-description: "Rules that run when Rift discovers a window. Each array entry can match a window and then place, float, focus, resize, or ignore it."
+description: "Match windows and control their placement, size, focus, or management."
 editUrl: false
 ---
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.5.5-12-gbeeac0e-dirty.
+Generated from Rift v0.5.5-14-g6baa565-dirty.
 -->
 
-Rules that run when Rift discovers a window. Each array entry can match a window and then place, float, focus, resize, or ignore it.
+Match windows and control their placement, size, focus, or management.
 
-Read the [App rules guide](/rift-docs/guides/app-rules/) for matching and precedence before adding several rules.
+The [App rules guide](/rift-docs/guides/app-rules/) explains matching and which rule wins.
 
 :::note[Examples are config fragments]
-Merge these examples into your config. If a table already exists, add or change its fields there; do not repeat its header. A complete custom file requires both `[settings]` and `[keys]`, and its `[keys]` table must contain every shortcut you want Rift to register.
+Edit matching tables in your existing config; do not repeat their headers. Keep your `[keys]` shortcuts. For a complete file, start with [Quick start](/rift-docs/quick-start/).
 :::
 
-Here is a minimal pair of rules. Add match fields only when you need to distinguish one window from another:
+This example uses the default workspace name `Development`. Replace it if you renamed that workspace:
 
 ```toml
 [[virtual_workspaces.app_rules]]

@@ -3,11 +3,11 @@ title: Quick start
 description: Install Rift, activate a Space, and make your first small config.
 ---
 
-Start with the bundled shortcuts, confirm tiling works, then create a small configuration you can build on. Rift uses its bundled configuration only while `~/.config/rift/config.toml` does not exist. Once you create that file, it becomes the complete configuration rather than an overlay on the bundled one.
+This guide assumes a fresh install with no custom configuration. You’ll arrange two windows, try keyboard navigation, and optionally save your own settings. Run the shell commands in Terminal.
 
 ## 1. Install Rift
 
-Enable **Displays have separate Spaces** in **System Settings → Desktop & Dock → Mission Control**. Then install the Homebrew formula:
+Enable **Displays have separate Spaces** in **System Settings → Desktop & Dock → Mission Control**. If you use Homebrew, install Rift:
 
 ```sh
 brew install acsandmann/tap/rift
@@ -17,7 +17,7 @@ For a release archive or permission details, see [Installation](/rift-docs/insta
 
 ## 2. Start the service
 
-Install and start Rift as a per-user background service:
+Install the background service so Rift can run without an open Terminal window:
 
 ```sh
 rift service install
@@ -32,27 +32,27 @@ rift service restart
 
 ## 3. Activate the current Space
 
-Rift starts with each newly encountered macOS Space inactive. Open two ordinary app windows, such as a browser and Terminal. Press `Alt + Z` once to activate the Space you are looking at. The windows should arrange themselves into tiles. Press the same shortcut again to stop managing this Space. `Alt` means the **Option (⌥)** key on macOS.
+A **Space** is a macOS desktop, shown in Mission Control. By default, Rift waits for you to enable tiling on each Space.
 
-If you do not have a config file yet, the bundled keymap binds this command to `Alt + Z`. A custom config must define its own activation binding. If the correct binding does nothing, confirm the service is running and Rift has Accessibility permission.
+Open two app windows, such as a browser and Terminal. Press **Option (⌥) + Z**. Rift should arrange them into tiles. Press the shortcut again to stop tiling this Space. Rift calls the Option key `Alt` in its configuration.
 
-## 4. Check the connection
+If nothing happens, check [service, permission, and shortcut problems](/rift-docs/guides/troubleshooting/).
 
-```sh
-rift-cli query displays
-rift-cli query workspaces
-rift-cli query windows
-```
+## 4. Try keyboard navigation
 
-Each command returns JSON. You should see the current display, Rift's virtual workspaces, and any windows it is managing. If the CLI cannot connect, run `rift service restart` and see the [troubleshooting guide](/rift-docs/guides/troubleshooting/).
+Press **Option + H** to focus the window on the left, or **Option + L** for the right. **Focus** means the window that receives your typing. Option + J and Option + K select windows below and above. These shortcuts come with Rift.
 
-## 5. Create a working config
+You can keep using the bundled settings. Continue below only when you want to customize them.
 
-Rift reads `~/.config/rift/config.toml`. Create the parent directory, then save the following as `~/.config/rift/config.toml`. If that file already exists, back it up before replacing it. It includes activation, focus, movement, and floating controls as well as a layout and gaps:
+## 5. Save your own settings
+
+Create the configuration folder:
 
 ```sh
 mkdir -p ~/.config/rift
 ```
+
+Save the following as `~/.config/rift/config.toml` in a plain-text editor. Back up that file first if it already exists.
 
 ```toml
 [keys]
@@ -81,15 +81,17 @@ horizontal = 8.0
 vertical = 8.0
 ```
 
-Only the shortcuts listed in this `[keys]` table are registered. Rift does not merge them with the bundled keymap. An empty `[keys]` table leaves Rift with no keyboard shortcuts, although automatic tiling and `rift-cli` can still operate.
+This `[keys]` table replaces the bundled keymap. Keep every shortcut you want to use.
 
-Hot reload is enabled by default. After creating your first file, reload explicitly to make sure Rift picks it up:
+The example adds Shift to the direction keys to move a window. Option + Shift + Space toggles **floating**, which lets you position that window freely. Master-stack gives one window a larger area; the gaps leave space between windows.
+
+Apply the file with `rift-cli`, Rift’s terminal control tool:
 
 ```sh
 rift-cli execute config reload
 ```
 
-You can copy the [bundled config](https://github.com/acsandmann/rift/blob/main/rift.default.toml) if you want all of its starter bindings. If you build your own file, copy every binding you still want to use.
+Later edits normally apply automatically when you save. To retain all starter shortcuts, use the [bundled config](https://github.com/acsandmann/rift/blob/main/rift.default.toml) as your starting point instead.
 
 ## Where to go next
 

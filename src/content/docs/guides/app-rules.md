@@ -3,11 +3,9 @@ title: App rules
 description: Automatically place, float, focus, or ignore windows.
 ---
 
-App rules let Rift make a decision when a window opens. You can send an app to a workspace, make it float, give it an initial size, focus it, or tell Rift to leave it alone.
+App rules control windows when Rift discovers them. Use a rule to send an app to a workspace, make it float, or leave it unmanaged.
 
-The examples below are fragments to add to an existing config. Keep the required `[settings]` and `[keys]` tables in the complete file. Merge each example into your existing `[virtual_workspaces]` table and `app_rules` list. `Development` is one of the default workspace names; replace it if you use your own names.
-
-Rules live inside `[virtual_workspaces]`:
+Merge these examples into your existing `[virtual_workspaces]` table and `app_rules` list. `Development` is a default workspace name; replace it if you use your own names.
 
 ```toml
 [virtual_workspaces]
@@ -17,13 +15,13 @@ app_rules = [
 ]
 ```
 
-If you are new to app rules, start with one rule using only `app_id`. Add the other fields after that works.
+Start with one app and one action, then add conditions as needed.
 
 ## How a rule works
 
 Each rule has match fields and action fields. Match fields answer “which windows does this apply to?” Action fields answer “what should Rift do with them?”
 
-All match fields in one rule must match the same window. They work like **and**, not **or**. This only matches Terminal windows whose title contains `ssh`:
+All match fields in one rule must match the same window. This only matches Terminal windows whose title contains `ssh`:
 
 ```toml
 [virtual_workspaces]
@@ -32,11 +30,9 @@ app_rules = [
 ]
 ```
 
-Position and size are initial hints. They do not keep forcing a window back after you move or resize it yourself.
-
 ## Finding the app ID
 
-Bundle IDs are usually the most reliable way to identify an app. Run this in Terminal, replacing the path with the app you want:
+A **bundle ID** identifies an application, for example `com.apple.Terminal`. Run this in Terminal, replacing the path with the app you want:
 
 ```sh
 mdls -name kMDItemCFBundleIdentifier -r /Applications/Safari.app
@@ -75,17 +71,17 @@ app_rules = [
 - `workspace` sends the window to a workspace by name or by zero-based index. `0` is the first workspace.
 - `floating = true` keeps the window out of the tiled layout.
 - `position` uses normalized coordinates: `0.0, 0.0` is top-left and `1.0, 1.0` is bottom-right.
-- `size` uses logical pixels. You can provide `w`, `h`, or both.
+- `size` sets the initial width (`w`), height (`h`), or both, in macOS logical pixels. These follow display scaling, not the physical pixel count.
 - `focus = true` focuses the window after applying the rule, switching workspaces if needed.
 - `manage = false` tells Rift not to manage the window at all. `manage = true` overrides Rift's normal manageability checks for a visible window.
 
-`position` is valid only with `floating = true`. A size can also be applied once to a tiled window after it is inserted, but it does not turn that window into a floating window. When `manage = false`, Rift ignores the rule's workspace, floating, position, size, and focus actions.
+Position and size apply when the rule is applied; they do not lock the window in place. `position` requires `floating = true`. A size can also be applied once to a tiled window after it is inserted, but it does not turn that window into a floating window. When `manage = false`, Rift ignores the rule's workspace, floating, position, size, and focus actions.
 
 ## Which rule wins?
 
 More specific rules win. Rift counts the non-empty match fields, and the rule with the most match fields wins. If two matching rules are equally specific, the one that appears first wins.
 
-Only the winning rule supplies the actions; Rift does not combine matching rules. This example floats SSH windows while keeping other Terminal windows tiled:
+Only the winning rule supplies the actions; Rift does not combine matching rules. This example floats Terminal windows with titles beginning `ssh ` while keeping other Terminal windows tiled:
 
 ```toml
 [virtual_workspaces]
@@ -97,8 +93,6 @@ app_rules = [
   { app_id = "com.apple.Terminal", workspace = "Development" },
 ]
 ```
-
-Try to make exceptions more specific instead of relying on order alone.
 
 ## Common recipes
 
@@ -116,19 +110,9 @@ app_rules = [
 ]
 ```
 
-### Float utility windows
-
-```toml
-[virtual_workspaces]
-app_rules = [
-  { app_id = "com.apple.Calculator", floating = true },
-  { app_id = "com.raycast.macos", floating = true },
-]
-```
-
 ### Float dialogs but tile the rest
 
-Accessibility subroles can separate dialogs from normal app windows:
+macOS reports window types through Accessibility roles and subroles. Replace `com.example.Editor` with the app’s bundle ID:
 
 ```toml
 [virtual_workspaces]
@@ -139,6 +123,8 @@ app_rules = [
 ```
 
 ### Ignore an overlay
+
+Replace `com.example.Overlay` with the overlay app’s bundle ID:
 
 ```toml
 [virtual_workspaces]
@@ -160,12 +146,8 @@ reapply_app_rules_on_title_change = true
 
 This is off by default so ordinary title changes do not repeatedly move or focus windows.
 
-## Troubleshooting
+## Check a rule
 
-- Start with only `app_id`, then add one match field at a time.
-- Remember that all fields in one rule are combined with **and**.
-- Check that workspace indexes are zero-based.
-- Use `rift-cli query windows` to inspect the windows Rift currently knows about.
-- If a rule does not reload, confirm `~/.config/rift/config.toml` is the file you edited and run `rift-cli execute config reload`.
+Run `rift-cli execute config reload` after editing, then open a matching window. If the rule misses it, start with only `app_id` and add one condition at a time. `rift-cli query windows` shows windows Rift knows about.
 
-For every available field and its current type, see the [generated app-rules reference](/rift-docs/reference/configuration/app-rules/).
+See the [app-rule reference](/rift-docs/reference/configuration/app-rules/) for all fields and accepted values.

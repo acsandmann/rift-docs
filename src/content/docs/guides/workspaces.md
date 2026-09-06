@@ -5,7 +5,7 @@ description: Organize windows into named workspaces within a macOS Space.
 
 A **macOS Space** is a desktop you switch to through Mission Control. A **Rift virtual workspace** is a group of windows within a managed Space. Switching Rift workspaces changes which group you work with; it does not create another macOS desktop.
 
-Activate the current Space before using virtual workspaces. The bundled shortcut is `Alt + Z`, or you can run `rift-cli execute space toggle-activated`.
+If the Space is inactive, enable it with the bundled Option + Z shortcut or `rift-cli execute space toggle-activated` in Terminal.
 
 ## Name your workspaces
 
@@ -32,7 +32,7 @@ Add these bindings to your existing `[keys]` table:
 "Alt + Shift + 2" = { move_window_to_workspace = 1 }
 ```
 
-The number printed on the key need not match the index in the command: `Alt + 1` above selects the first workspace, index `0`. The menu bar’s numeric labels are one-based.
+`Alt` means Option. Here, Option + 1 selects workspace index `0`; menu bar labels also count from 1. Moving a window without following it leaves you on the current workspace.
 
 To move the focused window to the second workspace and follow it from the terminal:
 
