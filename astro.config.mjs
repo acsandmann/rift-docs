@@ -10,7 +10,10 @@ export default defineConfig({
   integrations: [starlight({
     title: 'Rift Docs',
     description: 'Documentation for Rift, a macOS tiling window manager.',
-    social: [{ icon: 'github', label: 'GitHub', href: `https://github.com/${repository}` }],
+	  social: [
+		  { icon: 'github', label: 'GitHub', href: `https://github.com/acsandmann/rift` },
+		  { icon: 'matrix', label: 'Matrix', href: `https://matrix.to/#/%23rift:matrix.org` }
+	  ],
     customCss: ['./src/styles/custom.css'],
     sidebar: [
       { label: 'Start here', items: ['index', 'quick-start', 'installation', 'configuration'] },
