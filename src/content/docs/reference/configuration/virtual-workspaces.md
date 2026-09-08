@@ -6,7 +6,7 @@ editUrl: false
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.5.6-1-g9b4f133-dirty.
+Generated from Rift v0.5.6-7-g52a5425-dirty.
 -->
 
 Workspace count, names, focus behavior, and rules for assigning windows to workspaces.
