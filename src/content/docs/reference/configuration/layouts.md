@@ -6,7 +6,7 @@ editUrl: false
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.5.6-7-g52a5425-dirty.
+Generated from Rift v0.5.6-8-gb3e916e-dirty.
 -->
 
 Choose a default layout and tune spacing, insertion, and layout-specific behavior.

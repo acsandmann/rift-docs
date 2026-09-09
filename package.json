@@ -13,9 +13,9 @@
     "check:rust": "bun run generate && node scripts/check-config-rust.mjs"
   },
   "dependencies": {
-    "@astrojs/starlight": "^0.41.4",
+    "@astrojs/starlight": "^0.41.7",
     "astro": "^7.0.2",
-    "starlight-theme-next": "^0.4.0"
+    "starlight-theme-apple": "^0.2.0"
   },
   "devDependencies": {
     "smol-toml": "^1.8.0"

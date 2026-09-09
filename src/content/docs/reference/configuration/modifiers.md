@@ -6,7 +6,7 @@ editUrl: false
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.5.6-7-g52a5425-dirty.
+Generated from Rift v0.5.6-8-gb3e916e-dirty.
 -->
 
 Name a combination of modifier keys, such as Option + Shift, and reuse it in shortcuts.

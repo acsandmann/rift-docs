@@ -1,8 +1,6 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
-import starlightThemeNext from 'starlight-theme-next';
-
-const repository = 'acsandmann/rift-docs';
+import starlightThemeApple from 'starlight-theme-apple';
 
 export default defineConfig({
   site: 'https://acsandmann.github.io',
@@ -70,7 +68,6 @@ export default defineConfig({
       },
     ],
     editLink: { baseUrl: 'https://github.com/acsandmann/rift-docs/edit/main/' },
-    head: [{ tag: 'meta', attrs: { name: 'generator', content: 'Rift docs generator' } }],
-    plugins: [starlightThemeNext()],
+    plugins: [starlightThemeApple()],
   })],
 });

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Rift configuration",
-  "description": "Generated from Rift v0.5.6-7-g52a5425-dirty.",
+  "description": "Generated from Rift v0.5.6-8-gb3e916e-dirty.",
   "type": "object",
   "additionalProperties": false,
   "properties": {
