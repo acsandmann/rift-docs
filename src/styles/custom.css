@@ -176,15 +176,37 @@
 
 /* Keep the complete generated reference navigable without letting long config
    keys dominate the right rail. Full paths belong in the cards, not the TOC. */
+.right-sidebar-panel .sl-container {
+  width: auto;
+  max-width: none;
+}
+
 starlight-toc li[style*="--depth: 1"] a {
   padding-block: 0.22rem;
   font-size: 0.875rem;
   line-height: 1.25;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  overflow-wrap: anywhere;
+}
+
+starlight-toc li[style*="--depth: 1"] a span {
+  display: inline;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
   overflow-wrap: anywhere;
 }
 
 starlight-toc li[style*="--depth: 0"] + li[style*="--depth: 0"] {
   margin-top: 0.35rem;
+}
+
+@media (min-width: 72rem) {
+  :root {
+    --apple-toc-width: clamp(14rem, 20vw, 17rem);
+  }
 }
 
 @media (max-width: 40rem) {
