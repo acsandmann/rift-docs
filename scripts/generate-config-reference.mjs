@@ -178,6 +178,16 @@ function settingReference(code, contextPath, knownPaths) {
   return `/rift-docs/reference/configuration/${route}/#${anchor}`;
 }
 
+function typeReference(row) {
+  const nested = nestedStructType(row.rust);
+  if (!nested) return row.type;
+  const route = routeForSetting(row.path);
+  if (!route) return row.type;
+  const href = `/rift-docs/reference/configuration/${route}/#${row.path.replaceAll('.', '')}`;
+  const tableLabel = row.type.startsWith('table') ? 'table' : 'tables';
+  return `[${tableLabel}](${href})${row.type.slice(tableLabel.length)}`;
+}
+
 function inlineHtml(value, contextPath = null, knownPaths = new Map()) {
   const tokens = [];
   const token = (html) => { tokens.push(html); return `\u0000${tokens.length - 1}\u0000`; };
@@ -207,7 +217,7 @@ function markdownGroup(title, prefix, version) {
   function walk(typeName, parts, seen = new Set()) { if (seen.has(typeName)) return; const branchSeen = new Set(seen); branchSeen.add(typeName); const children = []; for (const f of fields(typeName)) {
     if (f.flatten) { walk(f.rust, parts, new Set(branchSeen)); continue; } const p = [...parts, f.name]; const s = baseType(f.rust); const over = overrides.overrides[p.join('.')]; const value = defaultValue(f);
     if (over?.hidden || (overrides.hidden || []).includes(p.join('.'))) continue;
-    rows.push({ path: p.join('.'), type: friendlyType(f.rust, s), container: types.get(f.rust)?.kind === 'struct', arrayContainer: Boolean(f.rust.match(/^Vec<(.+)>$/) && nestedStructType(f.rust)), description: over?.description || f.description || (() => { throw new Error(`Missing description: ${p.join('.')}`); })(), value, note: over?.note, customExample: over?.example, enum: s.enum?.filter((x) => x !== null) });
+    rows.push({ path: p.join('.'), rust: f.rust, type: friendlyType(f.rust, s), container: types.get(f.rust)?.kind === 'struct', arrayContainer: Boolean(f.rust.match(/^Vec<(.+)>$/) && nestedStructType(f.rust)), description: over?.description || f.description || (() => { throw new Error(`Missing description: ${p.join('.')}`); })(), value, note: over?.note, customExample: over?.example, enum: s.enum?.filter((x) => x !== null) });
     const nested = nestedStructType(f.rust); if (nested) children.push([nested, p]);
   } for (const [nested, p] of children) walk(nested, p, new Set(branchSeen)); }
   walk('ConfigFile', []);
@@ -244,7 +254,7 @@ function markdownGroup(title, prefix, version) {
     const table = parts.slice(0, -1).join('.');
     if (table !== currentTable) { content.push(`## <span class="config-table-heading">[${table}]</span>`); currentTable = table; }
     const hasLongValues = r.enum?.length > 4;
-    const type = hasLongValues ? 'text' : r.type;
+    const type = hasLongValues ? 'text' : typeReference(r);
     const defaultText = shownDefault(r.value);
     const accepted = hasLongValues
       ? `<div class="config-values"><strong>Possible values</strong><div>${r.enum.map((value) => `<code>${escapeHtml(value)}</code>`).join(' ')}</div></div>`

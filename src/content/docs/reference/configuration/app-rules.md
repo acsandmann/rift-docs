@@ -66,7 +66,7 @@ One rule per `[[virtual_workspaces.app_rules]]` entry. Match fields are combined
 
 <section class="config-option config-option--expanded">
 <p class="config-description">Initial normalized position for a floating window. Both <code>x</code> and <code>y</code> are between <code>0.0</code> and <code>1.0</code>; position is only valid when <code>floating = true</code>.</p>
-<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>table (optional)</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd>Not set</dd></div></dl>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd><a href="/rift-docs/reference/configuration/app-rules/#virtual_workspacesapp_rulesposition">table</a> (optional)</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd>Not set</dd></div></dl>
 <div class="config-example"><div class="config-example__label">Example</div><pre><code class="language-toml">[[virtual_workspaces.app_rules]]
 app_id = &quot;com.apple.Calculator&quot;
 floating = true
@@ -78,7 +78,7 @@ position = { x = 0.5, y = 0.5 }
 
 <section class="config-option config-option--expanded">
 <p class="config-description">Initial size in logical pixels. Set <code>w</code>, <code>h</code>, or both; this is applied once when the rule matches.</p>
-<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>table (optional)</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd>Not set</dd></div></dl>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd><a href="/rift-docs/reference/configuration/app-rules/#virtual_workspacesapp_rulessize">table</a> (optional)</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd>Not set</dd></div></dl>
 <div class="config-example"><div class="config-example__label">Example</div><pre><code class="language-toml">[[virtual_workspaces.app_rules]]
 app_id = &quot;com.apple.Calculator&quot;
 floating = true
