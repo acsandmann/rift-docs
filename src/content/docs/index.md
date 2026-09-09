@@ -1,5 +1,5 @@
 ---
-title: Rift documentation
+title: Rift
 description: A practical guide to tiling windows on macOS with Rift.
 template: splash
 hero:

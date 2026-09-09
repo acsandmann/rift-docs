@@ -6,7 +6,7 @@ export default defineConfig({
   site: 'https://acsandmann.github.io',
   base: process.env.SITE_BASE ?? '/rift-docs',
   integrations: [starlight({
-    title: 'Rift Docs',
+    title: 'Rift',
     description: 'Documentation for Rift, a macOS tiling window manager.',
 	  social: [
 		  { icon: 'github', label: 'GitHub', href: `https://github.com/acsandmann/rift` },
