@@ -2,11 +2,14 @@
 title: Keybindings
 description: "Assign keyboard shortcuts to Rift commands in the `[keys]` table."
 editUrl: false
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 3
 ---
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.5.6-8-gb3e916e-dirty.
+Generated from Rift v0.5.6-9-gbe3bbea.
 -->
 
 Assign keyboard shortcuts to Rift commands in the `[keys]` table.
@@ -16,6 +19,8 @@ Your `[keys]` table replaces the bundled keymap; an empty table registers no sho
 :::note[Examples are config fragments]
 Edit matching tables in your existing config; do not repeat their headers. Keep your `[keys]` shortcuts. For a complete file, start with [Quick start](/rift-docs/quick-start/).
 :::
+
+<div class="config-intro-example-label">Example</div>
 
 ```toml
 [keys]
@@ -27,3 +32,9 @@ Edit matching tables in your existing config; do not repeat their headers. Keep 
 ```
 
 Simple commands are quoted strings. Commands that need a direction, workspace, amount, or other option use an inline table. See [Keybindings](/rift-docs/guides/keybindings/) for more commands.
+
+## See also
+
+- [Keybindings guide](/rift-docs/guides/keybindings/)
+- [Modifier combinations](/rift-docs/reference/configuration/modifiers/)
+- [Commands and startup](/rift-docs/reference/configuration/commands/)

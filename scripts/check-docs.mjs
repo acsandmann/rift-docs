@@ -91,7 +91,26 @@ for (const file of docs) {
   if (/^\s*[^#\n]+\s*=\s*null\s*$/m.test(source)) {
     errors.push(`${path.relative(root, file)} contains null, which TOML does not support`);
   }
+
+  const relative = path.relative(root, file);
+  const generatedReference = relative.startsWith('src/content/docs/reference/configuration/')
+    && relative !== 'src/content/docs/reference/configuration/index.md';
+  if (generatedReference) {
+    if (!source.includes('## See also')) errors.push(`${relative} is missing See also links`);
+    if (!source.includes('config-intro-example-label')) errors.push(`${relative} has an unlabeled introductory example`);
+    if (source.includes('<dt>Default</dt><dd>Required</dd>')) errors.push(`${relative} presents Required as a default`);
+    if (/Currently has no effect/i.test(source)) errors.push(`${relative} contains an unmarked unavailable setting`);
+    if (/\["[^"\n]+","/.test(source)) errors.push(`${relative} contains a densely formatted string-list default`);
+  }
 }
+
+
+const generatedReferenceText = docs
+  .filter((file) => path.relative(root, file).startsWith('src/content/docs/reference/configuration/'))
+  .map((file) => fs.readFileSync(file, 'utf8'))
+  .join('\n');
+if (!generatedReferenceText.includes('config-availability')) errors.push('Generated reference does not mark unavailable settings');
+if (!generatedReferenceText.includes('config-setting-link')) errors.push('Generated reference does not link related settings');
 
 const schemaPath = path.join(publicRoot, 'schema/rift-config.schema.json');
 const schemaText = fs.readFileSync(schemaPath, 'utf8');

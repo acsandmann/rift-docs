@@ -1,7 +1,192 @@
-:root { --sl-content-width: 54rem; }
+:root {
+  --sl-content-width: 52rem;
+  --rift-card-border: color-mix(in srgb, var(--sl-color-gray-5) 72%, transparent);
+  --rift-card-bg: color-mix(in srgb, var(--sl-color-gray-6) 45%, transparent);
+  --rift-accent-soft: color-mix(in srgb, var(--sl-color-accent) 10%, transparent);
+}
 .hero { padding-block: 2rem; }
 .sl-markdown-content img {
   border: 1px solid color-mix(in srgb, var(--sl-color-gray-5) 72%, transparent);
   border-radius: 0.9rem;
   box-shadow: 0 1rem 2.5rem color-mix(in srgb, #020617 20%, transparent);
+}
+
+/* Generated configuration reference */
+.sl-markdown-content h2:has(.config-table-heading) {
+  margin-top: 3.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--rift-card-border);
+  font-size: 1.55rem;
+  letter-spacing: -0.018em;
+  scroll-margin-top: 5rem;
+}
+
+.sl-markdown-content h2:has(.config-table-heading)::before {
+  display: block;
+  margin-bottom: 0.28rem;
+  color: var(--sl-color-gray-3);
+  content: 'Table';
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.sl-markdown-content h2:has(.config-array-table-heading)::before {
+  content: 'Array of tables';
+}
+
+.sl-markdown-content h2:has(.config-table-heading) + p {
+  max-width: 44rem;
+  margin-top: 0.9rem;
+  color: var(--sl-color-gray-2);
+  font-size: 1.02rem;
+  line-height: 1.6;
+}
+
+.sl-markdown-content h3:has(+ .config-option) {
+  margin: 0;
+  padding-top: 1.8rem;
+  font-size: 1.12rem;
+  letter-spacing: -0.01em;
+  scroll-margin-top: 5rem;
+}
+
+.sl-markdown-content h3:has(+ .config-option) code {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--sl-color-text-accent);
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.config-option {
+  margin: 0 !important;
+  padding: 0.4rem 0 1.55rem;
+  border-bottom: 1px solid var(--rift-card-border);
+}
+
+.config-option--simple {
+  padding-bottom: 1.35rem;
+}
+
+.config-description {
+  max-width: 46rem;
+  margin: 0 0 0.7rem !important;
+  color: var(--sl-color-gray-2);
+  font-size: 0.96rem;
+  line-height: 1.62;
+}
+
+.config-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.7rem;
+  margin: 0 !important;
+  color: var(--sl-color-gray-3);
+  font-size: 0.84rem;
+}
+
+.config-meta__item {
+  display: flex;
+  gap: 0.3rem;
+  min-width: 0;
+}
+
+.config-meta__item + .config-meta__item::before {
+  margin-right: 0.3rem;
+  color: var(--sl-color-gray-4);
+  content: '·';
+}
+
+.config-meta__item dt,
+.config-meta__item dd { margin: 0; }
+.config-meta__item dt {
+  color: var(--sl-color-gray-3);
+  font-weight: 600;
+}
+.config-meta__item dd { color: var(--sl-color-gray-2); }
+.config-meta__item code { padding: 0; border: 0; background: transparent; color: inherit; font-size: inherit; }
+
+.config-meta__item--required dd {
+  color: var(--sl-color-text-accent);
+  font-weight: 600;
+}
+
+.config-availability {
+  display: inline-block;
+  margin-bottom: 0.55rem;
+  padding: 0.15rem 0.48rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--sl-color-orange-high) 14%, transparent);
+  color: var(--sl-color-orange-high);
+  font-size: 0.75rem;
+  font-weight: 650;
+}
+
+.config-setting-link {
+  text-decoration-color: color-mix(in srgb, var(--sl-color-text-accent) 40%, transparent);
+  text-underline-offset: 0.18em;
+}
+
+.config-values,
+.config-note,
+.config-example { margin-top: 1.1rem; }
+
+.config-values strong,
+.config-example__label,
+.config-intro-example-label {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: var(--sl-color-gray-2);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.config-intro-example-label {
+  margin-top: 1.4rem;
+}
+
+.config-values div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  padding: 0.7rem;
+  border: 1px solid var(--rift-card-border);
+  border-radius: 0.45rem;
+  background: var(--rift-card-bg);
+}
+.config-values code { font-size: 0.75rem; }
+
+.config-note {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.65rem;
+  padding: 0.85rem 0.95rem;
+  border-radius: 0.45rem;
+  background: var(--rift-accent-soft);
+  color: var(--sl-color-gray-2);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.config-note strong { color: var(--sl-color-text-accent); font-size: 0.8rem; }
+
+.config-example pre { margin: 0; border-radius: 0.45rem; }
+
+/* Keep the complete generated reference navigable without letting long config
+   keys dominate the right rail. Full paths belong in the cards, not the TOC. */
+starlight-toc li[style*="--depth: 1"] a {
+  padding-block: 0.22rem;
+  font-size: 0.875rem;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+starlight-toc li[style*="--depth: 0"] + li[style*="--depth: 0"] {
+  margin-top: 0.35rem;
+}
+
+@media (max-width: 40rem) {
+  .config-meta { gap-block: 0.25rem; }
 }

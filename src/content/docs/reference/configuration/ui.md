@@ -2,11 +2,14 @@
 title: User interface
 description: "Optional indicators for the menu bar, stack line, and Mission Control."
 editUrl: false
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 3
 ---
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.5.6-8-gb3e916e-dirty.
+Generated from Rift v0.5.6-9-gbe3bbea.
 -->
 
 Optional indicators for the menu bar, stack line, and Mission Control.
@@ -17,6 +20,8 @@ All three features are disabled by default.
 Edit matching tables in your existing config; do not repeat their headers. Keep your `[keys]` shortcuts. For a complete file, start with [Quick start](/rift-docs/quick-start/).
 :::
 
+<div class="config-intro-example-label">Example</div>
+
 ```toml
 [settings.ui.menu_bar]
 enabled = true
@@ -24,125 +29,148 @@ display_style = "label"
 active_label = "name"
 ```
 
-## [settings.ui]
+## <span class="config-table-heading">[settings.ui]</span>
 
 Optional visual indicators. All UI helpers are disabled by default.
 
-## [settings.ui.menu_bar]
+## <span class="config-table-heading">[settings.ui.menu_bar]</span>
 
 Show workspace status in the macOS menu bar.
 
 ### `enabled`
 
-Enable the menu bar workspace indicator.
+<section class="config-option config-option--simple">
+<p class="config-description">Enable the menu bar workspace indicator.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>boolean</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>false</code></dd></div></dl>
 
-**Type:** boolean · **Default:** `false`
+</section>
 
 ### `show_empty`
 
-Include workspaces that currently have no windows.
+<section class="config-option config-option--simple">
+<p class="config-description">Include workspaces that currently have no windows.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>boolean</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>false</code></dd></div></dl>
 
-**Type:** boolean · **Default:** `false`
+</section>
 
 ### `mode`
 
-Show every workspace or only the active one.
+<section class="config-option config-option--simple">
+<p class="config-description">Show every workspace or only the active one.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd><code>all</code> or <code>active</code></dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>&quot;all&quot;</code></dd></div></dl>
 
-**Type:** `all` or `active` · **Default:** `"all"`
+</section>
 
 ### `active_label`
 
-Label a workspace with its one-based workspace number or its configured name.
+<section class="config-option config-option--simple">
+<p class="config-description">Label a workspace with its one-based workspace number or its configured name.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd><code>index</code> or <code>name</code></dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>&quot;index&quot;</code></dd></div></dl>
 
-**Type:** `index` or `name` · **Default:** `"index"`
+</section>
 
 ### `display_style`
 
-Draw a miniature representation of each workspace’s windows (`layout`) or show a number or name (`label`).
+<section class="config-option config-option--simple">
+<p class="config-description">Draw a miniature representation of each workspace’s windows (<code>layout</code>) or show a number or name (<code>label</code>).</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd><code>layout</code> or <code>label</code></dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>&quot;layout&quot;</code></dd></div></dl>
 
-**Type:** `layout` or `label` · **Default:** `"layout"`
+</section>
 
 ### `layout_folder`
 
-Folder containing saved `.ron` layouts shown in the menu bar’s restore menus. `~` expands to your home directory.
+<section class="config-option config-option--simple">
+<p class="config-description">Folder containing saved <code>.ron</code> layouts shown in the menu bar’s restore menus. <code>~</code> expands to your home directory.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>path</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>&quot;~/.config/rift/layouts&quot;</code></dd></div></dl>
 
-**Type:** path · **Default:** `"~/.config/rift/layouts"`
+</section>
 
-## [settings.ui.stack_line]
+## <span class="config-table-heading">[settings.ui.stack_line]</span>
 
 Show a small edge indicator for stacked windows.
 
 ### `enabled`
 
-Enable the stack-line indicator.
-
-**Type:** boolean · **Default:** `false`
-
-```toml
-[settings.ui.stack_line]
+<section class="config-option config-option--expanded">
+<p class="config-description">Enable the stack-line indicator.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>boolean</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>false</code></dd></div></dl>
+<div class="config-example"><div class="config-example__label">Example</div><pre><code class="language-toml">[settings.ui.stack_line]
 enabled = true
-hover = "click"
-```
+hover = &quot;click&quot;
+</code></pre></div>
+</section>
 
 ### `hover`
 
-Choose whether the indicator responds to a click or pointer hover.
+<section class="config-option config-option--simple">
+<p class="config-description">Choose whether the indicator responds to a click or pointer hover.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd><code>click</code> or <code>hover</code></dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>&quot;hover&quot;</code></dd></div></dl>
 
-**Type:** `click` or `hover` · **Default:** `"hover"`
+</section>
 
 ### `thickness`
 
-Thickness of the stack-line indicator in points.
-
-**Type:** number · **Default:** `20`
-
-Omitting the entire containing table gives `0` instead.
+<section class="config-option config-option--expanded">
+<p class="config-description">Thickness of the stack-line indicator in points.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>20</code></dd></div></dl>
+<aside class="config-note"><strong>Note</strong><span>Omitting the entire containing table gives <code>0</code> instead.</span></aside>
+</section>
 
 ### `horiz_placement`
 
-Place the stack line at the top or bottom edge of the window.
+<section class="config-option config-option--simple">
+<p class="config-description">Place the stack line at the top or bottom edge of the window.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd><code>top</code> or <code>bottom</code></dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>&quot;top&quot;</code></dd></div></dl>
 
-**Type:** `top` or `bottom` · **Default:** `"top"`
+</section>
 
 ### `vert_placement`
 
-Place the stack line at the left or right edge of the window.
+<section class="config-option config-option--simple">
+<p class="config-description">Place the stack line at the left or right edge of the window.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd><code>left</code> or <code>right</code></dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>&quot;left&quot;</code></dd></div></dl>
 
-**Type:** `left` or `right` · **Default:** `"left"`
+</section>
 
 ### `spacing`
 
-Distance from the window edge to the indicator, in macOS points.
+<section class="config-option config-option--expanded">
+<p class="config-description">Distance from the window edge to the indicator, in macOS points.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>1</code></dd></div></dl>
+<aside class="config-note"><strong>Note</strong><span>Omitting the entire containing table gives <code>0</code> instead.</span></aside>
+</section>
 
-**Type:** number · **Default:** `1`
-
-Omitting the entire containing table gives `0` instead.
-
-## [settings.ui.mission_control]
+## <span class="config-table-heading">[settings.ui.mission_control]</span>
 
 Rift’s own Mission Control-style workspace overview.
 
 ### `enabled`
 
-Enable Rift’s Mission Control helper.
-
-**Type:** boolean · **Default:** `false`
-
-```toml
-[settings.ui.mission_control]
+<section class="config-option config-option--expanded">
+<p class="config-description">Enable Rift’s Mission Control helper.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>boolean</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>false</code></dd></div></dl>
+<div class="config-example"><div class="config-example__label">Example</div><pre><code class="language-toml">[settings.ui.mission_control]
 enabled = true
-```
+</code></pre></div>
+</section>
 
 ### `fade_enabled`
 
-Fade managed windows during Mission Control transitions.
+<section class="config-option config-option--simple">
+<p class="config-description">Fade managed windows during Mission Control transitions.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>boolean</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>false</code></dd></div></dl>
 
-**Type:** boolean · **Default:** `false`
+</section>
 
 ### `fade_duration_ms`
 
-Fade duration in milliseconds.
+<section class="config-option config-option--expanded">
+<p class="config-description">Fade duration in milliseconds.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>180</code></dd></div></dl>
+<aside class="config-note"><strong>Note</strong><span>Omitting the entire containing table gives <code>0</code> instead.</span></aside>
+</section>
 
-**Type:** number · **Default:** `180`
+## See also
 
-Omitting the entire containing table gives `0` instead.
+- [Configuration guide](/rift-docs/configuration/)
+- [Window management](/rift-docs/guides/window-management/)

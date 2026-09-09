@@ -1,30 +1,39 @@
 ---
 title: Rift
-description: A practical guide to tiling windows on macOS with Rift.
+description: A keyboard-driven tiling window manager for macOS.
 template: splash
 hero:
-  tagline: Arrange your windows. Keep your focus.
+  tagline: A fast, flexible tiling window manager for macOS.
   actions:
-    - text: Get started
+    - text: Get started with Rift
       link: /rift-docs/quick-start/
       icon: right-arrow
-    - text: Choose a layout
+    - text: Explore layouts
       link: /rift-docs/layouts/
       icon: document
 ---
 
-Rift automatically arranges your macOS windows into layouts—a practice called **tiling**. Use keyboard shortcuts to choose a window, move it, or change its size. You can also group windows into workspaces and keep utility windows outside the tiled layout.
+Rift keeps your desktop organized so you can spend less time dragging windows around. Move, resize, and rearrange windows from the keyboard; switch between several layout styles; and give different parts of your workflow their own virtual workspaces.
 
 ![Rift arranging and resizing windows on a macOS desktop](/rift-docs/rift-demo.webp)
 
-## Get a working desktop
+## Start in a few minutes
 
-Follow the [Quick start](/rift-docs/quick-start/) to install Rift and arrange your first windows. No configuration file is needed to try it. Then [compare layouts](/rift-docs/layouts/) to choose how windows share your screen.
+Install Rift, grant macOS Accessibility permission, and press **Option + Z** to tile the windows on your current desktop. You do not need to write a configuration file before trying it.
 
-## Find your next answer
+The [Quick start](/rift-docs/quick-start/) walks through the whole setup and introduces the default keyboard shortcuts.
 
-- [Configuration concepts](/rift-docs/configuration/) explain how the TOML file is organized.
-- [Window management](/rift-docs/guides/window-management/) covers focus, movement, resizing, floating, and swapping.
-- [Keybindings](/rift-docs/guides/keybindings/) explains shortcut syntax and commands.
-- [Configuration reference](/rift-docs/reference/configuration/) explains setting names, accepted values, defaults, and examples.
-- [Rift on GitHub](https://github.com/acsandmann/rift) is the place for releases, issues, and source code.
+## Make the desktop yours
+
+Rift includes five layouts, from familiar split-screen tiling to scrolling columns and master-stack. Choose one layout everywhere or assign different layouts to individual workspaces. App rules can place windows automatically, while floating mode keeps dialogs and utility windows out of the tiled layout.
+
+- [Compare layouts](/rift-docs/layouts/) and find one that fits how you work.
+- Learn how to [focus, move, resize, float, and swap windows](/rift-docs/guides/window-management/).
+- Build your own [keyboard shortcuts](/rift-docs/guides/keybindings/).
+- Organize projects and apps with [virtual workspaces](/rift-docs/guides/workspaces/).
+
+## Configure only what you need
+
+The bundled configuration works out of the box. When you want to change it, start with the [configuration guide](/rift-docs/configuration/) and use the [configuration reference](/rift-docs/reference/configuration/) for every available setting, default, and accepted value.
+
+Releases, source code, and issue tracking are available on [GitHub](https://github.com/acsandmann/rift).
