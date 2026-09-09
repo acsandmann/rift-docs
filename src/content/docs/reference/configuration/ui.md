@@ -9,7 +9,7 @@ tableOfContents:
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.5.6-9-gbe3bbea-dirty.
+Generated from Rift v0.5.6-10-g48e2f1e.
 -->
 
 Optional indicators for the menu bar, stack line, and Mission Control.

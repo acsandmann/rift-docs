@@ -80,7 +80,8 @@
 
 .config-meta {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  align-items: baseline;
   gap: 0.4rem 0.7rem;
   margin: 0 !important;
   color: var(--sl-color-gray-3);
@@ -89,8 +90,10 @@
 
 .config-meta__item {
   display: flex;
+  align-items: baseline;
   gap: 0.3rem;
   min-width: 0;
+  white-space: nowrap;
 }
 
 .config-meta__item + .config-meta__item::before {
@@ -210,5 +213,9 @@ starlight-toc li[style*="--depth: 0"] + li[style*="--depth: 0"] {
 }
 
 @media (max-width: 40rem) {
-  .config-meta { gap-block: 0.25rem; }
+  .config-meta {
+    flex-wrap: wrap;
+    gap-block: 0.25rem;
+  }
+  .config-meta__item { white-space: normal; }
 }
