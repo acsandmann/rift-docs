@@ -6,9 +6,41 @@ import { execFileSync } from 'node:child_process';
 const here = path.dirname(fileURLToPath(import.meta.url));
 const docsRoot = path.resolve(here, '..');
 const riftRoot = process.env.RIFT_ROOT ? path.resolve(process.env.RIFT_ROOT) : path.resolve(docsRoot, '..');
+
+function exactSourceTag() {
+  if (process.env.RIFT_REF) return process.env.RIFT_REF;
+  try {
+    return execFileSync('git', ['-C', riftRoot, 'describe', '--tags', '--exact-match'], {
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'ignore'],
+    }).trim();
+  } catch {
+    return '';
+  }
+}
+
+function versionAtMost(ref, ceiling) {
+  const parse = (value) => value.match(/^v?(\d+(?:\.\d+)*)$/)?.[1].split('.').map(Number);
+  const left = parse(ref);
+  const right = parse(ceiling);
+  if (!left || !right) return false;
+  const length = Math.max(left.length, right.length);
+  for (let index = 0; index < length; index += 1) {
+    const difference = (left[index] || 0) - (right[index] || 0);
+    if (difference) return difference < 0;
+  }
+  return true;
+}
+
+// Rift v0.5.8.1 and older trip Clap's debug-only positional-bool assertion
+// while rendering nested help. Newer releases contain the argument fix and
+// use the normal debug profile again.
+const sourceTag = exactSourceTag();
+const cargoProfile = process.env.RIFT_CLI_PROFILE
+  || (versionAtMost(sourceTag, 'v0.5.8.1') ? 'release-fast' : 'debug');
 const executable = process.env.RIFT_CLI
   ? path.resolve(process.env.RIFT_CLI)
-  : path.join(process.env.CARGO_TARGET_DIR || path.join(riftRoot, 'target'), 'debug', 'rift-cli');
+  : path.join(process.env.CARGO_TARGET_DIR || path.join(riftRoot, 'target'), cargoProfile, 'rift-cli');
 
 const buildInputs = [
   path.join(riftRoot, 'src/bin/rift-cli.rs'),
@@ -21,7 +53,8 @@ const needsBuild = process.env.RIFT_CLI_FORCE_BUILD === '1'
   || buildInputs.some((input) => fs.existsSync(input) && fs.statSync(input).mtimeMs > executableMtime);
 
 if (!process.env.RIFT_CLI && needsBuild) {
-  execFileSync('cargo', ['build', '--quiet', '--manifest-path', path.join(riftRoot, 'Cargo.toml'), '--bin', 'rift-cli'], {
+  const profileArgs = cargoProfile === 'debug' ? [] : ['--profile', cargoProfile];
+  execFileSync('cargo', ['build', '--quiet', ...profileArgs, '--manifest-path', path.join(riftRoot, 'Cargo.toml'), '--bin', 'rift-cli'], {
     cwd: riftRoot,
     stdio: 'inherit',
   });

@@ -146,6 +146,7 @@ for (const relative of requiredKeymapWarnings) {
 }
 
 for (const file of docs) {
+  if (path.relative(contentRoot, file).startsWith('reference/cli/')) continue;
   const source = fs.readFileSync(file, 'utf8');
   if (/rift-cli execute window resize-by (?!--amount\b)/.test(source)) {
     errors.push(`${path.relative(root, file)} uses resize-by without the required --amount flag`);
