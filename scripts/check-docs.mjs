@@ -112,6 +112,20 @@ const generatedReferenceText = docs
 if (!generatedReferenceText.includes('config-availability')) errors.push('Generated reference does not mark unavailable settings');
 if (!generatedReferenceText.includes('config-setting-link')) errors.push('Generated reference does not link related settings');
 
+const cliReference = filesUnder(path.join(contentRoot, 'reference/cli'), '.md')
+  .map((file) => fs.readFileSync(file, 'utf8'))
+  .join('\n');
+if (/CLI guide|guides\/cli/i.test(cliReference)) {
+  errors.push('Generated CLI reference links to the removed CLI guide');
+}
+for (const required of [
+  '<!-- GENERATED FILE. Do not edit directly. -->',
+  'rift-cli query windows',
+  'rift-cli execute window focus',
+  'rift-cli execute config reload',
+  'rift-cli subscribe cli',
+]) if (!cliReference.includes(required)) errors.push(`Generated CLI reference is missing ${required}`);
+
 const schemaPath = path.join(publicRoot, 'schema/rift-config.schema.json');
 const schemaText = fs.readFileSync(schemaPath, 'utf8');
 

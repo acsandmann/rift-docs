@@ -3,8 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "generate": "bun run generate:config",
+    "generate": "bun run generate:config && bun run generate:cli",
     "generate:config": "node scripts/generate-config-reference.mjs",
+    "generate:cli": "node scripts/generate-cli-reference.mjs",
     "check": "bun run generate && node scripts/check-docs.mjs",
     "dev": "bun run generate && ASTRO_TELEMETRY_DISABLED=1 astro dev",
     "build": "bun run generate && ASTRO_TELEMETRY_DISABLED=1 astro build",
@@ -15,7 +16,7 @@
   "dependencies": {
     "@astrojs/starlight": "^0.41.7",
     "astro": "^7.0.2",
-    "starlight-theme-apple": "^0.4.0"
+    "starlight-theme-apple": "^0.5.0"
   },
   "devDependencies": {
     "smol-toml": "^1.8.0"

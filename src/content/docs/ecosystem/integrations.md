@@ -17,7 +17,7 @@ rift-cli execute workspace switch 2
 rift-cli execute window focus left
 ```
 
-The [CLI reference](https://github.com/acsandmann/rift/wiki/CLI) provides more query and execute examples. For the exact commands accepted by an installed release, run `rift-cli --help` and the nested `--help` command for the area you are using.
+The [generated CLI reference](/rift-docs/reference/cli/) provides query and execute examples plus every command and option in the checked-out release.
 
 ## Subscribe to events
 

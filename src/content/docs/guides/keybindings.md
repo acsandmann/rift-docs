@@ -64,4 +64,4 @@ If reload fails, read the reported command name or hotkey. Rift rejects the new 
 
 ## More commands
 
-The checked-in [bundled config](https://github.com/acsandmann/rift/blob/main/rift.default.toml) lists Rift's starter keymap and documents additional command shapes in its comments. The [CLI reference](https://github.com/acsandmann/rift/wiki/CLI) covers terminal commands; CLI syntax and TOML keybinding syntax are related, but they are not interchangeable.
+The checked-in [bundled config](https://github.com/acsandmann/rift/blob/main/rift.default.toml) lists Rift's starter keymap and documents additional command shapes in its comments. The [CLI reference](/rift-docs/reference/cli/) covers terminal commands; CLI syntax and TOML keybinding syntax are related, but they are not interchangeable.

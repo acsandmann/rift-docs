@@ -8,9 +8,11 @@ hero:
     - text: Get started with Rift
       link: /rift-docs/quick-start/
       icon: right-arrow
+      variant: primary
     - text: Explore layouts
       link: /rift-docs/layouts/
       icon: document
+      variant: secondary
 ---
 
 Rift keeps your desktop organized so you can spend less time dragging windows around. Move, resize, and rearrange windows from the keyboard; switch between several layout styles; and give different parts of your workflow their own virtual workspaces.

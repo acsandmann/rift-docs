@@ -66,8 +66,23 @@ export default defineConfig({
           { label: 'Commands and startup', slug: 'reference/configuration/commands' },
         ],
       },
+      {
+        label: 'CLI reference',
+        collapsed: true,
+        items: [
+          { label: 'Overview', slug: 'reference/cli' },
+          { label: 'Query', slug: 'reference/cli/query' },
+          {
+            label: 'Execute',
+            collapsed: true,
+            items: [{ autogenerate: { directory: 'reference/cli/execute' } }],
+          },
+          { label: 'Subscribe', slug: 'reference/cli/subscribe' },
+          { label: 'Service', slug: 'reference/cli/service' },
+        ],
+      },
     ],
     editLink: { baseUrl: 'https://github.com/acsandmann/rift-docs/edit/main/' },
     plugins: [starlightThemeApple()],
-  })],
+  })]
 });

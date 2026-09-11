@@ -177,6 +177,197 @@
 
 .config-example pre { margin: 0; border-radius: 0.45rem; }
 
+/* Generated CLI reference */
+.sl-markdown-content h2:has(.cli-command-heading) {
+  margin-top: 3.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--rift-card-border);
+  font-size: 1.55rem;
+  letter-spacing: -0.018em;
+  scroll-margin-top: 5rem;
+}
+
+.cli-command-heading {
+  color: var(--sl-color-text-accent);
+  font-family: var(--__sl-font-mono);
+  font-size: 0.92em;
+}
+
+.cli-command {
+  margin: 0 !important;
+  padding: 0.38rem 0 0;
+}
+
+.cli-command__description {
+  max-width: 46rem;
+  margin: 0 0 0.75rem !important;
+  color: var(--sl-color-gray-2);
+  font-size: 0.96rem;
+  line-height: 1.62;
+}
+
+.cli-command__synopsis > span,
+.cli-parameters h3 {
+  display: block;
+  margin: 0 0 0.42rem;
+  color: var(--sl-color-gray-3);
+  font-size: 0.75rem;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+}
+
+.cli-command__usage {
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+  min-width: 0;
+  margin: 0 !important;
+  padding: 0.72rem 0.85rem;
+  border: 1px solid var(--rift-card-border);
+  border-radius: 0.45rem;
+  background: var(--rift-card-bg);
+  overflow-x: auto;
+}
+
+.cli-command__usage span {
+  flex: none;
+  color: var(--sl-color-text-accent);
+  font-family: var(--__sl-font-mono);
+  font-weight: 700;
+}
+
+.cli-command__usage code {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--sl-color-gray-1);
+  font-size: 0.84rem;
+  white-space: nowrap;
+}
+
+.cli-value-link {
+  color: var(--sl-color-text-accent);
+  font-weight: 650;
+  text-decoration-color: currentColor;
+  text-decoration-style: dotted;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.18em;
+}
+
+.cli-value-link::after {
+  content: '↘';
+  margin-left: 0.16em;
+  font-family: var(--__sl-font);
+  font-size: 0.72em;
+  font-weight: 700;
+}
+
+.cli-value-link:hover {
+  color: var(--sl-color-text-accent);
+}
+
+.cli-parameters {
+  margin: 1.15rem 0 0 !important;
+}
+
+.cli-parameters + .cli-parameters {
+  margin-top: 1.15rem !important;
+}
+
+.cli-parameters h3 {
+  margin-top: 0 !important;
+}
+
+.cli-command__details {
+  margin: 0 !important;
+  border-top: 1px solid var(--rift-card-border);
+}
+
+.cli-parameter {
+  display: grid;
+  grid-template-columns: minmax(11rem, 0.9fr) minmax(0, 1.5fr);
+  gap: 0.75rem 1rem;
+  padding-block: 0.7rem;
+  border-bottom: 1px solid var(--rift-card-border);
+}
+
+.cli-parameter dt,
+.cli-parameter dd {
+  margin: 0;
+}
+.cli-parameter dt { color: var(--sl-color-gray-2); }
+.cli-parameter dd { color: var(--sl-color-gray-2); font-size: 0.88rem; line-height: 1.5; }
+.cli-parameter dd:empty { display: none; }
+.cli-parameter:has(dd:empty) { grid-template-columns: 1fr; }
+.cli-command__details code { padding: 0; border: 0; background: transparent; font-size: 0.8rem; }
+.cli-command__constraint {
+  display: block;
+  margin-top: 0.18rem;
+  color: var(--sl-color-gray-3);
+  font-size: 0.82rem;
+}
+.cli-command__constraint code {
+  padding: 0.08rem 0.3rem;
+  border: 1px solid var(--rift-card-border);
+  border-radius: 0.28rem;
+  background: var(--rift-card-bg);
+  color: var(--sl-color-gray-1);
+}
+
+.cli-value-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 1.1rem;
+  margin: 1rem 0;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid var(--rift-card-border);
+  border-radius: 0.45rem;
+  background: var(--rift-card-bg);
+  color: var(--sl-color-gray-2);
+  font-size: 0.84rem;
+}
+
+.cli-value-legend span {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+}
+
+.cli-value-group {
+  margin-top: 2rem;
+}
+
+.cli-value-group h2 {
+  margin: 0 0 0.55rem !important;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+.cli-value-group > p {
+  margin: 0 0 0.7rem !important;
+  color: var(--sl-color-gray-2);
+  font-size: 0.9rem;
+}
+
+.cli-value-reference {
+  margin: 0 !important;
+  border-top: 1px solid var(--rift-card-border);
+}
+
+.cli-value-reference__item {
+  display: grid;
+  grid-template-columns: minmax(10rem, 0.75fr) minmax(0, 2fr);
+  gap: 1rem;
+  padding-block: 0.78rem;
+  border-bottom: 1px solid var(--rift-card-border);
+  scroll-margin-top: 5rem;
+}
+
+.cli-value-reference__item dt,
+.cli-value-reference__item dd { margin: 0; }
+.cli-value-reference__item dd { color: var(--sl-color-gray-2); font-size: 0.9rem; line-height: 1.55; }
+.cli-value-reference__item code { font-size: 0.82rem; }
+
 /* Keep the complete generated reference navigable without letting long config
    keys dominate the right rail. Full paths belong in the cards, not the TOC. */
 .right-sidebar-panel .sl-container {
@@ -213,6 +404,8 @@ starlight-toc li[style*="--depth: 0"] + li[style*="--depth: 0"] {
 }
 
 @media (max-width: 40rem) {
+  .cli-parameter,
+  .cli-value-reference__item { grid-template-columns: 1fr; gap: 0.25rem; }
   .config-meta {
     flex-wrap: wrap;
     gap-block: 0.25rem;
