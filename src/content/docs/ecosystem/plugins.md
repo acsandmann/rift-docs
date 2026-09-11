@@ -11,8 +11,8 @@ Companion tools run alongside Rift and communicate through its terminal tool or 
 | --- | --- |
 | [rift-container-highlighter](https://github.com/ubuntudroid/rift-container-highlighter) | Outlines nested window groups so you can see what a group command will affect |
 | [Rift App Indicator](https://github.com/Chandraprakash-Darji/rift-companian) | Shows application icons grouped by workspace in the macOS menu bar |
-| [rift-ergo](https://github.com/abhirup-dev/rift-ergo) | Adds commands for moving windows and workspaces between displays; requires adapting its personal routing setup |
 | [rift-pip](https://github.com/acsandmann/rift-pip) | Mirrors the focused window in a picture-in-picture window |
+| [stackline](https://github.com/acsandmann/stackline) | Shows an alternative style of indicator for window stacks |
 
 The highlighter is useful with Traditional and BSP, where the grouping is otherwise hard to see. Rift App Indicator’s repository is named `rift-companian`; its executable is `rift-app-indicator`.
 
