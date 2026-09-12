@@ -15,9 +15,9 @@ app_rules = [
 ]
 ```
 
-Start with one app and one action, then add conditions as needed.
+Test one app and one action before adding conditions.
 
-## How a rule works
+## Rule matching
 
 Each rule has match fields and action fields. Match fields answer “which windows does this apply to?” Action fields answer “what should Rift do with them?”
 
@@ -32,7 +32,7 @@ app_rules = [
 
 ## Finding the app ID
 
-A **bundle ID** identifies an application, for example `com.apple.Terminal`. Run this in Terminal, replacing the path with the app you want:
+A bundle ID identifies an application, for example `com.apple.Terminal`. Run this in Terminal, replacing the path with the app you want:
 
 ```sh
 mdls -name kMDItemCFBundleIdentifier -r /Applications/Safari.app
@@ -94,7 +94,7 @@ app_rules = [
 ]
 ```
 
-## Common recipes
+## Examples
 
 ### Send apps to named workspaces
 
@@ -146,7 +146,7 @@ reapply_app_rules_on_title_change = true
 
 This is off by default so ordinary title changes do not repeatedly move or focus windows.
 
-## Check a rule
+## Test a rule
 
 Run `rift-cli execute config reload` after editing, then open a matching window. If the rule misses it, start with only `app_id` and add one condition at a time. `rift-cli query windows` shows windows Rift knows about.
 

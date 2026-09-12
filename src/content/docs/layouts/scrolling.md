@@ -3,11 +3,11 @@ title: Scrolling layout
 description: A horizontal strip of windows inspired by niri.
 ---
 
-Scrolling layout arranges windows as a horizontal strip of columns. Rift keeps the focused column in view, so you can work with many windows without shrinking every window until it becomes difficult to use.
+Scrolling layout arranges windows as a horizontal strip of columns. Rift keeps the focused column in view, so many windows can remain open without shrinking every window.
 
 The TOML below is a fragment to add to an existing config; it is not a complete config file.
 
-## How it works
+## Behavior
 
 Imagine a long row of columns that can extend past both sides of your display. A column may contain one window or several windows stacked vertically. Moving focus left or right scrolls the row until the selected column is visible; moving up or down changes the selected window within a column.
 

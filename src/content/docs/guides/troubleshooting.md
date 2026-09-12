@@ -12,11 +12,11 @@ Run `rift-cli query displays`. A successful response lists displays as JSON, a s
 rift service restart
 ```
 
-If Rift exits immediately, check the logs below and confirm **Displays have separate Spaces** is enabled in **System Settings → Desktop & Dock → Mission Control**.
+If Rift exits immediately, check the logs below and confirm Displays have separate Spaces is enabled in System Settings → Desktop & Dock → Mission Control.
 
 ## Windows are not being managed
 
-Make sure Rift has Accessibility permission in **System Settings → Privacy & Security → Accessibility**. Also check whether the Space is inactive; `default_disable = true` means Spaces start disabled until you activate them.
+Make sure Rift has Accessibility permission in System Settings → Privacy & Security → Accessibility. Also check whether the Space is inactive; `default_disable = true` means Spaces start disabled until you activate them.
 
 ## A config change fails to reload
 
@@ -56,6 +56,6 @@ Start with only `app_id`, then add one matching condition at a time. See the [ap
 
 [Adjust the gaps](/rift-docs/guides/layouts/) if window edges are hard to distinguish. If windows need more room, try [Master-stack](/rift-docs/layouts/master-stack/) or [Scrolling](/rift-docs/layouts/scrolling/).
 
-## Getting more help
+## More help
 
 Use the [Rift issues](https://github.com/acsandmann/rift/issues) for bugs and the [Matrix room](https://matrix.to/#/#rift:matrix.org) for discussion and setup help. Include your macOS version, Rift version, layout, and the smallest config that reproduces the problem.

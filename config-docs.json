@@ -397,7 +397,7 @@
       "description": "Number of fingers required for a workspace swipe."
     },
     "settings.gestures.distance_pct": {
-      "description": "Horizontal finger travel needed to switch workspaces, measured in trackpad coordinates. `0.08` is roughly 8% of the trackpad width. Rift clamps the value to `0.01`–`1.0`."
+      "description": "Horizontal finger travel needed to switch workspaces, measured in trackpad coordinates. `0.08` is roughly 8% of the trackpad width. Rift clamps the value from `0.01` to `1.0`."
     },
     "settings.gestures.haptics_enabled": {
       "description": "Provide a tactile pulse when a workspace swipe is recognized."
@@ -418,7 +418,7 @@
       "description": "Number of fingers required for a column swipe."
     },
     "settings.layout.scrolling.gestures.distance_pct": {
-      "description": "Accumulated horizontal finger travel before Rift sends a scroll update, measured in trackpad coordinates. Smaller values send updates more often. Rift clamps the value to `0.01`–`1.0`."
+      "description": "Accumulated horizontal finger travel before Rift sends a scroll update, measured in trackpad coordinates. Smaller values send updates more often. Rift clamps the value from `0.01` to `1.0`."
     },
     "settings.layout.scrolling.gestures.propagate_to_workspace_swipe": {
       "description": "After reaching the end of the column strip, continue the gesture into the adjacent virtual workspace."

@@ -5,7 +5,7 @@ description: Install Rift on macOS and grant the permission it needs.
 
 Rift is distributed as a universal macOS binary for Apple silicon and Intel Macs. The [Homebrew formula](https://github.com/acsandmann/homebrew-tap/blob/main/Formula/rift.rb) installs both `rift` and `rift-cli`. Keep the two binaries from the same release.
 
-Before starting, turn on **Displays have separate Spaces** in **System Settings → Desktop & Dock → Mission Control**. Rift checks this setting at launch and exits with an explanation when it is disabled.
+Before starting, turn on Displays have separate Spaces in System Settings → Desktop & Dock → Mission Control. Rift checks this setting at launch and exits with an explanation when it is disabled.
 
 ## Homebrew
 
@@ -42,7 +42,7 @@ Replace `VERSION` with the version in the downloaded filename. Then run `rift se
 
 ## Give Rift Accessibility access
 
-Rift uses macOS Accessibility APIs to discover, focus, move, resize, and arrange windows. Open **System Settings → Privacy & Security → Accessibility**, approve Rift when prompted, and then restart it:
+Rift uses macOS Accessibility APIs to discover, focus, move, resize, and arrange windows. Open System Settings → Privacy & Security → Accessibility, approve Rift when prompted, and then restart it:
 
 ```sh
 rift service restart

@@ -3,7 +3,7 @@ title: Adjust layouts
 description: Set a default layout, add gaps, and choose layouts by workspace.
 ---
 
-Choose a layout in the [comparison](/rift-docs/layouts/), then use this guide to adjust it. Merge examples into your existing config; if a table already exists, edit it instead of repeating its header.
+Choose a layout in the [comparison](/rift-docs/layouts/). Then add the relevant settings to your config. If a table already exists, edit it instead of repeating its header.
 
 ## Set the default layout
 
@@ -20,7 +20,7 @@ rift-cli execute config reload
 
 ## Add space between windows
 
-**Outer gaps** separate windows from display edges. **Inner gaps** separate neighboring windows. Values use macOS logical pixels, so they follow the display’s scaling rather than its physical pixel count:
+Outer gaps separate windows from display edges. Inner gaps separate neighboring windows. Values use macOS logical pixels, so they follow the display’s scaling rather than its physical pixel count:
 
 ```toml
 [settings.layout.gaps.outer]
@@ -48,7 +48,7 @@ workspace_rules = [
 
 Use a workspace name or a zero-based index. If a workspace rule does not match, Rift uses the normal layout setting.
 
-## When a layout feels wrong
+## Troubleshoot layout choices
 
 - Windows too small: try Master-stack or Scrolling, or adjust `master_ratio` or `column_width_ratio` for those layouts.
 - Windows too tightly packed: add inner and outer gaps.

@@ -130,7 +130,7 @@ Optional horizontal gestures for moving between columns in a Scrolling workspace
 ### `distance_pct`
 
 <section class="config-option config-option--simple">
-<p class="config-description">Accumulated horizontal finger travel before Rift sends a scroll update, measured in trackpad coordinates. Smaller values send updates more often. Rift clamps the value to <code>0.01</code>–<code>1.0</code>.</p>
+<p class="config-description">Accumulated horizontal finger travel before Rift sends a scroll update, measured in trackpad coordinates. Smaller values send updates more often. Rift clamps the value from <code>0.01</code> to <code>1.0</code>.</p>
 <dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>0.08</code></dd></div></dl>
 
 </section>

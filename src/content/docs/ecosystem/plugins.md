@@ -3,7 +3,7 @@ title: Plugins
 description: Companion tools that extend Rift through its CLI and IPC interfaces.
 ---
 
-Companion tools run alongside Rift and communicate through its terminal tool or **IPC** (inter-process communication). They are installed separately. Check each project’s supported Rift version before installing or upgrading it.
+Companion tools run alongside Rift and communicate through its terminal tool or IPC (inter-process communication). They are installed separately. Check each project’s supported Rift version before installing or upgrading it.
 
 ## Window and workspace tools
 

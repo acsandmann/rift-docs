@@ -37,9 +37,9 @@ A custom config must contain `[settings]` and `[keys]`. Omitted settings use def
 
 ## Read defaults and types
 
-- **Default** applies when the containing table exists but the field is omitted. Notes explain exceptions when a whole table is omitted. The bundled config may set a different value.
-- **Not set** means an optional field is omitted. Its description explains any inherited value. TOML has no `null`.
-- **Required** means you must supply the field when using its containing table.
-- **Boolean** means `true` or `false`, without quotes. Text values need quotes; lists use square brackets.
+- Default applies when the containing table exists but the field is omitted. Notes explain exceptions when a whole table is omitted. The bundled config may set a different value.
+- Not set means an optional field is omitted. Its description explains any inherited value. TOML has no `null`.
+- Required means you must supply the field when using its containing table.
+- Boolean means `true` or `false`, without quotes. Text values need quotes; lists use square brackets.
 
 The [JSON Schema](/rift-docs/schema/rift-config.schema.json) supports editor autocomplete and checks names, types, and some bounds. Use config reload to also check shortcuts, commands, and relationships between settings.

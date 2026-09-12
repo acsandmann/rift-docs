@@ -294,7 +294,7 @@ Command synopses use angle brackets for required values and square brackets for 
 
 <div class="cli-value-legend"><span><code>&lt;VALUE&gt;</code> Required</span><span><code>[VALUE]</code> Optional</span><span><a class="cli-value-link" href="#value-direction"><code>&lt;DIRECTION&gt;</code></a> Linked to its definition</span></div>
 
-**Underlined placeholders are links.** Select one in any synopsis or parameter list—such as <a class="cli-value-link" href="#value-direction"><code>&lt;DIRECTION&gt;</code></a>—to see its accepted values or identifier format.
+Underlined placeholders are links. Select one in a synopsis or parameter list, such as <a class="cli-value-link" href="#value-direction"><code>&lt;DIRECTION&gt;</code></a>, to see its accepted values or identifier format.
 
 ${valueReferenceMarkup}
 

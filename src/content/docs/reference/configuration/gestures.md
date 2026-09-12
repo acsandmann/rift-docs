@@ -83,7 +83,7 @@ Optional horizontal gestures for switching virtual workspaces. The finger count 
 ### `distance_pct`
 
 <section class="config-option config-option--simple">
-<p class="config-description">Horizontal finger travel needed to switch workspaces, measured in trackpad coordinates. <code>0.08</code> is roughly 8% of the trackpad width. Rift clamps the value to <code>0.01</code>–<code>1.0</code>.</p>
+<p class="config-description">Horizontal finger travel needed to switch workspaces, measured in trackpad coordinates. <code>0.08</code> is roughly 8% of the trackpad width. Rift clamps the value from <code>0.01</code> to <code>1.0</code>.</p>
 <dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>0.08</code></dd></div></dl>
 
 </section>

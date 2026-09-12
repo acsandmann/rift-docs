@@ -445,7 +445,7 @@
                     },
                     "distance_pct": {
                       "type": "number",
-                      "description": "Accumulated horizontal finger travel before Rift sends a scroll update, measured in trackpad coordinates. Smaller values send updates more often. Rift clamps the value to `0.01`–`1.0`.",
+                      "description": "Accumulated horizontal finger travel before Rift sends a scroll update, measured in trackpad coordinates. Smaller values send updates more often. Rift clamps the value from `0.01` to `1.0`.",
                       "default": 0.08
                     },
                     "propagate_to_workspace_swipe": {
@@ -631,7 +631,7 @@
             },
             "distance_pct": {
               "type": "number",
-              "description": "Horizontal finger travel needed to switch workspaces, measured in trackpad coordinates. `0.08` is roughly 8% of the trackpad width. Rift clamps the value to `0.01`–`1.0`.",
+              "description": "Horizontal finger travel needed to switch workspaces, measured in trackpad coordinates. `0.08` is roughly 8% of the trackpad width. Rift clamps the value from `0.01` to `1.0`.",
               "default": 0.08
             },
             "haptics_enabled": {

@@ -15,8 +15,8 @@ A layout is the rule Rift uses to decide where tiled windows go. You can choose 
 | [Stack](/rift-docs/layouts/stack/) | Overlapping windows offset along one axis | you want every window large while keeping the rest of the group visible |
 | [Scrolling](/rift-docs/layouts/scrolling/) | A horizontal strip of columns, including columns beyond the display | you keep many windows open but want each active column to stay readable |
 
-## Start with one layout
+## Choose a layout
 
-If you are unsure, start with Traditional. It is the most general-purpose option and the one Rift uses by default. Switch to Master-stack when you want one clear primary app, or Scrolling when you keep many windows open and want the active one to stay large.
+Traditional is the default and the most general-purpose option. Use Master-stack when one app should have a dedicated main area, or Scrolling when you keep many windows open and want the active one to stay large.
 
-Use [Adjust layouts](/rift-docs/guides/layouts/) to set your choice, add gaps, or assign a layout to a workspace.
+The [layout guide](/rift-docs/guides/layouts/) shows how to set a default, add gaps, and assign a layout to a workspace.

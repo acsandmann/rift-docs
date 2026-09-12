@@ -3,7 +3,7 @@ title: Rift
 description: A keyboard-driven tiling window manager for macOS.
 template: splash
 hero:
-  tagline: A fast, flexible tiling window manager for macOS.
+  tagline: A keyboard-driven tiling window manager for macOS.
   actions:
     - text: Get started with Rift
       link: /rift-docs/quick-start/
@@ -15,17 +15,17 @@ hero:
       variant: secondary
 ---
 
-Rift keeps your desktop organized so you can spend less time dragging windows around. Move, resize, and rearrange windows from the keyboard; switch between several layout styles; and give different parts of your workflow their own virtual workspaces.
+Rift lets you move, resize, and rearrange windows from the keyboard. Choose from several layout styles and give different parts of your workflow their own virtual workspaces.
 
 ![Rift arranging and resizing windows on a macOS desktop](/rift-docs/rift-demo.webp)
 
-## Start in a few minutes
+## Try Rift
 
-Install Rift, grant macOS Accessibility permission, and press **Option + Z** to tile the windows on your current desktop. You do not need to write a configuration file before trying it.
+Install Rift, grant macOS Accessibility permission, and press Option + Z to tile the windows on your current desktop. You do not need to write a configuration file before trying it.
 
 The [Quick start](/rift-docs/quick-start/) walks through the whole setup and introduces the default keyboard shortcuts.
 
-## Make the desktop yours
+## Choose how windows are arranged
 
 Rift includes five layouts, from familiar split-screen tiling to scrolling columns and master-stack. Choose one layout everywhere or assign different layouts to individual workspaces. App rules can place windows automatically, while floating mode keeps dialogs and utility windows out of the tiled layout.
 
@@ -34,8 +34,8 @@ Rift includes five layouts, from familiar split-screen tiling to scrolling colum
 - Build your own [keyboard shortcuts](/rift-docs/guides/keybindings/).
 - Organize projects and apps with [virtual workspaces](/rift-docs/guides/workspaces/).
 
-## Configure only what you need
+## Configure Rift
 
-The bundled configuration works out of the box. When you want to change it, start with the [configuration guide](/rift-docs/configuration/) and use the [configuration reference](/rift-docs/reference/configuration/) for every available setting, default, and accepted value.
+The bundled configuration is ready to use. To change it, start with the [configuration guide](/rift-docs/configuration/) and use the [configuration reference](/rift-docs/reference/configuration/) for available settings, defaults, and accepted values.
 
 Releases, source code, and issue tracking are available on [GitHub](https://github.com/acsandmann/rift).

@@ -3,7 +3,7 @@ title: Configuration
 description: Learn the shape of Rift's TOML configuration before tuning it.
 ---
 
-Rift reads `~/.config/rift/config.toml`, a plain-text file in **TOML** format. A TOML **table** groups settings under a header such as `[settings]`. A custom file must contain `[settings]` and `[keys]`. Settings and sections you leave out use their defaults, but keybindings are different: your `[keys]` table replaces the bundled keymap instead of extending it. An empty table means no keyboard shortcuts are registered.
+Rift reads `~/.config/rift/config.toml`, a plain-text file in TOML format. A TOML table groups settings under a header such as `[settings]`. A custom file must contain `[settings]` and `[keys]`. Settings and sections you leave out use their defaults, but keybindings are different: your `[keys]` table replaces the bundled keymap instead of extending it. An empty table means no keyboard shortcuts are registered.
 
 ## Where settings belong
 

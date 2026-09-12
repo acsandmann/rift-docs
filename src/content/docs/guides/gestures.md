@@ -5,7 +5,7 @@ description: Using trackpad gestures with Rift.
 
 Rift supports horizontal trackpad gestures for workspace switching and Scrolling-layout navigation. Both are disabled by default. The layout under the pointer determines which gesture Rift uses.
 
-Merge the examples into your existing config. If a table already exists, edit its fields instead of repeating the header.
+Add these settings to your config. If a table already exists, edit it instead of repeating its header.
 
 ## Swipe between workspaces
 
@@ -32,7 +32,7 @@ fingers = 3
 
 Add `propagate_to_workspace_swipe = true` in this table to switch workspaces when you scroll past the end of the column strip.
 
-## Adjust the response
+## Change gesture behavior
 
 - Reverse workspace swipes with `invert_horizontal_swipe` in `[settings.gestures]`, or column scrolling with `invert_horizontal` in the Scrolling gesture table.
 - `distance_pct` measures finger travel on the trackpad, not movement across the display. Smaller values need less travel.
@@ -40,6 +40,6 @@ Add `propagate_to_workspace_swipe = true` in this table to switch workspaces whe
 
 See the [workspace gesture reference](/rift-docs/reference/configuration/gestures/) or [Scrolling reference](/rift-docs/reference/configuration/scrolling/) for thresholds and defaults.
 
-## If nothing happens
+## When a gesture does not work
 
 Check that the Space is activated, the gesture settings for its layout are enabled, and the configured finger count matches your gesture. On multiple displays, place the pointer over the workspace you want to use.

@@ -2,7 +2,7 @@
 title: Keybindings
 description: Configure Rift keyboard shortcuts.
 ---
-A **keybinding** assigns a keyboard shortcut to a command. In `[keys]`, the shortcut goes on the left and the command on the right.
+A keybinding assigns a keyboard shortcut to a command. In `[keys]`, the shortcut goes on the left and the command on the right.
 
 :::caution[Your keymap is not merged]
 A custom `[keys]` table replaces the bundled keymap. Keep an activation binding such as `"Alt + Z" = "toggle_space_activated"`. An empty table disables keyboard controls; you can still activate a Space from Terminal with `rift-cli execute space toggle-activated`.
@@ -41,7 +41,7 @@ Directions are `left`, `right`, `up`, or `down`. Workspace indexes are zero-base
 
 ## Reusable modifiers
 
-**Modifiers** are keys such as Option, Shift, and Control held with another key. Give a repeated combination a name:
+Modifiers are keys such as Option, Shift, and Control held with another key. Give a repeated combination a name:
 
 ```toml
 [modifier_combinations]

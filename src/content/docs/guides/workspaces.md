@@ -3,7 +3,7 @@ title: Virtual workspaces
 description: Organize windows into named workspaces within a macOS Space.
 ---
 
-A **macOS Space** is a desktop you switch to through Mission Control. A **Rift virtual workspace** is a group of windows within a managed Space. Switching Rift workspaces changes which group you work with; it does not create another macOS desktop.
+A macOS Space is a desktop you switch to through Mission Control. A Rift virtual workspace is a group of windows within a managed Space. Switching Rift workspaces changes which group you work with; it does not create another macOS desktop.
 
 If the Space is inactive, enable it with the bundled Option + Z shortcut or `rift-cli execute space toggle-activated` in Terminal.
 

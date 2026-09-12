@@ -3,11 +3,11 @@ title: Quick start
 description: Install Rift, activate a Space, and make your first small config.
 ---
 
-This guide assumes a fresh install with no custom configuration. You’ll arrange two windows, try keyboard navigation, and optionally save your own settings. Run the shell commands in Terminal.
+Start with a fresh install and no custom configuration. You will arrange two windows, try keyboard navigation, and optionally save your own settings. Run the shell commands in Terminal.
 
 ## 1. Install Rift
 
-Enable **Displays have separate Spaces** in **System Settings → Desktop & Dock → Mission Control**. If you use Homebrew, install Rift:
+Enable Displays have separate Spaces in System Settings → Desktop & Dock → Mission Control. If you use Homebrew, install Rift:
 
 ```sh
 brew install acsandmann/tap/rift
@@ -24,7 +24,7 @@ rift service install
 rift service start
 ```
 
-The first launch may stop after asking for Accessibility access. Allow Rift in **System Settings → Privacy & Security → Accessibility**, then run:
+The first launch may stop after asking for Accessibility access. Allow Rift in System Settings → Privacy & Security → Accessibility, then run:
 
 ```sh
 rift service restart
@@ -32,17 +32,17 @@ rift service restart
 
 ## 3. Activate the current Space
 
-A **Space** is a macOS desktop, shown in Mission Control. By default, Rift waits for you to enable tiling on each Space.
+A Space is a macOS desktop, shown in Mission Control. By default, Rift waits for you to enable tiling on each Space.
 
-Open two app windows, such as a browser and Terminal. Press **Option (⌥) + Z**. Rift should arrange them into tiles. Press the shortcut again to stop tiling this Space. Rift calls the Option key `Alt` in its configuration.
+Open two app windows, such as a browser and Terminal. Press Option (⌥) + Z. Rift should arrange them into tiles. Press the shortcut again to stop tiling this Space. Rift calls the Option key `Alt` in its configuration.
 
-If nothing happens, check [service, permission, and shortcut problems](/rift-docs/guides/troubleshooting/).
+If the windows do not move, check [service, permission, and shortcut problems](/rift-docs/guides/troubleshooting/).
 
-## 4. Try keyboard navigation
+## 4. Use keyboard navigation
 
-Press **Option + H** to focus the window on the left, or **Option + L** for the right. **Focus** means the window that receives your typing. Option + J and Option + K select windows below and above. These shortcuts come with Rift.
+Press Option + H to focus the window on the left, or Option + L for the right. Focus means the window that receives your typing. Option + J and Option + K select windows below and above. These shortcuts come with Rift.
 
-You can keep using the bundled settings. Continue below only when you want to customize them.
+The bundled settings are enough for regular use. Continue below if you want to customize them.
 
 ## 5. Save your own settings
 
@@ -83,7 +83,7 @@ vertical = 8.0
 
 This `[keys]` table replaces the bundled keymap. Keep every shortcut you want to use.
 
-The example adds Shift to the direction keys to move a window. Option + Shift + Space toggles **floating**, which lets you position that window freely. Master-stack gives one window a larger area; the gaps leave space between windows.
+The example adds Shift to the direction keys to move a window. Option + Shift + Space toggles floating, which lets you position that window freely. Master-stack gives one window a larger area; the gaps leave space between windows.
 
 Apply the file with `rift-cli`, Rift’s terminal control tool:
 
@@ -93,7 +93,7 @@ rift-cli execute config reload
 
 Later edits normally apply automatically when you save. To retain all starter shortcuts, use the [bundled config](https://github.com/acsandmann/rift/blob/main/rift.default.toml) as your starting point instead.
 
-## Where to go next
+## Next steps
 
 - Compare the [five layouts](/rift-docs/layouts/) and choose one for your work.
 - Learn the [basic window controls](/rift-docs/guides/window-management/).
