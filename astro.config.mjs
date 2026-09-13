@@ -83,6 +83,14 @@ export default defineConfig({
       },
     ],
     editLink: { baseUrl: 'https://github.com/acsandmann/rift-docs/edit/main/' },
-    plugins: [starlightThemeApple()],
+	plugins: [starlightThemeApple()],
+	head: [{
+      tag: 'script',
+      attrs: {
+        defer: true,
+        src: 'https://cloud.umami.is/script.js',
+        'data-website-id': '0a216d3d-864b-4197-8c41-cf9d6ba1a7a1',
+      },
+    }],
   })]
 });
