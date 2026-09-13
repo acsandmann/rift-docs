@@ -9,7 +9,7 @@ tableOfContents:
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.5.7-4-g04defb3.
+Generated from Rift v0.5.7-9-gd3be1bc.
 -->
 
 Animation, pointer behavior, Space activation, hot reload, and dragging tiled windows.
