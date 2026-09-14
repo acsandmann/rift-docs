@@ -13,6 +13,9 @@ export default defineConfig({
 		  { icon: 'matrix', label: 'Matrix', href: `https://matrix.to/#/%23rift:matrix.org` }
 	  ],
     customCss: ['./src/styles/custom.css'],
+    components: {
+      SocialIcons: './src/components/SocialIcons.astro',
+    },
     sidebar: [
       { label: 'Start here', items: ['index', 'quick-start', 'installation', 'configuration'] },
       {

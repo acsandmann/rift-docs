@@ -1,0 +1,44 @@
+---
+import config from 'virtual:starlight/user-config';
+import { Icon } from '@astrojs/starlight/components';
+
+const links = config.social || [];
+const trackSocialLinks = !Astro.url.pathname.includes('/reference/');
+const getEventName = (icon) => {
+	if (!trackSocialLinks) return undefined;
+	if (icon === 'github') return 'github_link';
+	if (icon === 'matrix') return 'matrix_link';
+	return undefined;
+};
+---
+
+{
+	links.length > 0 && (
+		<>
+			{links.map(({ label, href, icon }) => (
+				<a
+					{href}
+					rel="me"
+					class="sl-flex"
+					data-umami-event={getEventName(icon)}
+				>
+					<span class="sr-only">{label}</span>
+					<Icon name={icon} />
+				</a>
+			))}
+		</>
+	)
+}
+
+<style>
+	@layer starlight.core {
+		a {
+			color: var(--sl-color-text-accent);
+			padding: 0.5em;
+			margin: -0.5em;
+		}
+		a:hover {
+			color: var(--sl-color-white);
+		}
+	}
+</style>

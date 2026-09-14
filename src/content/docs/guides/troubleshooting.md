@@ -58,4 +58,4 @@ Start with only `app_id`, then add one matching condition at a time. See the [ap
 
 ## More help
 
-Use the [Rift issues](https://github.com/acsandmann/rift/issues) for bugs and the [Matrix room](https://matrix.to/#/#rift:matrix.org) for discussion and setup help. Include your macOS version, Rift version, layout, and the smallest config that reproduces the problem.
+Use the <a href="https://github.com/acsandmann/rift/issues" data-umami-event="issues_link">Rift issues</a> for bugs and the <a href="https://matrix.to/#/#rift:matrix.org" data-umami-event="matrix_link">Matrix room</a> for discussion and setup help. Include your macOS version, Rift version, layout, and the smallest config that reproduces the problem.

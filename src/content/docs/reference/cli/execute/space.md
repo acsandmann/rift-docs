@@ -9,7 +9,7 @@ tableOfContents:
 
 <!-- GENERATED FILE. Do not edit directly. -->
 
-Source version: `v0.5.7-9-gd3be1bc`.
+Source version: `v0.5.8.1-8-g0121cf2`.
 
 macOS space commands (Mission Control spaces, not virtual workspaces). All commands act on the running Rift instance.
 

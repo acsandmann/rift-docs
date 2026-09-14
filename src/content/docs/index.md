@@ -38,4 +38,4 @@ Rift includes five layouts, from familiar split-screen tiling to scrolling colum
 
 The bundled configuration is ready to use. To change it, start with the [configuration guide](/rift-docs/configuration/) and use the [configuration reference](/rift-docs/reference/configuration/) for available settings, defaults, and accepted values.
 
-Releases, source code, and issue tracking are available on [GitHub](https://github.com/acsandmann/rift).
+Releases, source code, and issue tracking are available on <a href="https://github.com/acsandmann/rift" data-umami-event="github_link">GitHub</a>.
