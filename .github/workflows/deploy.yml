@@ -96,7 +96,7 @@ jobs:
           SITE_BASE: /rift-docs
         run: |
           bun run check
-          bun run build
+          bun run build:site
           mv dist site
 
       - name: Build latest documentation
@@ -106,7 +106,7 @@ jobs:
           SITE_BASE: /rift-docs/latest
         run: |
           bun run check
-          bun run build
+          bun run build:site
           bun run rewrite-base -- /rift-docs/ /rift-docs/latest/
           mkdir -p site/latest
           cp -R dist/. site/latest/

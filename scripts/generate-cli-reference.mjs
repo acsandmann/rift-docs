@@ -1,7 +1,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
+import { execFile, execFileSync } from 'node:child_process';
+import { promisify } from 'node:util';
+
+const execFileAsync = promisify(execFile);
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const docsRoot = path.resolve(here, '..');
@@ -60,8 +64,53 @@ if (!process.env.RIFT_CLI && needsBuild) {
   });
 }
 
-function helpFor(parts) {
-  return execFileSync(executable, [...parts, '--help'], { encoding: 'utf8' }).trim();
+function executableFingerprint() {
+  return createHash('sha256').update(fs.readFileSync(executable)).digest('hex');
+}
+
+const helpCachePath = process.env.RIFT_CLI_HELP_CACHE === '0'
+  ? null
+  : path.resolve(process.env.RIFT_CLI_HELP_CACHE || path.join(docsRoot, '.cache/rift-cli-help.json'));
+const fingerprint = executableFingerprint();
+let helpCache = { version: 1, executables: {} };
+if (helpCachePath && fs.existsSync(helpCachePath)) {
+  try {
+    const parsed = JSON.parse(fs.readFileSync(helpCachePath, 'utf8'));
+    if (parsed?.version === 1 && parsed.executables && typeof parsed.executables === 'object') helpCache = parsed;
+  } catch {
+    // A partial or old cache is safe to ignore; help output is regenerated below.
+  }
+}
+const cachedHelp = helpCache.executables[fingerprint] || {};
+let cachedHelpCount = 0;
+const requestedHelpConcurrency = Number.parseInt(process.env.RIFT_CLI_HELP_CONCURRENCY || '8', 10);
+const helpConcurrency = Number.isFinite(requestedHelpConcurrency) ? Math.max(1, requestedHelpConcurrency) : 8;
+let activeHelpProcesses = 0;
+const helpWaiters = [];
+
+async function withHelpSlot(task) {
+  if (activeHelpProcesses >= helpConcurrency) await new Promise((resolve) => helpWaiters.push(resolve));
+  activeHelpProcesses += 1;
+  try {
+    return await task();
+  } finally {
+    activeHelpProcesses -= 1;
+    helpWaiters.shift()?.();
+  }
+}
+
+async function helpFor(parts) {
+  const key = parts.join('\u001f');
+  if (Object.hasOwn(cachedHelp, key)) {
+    cachedHelpCount += 1;
+    return cachedHelp[key];
+  }
+  const { stdout } = await withHelpSlot(() => execFileAsync(executable, [...parts, '--help'], {
+    encoding: 'utf8',
+    maxBuffer: 1024 * 1024,
+  }));
+  cachedHelp[key] = stdout.trim();
+  return cachedHelp[key];
 }
 
 function section(text, name) {
@@ -98,8 +147,8 @@ function commandNames(text) {
     .filter((name) => name !== 'help');
 }
 
-function parseHelp(parts) {
-  const text = helpFor(parts);
+async function parseHelp(parts) {
+  const text = await helpFor(parts);
   const usage = text.match(/(?:^|\n)Usage: (.+)/)?.[1] || `rift-cli ${parts.join(' ')}`;
   const description = text.startsWith('Usage:') ? '' : text.split('\n\n')[0].replace(/\s+/g, ' ').trim();
   const arguments_ = detailRows(section(text, 'Arguments'));
@@ -107,10 +156,11 @@ function parseHelp(parts) {
   return { parts, text, usage, description, arguments_, options, children: commandNames(text) };
 }
 
-function collect(parts = [], depth = 0) {
-  const command = parseHelp(parts);
+async function collect(parts = [], depth = 0) {
+  const command = await parseHelp(parts);
   if (depth >= 3) return [command];
-  return [command, ...command.children.flatMap((child) => collect([...parts, child], depth + 1))];
+  const children = await Promise.all(command.children.map((child) => collect([...parts, child], depth + 1)));
+  return [command, ...children.flat()];
 }
 
 function escapeHtml(value) {
@@ -208,7 +258,14 @@ function card(command, headingLevel = 2) {
   return `${'#'.repeat(headingLevel)} <span class="cli-command-heading">${displayName}</span>\n\n<article class="cli-command">\n${body}\n</article>`;
 }
 
-const commands = collect();
+const commands = await collect();
+if (helpCachePath) {
+  helpCache.executables[fingerprint] = cachedHelp;
+  const cachedFingerprints = Object.keys(helpCache.executables);
+  for (const oldFingerprint of cachedFingerprints.slice(0, -4)) delete helpCache.executables[oldFingerprint];
+  fs.mkdirSync(path.dirname(helpCachePath), { recursive: true });
+  fs.writeFileSync(helpCachePath, `${JSON.stringify(helpCache)}\n`);
+}
 
 const valueReferenceMarkup = valueReferenceGroups.map(([title, description, names]) => `<section class="cli-value-group">
 <h2>${title}</h2>
@@ -376,4 +433,4 @@ fs.writeFileSync(path.join(executeRoot, 'other.md'), commandPage(
 ));
 
 const pageCount = 6 + executeGroups.length;
-console.log(`Generated ${pageCount} CLI reference pages with ${commands.length - 1} commands from ${executable} (${version}).`);
+console.log(`Generated ${pageCount} CLI reference pages with ${commands.length - 1} commands from ${executable} (${version}); reused ${cachedHelpCount} cached help responses.`);
