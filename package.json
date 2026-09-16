@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "generate": "bun run generate:config && bun run generate:cli",
+    "generate:changelog": "node scripts/generate-changelog.mjs",
     "generate:config": "node scripts/generate-config-reference.mjs",
     "generate:cli": "node scripts/generate-cli-reference.mjs",
     "check": "bun run generate && node scripts/check-docs.mjs",

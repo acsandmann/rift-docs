@@ -84,6 +84,11 @@ jobs:
 
       - run: bun install --frozen-lockfile
 
+      - name: Generate changelog
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: bun run generate:changelog
+
       - name: Build stable documentation
         env:
           RIFT_ROOT: ${{ github.workspace }}/rift-stable

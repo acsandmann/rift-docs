@@ -17,7 +17,7 @@ export default defineConfig({
       SocialIcons: './src/components/SocialIcons.astro',
     },
     sidebar: [
-      { label: 'Start here', items: ['index', 'quick-start', 'installation', 'configuration'] },
+      { label: 'Start here', items: ['index', 'quick-start', 'installation', 'configuration', 'changelog'] },
       {
         label: 'Layouts',
         collapsed: false,
