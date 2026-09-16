@@ -9,7 +9,7 @@ tableOfContents:
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.5.8.1-8-g0121cf2.
+Generated from Rift v0.5.9-4-g46e1ff5-dirty.
 -->
 
 Choose a default layout and tune spacing, insertion, and layout-specific behavior.
@@ -48,7 +48,7 @@ Choose the default layout and set options shared by every layout. A layout-speci
 <section class="config-option config-option--expanded">
 <p class="config-description">Layout used for a workspace that does not match a <a class="config-setting-link" href="/rift-docs/reference/configuration/virtual-workspaces/#virtual_workspacesworkspace_rules"><code>virtual_workspaces.workspace_rules</code></a> entry.</p>
 <dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>text</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>&quot;traditional&quot;</code></dd></div></dl>
-<div class="config-values"><strong>Possible values</strong><div><code>traditional</code> <code>bsp</code> <code>stack</code> <code>master_stack</code> <code>scrolling</code></div></div>
+<div class="config-values"><strong>Possible values</strong><div><code>traditional</code> <code>bsp</code> <code>stack</code> <code>master_stack</code> <code>scrolling</code> <code>floating</code></div></div>
 </section>
 
 ## <span class="config-table-heading">[settings.layout.traditional]</span>

@@ -6,7 +6,7 @@
     "generate": "bun run generate:config && bun run generate:cli",
     "generate:changelog": "node scripts/generate-changelog.mjs",
     "generate:config": "node scripts/generate-config-reference.mjs",
-    "generate:cli": "node scripts/generate-cli-reference.mjs",
+    "generate:cli": "bun scripts/generate-cli-reference.mjs",
     "check": "bun run generate && bun run check:docs",
     "check:docs": "node scripts/check-docs.mjs",
     "dev": "bun run generate && ASTRO_TELEMETRY_DISABLED=1 astro dev",

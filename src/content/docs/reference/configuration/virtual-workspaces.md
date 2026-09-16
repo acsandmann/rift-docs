@@ -9,7 +9,7 @@ tableOfContents:
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.5.8.1-8-g0121cf2.
+Generated from Rift v0.5.9-4-g46e1ff5-dirty.
 -->
 
 Workspace count, names, focus behavior, and rules for assigning windows to workspaces.
@@ -130,7 +130,7 @@ layout = "traditional"
 <section class="config-option config-option--expanded">
 <p class="config-description">Layout to use in the matching workspace.</p>
 <dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>text</dd></div><div class="config-meta__item config-meta__item--required"><dt>Requirement</dt><dd>Required</dd></div></dl>
-<div class="config-values"><strong>Possible values</strong><div><code>traditional</code> <code>bsp</code> <code>stack</code> <code>master_stack</code> <code>scrolling</code></div></div>
+<div class="config-values"><strong>Possible values</strong><div><code>traditional</code> <code>bsp</code> <code>stack</code> <code>master_stack</code> <code>scrolling</code> <code>floating</code></div></div>
 </section>
 
 ## See also

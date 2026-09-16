@@ -9,7 +9,7 @@ tableOfContents:
 
 <!-- GENERATED FILE. Do not edit directly. -->
 
-Source version: `v0.5.8.1-8-g0121cf2`.
+Source version: `v0.5.9-4-g46e1ff5-dirty`.
 
 Queries read state without changing it. Set `RIFT_CLI_PRETTY=1` to format returned JSON for reading.
 
@@ -20,6 +20,7 @@ Queries read state without changing it. Set `RIFT_CLI_PRETTY=1` to format return
 <div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli query workspaces [OPTIONS]</code></div></div>
 <section class="cli-parameters"><h3>Options</h3><dl class="cli-command__details">
 <div class="cli-parameter"><dt><code>--space-id &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-space-id">SPACE_ID</a>&gt;</code></dt><dd></dd></div>
+<div class="cli-parameter"><dt><code>--display &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;</code></dt><dd>Display UUID; queries the display's current macOS space.</dd></div>
 </dl></section>
 </article>
 
@@ -30,6 +31,7 @@ Queries read state without changing it. Set `RIFT_CLI_PRETTY=1` to format return
 <div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli query windows [OPTIONS]</code></div></div>
 <section class="cli-parameters"><h3>Options</h3><dl class="cli-command__details">
 <div class="cli-parameter"><dt><code>--space-id &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-space-id">SPACE_ID</a>&gt;</code></dt><dd></dd></div>
+<div class="cli-parameter"><dt><code>--display &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;</code></dt><dd>Display UUID; queries the display's current macOS space.</dd></div>
 </dl></section>
 </article>
 

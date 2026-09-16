@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Rift configuration",
-  "description": "Generated from Rift v0.5.8.1-8-g0121cf2.",
+  "description": "Generated from Rift v0.5.9-4-g46e1ff5-dirty.",
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -107,7 +107,8 @@
                 "bsp",
                 "stack",
                 "master_stack",
-                "scrolling"
+                "scrolling",
+                "floating"
               ],
               "description": "Layout used for a workspace that does not match a `virtual_workspaces.workspace_rules` entry.",
               "default": "traditional"
@@ -870,7 +871,8 @@
                   "bsp",
                   "stack",
                   "master_stack",
-                  "scrolling"
+                  "scrolling",
+                  "floating"
                 ],
                 "description": "Layout to use in the matching workspace."
               }

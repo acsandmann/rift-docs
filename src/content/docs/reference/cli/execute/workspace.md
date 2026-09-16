@@ -9,7 +9,7 @@ tableOfContents:
 
 <!-- GENERATED FILE. Do not edit directly. -->
 
-Source version: `v0.5.8.1-8-g0121cf2`.
+Source version: `v0.5.9-4-g46e1ff5-dirty`.
 
 Virtual workspace commands. All commands act on the running Rift instance.
 
@@ -77,7 +77,7 @@ Virtual workspace commands. All commands act on the running Rift instance.
 <p class="cli-command__description">Set layout mode for a workspace (or active workspace when omitted).</p>
 <div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute workspace set-layout [OPTIONS] &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-mode">MODE</a>&gt;</code></div></div>
 <section class="cli-parameters"><h3>Arguments</h3><dl class="cli-command__details">
-<div class="cli-parameter"><dt><code>&lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-mode">MODE</a>&gt;</code></dt><dd>Layout mode: traditional, bsp, stack, master_stack, scrolling.</dd></div>
+<div class="cli-parameter"><dt><code>&lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-mode">MODE</a>&gt;</code></dt><dd>Layout mode: traditional, bsp, stack, master_stack, scrolling, floating.</dd></div>
 </dl></section>
 <section class="cli-parameters"><h3>Options</h3><dl class="cli-command__details">
 <div class="cli-parameter"><dt><code>--workspace-id &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-workspace-id">WORKSPACE_ID</a>&gt;</code></dt><dd>Workspace index (0-based). Defaults to active workspace if omitted.</dd></div>

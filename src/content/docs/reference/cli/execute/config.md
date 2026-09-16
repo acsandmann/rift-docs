@@ -9,7 +9,7 @@ tableOfContents:
 
 <!-- GENERATED FILE. Do not edit directly. -->
 
-Source version: `v0.5.8.1-8-g0121cf2`.
+Source version: `v0.5.9-4-g46e1ff5-dirty`.
 
 Configuration management commands. All commands act on the running Rift instance.
 
