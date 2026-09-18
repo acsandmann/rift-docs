@@ -11,37 +11,8 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const docsRoot = path.resolve(here, '..');
 const riftRoot = process.env.RIFT_ROOT ? path.resolve(process.env.RIFT_ROOT) : path.resolve(docsRoot, '..');
 
-function exactSourceTag() {
-  if (process.env.RIFT_REF) return process.env.RIFT_REF;
-  try {
-    return execFileSync('git', ['-C', riftRoot, 'describe', '--tags', '--exact-match'], {
-      encoding: 'utf8',
-      stdio: ['ignore', 'pipe', 'ignore'],
-    }).trim();
-  } catch {
-    return '';
-  }
-}
-
-function versionAtMost(ref, ceiling) {
-  const parse = (value) => value.match(/^v?(\d+(?:\.\d+)*)$/)?.[1].split('.').map(Number);
-  const left = parse(ref);
-  const right = parse(ceiling);
-  if (!left || !right) return false;
-  const length = Math.max(left.length, right.length);
-  for (let index = 0; index < length; index += 1) {
-    const difference = (left[index] || 0) - (right[index] || 0);
-    if (difference) return difference < 0;
-  }
-  return true;
-}
-
-// Rift v0.5.8.1 and older trip Clap's debug-only positional-bool assertion
-// while rendering nested help. Newer releases contain the argument fix and
-// use the normal debug profile again.
-const sourceTag = exactSourceTag();
 const cargoProfile = process.env.RIFT_CLI_PROFILE
-  || (versionAtMost(sourceTag, 'v0.5.8.1') ? 'release-fast' : 'debug');
+  || 'debug';
 const executable = process.env.RIFT_CLI
   ? path.resolve(process.env.RIFT_CLI)
   : path.join(process.env.CARGO_TARGET_DIR || path.join(riftRoot, 'target'), cargoProfile, 'rift-cli');

@@ -9,7 +9,7 @@ tableOfContents:
 
 <!-- GENERATED FILE. Do not edit directly. -->
 
-Source version: `v0.5.9-10-gc4ad9b5-dirty`.
+Source version: `v0.5.9-12-g83f3b66`.
 
 These commands work with Rift’s complete runtime or saved layout state rather than one command group.
 
