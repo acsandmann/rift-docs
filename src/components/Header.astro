@@ -1,0 +1,133 @@
+---
+import config from 'virtual:starlight/user-config';
+import LanguageSelect from 'virtual:starlight/components/LanguageSelect';
+import Search from 'virtual:starlight/components/Search';
+import SiteTitle from 'virtual:starlight/components/SiteTitle';
+import SocialIcons from 'virtual:starlight/components/SocialIcons';
+import ThemeSelect from 'virtual:starlight/components/ThemeSelect';
+
+const shouldRenderSearch =
+  config.pagefind || config.components.Search !== '@astrojs/starlight/components/Search.astro';
+const base = import.meta.env.BASE_URL;
+const basePath = base.endsWith('/') ? base : `${base}/`;
+---
+
+<div class="header">
+  <div class="title-wrapper sl-flex">
+    <SiteTitle />
+  </div>
+
+  <div class="search-wrapper sl-flex print:hidden">
+    {shouldRenderSearch && <Search />}
+  </div>
+
+  <nav class="primary-nav sl-flex print:hidden" aria-label="Primary">
+    <a href={`${basePath}installation/`}>Install</a>
+    <a href={`${basePath}guides/layouts/`}>Guides</a>
+    <a href={`${basePath}reference/configuration/`}>Reference</a>
+  </nav>
+
+  <div class="header-actions sl-flex print:hidden">
+    <span class="header-divider" aria-hidden="true"></span>
+    <div class="sl-flex social-icons">
+      <SocialIcons />
+    </div>
+    <span class="header-divider" aria-hidden="true"></span>
+    <div class="header-group header-group--theme sl-flex">
+      <ThemeSelect />
+      <LanguageSelect />
+    </div>
+  </div>
+</div>
+
+<style>
+  @layer starlight.core {
+    .header {
+      display: flex;
+      gap: var(--sl-nav-gap);
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+    }
+
+    .title-wrapper {
+      overflow: clip;
+      padding: 0.25rem;
+      margin: -0.25rem;
+      min-width: 0;
+    }
+
+    .search-wrapper {
+      min-width: 0;
+    }
+
+    .header-actions,
+    .header-group,
+    .social-icons {
+      align-items: center;
+    }
+
+    .header-actions {
+      gap: 0.25rem;
+    }
+
+    .header-group {
+      gap: 0.25rem;
+    }
+
+    .header-divider {
+      height: 1.5rem;
+      margin-inline: 0.5rem;
+      border-inline-start: 1px solid var(--apple-hairline);
+    }
+
+    .primary-nav {
+      align-items: center;
+      justify-content: flex-end;
+      gap: 1.5rem;
+    }
+
+    .primary-nav a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: var(--apple-secondary-foreground);
+      font-size: 0.875rem;
+      font-weight: 500;
+      line-height: 1.25rem;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .primary-nav a:hover {
+      color: var(--apple-foreground);
+    }
+
+    @media (max-width: 71.99rem) {
+      .primary-nav {
+        display: none;
+      }
+    }
+
+    @media (max-width: 49.99rem) {
+      .header-actions {
+        display: none;
+      }
+    }
+
+    @media (min-width: 50rem) {
+      .header {
+        --__sidebar-width: max(0rem, var(--sl-content-inline-start, 0rem) - var(--sl-nav-pad-x));
+        --__sidebar-pad: calc(2 * var(--sl-nav-pad-x));
+        --__toc-width: var(--sl-toc-width, var(--sl-nav-pad-x));
+        display: grid;
+        grid-template-columns: minmax(8rem, auto) minmax(13rem, 1fr) auto auto;
+        align-content: center;
+      }
+
+      .search-wrapper {
+        justify-content: center;
+      }
+    }
+  }
+</style>

@@ -10,11 +10,15 @@ export default defineConfig({
     description: 'Documentation for Rift, a macOS tiling window manager.',
 	  social: [
 		  { icon: 'github', label: 'GitHub', href: `https://github.com/acsandmann/rift` },
-		  { icon: 'matrix', label: 'Matrix', href: `https://matrix.to/#/%23rift:matrix.org` }
+		  { icon: 'matrix', label: 'Matrix', href: `https://matrix.to/#/%23rift:matrix.org` },
+		  { icon: 'heart', label: 'Sponsor Rift', href: `https://github.com/sponsors/acsandmann` }
 	  ],
     customCss: ['./src/styles/custom.css'],
     components: {
+      Footer: './src/components/Footer.astro',
+      Header: './src/components/Header.astro',
       SocialIcons: './src/components/SocialIcons.astro',
+      ThemeSelect: './src/components/ThemeSelect.astro',
     },
     sidebar: [
       { label: 'Start here', items: ['index', 'quick-start', 'installation', 'configuration', 'changelog'] },

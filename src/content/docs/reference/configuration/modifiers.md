@@ -9,7 +9,7 @@ tableOfContents:
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.5.9-4-g46e1ff5-dirty.
+Generated from Rift v0.5.9-10-gc4ad9b5-dirty.
 -->
 
 Name a combination of modifier keys, such as Option + Shift, and reuse it in shortcuts.

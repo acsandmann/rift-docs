@@ -9,7 +9,7 @@ tableOfContents:
 
 <!-- GENERATED FILE. Do not edit directly. -->
 
-Source version: `v0.5.9-4-g46e1ff5-dirty`.
+Source version: `v0.5.9-10-gc4ad9b5-dirty`.
 
 Display/mouse commands. All commands act on the running Rift instance.
 
@@ -17,7 +17,19 @@ Display/mouse commands. All commands act on the running Rift instance.
 
 <article class="cli-command">
 <p class="cli-command__description">Focus a display by direction, index, or UUID.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute display focus [OPTIONS]</code></div></div>
+<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute display focus &lt;--direction &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;|--index &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-index">INDEX</a>&gt;|--uuid &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;&gt;</code></div></div>
+<section class="cli-parameters"><h3>Options</h3><dl class="cli-command__details">
+<div class="cli-parameter"><dt><code>--direction &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;</code></dt><dd>Direction relative to the current display (left, right, up, down).</dd></div>
+<div class="cli-parameter"><dt><code>--index &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-index">INDEX</a>&gt;</code></dt><dd>Display index (0-based).</dd></div>
+<div class="cli-parameter"><dt><code>--uuid &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;</code></dt><dd>Display UUID.</dd></div>
+</dl></section>
+</article>
+
+## <span class="cli-command-heading">move-mouse</span>
+
+<article class="cli-command">
+<p class="cli-command__description">Move the mouse cursor to a display by direction, index, or UUID.</p>
+<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute display move-mouse &lt;--direction &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;|--index &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-index">INDEX</a>&gt;|--uuid &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;&gt;</code></div></div>
 <section class="cli-parameters"><h3>Options</h3><dl class="cli-command__details">
 <div class="cli-parameter"><dt><code>--direction &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;</code></dt><dd>Direction relative to the current display (left, right, up, down).</dd></div>
 <div class="cli-parameter"><dt><code>--index &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-index">INDEX</a>&gt;</code></dt><dd>Display index (0-based).</dd></div>
@@ -49,9 +61,9 @@ Display/mouse commands. All commands act on the running Rift instance.
 
 <article class="cli-command">
 <p class="cli-command__description">Move a window to a display by direction, index, or UUID.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute display move-window [OPTIONS]</code></div></div>
+<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute display move-window [OPTIONS] &lt;--direction &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;|--index &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-index">INDEX</a>&gt;|--uuid &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;&gt;</code></div></div>
 <section class="cli-parameters"><h3>Options</h3><dl class="cli-command__details">
-<div class="cli-parameter"><dt><code>--direction &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;</code></dt><dd>Direction relative to the window's current display (left, right, up, down).</dd></div>
+<div class="cli-parameter"><dt><code>--direction &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;</code></dt><dd>Direction relative to the current display (left, right, up, down).</dd></div>
 <div class="cli-parameter"><dt><code>--index &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-index">INDEX</a>&gt;</code></dt><dd>Display index (0-based).</dd></div>
 <div class="cli-parameter"><dt><code>--uuid &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;</code></dt><dd>Display UUID.</dd></div>
 <div class="cli-parameter"><dt><code>--window-id &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-window-id">WINDOW_ID</a>&gt;</code></dt><dd>Optional window id (window idx); defaults to the focused window if omitted.</dd></div>
@@ -62,9 +74,9 @@ Display/mouse commands. All commands act on the running Rift instance.
 
 <article class="cli-command">
 <p class="cli-command__description">Move the active workspace to a display by direction, index, or UUID.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute display move-workspace [OPTIONS]</code></div></div>
+<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute display move-workspace [OPTIONS] &lt;--direction &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;|--index &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-index">INDEX</a>&gt;|--uuid &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;&gt;</code></div></div>
 <section class="cli-parameters"><h3>Options</h3><dl class="cli-command__details">
-<div class="cli-parameter"><dt><code>--direction &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;</code></dt><dd>Direction relative to the workspace's current display (left, right, up, down).</dd></div>
+<div class="cli-parameter"><dt><code>--direction &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;</code></dt><dd>Direction relative to the current display (left, right, up, down).</dd></div>
 <div class="cli-parameter"><dt><code>--index &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-index">INDEX</a>&gt;</code></dt><dd>Display index (0-based).</dd></div>
 <div class="cli-parameter"><dt><code>--uuid &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;</code></dt><dd>Display UUID.</dd></div>
 <div class="cli-parameter"><dt><code>--wrap-around</code></dt><dd>Continue from the opposite edge for directional selectors.</dd></div>

@@ -1,4 +1,29 @@
-<footer class="sl-flex" style="justify-content:space-between; gap:1rem; flex-wrap:wrap;">
-  <span>Rift documentation</span>
-  <span><a href="https://github.com/acsandmann/rift">Rift on GitHub</a> · <a href="https://github.com/acsandmann/rift/releases">Releases</a> · <a href="https://github.com/acsandmann/rift/issues">Issues</a></span>
+---
+import EditLink from 'virtual:starlight/components/EditLink';
+import LastUpdated from 'virtual:starlight/components/LastUpdated';
+import Pagination from 'virtual:starlight/components/Pagination';
+import { Icon } from '@astrojs/starlight/components';
+---
+
+<footer class="rift-footer">
+  <div class="rift-footer__navigation">
+    <div class="meta sl-flex">
+      <EditLink />
+      <LastUpdated />
+    </div>
+    <Pagination />
+  </div>
+
+  <div class="rift-footer__links">
+    <a href="https://github.com/acsandmann/rift"><span>rift</span></a>
+    <nav aria-label="Footer">
+      <!-- <a href="https://github.com/acsandmann/rift">GitHub</a>
+      <a href="https://github.com/acsandmann/rift/releases">Releases</a>
+      <a href="https://github.com/acsandmann/rift/issues">Issues</a> -->
+      <a href="https://github.com/sponsors/acsandmann" rel="me" data-umami-event="sponsor_footer_link">
+        <Icon name="heart" size="0.8rem" />
+        <span>support rift's development</span>
+      </a>
+    </nav>
+  </div>
 </footer>
