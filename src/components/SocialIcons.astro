@@ -20,7 +20,7 @@ const getEventName = (icon) => {
 				<a
 					{href}
 					rel="me"
-					class="sl-flex"
+					class:list={['sl-flex', { 'social-link--sponsor': icon === 'heart' }]}
 					aria-label={label}
 					title={icon === 'heart' ? label : undefined}
 					data-umami-event={getEventName(icon)}

@@ -6,6 +6,25 @@
 }
 
 /* Footer */
+@media (max-width: 79.99rem) {
+  .primary-nav {
+    display: none;
+  }
+}
+
+@media (max-width: 49.99rem) {
+  .header-actions {
+    display: flex;
+    margin-inline-start: auto;
+  }
+
+  .header-actions .header-divider,
+  .header-actions .header-group,
+  .header-actions .social-icons a:not(.social-link--sponsor) {
+    display: none;
+  }
+}
+
 .primary-nav a:focus-visible,
 .header-divider + .social-icons a:focus-visible {
   outline: 2px solid var(--apple-focus);
