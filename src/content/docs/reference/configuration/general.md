@@ -1,6 +1,6 @@
 ---
 title: General
-description: "Animation, pointer behavior, Space activation, hot reload, and dragging tiled windows."
+description: "Animation, focus behavior, Space activation, and hot reload."
 editUrl: false
 tableOfContents:
   minHeadingLevel: 2
@@ -9,10 +9,10 @@ tableOfContents:
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.5.9-12-g83f3b66.
+Generated from Rift v0.5.10-7-g3eceac1-dirty.
 -->
 
-Animation, pointer behavior, Space activation, hot reload, and dragging tiled windows.
+Animation, focus behavior, Space activation, and hot reload.
 
 :::note[Examples are config fragments]
 Edit matching tables in your existing config; do not repeat their headers. Keep your `[keys]` shortcuts. For a complete file, start with [Quick start](/rift-docs/quick-start/).
@@ -118,20 +118,6 @@ focus_follows_mouse_disable_hotkey = &quot;Ctrl&quot;
 <p class="config-description">Reload the config file when it changes. Even when this is false, Rift watches for keymap changes and reloads when the parsed bindings differ.</p>
 <dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>boolean</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>true</code></dd></div></dl>
 
-</section>
-
-## <span class="config-table-heading">[settings.window_snapping]</span>
-
-Mouse-drag behavior for swapping tiled windows.
-
-### `drag_swap_fraction`
-
-<section class="config-option config-option--expanded">
-<p class="config-description">Overlap needed to select a drag-swap target. Rift divides the intersection area by the union area of the two windows. Lower values make swaps easier to trigger.</p>
-<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>0.3</code></dd></div></dl>
-<aside class="config-note"><strong>Note</strong><span>If <a class="config-setting-link" href="/rift-docs/reference/configuration/general/#settingswindow_snapping"><code>[settings.window_snapping]</code></a> is omitted entirely, this starts at <code>0.0</code>. Set it explicitly for predictable behavior.</span></aside><div class="config-example"><div class="config-example__label">Example</div><pre><code class="language-toml">[settings.window_snapping]
-drag_swap_fraction = 0.3
-</code></pre></div>
 </section>
 
 ## See also

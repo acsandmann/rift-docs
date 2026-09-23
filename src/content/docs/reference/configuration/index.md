@@ -8,7 +8,7 @@ editUrl: false
 
 Look up setting names, accepted values, and defaults. For your first file, use [Quick start](/rift-docs/quick-start/).
 
-Source version: `v0.5.9-12-g83f3b66`. Newer settings may not exist in older releases.
+Source version: `v0.5.10-7-g3eceac1-dirty`. Newer settings may not exist in older releases.
 
 :::caution[Keybindings are different]
 A custom config must contain `[settings]` and `[keys]`. Omitted settings use defaults, but `[keys]` replaces the bundled keymap. An empty table registers no keyboard shortcuts.
@@ -18,7 +18,8 @@ A custom config must contain `[settings]` and `[keys]`. Omitted settings use def
 
 | Category | What you can change |
 | --- | --- |
-| [General](/rift-docs/reference/configuration/general/) | Animation, focus, pointer behavior, activation, dragging |
+| [General](/rift-docs/reference/configuration/general/) | Animation, focus behavior, activation, hot reload |
+| [Drag and drop](/rift-docs/reference/configuration/drag-drop/) | Modifier-assisted movement and tiled-window drops |
 | [Layouts](/rift-docs/reference/configuration/layouts/) | Mode, gaps, Traditional, BSP, Stack, Master-stack |
 | [Scrolling](/rift-docs/reference/configuration/scrolling/) | Column widths, focus navigation, column gestures |
 | [Gestures](/rift-docs/reference/configuration/gestures/) | Trackpad workspace navigation |

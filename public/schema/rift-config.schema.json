@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Rift configuration",
-  "description": "Generated from Rift v0.5.9-12-g83f3b66.",
+  "description": "Generated from Rift v0.5.10-7-g3eceac1-dirty.",
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -386,6 +386,11 @@
                   "maximum": 1,
                   "default": 0.7
                 },
+                "preserve_window_sizes": {
+                  "type": "boolean",
+                  "description": "Keep a window's existing column width when it enters scrolling layout.",
+                  "default": true
+                },
                 "min_column_width_ratio": {
                   "type": "number",
                   "description": "Smallest column width allowed by resize commands, from `0.0` through `1.0`.",
@@ -653,17 +658,68 @@
           },
           "description": "Optional horizontal gestures for switching virtual workspaces. The finger count is configurable."
         },
-        "window_snapping": {
+        "drag_drop": {
           "type": "object",
           "additionalProperties": false,
           "properties": {
-            "drag_swap_fraction": {
+            "enabled": {
+              "type": "boolean",
+              "description": "Enables native drag targeting and modifier mouse actions.",
+              "default": true
+            },
+            "modifier": {
+              "type": "string",
+              "enum": [
+                "cmd",
+                "alt",
+                "shift",
+                "ctrl",
+                "fn"
+              ],
+              "description": "Modifier held with `action1` or `action2`.",
+              "default": "fn"
+            },
+            "action1": {
+              "type": "string",
+              "enum": [
+                "none",
+                "move"
+              ],
+              "description": "Left-button action while the configured modifier is held.",
+              "default": "move"
+            },
+            "action2": {
+              "type": "string",
+              "enum": [
+                "none",
+                "move"
+              ],
+              "description": "Right-button action while the configured modifier is held.",
+              "default": "none"
+            },
+            "drop_action": {
+              "type": "string",
+              "enum": [
+                "swap",
+                "stack"
+              ],
+              "description": "Center-zone action for tiled move drops.",
+              "default": "swap"
+            },
+            "drop_zone_fraction": {
               "type": "number",
-              "description": "Overlap needed to select a drag-swap target. Rift divides the intersection area by the union area of the two windows. Lower values make swaps easier to trigger.",
-              "default": 0.3
+              "description": "Depth of each edge zone as a fraction of the destination window's size. Valid values are `0.10..=0.45`; the default is `0.25`.",
+              "minimum": 0.1,
+              "maximum": 0.45,
+              "default": 0.25
+            },
+            "preview": {
+              "type": "boolean",
+              "description": "Shows a translucent, rounded WindowServer overlay for the pending drop. The overlay is updated only when the target tile or drop zone changes.",
+              "default": true
             }
           },
-          "description": "Mouse-drag behavior for swapping tiled windows."
+          "description": "Modifier-assisted window movement and tiled-window drops with previews."
         },
         "run_on_start": {
           "type": "array",

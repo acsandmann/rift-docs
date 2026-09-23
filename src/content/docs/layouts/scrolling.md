@@ -29,6 +29,8 @@ focus_navigation_style = "niri"
 
 `column_width_ratio = 0.7` gives a column 70% of the tiling area’s width. `min_column_width_ratio` and `max_column_width_ratio` bound resizing.
 
+`preserve_window_sizes = true` (the default) keeps each window's existing width when it enters a scrolling workspace, including at startup and after a workspace move. Widths outside the minimum and maximum column ratios are clamped. Set it to `false` to use the configured column width instead.
+
 The default `niri` navigation scrolls only enough to reveal the focused column. Use `anchored` to place it consistently at `alignment`: `left`, `center`, or `right`.
 
 ## Gestures

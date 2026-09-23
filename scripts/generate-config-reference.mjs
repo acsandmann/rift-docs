@@ -148,6 +148,7 @@ function escapeHtml(value) {
 // lets generated fields live in semantic cards without changing the source docs
 // to MDX or pulling presentation details into config-docs.json.
 function routeForSetting(path) {
+  if (path === 'settings.drag_drop' || path.startsWith('settings.drag_drop.')) return 'drag-drop';
   if (path.startsWith('settings.layout.scrolling')) return 'scrolling';
   if (path.startsWith('settings.layout')) return 'layouts';
   if (path.startsWith('settings.gestures')) return 'gestures';
@@ -210,7 +211,7 @@ function markdownGroup(title, prefix, version) {
   const rows = [];
   const group = overrides.groups?.[title] || {};
   const excludedPrefixes = {
-    General: ['settings.layout', 'settings.ui', 'settings.gestures', 'settings.run_on_start'],
+    General: ['settings.drag_drop', 'settings.layout', 'settings.ui', 'settings.gestures', 'settings.run_on_start'],
     Layouts: ['settings.layout.scrolling'],
     'Virtual workspaces': ['virtual_workspaces.app_rules'],
   }[title] || [];
@@ -272,6 +273,7 @@ function markdownGroup(title, prefix, version) {
   }
   const examples = {
     General: '```toml\n[settings]\nanimate = true\nanimation_duration = 0.2\n```',
+    'Drag and drop': '```toml\n[settings.drag_drop]\nenabled = true\nmodifier = "fn"\naction1 = "move"\naction2 = "none"\ndrop_action = "swap"\npreview = true\n```',
     Layouts: '```toml\n[settings.layout]\nmode = "master_stack"\n\n[settings.layout.gaps.inner]\nhorizontal = 8.0\nvertical = 8.0\n```',
     'User interface': '```toml\n[settings.ui.menu_bar]\nenabled = true\ndisplay_style = "label"\nactive_label = "name"\n```',
     'Scrolling layout': '```toml\n[settings.layout]\nmode = "scrolling"\n\n[settings.layout.scrolling]\ncolumn_width_ratio = 0.7\nalignment = "center"\n```',
@@ -290,6 +292,7 @@ function markdownGroup(title, prefix, version) {
   const commandNotes = title === 'Commands and startup' ? 'For a helper that must restart after failure, use a macOS LaunchAgent (a background service). CLI subscriptions accept `workspace_changed`, `windows_changed`, `window_title_changed`, `focused_window_changed`, `stacks_changed`, `layout_changed`, `selection_changed`, or `*`. Each event’s JSON data is passed as the command’s final argument and in `RIFT_EVENT_JSON`. `RIFT_EVENT_TYPE` identifies the event; other variables depend on its contents. See [Integrations](/rift-docs/ecosystem/integrations/) for a working subscription.' : '';
   const seeAlso = {
     General: ['[Quick start](/rift-docs/quick-start/)', '[Configuration guide](/rift-docs/configuration/)', '[Keybindings](/rift-docs/guides/keybindings/)'],
+    'Drag and drop': ['[Window management](/rift-docs/guides/window-management/)', '[Layout settings](/rift-docs/reference/configuration/layouts/)', '[Configuration guide](/rift-docs/configuration/)'],
     Layouts: ['[Compare layouts](/rift-docs/layouts/)', '[Adjust layouts](/rift-docs/guides/layouts/)', '[Scrolling settings](/rift-docs/reference/configuration/scrolling/)'],
     'Scrolling layout': ['[Scrolling layout guide](/rift-docs/layouts/scrolling/)', '[Layout settings](/rift-docs/reference/configuration/layouts/)', '[Gesture settings](/rift-docs/reference/configuration/gestures/)'],
     Gestures: ['[Gestures guide](/rift-docs/guides/gestures/)', '[Virtual workspaces](/rift-docs/guides/workspaces/)'],
@@ -308,9 +311,14 @@ try { version = process.env.RIFT_REF || execFileSync('git', ['-C', riftRoot, 'de
 const schemaDir = path.join(docsRoot, 'public/schema'); fs.mkdirSync(schemaDir, { recursive: true });
 fs.writeFileSync(path.join(schemaDir, 'rift-config.schema.json'), JSON.stringify({ $schema: 'https://json-schema.org/draft/2020-12/schema', title: 'Rift configuration', description: `Generated from Rift ${version}.`, ...root }, null, 2) + '\n');
 const refDir = path.join(docsRoot, 'src/content/docs/reference/configuration'); fs.mkdirSync(refDir, { recursive: true });
-const groups = [['general', 'General', 'settings'], ['layouts', 'Layouts', 'settings.layout'], ['scrolling', 'Scrolling layout', 'settings.layout.scrolling'], ['gestures', 'Gestures', 'settings.gestures'], ['ui', 'User interface', 'settings.ui'], ['app-rules', 'App rules', 'virtual_workspaces.app_rules'], ['virtual-workspaces', 'Virtual workspaces', 'virtual_workspaces'], ['keybindings', 'Keybindings', 'keys'], ['modifiers', 'Modifier combinations', 'modifier_combinations'], ['commands', 'Commands and startup', 'settings.run_on_start']];
+const groups = [['general', 'General', 'settings'], ['drag-drop', 'Drag and drop', 'settings.drag_drop'], ['layouts', 'Layouts', 'settings.layout'], ['scrolling', 'Scrolling layout', 'settings.layout.scrolling'], ['gestures', 'Gestures', 'settings.gestures'], ['ui', 'User interface', 'settings.ui'], ['app-rules', 'App rules', 'virtual_workspaces.app_rules'], ['virtual-workspaces', 'Virtual workspaces', 'virtual_workspaces'], ['keybindings', 'Keybindings', 'keys'], ['modifiers', 'Modifier combinations', 'modifier_combinations'], ['commands', 'Commands and startup', 'settings.run_on_start']];
 for (const [file, title, prefix] of groups) fs.writeFileSync(path.join(refDir, `${file}.md`), `---\ntitle: ${title}\ndescription: ${JSON.stringify(overrides.groups[title].description)}\neditUrl: false\ntableOfContents:\n  minHeadingLevel: 2\n  maxHeadingLevel: 3\n---\n\n${markdownGroup(title, prefix, version)}\n`);
 fs.writeFileSync(path.join(refDir, 'index.md'), `---\ntitle: Configuration reference\ndescription: Find Rift settings, accepted values, defaults, and examples.\neditUrl: false\n---\n\n<!-- GENERATED FILE. Do not edit directly. -->\n\nLook up setting names, accepted values, and defaults. For your first file, use [Quick start](/rift-docs/quick-start/).\n\nSource version: \`${version}\`. Newer settings may not exist in older releases.\n\n:::caution[Keybindings are different]\nA custom config must contain \`[settings]\` and \`[keys]\`. Omitted settings use defaults, but \`[keys]\` replaces the bundled keymap. An empty table registers no keyboard shortcuts.\n:::\n\n## Find a setting\n\n| Category | What you can change |\n| --- | --- |\n| [General](/rift-docs/reference/configuration/general/) | Animation, focus, pointer behavior, activation, dragging |\n| [Layouts](/rift-docs/reference/configuration/layouts/) | Mode, gaps, Traditional, BSP, Stack, Master-stack |\n| [Scrolling](/rift-docs/reference/configuration/scrolling/) | Column widths, focus navigation, column gestures |\n| [Gestures](/rift-docs/reference/configuration/gestures/) | Trackpad workspace navigation |\n| [User interface](/rift-docs/reference/configuration/ui/) | Menu bar, stack indicators, Mission Control |\n| [Virtual workspaces](/rift-docs/reference/configuration/virtual-workspaces/) | Names, count, navigation, per-workspace layouts |\n| [App rules](/rift-docs/reference/configuration/app-rules/) | Match windows and control placement |\n| [Keybindings](/rift-docs/reference/configuration/keybindings/) | Keyboard shortcuts and command syntax |\n| [Modifiers](/rift-docs/reference/configuration/modifiers/) | Reusable shortcut combinations |\n| [Startup commands](/rift-docs/reference/configuration/commands/) | Launch helpers and event subscriptions |\n\n## How to use this reference\n\n1. Open the category that matches what you want to change.\n2. Merge the example into the matching table in your config. Do not repeat an existing table header.\n3. Change the value, save, and run \`rift-cli execute config reload\` if hot reload is disabled or the change does not appear.\n\n## Read defaults and types\n\n- **Default** applies when the containing table exists but the field is omitted. Notes explain exceptions when a whole table is omitted. The bundled config may set a different value.\n- **Not set** means an optional field is omitted. Its description explains any inherited value. TOML has no \`null\`.\n- **Required** means you must supply the field when using its containing table.\n- **Boolean** means \`true\` or \`false\`, without quotes. Text values need quotes; lists use square brackets.\n\nThe [JSON Schema](/rift-docs/schema/rift-config.schema.json) supports editor autocomplete and checks names, types, and some bounds. Use config reload to also check shortcuts, commands, and relationships between settings.\n`);
 const configurationIndex = path.join(refDir, 'index.md');
-fs.writeFileSync(configurationIndex, fs.readFileSync(configurationIndex, 'utf8').replaceAll('**', ''));
+fs.writeFileSync(configurationIndex, fs.readFileSync(configurationIndex, 'utf8')
+  .replaceAll('**', '')
+  .replace(
+    '| [General](/rift-docs/reference/configuration/general/) | Animation, focus, pointer behavior, activation, dragging |',
+    '| [General](/rift-docs/reference/configuration/general/) | Animation, focus behavior, activation, hot reload |\n| [Drag and drop](/rift-docs/reference/configuration/drag-drop/) | Modifier-assisted movement and tiled-window drops |',
+  ));
 console.log(`Generated schema and ${groups.length + 1} reference pages from ${sourcePath} (${version}).`);

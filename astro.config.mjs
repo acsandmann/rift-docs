@@ -62,6 +62,7 @@ export default defineConfig({
         items: [
           { label: 'Overview', slug: 'reference/configuration' },
           { label: 'General settings', slug: 'reference/configuration/general' },
+          { label: 'Window dragging', slug: 'reference/configuration/drag-drop' },
           { label: 'Layout settings', slug: 'reference/configuration/layouts' },
           { label: 'Scrolling settings', slug: 'reference/configuration/scrolling' },
           { label: 'Gesture settings', slug: 'reference/configuration/gestures' },

@@ -9,7 +9,7 @@ tableOfContents:
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.5.9-12-g83f3b66.
+Generated from Rift v0.5.10-7-g3eceac1-dirty.
 -->
 
 Settings for the scrolling-column layout and its optional trackpad gestures.
@@ -56,6 +56,14 @@ Options specific to the Scrolling layout.
 <section class="config-option config-option--simple">
 <p class="config-description">Normal width of a column as a fraction of the tiling area. It must stay between <a class="config-setting-link" href="/rift-docs/reference/configuration/scrolling/#min_column_width_ratio"><code>min_column_width_ratio</code></a> and <a class="config-setting-link" href="/rift-docs/reference/configuration/scrolling/#max_column_width_ratio"><code>max_column_width_ratio</code></a>.</p>
 <dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>0.7</code></dd></div></dl>
+
+</section>
+
+### `preserve_window_sizes`
+
+<section class="config-option config-option--simple">
+<p class="config-description">Keep a window's existing column width when it enters scrolling layout.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>boolean</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>true</code></dd></div></dl>
 
 </section>
 

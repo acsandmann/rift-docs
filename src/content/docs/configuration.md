@@ -9,7 +9,8 @@ Rift reads `~/.config/rift/config.toml`, a plain-text file in TOML format. A TOM
 
 | Section | What it controls |
 | --- | --- |
-| `[settings]` | Animation, focus, mouse behavior, startup commands, and nested layout, gesture, and UI tables |
+| `[settings]` | Animation, focus, startup commands, and nested drag-and-drop, layout, gesture, and UI tables |
+| `[settings.drag_drop]` | Modifier-assisted window movement and tiled-window drops with previews |
 | `[settings.layout]` | The active layout and settings shared by layouts |
 | `[keys]` | Keyboard shortcuts and their commands |
 | `[virtual_workspaces]` | Workspace names, counts, app rules, and per-workspace layouts |

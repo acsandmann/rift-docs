@@ -9,7 +9,7 @@ tableOfContents:
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.5.9-12-g83f3b66.
+Generated from Rift v0.5.10-7-g3eceac1-dirty.
 -->
 
 Launch helper programs when Rift starts.

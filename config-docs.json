@@ -4,8 +4,12 @@
   ],
   "groups": {
     "General": {
-      "description": "Animation, pointer behavior, Space activation, hot reload, and dragging tiled windows.",
+      "description": "Animation, focus behavior, Space activation, and hot reload.",
       "next": ""
+    },
+    "Drag and drop": {
+      "description": "Configure modifier-assisted window movement and tiled-window drop behavior.",
+      "next": "Native title-bar dragging and modifier-assisted dragging use the same tiled-window drop targets."
     },
     "Layouts": {
       "description": "Choose a default layout and tune spacing, insertion, and layout-specific behavior.",
@@ -211,13 +215,14 @@
     "settings.gestures": {
       "description": "Optional horizontal gestures for switching virtual workspaces. The finger count is configurable."
     },
-    "settings.window_snapping": {
-      "description": "Mouse-drag behavior for swapping tiled windows."
+    "settings.drag_drop": {
+      "description": "Modifier-assisted window movement and tiled-window drops with previews."
     },
-    "settings.window_snapping.drag_swap_fraction": {
-      "description": "Overlap needed to select a drag-swap target. Rift divides the intersection area by the union area of the two windows. Lower values make swaps easier to trigger.",
-      "note": "If `[settings.window_snapping]` is omitted entirely, this starts at `0.0`. Set it explicitly for predictable behavior.",
-      "example": "[settings.window_snapping]\ndrag_swap_fraction = 0.3"
+    "settings.drag_drop.drop_zone_fraction": {
+      "schema": {
+        "minimum": 0.1,
+        "maximum": 0.45
+      }
     },
     "settings.run_on_start": {
       "description": "Command lines to run once Rift starts. Rift splits quoted arguments and launches the executable directly; use `sh -c` explicitly when shell syntax is required.",
