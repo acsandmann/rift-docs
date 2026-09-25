@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Rift configuration",
-  "description": "Generated from Rift v0.5.10-7-g3eceac1-dirty.",
+  "description": "Generated from Rift v0.6.0-8-g0ddcf73-dirty.",
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -571,6 +571,129 @@
                   "type": "number",
                   "description": "Distance from the window edge to the indicator, in macOS points.",
                   "default": 1
+                },
+                "selected_color": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "r": {
+                      "type": "number",
+                      "description": "Red component, from 0.0 to 1.0.",
+                      "minimum": 0,
+                      "maximum": 1,
+                      "default": 0
+                    },
+                    "g": {
+                      "type": "number",
+                      "description": "Green component, from 0.0 to 1.0.",
+                      "minimum": 0,
+                      "maximum": 1,
+                      "default": 0
+                    },
+                    "b": {
+                      "type": "number",
+                      "description": "Blue component, from 0.0 to 1.0.",
+                      "minimum": 0,
+                      "maximum": 1,
+                      "default": 0
+                    },
+                    "a": {
+                      "type": "number",
+                      "description": "Opacity component, from 0.0 to 1.0.",
+                      "minimum": 0,
+                      "maximum": 1,
+                      "default": 1
+                    }
+                  },
+                  "description": "RGBA color for the selected stack segment. Each component ranges from 0.0 to 1.0.",
+                  "default": {
+                    "r": 0,
+                    "g": 0.5,
+                    "b": 1,
+                    "a": 1
+                  }
+                },
+                "unselected_color": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "r": {
+                      "type": "number",
+                      "description": "Red component, from 0.0 to 1.0.",
+                      "minimum": 0,
+                      "maximum": 1,
+                      "default": 0
+                    },
+                    "g": {
+                      "type": "number",
+                      "description": "Green component, from 0.0 to 1.0.",
+                      "minimum": 0,
+                      "maximum": 1,
+                      "default": 0
+                    },
+                    "b": {
+                      "type": "number",
+                      "description": "Blue component, from 0.0 to 1.0.",
+                      "minimum": 0,
+                      "maximum": 1,
+                      "default": 0
+                    },
+                    "a": {
+                      "type": "number",
+                      "description": "Opacity component, from 0.0 to 1.0.",
+                      "minimum": 0,
+                      "maximum": 1,
+                      "default": 1
+                    }
+                  },
+                  "description": "RGBA color for unselected stack segments. Each component ranges from 0.0 to 1.0.",
+                  "default": {
+                    "r": 0.8,
+                    "g": 0.8,
+                    "b": 0.8,
+                    "a": 1
+                  }
+                },
+                "border_color": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "r": {
+                      "type": "number",
+                      "description": "Red component, from 0.0 to 1.0.",
+                      "minimum": 0,
+                      "maximum": 1,
+                      "default": 0
+                    },
+                    "g": {
+                      "type": "number",
+                      "description": "Green component, from 0.0 to 1.0.",
+                      "minimum": 0,
+                      "maximum": 1,
+                      "default": 0
+                    },
+                    "b": {
+                      "type": "number",
+                      "description": "Blue component, from 0.0 to 1.0.",
+                      "minimum": 0,
+                      "maximum": 1,
+                      "default": 0
+                    },
+                    "a": {
+                      "type": "number",
+                      "description": "Opacity component, from 0.0 to 1.0.",
+                      "minimum": 0,
+                      "maximum": 1,
+                      "default": 1
+                    }
+                  },
+                  "description": "RGBA color for segment borders and separators. Each component ranges from 0.0 to 1.0.",
+                  "default": {
+                    "r": 0.6,
+                    "g": 0.6,
+                    "b": 0.6,
+                    "a": 1
+                  }
                 }
               },
               "description": "Show a small edge indicator for stacked windows."
@@ -740,6 +863,13 @@
       "type": "object",
       "description": "Hotkey strings mapped to Rift commands.",
       "additionalProperties": {}
+    },
+    "binding_modes": {
+      "type": "object",
+      "description": "A map from custom mode names to keymaps. Each active mode replaces the default `[keys]` bindings. The name `default` is reserved; use `{ binding_mode = \"default\" }` to return to `[keys]`.",
+      "additionalProperties": {
+        "type": "object"
+      }
     },
     "virtual_workspaces": {
       "type": "object",

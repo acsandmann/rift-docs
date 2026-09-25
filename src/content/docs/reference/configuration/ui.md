@@ -9,7 +9,7 @@ tableOfContents:
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.5.10-7-g3eceac1-dirty.
+Generated from Rift v0.6.0-8-g0ddcf73-dirty.
 -->
 
 Optional indicators for the menu bar, stack line, and Mission Control.
@@ -168,6 +168,114 @@ enabled = true
 <p class="config-description">Fade duration in milliseconds.</p>
 <dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>180</code></dd></div></dl>
 <aside class="config-note"><strong>Note</strong><span>Omitting the entire containing table gives <code>0</code> instead.</span></aside>
+</section>
+
+## <span class="config-table-heading">[settings.ui.stack_line.selected_color]</span>
+
+RGBA color for the selected stack segment. Each component ranges from 0.0 to 1.0.
+
+### `r`
+
+<section class="config-option config-option--simple">
+<p class="config-description">Red component, from 0.0 to 1.0.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>0</code></dd></div></dl>
+
+</section>
+
+### `g`
+
+<section class="config-option config-option--simple">
+<p class="config-description">Green component, from 0.0 to 1.0.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>0</code></dd></div></dl>
+
+</section>
+
+### `b`
+
+<section class="config-option config-option--simple">
+<p class="config-description">Blue component, from 0.0 to 1.0.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>0</code></dd></div></dl>
+
+</section>
+
+### `a`
+
+<section class="config-option config-option--simple">
+<p class="config-description">Opacity component, from 0.0 to 1.0.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>1</code></dd></div></dl>
+
+</section>
+
+## <span class="config-table-heading">[settings.ui.stack_line.unselected_color]</span>
+
+RGBA color for unselected stack segments. Each component ranges from 0.0 to 1.0.
+
+### `r`
+
+<section class="config-option config-option--simple">
+<p class="config-description">Red component, from 0.0 to 1.0.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>0</code></dd></div></dl>
+
+</section>
+
+### `g`
+
+<section class="config-option config-option--simple">
+<p class="config-description">Green component, from 0.0 to 1.0.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>0</code></dd></div></dl>
+
+</section>
+
+### `b`
+
+<section class="config-option config-option--simple">
+<p class="config-description">Blue component, from 0.0 to 1.0.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>0</code></dd></div></dl>
+
+</section>
+
+### `a`
+
+<section class="config-option config-option--simple">
+<p class="config-description">Opacity component, from 0.0 to 1.0.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>1</code></dd></div></dl>
+
+</section>
+
+## <span class="config-table-heading">[settings.ui.stack_line.border_color]</span>
+
+RGBA color for segment borders and separators. Each component ranges from 0.0 to 1.0.
+
+### `r`
+
+<section class="config-option config-option--simple">
+<p class="config-description">Red component, from 0.0 to 1.0.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>0</code></dd></div></dl>
+
+</section>
+
+### `g`
+
+<section class="config-option config-option--simple">
+<p class="config-description">Green component, from 0.0 to 1.0.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>0</code></dd></div></dl>
+
+</section>
+
+### `b`
+
+<section class="config-option config-option--simple">
+<p class="config-description">Blue component, from 0.0 to 1.0.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>0</code></dd></div></dl>
+
+</section>
+
+### `a`
+
+<section class="config-option config-option--simple">
+<p class="config-description">Opacity component, from 0.0 to 1.0.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>1</code></dd></div></dl>
+
 </section>
 
 ## See also

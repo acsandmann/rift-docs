@@ -37,7 +37,15 @@
     },
     "Keybindings": {
       "description": "Assign keyboard shortcuts to Rift commands in the `[keys]` table.",
-      "next": "Your `[keys]` table replaces the bundled keymap; an empty table registers no shortcuts."
+      "next": "Your `[keys]` table replaces the bundled keymap; an empty table registers no shortcuts. Add named keymaps with [binding modes](/rift-docs/reference/configuration/binding-modes/)."
+    },
+    "Binding modes": {
+      "description": "Create named keymaps for workflows such as resizing windows.",
+      "next": "`[keys]` is the default mode. A custom mode replaces it until a binding switches back to `default`; unbound keys pass through to the foreground app.",
+      "warning": {
+        "title": "Place binding modes after keys",
+        "body": "TOML table headers set the scope for following entries. After `[binding_modes.resize]`, later key/value entries belong to that mode. Finish all `[keys]` entries before the first `[binding_modes.*]` table."
+      }
     },
     "Modifier combinations": {
       "description": "Name a combination of modifier keys, such as Option + Shift, and reuse it in shortcuts.",
@@ -51,6 +59,10 @@
   "overrides": {
     "keys": {
       "description": "A map whose keys are hotkey strings and whose values are Rift commands. This table replaces the bundled keymap; it is not merged. An empty map registers no keyboard shortcuts."
+    },
+    "binding_modes": {
+      "description": "A map from custom mode names to keymaps. Each active mode replaces the default `[keys]` bindings. The name `default` is reserved; use `{ binding_mode = \"default\" }` to return to `[keys]`.",
+      "schema": { "type": "object", "additionalProperties": { "type": "object" } }
     },
     "modifier_combinations": {
       "description": "A map from a short name to a modifier string. For example, `main = \"Alt + Shift\"` lets you write `main + H` in the `[keys]` table."
@@ -271,6 +283,68 @@
     },
     "settings.ui.stack_line.vert_placement": {
       "description": "Place the stack line at the left or right edge of the window."
+    },
+    "settings.ui.stack_line.selected_color": {
+      "description": "RGBA color for the selected stack segment. Each component ranges from 0.0 to 1.0.",
+      "example": "[settings.ui.stack_line.selected_color]\nr = 0.0\ng = 0.5\nb = 1.0\na = 1.0"
+    },
+    "settings.ui.stack_line.selected_color.r": {
+      "description": "Red component, from 0.0 to 1.0.",
+      "schema": { "minimum": 0, "maximum": 1 }
+    },
+    "settings.ui.stack_line.selected_color.g": {
+      "description": "Green component, from 0.0 to 1.0.",
+      "schema": { "minimum": 0, "maximum": 1 }
+    },
+    "settings.ui.stack_line.selected_color.b": {
+      "description": "Blue component, from 0.0 to 1.0.",
+      "schema": { "minimum": 0, "maximum": 1 }
+    },
+    "settings.ui.stack_line.selected_color.a": {
+      "description": "Opacity component, from 0.0 to 1.0.",
+      "schema": { "minimum": 0, "maximum": 1 }
+    },
+    "settings.ui.stack_line.unselected_color": {
+      "description": "RGBA color for unselected stack segments. Each component ranges from 0.0 to 1.0."
+    },
+    "settings.ui.stack_line.border_color": {
+      "description": "RGBA color for segment borders and separators. Each component ranges from 0.0 to 1.0."
+    },
+    "settings.ui.stack_line.unselected_color.r": {
+      "description": "Red component, from 0.0 to 1.0.",
+      "schema": { "minimum": 0, "maximum": 1 }
+    },
+    "settings.ui.stack_line.unselected_color.g": {
+      "description": "Green component, from 0.0 to 1.0.",
+      "schema": { "minimum": 0, "maximum": 1 }
+    },
+    "settings.ui.stack_line.unselected_color.b": {
+      "description": "Blue component, from 0.0 to 1.0.",
+      "schema": { "minimum": 0, "maximum": 1 }
+    },
+    "settings.ui.stack_line.unselected_color.a": {
+      "description": "Opacity component, from 0.0 to 1.0.",
+      "schema": { "minimum": 0, "maximum": 1 }
+    },
+    "settings.ui.stack_line.border_color.r": {
+      "description": "Red component, from 0.0 to 1.0.",
+      "schema": { "minimum": 0, "maximum": 1 }
+    },
+    "settings.ui.stack_line.border_color.g": {
+      "description": "Green component, from 0.0 to 1.0.",
+      "schema": { "minimum": 0, "maximum": 1 }
+    },
+    "settings.ui.stack_line.border_color.b": {
+      "description": "Blue component, from 0.0 to 1.0.",
+      "schema": { "minimum": 0, "maximum": 1 }
+    },
+    "settings.ui.stack_line.border_color.a": {
+      "description": "Opacity component, from 0.0 to 1.0.",
+      "schema": { "minimum": 0, "maximum": 1 }
+    },
+    "settings.ui.stack_line.spacing": {
+      "note": "Omitting the entire containing table gives `0` instead.",
+      "description": "Distance from the window edge to the indicator, in macOS points."
     },
     "settings.ui.mission_control": {
       "description": "Rift’s own Mission Control-style workspace overview."

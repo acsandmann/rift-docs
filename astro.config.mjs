@@ -70,6 +70,7 @@ export default defineConfig({
           { label: 'Virtual workspaces', slug: 'reference/configuration/virtual-workspaces' },
           { label: 'App rules', slug: 'reference/configuration/app-rules' },
           { label: 'Keybindings', slug: 'reference/configuration/keybindings' },
+          { label: 'Binding modes', slug: 'reference/configuration/binding-modes' },
           { label: 'Modifier combinations', slug: 'reference/configuration/modifiers' },
           { label: 'Commands and startup', slug: 'reference/configuration/commands' },
         ],

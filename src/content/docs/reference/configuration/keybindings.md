@@ -9,12 +9,12 @@ tableOfContents:
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.5.10-7-g3eceac1-dirty.
+Generated from Rift v0.6.0-8-g0ddcf73-dirty.
 -->
 
 Assign keyboard shortcuts to Rift commands in the `[keys]` table.
 
-Your `[keys]` table replaces the bundled keymap; an empty table registers no shortcuts.
+Your `[keys]` table replaces the bundled keymap; an empty table registers no shortcuts. Add named keymaps with [binding modes](/rift-docs/reference/configuration/binding-modes/).
 
 :::note[Examples are config fragments]
 Edit matching tables in your existing config; do not repeat their headers. Keep your `[keys]` shortcuts. For a complete file, start with [Quick start](/rift-docs/quick-start/).
@@ -36,5 +36,6 @@ Simple commands are quoted strings. Commands that need a direction, workspace, a
 ## See also
 
 - [Keybindings guide](/rift-docs/guides/keybindings/)
+- [Binding modes](/rift-docs/reference/configuration/binding-modes/)
 - [Modifier combinations](/rift-docs/reference/configuration/modifiers/)
 - [Commands and startup](/rift-docs/reference/configuration/commands/)

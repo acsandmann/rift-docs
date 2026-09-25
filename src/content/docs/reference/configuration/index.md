@@ -8,7 +8,7 @@ editUrl: false
 
 Look up setting names, accepted values, and defaults. For your first file, use [Quick start](/rift-docs/quick-start/).
 
-Source version: `v0.5.10-7-g3eceac1-dirty`. Newer settings may not exist in older releases.
+Source version: `v0.6.0-8-g0ddcf73-dirty`. Newer settings may not exist in older releases.
 
 :::caution[Keybindings are different]
 A custom config must contain `[settings]` and `[keys]`. Omitted settings use defaults, but `[keys]` replaces the bundled keymap. An empty table registers no keyboard shortcuts.
@@ -27,6 +27,7 @@ A custom config must contain `[settings]` and `[keys]`. Omitted settings use def
 | [Virtual workspaces](/rift-docs/reference/configuration/virtual-workspaces/) | Names, count, navigation, per-workspace layouts |
 | [App rules](/rift-docs/reference/configuration/app-rules/) | Match windows and control placement |
 | [Keybindings](/rift-docs/reference/configuration/keybindings/) | Keyboard shortcuts and command syntax |
+| [Binding modes](/rift-docs/reference/configuration/binding-modes/) | Named keymaps and mode transitions |
 | [Modifiers](/rift-docs/reference/configuration/modifiers/) | Reusable shortcut combinations |
 | [Startup commands](/rift-docs/reference/configuration/commands/) | Launch helpers and event subscriptions |
 
