@@ -8,7 +8,7 @@ editUrl: false
 
 Look up setting names, accepted values, and defaults. For your first file, use [Quick start](/rift-docs/quick-start/).
 
-Source version: `v0.6.0-8-g0ddcf73-dirty`. Newer settings may not exist in older releases.
+Source version: `v0.6.0-11-g8d32603`. Newer settings may not exist in older releases.
 
 :::caution[Keybindings are different]
 A custom config must contain `[settings]` and `[keys]`. Omitted settings use defaults, but `[keys]` replaces the bundled keymap. An empty table registers no keyboard shortcuts.

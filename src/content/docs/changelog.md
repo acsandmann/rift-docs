@@ -14,6 +14,7 @@ Rift's release notes, newest first. Each entry links back to its original [GitHu
   <time datetime="2026-09-16T13:44:18Z">September 16, 2026</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">53 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.5.9">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.5.9/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -36,6 +37,7 @@ Rift's release notes, newest first. Each entry links back to its original [GitHu
   <time datetime="2026-09-11T00:55:10Z">September 11, 2026</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">318 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.5.8.1">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.5.8.1/rift.default.toml">Default config ↗</a>
 </div>
 
 _No release notes were provided._
@@ -48,6 +50,7 @@ _No release notes were provided._
   <time datetime="2026-09-11T00:28:53Z">September 11, 2026</time>
   
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.5.8">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.5.8/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -61,6 +64,7 @@ _No release notes were provided._
   <time datetime="2026-09-09T22:00:35Z">September 9, 2026</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">114 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.5.7">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.5.7/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -82,6 +86,7 @@ After over a year of being out in the open, rift now has a docs site! Check it o
   <time datetime="2026-09-06T20:35:40Z">September 6, 2026</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">234 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.5.6">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.5.6/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -115,6 +120,7 @@ After over a year of being out in the open, rift now has a docs site! Check it o
   <time datetime="2026-09-01T01:02:31Z">September 1, 2026</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">327 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.5.5">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.5.5/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -135,6 +141,7 @@ After over a year of being out in the open, rift now has a docs site! Check it o
   <time datetime="2026-08-31T20:39:20Z">August 31, 2026</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">24 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.5.4">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.5.4/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -176,6 +183,7 @@ After over a year of being out in the open, rift now has a docs site! Check it o
   <time datetime="2026-08-04T01:27:41Z">August 4, 2026</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">800 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.5.3">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.5.3/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -197,6 +205,7 @@ After over a year of being out in the open, rift now has a docs site! Check it o
   <time datetime="2026-08-03T14:28:21Z">August 3, 2026</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">55 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.5.2">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.5.2/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -235,6 +244,7 @@ After over a year of being out in the open, rift now has a docs site! Check it o
   <time datetime="2026-07-23T16:01:55Z">July 23, 2026</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">348 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.5.1">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.5.1/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -252,6 +262,7 @@ After over a year of being out in the open, rift now has a docs site! Check it o
   <time datetime="2026-07-22T22:02:04Z">July 22, 2026</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">73 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.5.0">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.5.0/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -277,6 +288,7 @@ After over a year of being out in the open, rift now has a docs site! Check it o
   <time datetime="2026-07-13T19:18:08Z">July 13, 2026</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">347 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.4.4">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.4.4/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -299,6 +311,7 @@ After over a year of being out in the open, rift now has a docs site! Check it o
   <time datetime="2026-06-15T17:00:47Z">June 15, 2026</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">656 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.4.3">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.4.3/rift.default.toml">Default config ↗</a>
 </div>
 
 **Whats Changed**
@@ -319,6 +332,7 @@ After over a year of being out in the open, rift now has a docs site! Check it o
   <time datetime="2026-06-14T20:36:10Z">June 14, 2026</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">77 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.4.2">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.4.2/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -349,6 +363,7 @@ After over a year of being out in the open, rift now has a docs site! Check it o
   <time datetime="2026-05-15T19:20:04Z">May 15, 2026</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">957 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.4.1">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.4.1/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -380,6 +395,7 @@ After over a year of being out in the open, rift now has a docs site! Check it o
   <time datetime="2026-03-03T13:44:57Z">March 3, 2026</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">1,485 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.4.0">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.4.0/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -453,6 +469,7 @@ After over a year of being out in the open, rift now has a docs site! Check it o
   <time datetime="2026-02-28T22:14:13Z">February 28, 2026</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">134 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.4.0-alpha.7">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.4.0-alpha.7/rift.default.toml">Default config ↗</a>
 </div>
 
 _No release notes were provided._
@@ -465,6 +482,7 @@ _No release notes were provided._
   <time datetime="2026-02-27T04:17:54Z">February 27, 2026</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">122 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.4.0-alpha.6">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.4.0-alpha.6/rift.default.toml">Default config ↗</a>
 </div>
 
 _No release notes were provided._
@@ -477,6 +495,7 @@ _No release notes were provided._
   <time datetime="2026-02-26T18:49:37Z">February 26, 2026</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">33 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.4.0-alpha.5">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.4.0-alpha.5/rift.default.toml">Default config ↗</a>
 </div>
 
 _No release notes were provided._
@@ -489,6 +508,7 @@ _No release notes were provided._
   <time datetime="2026-02-25T16:14:38Z">February 25, 2026</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">82 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.4.0-alpha.4">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.4.0-alpha.4/rift.default.toml">Default config ↗</a>
 </div>
 
 _No release notes were provided._
@@ -501,6 +521,7 @@ _No release notes were provided._
   <time datetime="2026-02-20T14:21:50Z">February 20, 2026</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">216 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.4.0-alpha.3">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.4.0-alpha.3/rift.default.toml">Default config ↗</a>
 </div>
 
 _No release notes were provided._
@@ -513,6 +534,7 @@ _No release notes were provided._
   <time datetime="2026-02-20T02:49:11Z">February 20, 2026</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">49 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.4.0-alpha.2">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.4.0-alpha.2/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -526,6 +548,7 @@ _No release notes were provided._
   <time datetime="2026-02-20T02:36:34Z">February 20, 2026</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">7 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.4.0-alpha">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.4.0-alpha/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -573,6 +596,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
   <time datetime="2026-01-30T22:47:57Z">January 30, 2026</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">524 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.3.9">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.3.9/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -590,6 +614,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
   <time datetime="2026-01-23T17:48:22Z">January 23, 2026</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">197 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.3.8">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.3.8/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -606,6 +631,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
   <time datetime="2026-01-20T14:06:42Z">January 20, 2026</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">136 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.3.7">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.3.7/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Whats New
@@ -619,6 +645,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
   <time datetime="2026-01-20T00:57:11Z">January 20, 2026</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">53 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.3.6">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.3.6/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -636,6 +663,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
   <time datetime="2026-01-17T22:29:15Z">January 17, 2026</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">115 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.3.5">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.3.5/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -650,6 +678,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
   <time datetime="2026-01-16T21:50:35Z">January 16, 2026</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">55 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.3.4">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.3.4/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -663,6 +692,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
   <time datetime="2026-01-16T05:24:11Z">January 16, 2026</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">69 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.3.3">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.3.3/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -679,6 +709,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
   <time datetime="2026-01-16T03:11:00Z">January 16, 2026</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">8 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.3.2">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.3.2/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -693,6 +724,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
   <time datetime="2026-01-15T22:53:48Z">January 15, 2026</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">15 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.3.1">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.3.1/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -707,6 +739,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
   <time datetime="2026-01-15T21:14:29Z">January 15, 2026</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">16 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.3.0">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.3.0/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -751,6 +784,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
   <time datetime="2025-12-05T15:48:41Z">December 5, 2025</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">709 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.2.8">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.2.8/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -764,6 +798,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
   <time datetime="2025-12-05T04:20:19Z">December 5, 2025</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">37 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.2.7">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.2.7/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -784,6 +819,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
   <time datetime="2025-12-01T20:46:24Z">December 1, 2025</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">130 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.2.6">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.2.6/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -800,6 +836,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
   <time datetime="2025-11-24T06:04:08Z">November 24, 2025</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">178 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.2.5">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.2.5/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -833,6 +870,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
   <time datetime="2025-11-13T22:05:57Z">November 13, 2025</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">196 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.2.4">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.2.4/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -856,6 +894,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
   <time datetime="2025-11-12T16:29:34Z">November 12, 2025</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">48 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.2.3">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.2.3/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -872,6 +911,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
   <time datetime="2025-11-12T15:21:27Z">November 12, 2025</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">8 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.2.2">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.2.2/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -893,6 +933,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
   <time datetime="2025-11-10T20:10:22Z">November 10, 2025</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">52 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.2.1">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.2.1/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -909,6 +950,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
   <time datetime="2025-11-09T21:04:24Z">November 9, 2025</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">46 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.2.0">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.2.0/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -929,6 +971,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
   <time datetime="2025-11-06T03:14:01Z">November 6, 2025</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">68 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.1.1">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.1.1/rift.default.toml">Default config ↗</a>
 </div>
 
 **Whats Changed:**
@@ -946,6 +989,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
   <time datetime="2025-10-30T02:24:38Z">October 30, 2025</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">133 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.1.0">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.1.0/rift.default.toml">Default config ↗</a>
 </div>
 
 **Whats Changed**
@@ -971,6 +1015,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
   <time datetime="2025-10-27T21:12:52Z">October 27, 2025</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">51 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.0.10.1">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.0.10.1/rift.default.toml">Default config ↗</a>
 </div>
 
 **Whats Changed**
@@ -984,6 +1029,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
   <time datetime="2025-10-27T20:30:20Z">October 27, 2025</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">4 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.0.10">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.0.10/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -1000,6 +1046,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
   <time datetime="2025-10-25T16:21:44Z">October 25, 2025</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">51 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.0.9">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.0.9/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -1016,6 +1063,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
   <time datetime="2025-10-23T18:56:10Z">October 23, 2025</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">47 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.0.8">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.0.8/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -1029,6 +1077,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
   <time datetime="2025-10-23T01:43:46Z">October 23, 2025</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">20 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.0.7">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.0.7/rift.default.toml">Default config ↗</a>
 </div>
 
 _No release notes were provided._
@@ -1041,6 +1090,7 @@ _No release notes were provided._
   <time datetime="2025-10-22T21:26:36Z">October 22, 2025</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">8 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.0.6.2">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.0.6.2/rift.default.toml">Default config ↗</a>
 </div>
 
 _No release notes were provided._
@@ -1053,6 +1103,7 @@ _No release notes were provided._
   <time datetime="2025-10-22T21:02:31Z">October 22, 2025</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">4 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.0.6.1">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.0.6.1/rift.default.toml">Default config ↗</a>
 </div>
 
 _No release notes were provided._
@@ -1065,6 +1116,7 @@ _No release notes were provided._
   <time datetime="2025-10-22T18:40:00Z">October 22, 2025</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">10 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.0.6">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.0.6/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -1088,6 +1140,7 @@ _No release notes were provided._
   <time datetime="2025-10-21T21:54:41Z">October 21, 2025</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">28 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.0.5">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.0.5/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -1106,6 +1159,7 @@ huuuugggeee improvements relating to fullscreening windows, moving windows btwn 
   <time datetime="2025-10-20T20:33:15Z">October 20, 2025</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">30 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.0.4.1">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.0.4.1/rift.default.toml">Default config ↗</a>
 </div>
 
 _No release notes were provided._
@@ -1118,6 +1172,7 @@ _No release notes were provided._
   <time datetime="2025-10-19T22:48:05Z">October 19, 2025</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">29 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.0.4">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.0.4/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -1136,6 +1191,7 @@ _No release notes were provided._
   <time datetime="2025-10-16T03:08:24Z">October 16, 2025</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">62 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.0.3">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.0.3/rift.default.toml">Default config ↗</a>
 </div>
 
 _No release notes were provided._
@@ -1148,6 +1204,7 @@ _No release notes were provided._
   <time datetime="2025-10-15T19:19:47Z">October 15, 2025</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">9 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.0.2">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.0.2/rift.default.toml">Default config ↗</a>
 </div>
 
 ### Changes
@@ -1163,6 +1220,7 @@ _No release notes were provided._
   <time datetime="2025-10-15T01:26:20Z">October 15, 2025</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">20 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.0.1.1">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.0.1.1/rift.default.toml">Default config ↗</a>
 </div>
 
 emergency fix for pathfinding in service builder
@@ -1175,6 +1233,7 @@ emergency fix for pathfinding in service builder
   <time datetime="2025-10-15T00:59:19Z">October 15, 2025</time>
   <span class="changelog-release-downloads" title="Across 1 release asset">7 downloads</span>
   <a href="https://github.com/acsandmann/rift/releases/tag/v0.0.1">GitHub release ↗</a>
+  <a href="https://github.com/acsandmann/rift/blob/v0.0.1/rift.default.toml">Default config ↗</a>
 </div>
 
 rifts first release, and also a test

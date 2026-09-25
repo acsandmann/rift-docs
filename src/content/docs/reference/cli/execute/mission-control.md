@@ -9,7 +9,7 @@ tableOfContents:
 
 <!-- GENERATED FILE. Do not edit directly. -->
 
-Source version: `v0.6.0-8-g0ddcf73-dirty`.
+Source version: `v0.6.0-11-g8d32603`.
 
 Mission control commands. All commands act on the running Rift instance.
 

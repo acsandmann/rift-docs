@@ -9,7 +9,7 @@ tableOfContents:
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.6.0-8-g0ddcf73-dirty.
+Generated from Rift v0.6.0-11-g8d32603.
 -->
 
 Animation, focus behavior, Space activation, and hot reload.

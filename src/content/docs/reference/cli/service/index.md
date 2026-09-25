@@ -9,7 +9,7 @@ tableOfContents:
 
 <!-- GENERATED FILE. Do not edit directly. -->
 
-Source version: `v0.6.0-8-g0ddcf73-dirty`.
+Source version: `v0.6.0-11-g8d32603`.
 
 :::note[Use the `rift` binary]
 These legacy `rift-cli service` names redirect you to the `rift` binary. Use `rift service install`, `start`, `restart`, `stop`, or `uninstall`.

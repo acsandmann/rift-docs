@@ -73,6 +73,9 @@ function indentReleaseHeadings(body) {
 
 function renderRelease(release, index, releases) {
   const label = release.name?.trim() || release.tag_name;
+  // Early beta releases use a -beta label, but their Git tags omit that suffix.
+  const configRef = release.tag_name.replace(/-beta$/, '');
+  const configUrl = `${githubBase}/blob/${encodeURIComponent(configRef)}/rift.default.toml`;
   const rawBody = (release.body || '').replace(/\r\n/g, '\n');
   const compareUrl = rawBody.match(/\*\*Full Changelog\*\*:\s*(https?:\/\/\S+)/i)?.[1];
   const body = indentReleaseHeadings(
@@ -92,6 +95,7 @@ function renderRelease(release, index, releases) {
   <time datetime="${release.published_at}">${formatDate(release.published_at)}</time>
   ${downloadStat}
   <a href="${release.html_url}">GitHub release ↗</a>
+  <a href="${configUrl}">Default config ↗</a>
 </div>
 
 ${linkedBody}

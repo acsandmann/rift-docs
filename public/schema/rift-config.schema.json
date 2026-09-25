@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Rift configuration",
-  "description": "Generated from Rift v0.6.0-8-g0ddcf73-dirty.",
+  "description": "Generated from Rift v0.6.0-11-g8d32603.",
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -144,6 +144,10 @@
                     "end_of_tree"
                   ],
                   "description": "Override the layout-wide insertion point for BSP. Leave it unset to inherit `[settings.layout].window_insertion_point`."
+                },
+                "single_window_aspect_ratio": {
+                  "type": "number",
+                  "description": "Center a lone window at this width-to-height ratio."
                 }
               },
               "description": "Options specific to the BSP layout. Shared layout settings can still be set here."

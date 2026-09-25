@@ -9,7 +9,7 @@ tableOfContents:
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.6.0-8-g0ddcf73-dirty.
+Generated from Rift v0.6.0-11-g8d32603.
 -->
 
 Choose a default layout and tune spacing, insertion, and layout-specific behavior.
@@ -80,6 +80,14 @@ Options specific to the BSP layout. Shared layout settings can still be set here
 <section class="config-option config-option--simple">
 <p class="config-description">Override the layout-wide insertion point for BSP. Leave it unset to inherit <a class="config-setting-link" href="/rift-docs/reference/configuration/layouts/#window_insertion_point"><code>[settings.layout].window_insertion_point</code></a>.</p>
 <dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd><code>next_to_selection</code> or <code>end_of_tree</code> (optional)</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd>Not set</dd></div></dl>
+
+</section>
+
+### `single_window_aspect_ratio`
+
+<section class="config-option config-option--simple">
+<p class="config-description">Center a lone window at this width-to-height ratio.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number (optional)</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd>Not set</dd></div></dl>
 
 </section>
 
