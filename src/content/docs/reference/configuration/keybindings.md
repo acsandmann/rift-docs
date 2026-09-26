@@ -9,7 +9,7 @@ tableOfContents:
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.6.1-6-g1631fb2-dirty.
+Generated from Rift v0.6.1-8-g9646c99-dirty.
 -->
 
 Assign keyboard shortcuts to Rift commands in the `[keys]` table.

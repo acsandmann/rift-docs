@@ -84,6 +84,34 @@
 }
 
 .hero { padding-block: 2rem; }
+.hero-install {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 0.9rem;
+}
+
+.hero-install__label {
+  color: var(--sl-color-gray-3);
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.hero-install code {
+  display: inline-block;
+  max-width: 100%;
+  padding: 0.4rem 0.65rem;
+  border: 1px solid var(--rift-card-border);
+  border-radius: 0.5rem;
+  background: var(--rift-card-bg);
+  color: var(--sl-color-white);
+  font-size: 0.85rem;
+  overflow-wrap: anywhere;
+}
+
 .sl-markdown-content img {
   border: 1px solid color-mix(in srgb, var(--sl-color-gray-5) 72%, transparent);
   border-radius: 0.9rem;

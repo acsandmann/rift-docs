@@ -9,7 +9,7 @@ tableOfContents:
 
 <!-- GENERATED FILE. Do not edit directly. -->
 
-Source version: `v0.6.1-6-g1631fb2-dirty`.
+Source version: `v0.6.1-8-g9646c99-dirty`.
 
 Queries read state without changing it. Set `RIFT_CLI_PRETTY=1` to format returned JSON for reading.
 
