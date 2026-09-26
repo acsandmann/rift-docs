@@ -153,6 +153,15 @@ for (const file of docs) {
   }
 }
 
+// Verify Serde's enum casing survives both schema and reference generation.
+const warpValues = schema.properties.settings.properties.horizontal_mouse_warp.enum;
+if (JSON.stringify(warpValues) !== JSON.stringify(['top-to-bottom', 'bottom-to-top'])) {
+  errors.push('horizontal_mouse_warp must expose Serde kebab-case values');
+}
+if (/top_to_bottom|bottom_to_top/.test(generatedReferenceText)) {
+  errors.push('Generated reference contains invalid snake_case horizontal warp values');
+}
+
 if (errors.length) {
   console.error(errors.join('\n'));
   process.exit(1);

@@ -9,7 +9,7 @@ tableOfContents:
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.6.0-11-g8d32603.
+Generated from Rift v0.6.1-6-g1631fb2-dirty.
 -->
 
 Settings for the scrolling-column layout and its optional trackpad gestures.
@@ -80,6 +80,14 @@ Options specific to the Scrolling layout.
 <section class="config-option config-option--simple">
 <p class="config-description">Largest column width allowed by resize commands, from <code>0.0</code> through <code>1.0</code>.</p>
 <dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>0.9</code></dd></div></dl>
+
+</section>
+
+### `per_display`
+
+<section class="config-option config-option--simple">
+<p class="config-description">Sparse width overrides keyed by display UUID.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>map of text to ScrollingWidthOverride</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd>Empty table</dd></div></dl>
 
 </section>
 

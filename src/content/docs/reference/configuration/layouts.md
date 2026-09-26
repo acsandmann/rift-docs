@@ -9,7 +9,7 @@ tableOfContents:
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.6.0-11-g8d32603.
+Generated from Rift v0.6.1-6-g1631fb2-dirty.
 -->
 
 Choose a default layout and tune spacing, insertion, and layout-specific behavior.

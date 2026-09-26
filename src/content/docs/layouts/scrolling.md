@@ -15,6 +15,33 @@ Imagine a long row of columns that can extend past both sides of your display. A
 With Scrolling, arrange multiple displays in a vertical stack in macOS. Because macOS places all display coordinates in one shared space, side-by-side displays can allow off-screen columns to leak onto another display.
 :::
 
+## Horizontal mouse warp
+
+If your displays are physically side-by-side, horizontal mouse warp lets the pointer cross between them horizontally while keeping the vertical macOS arrangement recommended above.
+
+```text
+macOS arrangement:    Physical arrangement:
+┌─────┐              ┌─────┐ ┌─────┐
+│  A  │              │  A  │ │  B  │
+└─────┘              └─────┘ └─────┘
+┌─────┐
+│  B  │
+└─────┘
+```
+
+Add this under `[settings]` (not `[settings.layout.scrolling]`):
+
+```toml
+[settings]
+horizontal_mouse_warp = "top-to-bottom"
+```
+
+With `top-to-bottom`, higher displays behave as being farther left: moving right through A’s edge enters B, and moving left through B’s edge returns to A. Use `bottom-to-top` to reverse that order. With more displays, the pointer crosses to the next logical neighbor; it does not wrap from the last display to the first.
+
+Crossing also works while dragging. The pointer keeps its distance from the source display’s top edge, so crossing into a shorter display only works where the corresponding vertical position exists. This changes pointer crossing only; it does not change the macOS display arrangement.
+
+The feature is disabled by default. Remove the setting to disable it again. See [`horizontal_mouse_warp`](/rift-docs/reference/configuration/general/#horizontal_mouse_warp) for the configuration reference.
+
 ## Set it up
 
 ```toml

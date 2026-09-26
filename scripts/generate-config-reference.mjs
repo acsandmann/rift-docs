@@ -17,7 +17,9 @@ function blockAfter(text, start) {
 }
 function rustTypes(text) {
   const out = new Map();
-  for (const m of text.matchAll(/(?:pub\s+)?(struct|enum)\s+(\w+)/g)) out.set(m[2], { kind: m[1], body: blockAfter(text, m.index) });
+  for (const m of text.matchAll(/(?:^|\n)([ \t]*(?:(?:#\[[^\n]*\]|\/\/\/[^\n]*)\n[ \t]*)*)(?:pub\s+)?(struct|enum)\s+(\w+)/g)) {
+    out.set(m[3], { kind: m[2], attrs: m[1], body: blockAfter(text, m.index) });
+  }
   return out;
 }
 const protocolSource = ['layout.rs', 'commands.rs'].map((file) =>
@@ -37,7 +39,22 @@ function fields(typeName) {
 }
 function enumValues(typeName) {
   const t = types.get(typeName); if (!t || t.kind !== 'enum') return null;
-  return [...t.body.matchAll(/(?:^|\n)\s*(\w+)(?:\s*[,({])/g)].map((m) => snake(m[1]));
+  const rule = t.attrs.match(/rename_all\s*=\s*"([^"]+)"/)?.[1];
+  function rename(name) {
+    switch (rule) {
+      case undefined: case 'PascalCase': return name;
+      case 'lowercase': return name.toLowerCase();
+      case 'UPPERCASE': return name.toUpperCase();
+      case 'camelCase': return name[0].toLowerCase() + name.slice(1);
+      case 'snake_case': return snake(name);
+      case 'SCREAMING_SNAKE_CASE': return snake(name).toUpperCase();
+      case 'kebab-case': return snake(name).replaceAll('_', '-');
+      case 'SCREAMING-KEBAB-CASE': return snake(name).replaceAll('_', '-').toUpperCase();
+      default: throw new Error(`Unsupported Serde enum rename rule: ${rule}`);
+    }
+  }
+  return [...t.body.matchAll(/(?:^|\n)([ \t]*(?:(?:#\[[^\n]*\]|\/\/\/[^\n]*)\n[ \t]*)*)(\w+)(?:\s*[,({])/g)]
+    .map((m) => m[1].match(/rename\s*=\s*"([^"]+)"/)?.[1] ?? rename(m[2]));
 }
 function baseType(rust) {
   const optional = rust.startsWith('Option<'); const array = rust.startsWith('Vec<');
@@ -228,7 +245,7 @@ function markdownGroup(title, prefix, version) {
     'Virtual workspaces': ['virtual_workspaces.app_rules'],
   }[title] || [];
   function walk(typeName, parts, seen = new Set()) { if (seen.has(typeName)) return; const branchSeen = new Set(seen); branchSeen.add(typeName); const children = []; for (const f of fields(typeName)) {
-    if (f.flatten) { walk(f.rust, parts, new Set(branchSeen)); continue; } const p = [...parts, f.name]; const s = baseType(f.rust); const over = overrides.overrides[p.join('.')]; const value = defaultValue(f);
+    if (f.flatten) { walk(f.rust, parts, new Set(branchSeen)); continue; } const p = [...parts, f.name]; const over = overrides.overrides[p.join('.')]; const s = { ...baseType(f.rust), ...over?.schema }; const value = defaultValue(f);
     if (over?.hidden || (overrides.hidden || []).includes(p.join('.'))) continue;
     rows.push({ path: p.join('.'), rust: f.rust, type: friendlyType(f.rust, s), container: types.get(f.rust)?.kind === 'struct', arrayContainer: Boolean(f.rust.match(/^Vec<(.+)>$/) && nestedStructType(f.rust)), description: over?.description || f.description || (() => { throw new Error(`Missing description: ${p.join('.')}`); })(), value, note: over?.note, customExample: over?.example, enum: s.enum?.filter((x) => x !== null) });
     const nested = nestedStructType(f.rust); if (nested) children.push([nested, p]);

@@ -62,7 +62,12 @@
     },
     "binding_modes": {
       "description": "A map from custom mode names to keymaps. Each active mode replaces the default `[keys]` bindings. The name `default` is reserved; use `{ binding_mode = \"default\" }` to return to `[keys]`.",
-      "schema": { "type": "object", "additionalProperties": { "type": "object" } }
+      "schema": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "object"
+        }
+      }
     },
     "modifier_combinations": {
       "description": "A map from a short name to a modifier string. For example, `main = \"Alt + Shift\"` lets you write `main + H` in the `[keys]` table."
@@ -99,6 +104,10 @@
     },
     "settings.focus_follows_mouse": {
       "description": "Ask Rift to focus a managed window when the pointer moves over it."
+    },
+    "settings.horizontal_mouse_warp": {
+      "description": "Treat displays stacked in macOS as a horizontal mouse chain when they are physically side-by-side. `top-to-bottom` puts the upper display logically left; `bottom-to-top` reverses that order. Crossing a left/right edge enters the neighboring display at the same vertical offset only if that position exists. This does not change macOS display arrangement.",
+      "example": "[settings]\nhorizontal_mouse_warp = \"top-to-bottom\""
     },
     "settings.focus_follows_mouse_disable_hotkey": {
       "description": "Optional hotkey held to temporarily suspend focus-follows-mouse. Use a full hotkey such as `Ctrl + A` or a modifier such as `Ctrl`.",
@@ -259,10 +268,10 @@
       "description": "Label a workspace with its one-based workspace number or its configured name."
     },
     "settings.ui.menu_bar.display_style": {
-      "description": "Draw a miniature representation of each workspace’s windows (`layout`) or show a number or name (`label`)."
+      "description": "Draw a miniature representation of each workspace\u2019s windows (`layout`) or show a number or name (`label`)."
     },
     "settings.ui.menu_bar.layout_folder": {
-      "description": "Folder containing saved `.ron` layouts shown in the menu bar’s restore menus. `~` expands to your home directory."
+      "description": "Folder containing saved `.ron` layouts shown in the menu bar\u2019s restore menus. `~` expands to your home directory."
     },
     "settings.ui.stack_line": {
       "description": "Show a small edge indicator for stacked windows."
@@ -290,19 +299,31 @@
     },
     "settings.ui.stack_line.selected_color.r": {
       "description": "Red component, from 0.0 to 1.0.",
-      "schema": { "minimum": 0, "maximum": 1 }
+      "schema": {
+        "minimum": 0,
+        "maximum": 1
+      }
     },
     "settings.ui.stack_line.selected_color.g": {
       "description": "Green component, from 0.0 to 1.0.",
-      "schema": { "minimum": 0, "maximum": 1 }
+      "schema": {
+        "minimum": 0,
+        "maximum": 1
+      }
     },
     "settings.ui.stack_line.selected_color.b": {
       "description": "Blue component, from 0.0 to 1.0.",
-      "schema": { "minimum": 0, "maximum": 1 }
+      "schema": {
+        "minimum": 0,
+        "maximum": 1
+      }
     },
     "settings.ui.stack_line.selected_color.a": {
       "description": "Opacity component, from 0.0 to 1.0.",
-      "schema": { "minimum": 0, "maximum": 1 }
+      "schema": {
+        "minimum": 0,
+        "maximum": 1
+      }
     },
     "settings.ui.stack_line.unselected_color": {
       "description": "RGBA color for unselected stack segments. Each component ranges from 0.0 to 1.0."
@@ -312,45 +333,69 @@
     },
     "settings.ui.stack_line.unselected_color.r": {
       "description": "Red component, from 0.0 to 1.0.",
-      "schema": { "minimum": 0, "maximum": 1 }
+      "schema": {
+        "minimum": 0,
+        "maximum": 1
+      }
     },
     "settings.ui.stack_line.unselected_color.g": {
       "description": "Green component, from 0.0 to 1.0.",
-      "schema": { "minimum": 0, "maximum": 1 }
+      "schema": {
+        "minimum": 0,
+        "maximum": 1
+      }
     },
     "settings.ui.stack_line.unselected_color.b": {
       "description": "Blue component, from 0.0 to 1.0.",
-      "schema": { "minimum": 0, "maximum": 1 }
+      "schema": {
+        "minimum": 0,
+        "maximum": 1
+      }
     },
     "settings.ui.stack_line.unselected_color.a": {
       "description": "Opacity component, from 0.0 to 1.0.",
-      "schema": { "minimum": 0, "maximum": 1 }
+      "schema": {
+        "minimum": 0,
+        "maximum": 1
+      }
     },
     "settings.ui.stack_line.border_color.r": {
       "description": "Red component, from 0.0 to 1.0.",
-      "schema": { "minimum": 0, "maximum": 1 }
+      "schema": {
+        "minimum": 0,
+        "maximum": 1
+      }
     },
     "settings.ui.stack_line.border_color.g": {
       "description": "Green component, from 0.0 to 1.0.",
-      "schema": { "minimum": 0, "maximum": 1 }
+      "schema": {
+        "minimum": 0,
+        "maximum": 1
+      }
     },
     "settings.ui.stack_line.border_color.b": {
       "description": "Blue component, from 0.0 to 1.0.",
-      "schema": { "minimum": 0, "maximum": 1 }
+      "schema": {
+        "minimum": 0,
+        "maximum": 1
+      }
     },
     "settings.ui.stack_line.border_color.a": {
       "description": "Opacity component, from 0.0 to 1.0.",
-      "schema": { "minimum": 0, "maximum": 1 }
+      "schema": {
+        "minimum": 0,
+        "maximum": 1
+      }
     },
     "settings.ui.stack_line.spacing": {
       "note": "Omitting the entire containing table gives `0` instead.",
       "description": "Distance from the window edge to the indicator, in macOS points."
     },
     "settings.ui.mission_control": {
-      "description": "Rift’s own Mission Control-style workspace overview."
+      "description": "Rift\u2019s own Mission Control-style workspace overview."
     },
     "settings.ui.mission_control.enabled": {
-      "description": "Enable Rift’s Mission Control helper.",
+      "description": "Enable Rift\u2019s Mission Control helper.",
       "example": "[settings.ui.mission_control]\nenabled = true"
     },
     "settings.ui.mission_control.fade_enabled": {
@@ -361,7 +406,7 @@
       "note": "Omitting the entire containing table gives `0` instead."
     },
     "virtual_workspaces": {
-      "description": "Rift’s named or numbered work areas. A workspace is a logical layer on top of a macOS Space."
+      "description": "Rift\u2019s named or numbered work areas. A workspace is a logical layer on top of a macOS Space."
     },
     "virtual_workspaces.enabled": {
       "description": "Currently has no effect."
@@ -505,10 +550,6 @@
     "settings.layout.scrolling.gestures.workspace_switch_threshold": {
       "description": "Overscroll, in normalized steps, required before the gesture switches workspaces."
     },
-    "settings.ui.stack_line.spacing": {
-      "note": "Omitting the entire containing table gives `0` instead.",
-      "description": "Distance from the window edge to the indicator, in macOS points."
-    },
     "virtual_workspaces.app_rules.app_id": {
       "description": "Application bundle ID, matched without regard to letter case. For example, `com.apple.Terminal`."
     },
@@ -522,7 +563,7 @@
       "description": "Set `false` to exclude matching windows from Rift. Set `true` to override the normal manageability checks for visible windows. Omit it to keep the normal checks. With `false`, omit placement and focus actions because they are ignored."
     },
     "settings.layout.traditional.equalize_nodes": {
-      "description": "Give a new window the average share of its siblings when inserting it. When false, split the selected window’s share instead. Manual resizing remains available."
+      "description": "Give a new window the average share of its siblings when inserting it. When false, split the selected window\u2019s share instead. Manual resizing remains available."
     },
     "settings.layout.scrolling.focus_navigation_style": {
       "description": "Choose how horizontal focus reveals a column. `niri` scrolls only as needed in the navigation direction; `anchored` always places the focused column at the chosen `alignment`."

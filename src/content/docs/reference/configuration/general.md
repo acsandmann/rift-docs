@@ -9,7 +9,7 @@ tableOfContents:
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.6.0-11-g8d32603.
+Generated from Rift v0.6.1-6-g1631fb2-dirty.
 -->
 
 Animation, focus behavior, Space activation, and hot reload.
@@ -92,6 +92,16 @@ Global behavior shared by the active layout and the rest of Rift.
 <p class="config-description">Ask Rift to focus a managed window when the pointer moves over it.</p>
 <dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>boolean</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>true</code></dd></div></dl>
 
+</section>
+
+### `horizontal_mouse_warp`
+
+<section class="config-option config-option--expanded">
+<p class="config-description">Treat displays stacked in macOS as a horizontal mouse chain when they are physically side-by-side. <code>top-to-bottom</code> puts the upper display logically left; <code>bottom-to-top</code> reverses that order. Crossing a left/right edge enters the neighboring display at the same vertical offset only if that position exists. This does not change macOS display arrangement.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd><code>top-to-bottom</code> or <code>bottom-to-top</code> (optional)</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd>Not set</dd></div></dl>
+<div class="config-example"><div class="config-example__label">Example</div><pre><code class="language-toml">[settings]
+horizontal_mouse_warp = &quot;top-to-bottom&quot;
+</code></pre></div>
 </section>
 
 ### `focus_follows_mouse_disable_hotkey`
