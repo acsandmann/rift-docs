@@ -9,7 +9,7 @@ tableOfContents:
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.6.1-8-g9646c99-dirty.
+Generated from Rift v0.6.2-10-g99f2830c.
 -->
 
 Optional indicators for the menu bar, stack line, and Mission Control.
@@ -41,7 +41,7 @@ Show workspace status in the macOS menu bar.
 
 <section class="config-option config-option--simple">
 <p class="config-description">Enable the menu bar workspace indicator.</p>
-<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>boolean</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>false</code></dd></div></dl>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>boolean</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>true</code></dd></div></dl>
 
 </section>
 
@@ -143,6 +143,22 @@ hover = &quot;click&quot;
 ## <span class="config-table-heading">[settings.ui.mission_control]</span>
 
 Rift’s own Mission Control-style workspace overview.
+
+### `show_empty_workspaces`
+
+<section class="config-option config-option--simple">
+<p class="config-description">Include workspaces without windows in Overview.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>boolean</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>true</code></dd></div></dl>
+
+</section>
+
+### `window_previews`
+
+<section class="config-option config-option--expanded">
+<p class="config-description">Show window previews in Rift’s Mission Control overview.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>boolean</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>true</code></dd></div></dl>
+<aside class="config-note"><strong>Note</strong><span>Omitting the entire containing table gives <code>false</code> instead.</span></aside>
+</section>
 
 ### `enabled`
 

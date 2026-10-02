@@ -9,7 +9,7 @@ tableOfContents:
 
 <!-- GENERATED FILE. Do not edit directly. -->
 
-Source version: `v0.6.1-8-g9646c99-dirty`.
+Source version: `v0.6.2-10-g99f2830c`.
 
 Queries read state without changing it. Set `RIFT_CLI_PRETTY=1` to format returned JSON for reading.
 
@@ -81,6 +81,13 @@ Queries read state without changing it. Set `RIFT_CLI_PRETTY=1` to format return
 <div class="cli-parameter"><dt><code>--display &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;</code></dt><dd>Display UUID; uses the display's current macOS space.</dd></div>
 <div class="cli-parameter"><dt><code>--workspace-id &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-workspace-id">WORKSPACE_ID</a>&gt;</code></dt><dd></dd></div>
 </dl></section>
+</article>
+
+## <span class="cli-command-heading">binding-mode</span>
+
+<article class="cli-command">
+<p class="cli-command__description">Get the active binding mode name.</p>
+<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli query binding-mode</code></div></div>
 </article>
 
 ## <span class="cli-command-heading">metrics</span>

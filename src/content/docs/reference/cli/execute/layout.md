@@ -9,7 +9,7 @@ tableOfContents:
 
 <!-- GENERATED FILE. Do not edit directly. -->
 
-Source version: `v0.6.1-8-g9646c99-dirty`.
+Source version: `v0.6.2-10-g99f2830c`.
 
 Layout commands. All commands act on the running Rift instance.
 
@@ -145,6 +145,16 @@ Layout commands. All commands act on the running Rift instance.
 <article class="cli-command">
 <p class="cli-command__description">Snap the strip to the nearest column boundary (scrolling layout only).</p>
 <div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute layout snap-strip</code></div></div>
+</article>
+
+## <span class="cli-command-heading">switch-preset-column-width</span>
+
+<article class="cli-command">
+<p class="cli-command__description">Switch to the next preset column width (scrolling layout only).</p>
+<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute layout switch-preset-column-width [OPTIONS]</code></div></div>
+<section class="cli-parameters"><h3>Options</h3><dl class="cli-command__details">
+<div class="cli-parameter"><dt><code>--backwards</code></dt><dd></dd></div>
+</dl></section>
 </article>
 
 ## <span class="cli-command-heading">center-selection</span>

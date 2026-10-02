@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Rift configuration",
-  "description": "Generated from Rift v0.6.1-8-g9646c99-dirty.",
+  "description": "Generated from Rift v0.6.2-10-g99f2830c.",
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -389,7 +389,8 @@
                 },
                 "animate": {
                   "type": "boolean",
-                  "description": "Override animation only for Scrolling workspaces. Leave it unset to inherit `settings.animate`."
+                  "description": "Animate transitions in Scrolling workspaces independently of `settings.animate` and Low Power Mode. Set to `false` to disable scrolling animations. Leave unset to enable them.",
+                  "default": true
                 },
                 "column_width_ratio": {
                   "type": "number",
@@ -397,6 +398,14 @@
                   "minimum": 0,
                   "maximum": 1,
                   "default": 0.7
+                },
+                "preset_column_widths": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "description": "Proportional column widths cycled in configured order.",
+                  "default": []
                 },
                 "preserve_window_sizes": {
                   "type": "boolean",
@@ -465,6 +474,10 @@
                       "description": "Enable horizontal swipes for moving between columns in a Scrolling workspace.",
                       "default": false
                     },
+                    "animate": {
+                      "type": "boolean",
+                      "description": "Animate gesture release independently of structural layout animations. When omitted, inherit the scrolling layout/global animation setting."
+                    },
                     "invert_horizontal": {
                       "type": "boolean",
                       "description": "Reverse the meaning of left and right column swipes.",
@@ -494,7 +507,7 @@
                     "workspace_switch_threshold": {
                       "type": "number",
                       "description": "Overscroll, in normalized steps, required before the gesture switches workspaces.",
-                      "default": 0.15
+                      "default": 0.55
                     }
                   },
                   "description": "Optional horizontal gestures for moving between columns in a Scrolling workspace. The finger count is configurable."
@@ -516,7 +529,7 @@
                 "enabled": {
                   "type": "boolean",
                   "description": "Enable the menu bar workspace indicator.",
-                  "default": false
+                  "default": true
                 },
                 "show_empty": {
                   "type": "boolean",
@@ -734,6 +747,16 @@
               "type": "object",
               "additionalProperties": false,
               "properties": {
+                "show_empty_workspaces": {
+                  "type": "boolean",
+                  "description": "Include workspaces without windows in Overview.",
+                  "default": true
+                },
+                "window_previews": {
+                  "type": "boolean",
+                  "description": "Show window previews in Rift’s Mission Control overview.",
+                  "default": true
+                },
                 "enabled": {
                   "type": "boolean",
                   "description": "Enable Rift’s Mission Control helper.",

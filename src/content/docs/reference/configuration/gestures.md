@@ -9,7 +9,7 @@ tableOfContents:
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.6.1-8-g9646c99-dirty.
+Generated from Rift v0.6.2-10-g99f2830c.
 -->
 
 Trackpad swipes between virtual workspaces. Disabled by default.

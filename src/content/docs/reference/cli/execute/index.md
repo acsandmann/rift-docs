@@ -9,7 +9,7 @@ tableOfContents:
 
 <!-- GENERATED FILE. Do not edit directly. -->
 
-Source version: `v0.6.1-8-g9646c99-dirty`.
+Source version: `v0.6.2-10-g99f2830c`.
 
 Commands under `execute` change windows, workspaces, layouts, and runtime state.
 

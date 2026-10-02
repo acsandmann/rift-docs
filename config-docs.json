@@ -207,7 +207,7 @@
       "description": "Override the layout-wide insertion point for Scrolling. Leave it unset to inherit `[settings.layout].window_insertion_point`."
     },
     "settings.layout.scrolling.animate": {
-      "description": "Override animation only for Scrolling workspaces. Leave it unset to inherit `settings.animate`."
+      "description": "Animate transitions in Scrolling workspaces independently of `settings.animate` and Low Power Mode. Set to `false` to disable scrolling animations. Leave unset to enable them."
     },
     "settings.layout.scrolling.column_width_ratio": {
       "description": "Normal width of a column as a fraction of the tiling area. It must stay between `min_column_width_ratio` and `max_column_width_ratio`.",
@@ -393,6 +393,10 @@
     },
     "settings.ui.mission_control": {
       "description": "Rift\u2019s own Mission Control-style workspace overview."
+    },
+    "settings.ui.mission_control.window_previews": {
+      "description": "Show window previews in Rift’s Mission Control overview.",
+      "note": "Omitting the entire containing table gives `false` instead."
     },
     "settings.ui.mission_control.enabled": {
       "description": "Enable Rift\u2019s Mission Control helper.",

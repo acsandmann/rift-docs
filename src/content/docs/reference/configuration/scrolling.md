@@ -9,7 +9,7 @@ tableOfContents:
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.6.1-8-g9646c99-dirty.
+Generated from Rift v0.6.2-10-g99f2830c.
 -->
 
 Settings for the scrolling-column layout and its optional trackpad gestures.
@@ -46,8 +46,8 @@ Options specific to the Scrolling layout.
 ### `animate`
 
 <section class="config-option config-option--simple">
-<p class="config-description">Override animation only for Scrolling workspaces. Leave it unset to inherit <a class="config-setting-link" href="/rift-docs/reference/configuration/general/#animate"><code>settings.animate</code></a>.</p>
-<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>boolean (optional)</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd>Not set</dd></div></dl>
+<p class="config-description">Animate transitions in Scrolling workspaces independently of <a class="config-setting-link" href="/rift-docs/reference/configuration/general/#animate"><code>settings.animate</code></a> and Low Power Mode. Set to <code>false</code> to disable scrolling animations. Leave unset to enable them.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>boolean (optional)</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>true</code></dd></div></dl>
 
 </section>
 
@@ -56,6 +56,14 @@ Options specific to the Scrolling layout.
 <section class="config-option config-option--simple">
 <p class="config-description">Normal width of a column as a fraction of the tiling area. It must stay between <a class="config-setting-link" href="/rift-docs/reference/configuration/scrolling/#min_column_width_ratio"><code>min_column_width_ratio</code></a> and <a class="config-setting-link" href="/rift-docs/reference/configuration/scrolling/#max_column_width_ratio"><code>max_column_width_ratio</code></a>.</p>
 <dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>0.7</code></dd></div></dl>
+
+</section>
+
+### `preset_column_widths`
+
+<section class="config-option config-option--simple">
+<p class="config-description">Proportional column widths cycled in configured order.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>list of numbers</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd>Empty list</dd></div></dl>
 
 </section>
 
@@ -119,6 +127,14 @@ Optional horizontal gestures for moving between columns in a Scrolling workspace
 
 </section>
 
+### `animate`
+
+<section class="config-option config-option--simple">
+<p class="config-description">Animate gesture release independently of structural layout animations. When omitted, inherit the scrolling layout/global animation setting.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>boolean (optional)</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd>Not set</dd></div></dl>
+
+</section>
+
 ### `invert_horizontal`
 
 <section class="config-option config-option--simple">
@@ -163,7 +179,7 @@ Optional horizontal gestures for moving between columns in a Scrolling workspace
 
 <section class="config-option config-option--simple">
 <p class="config-description">Overscroll, in normalized steps, required before the gesture switches workspaces.</p>
-<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>0.15</code></dd></div></dl>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>0.55</code></dd></div></dl>
 
 </section>
 

@@ -115,7 +115,12 @@ function defaultValue(f) {
   if (f.default) {
     const match = source.match(new RegExp(`fn ${f.default}\\(\\)\\s*->[^\\{]+\\{`));
     if (!match) throw new Error(`Cannot locate default function ${f.default}`);
-    const body = blockAfter(source, match.index).trim();
+    let body = blockAfter(source, match.index).trim();
+    if (f.rust.startsWith('Option<')) {
+      if (body === 'None') return null;
+      const some = body.match(/^Some\(([\s\S]*)\)$/);
+      if (some) body = some[1].trim();
+    }
     if (/^(true|false|-?\d+(?:\.\d+)?)$/.test(body)) return JSON.parse(body);
     const variant = body.match(/^\w+::(\w+)$/);
     if (variant) return snake(variant[1]);
