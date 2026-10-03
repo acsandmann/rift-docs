@@ -6,7 +6,9 @@ import { execFileSync } from 'node:child_process';
 const here = path.dirname(fileURLToPath(import.meta.url));
 const docsRoot = path.resolve(here, '..');
 const riftRoot = process.env.RIFT_ROOT ? path.resolve(process.env.RIFT_ROOT) : path.resolve(docsRoot, '..');
-const sourcePath = path.join(riftRoot, 'src/common/config.rs');
+const sourcePath = ['src/common/config/types.rs', 'src/common/config.rs']
+  .map((file) => path.join(riftRoot, file)).find((file) => fs.existsSync(file));
+if (!sourcePath) throw new Error('Cannot find Rift configuration types');
 const source = fs.readFileSync(sourcePath, 'utf8');
 const overrides = JSON.parse(fs.readFileSync(path.join(docsRoot, 'config-docs.json'), 'utf8'));
 
@@ -32,7 +34,7 @@ function fields(typeName) {
   // Match the final comma on a field line so generic types such as
   // `HashMap<String, String>` are not truncated at their inner comma.
   return [...t.body.matchAll(/(?:^|\n)([ \t]*(?:(?:#\[[^\n]*\]|\/\/\/[^\n]*)\n[ \t]*)*)(?:pub\s+)?(\w+)\s*:\s*(.+),\s*$/gm)].map((m) => {
-    const attrs = m[1]; const rust = m[3].trim();
+    const attrs = m[1]; const rust = m[3].trim().replaceAll('std::collections::', '');
     const description = [...attrs.matchAll(/\/\/\/ ?([^\n]*)/g)].map((x) => x[1].trim()).join(' ').replace(/\s+/g, ' ');
     return { name: snake(m[2]), rust, description, flatten: /serde\(flatten\)/.test(attrs), skip: /serde\(skip/.test(attrs), hasDefault: /serde\(default(?:\s*(?:=|,|\)))/.test(attrs), default: (attrs.match(/serde\(default\s*=\s*"([^"]+)"/) || [])[1] || null };
   }).filter((f) => !f.skip);
@@ -62,7 +64,7 @@ function baseType(rust) {
   if (inner === 'WorkspaceSelector') return { oneOf: [{ type: 'integer', minimum: 0 }, { type: 'string' }], optional, displayType: 'workspace name or zero-based index' };
   let type = ({ bool: 'boolean', f64: 'number', f32: 'number', usize: 'integer', u32: 'integer', u64: 'integer', i32: 'integer', String: 'string', PathBuf: 'string', HotkeySpec: 'string' }[inner] || null);
   const values = enumValues(inner); if (values) type = 'string';
-  const hashMap = inner.match(/^HashMap<\s*([^,]+),\s*(.+)>$/);
+  const hashMap = inner.match(/^(?:HashMap|BTreeMap)<\s*([^,]+),\s*(.+)>$/);
   const schemaType = type;
   const schema = type ? { type: schemaType, ...(values ? { enum: values } : {}) } : (hashMap ? { type: 'object', additionalProperties: {} } : { type: 'object' });
   const displayType = hashMap ? `map of ${hashMap[1].trim()} to ${hashMap[2].trim()}` : undefined;
@@ -88,7 +90,7 @@ function schemaFor(typeName, seen = new Set(), prefix = []) {
       if (s.type === 'array') s.items = nestedSchema;
       else if (s.type === 'object' || (Array.isArray(s.type) && s.type.includes('object'))) Object.assign(s, nestedSchema, { type: s.type });
     }
-    const mapValue = f.rust.match(/^HashMap<\s*[^,]+,\s*(.+)>$/)?.[1]?.trim();
+    const mapValue = f.rust.match(/^(?:HashMap|BTreeMap)<\s*[^,]+,\s*(.+)>$/)?.[1]?.trim();
     if (mapValue && types.get(mapValue)?.kind === 'struct') {
       s.additionalProperties = schemaFor(mapValue, new Set(branchSeen), pathParts);
     }
@@ -140,7 +142,7 @@ function defaultValue(f) {
     throw new Error(`Unsupported default expression for ${f.default}: ${body}`);
   }
   if (f.rust.startsWith('Option<')) return null;
-  if (f.rust.startsWith('HashMap<')) return {};
+  if (/^(?:HashMap|BTreeMap)</.test(f.rust)) return {};
   if (f.rust.startsWith('Vec<')) return [];
   if (f.rust === 'bool') return false;
   if (/^(f\d+|usize|u\d+|i\d+)$/.test(f.rust)) return 0;
@@ -255,7 +257,7 @@ function markdownGroup(title, prefix, version) {
     rows.push({ path: p.join('.'), rust: f.rust, type: friendlyType(f.rust, s), container: types.get(f.rust)?.kind === 'struct', arrayContainer: Boolean(f.rust.match(/^Vec<(.+)>$/) && nestedStructType(f.rust)), description: over?.description || f.description || (() => { throw new Error(`Missing description: ${p.join('.')}`); })(), value, note: over?.note, customExample: over?.example, enum: s.enum?.filter((x) => x !== null) });
     const nested = nestedStructType(f.rust); if (nested) children.push([nested, p]);
   } for (const [nested, p] of children) walk(nested, p, new Set(branchSeen)); }
-  walk('ConfigFile', []);
+  walk(types.has('ConfigSource') ? 'ConfigSource' : 'ConfigFile', []);
   const knownPaths = new Map(rows.map((row) => [row.path, row]));
   const filtered = rows.filter((r) => r.path === prefix || (r.path.startsWith(`${prefix}.`) && !excludedPrefixes.some((excluded) => r.path === excluded || r.path.startsWith(`${excluded}.`))));
   let currentTable = null;

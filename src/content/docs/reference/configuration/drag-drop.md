@@ -9,7 +9,7 @@ tableOfContents:
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.6.2-10-g99f2830c.
+Generated from Rift v0.6.4-2-g526e484b.
 -->
 
 Configure modifier-assisted window movement and tiled-window drop behavior.
@@ -35,6 +35,14 @@ preview = true
 ## <span class="config-table-heading">[settings.drag_drop]</span>
 
 Modifier-assisted window movement and tiled-window drops with previews.
+
+### `haptics_enabled`
+
+<section class="config-option config-option--simple">
+<p class="config-description">Enable trackpad feedback after a successful window drop.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>boolean</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>true</code></dd></div></dl>
+
+</section>
 
 ### `enabled`
 

@@ -574,6 +574,48 @@
     },
     "settings.layout.scrolling.alignment": {
       "description": "Position used when aligning the focused column: left edge, center, or right edge. `focus_navigation_style` determines when that alignment is applied."
+    },
+    "settings.layout.gaps.outer.top": {
+      "description": "Gap at the top of the screen"
+    },
+    "settings.layout.gaps.outer.left": {
+      "description": "Gap at the left of the screen"
+    },
+    "settings.layout.gaps.outer.bottom": {
+      "description": "Gap at the bottom of the screen"
+    },
+    "settings.layout.gaps.outer.right": {
+      "description": "Gap at the right of the screen"
+    },
+    "settings.layout.gaps.inner.horizontal": {
+      "description": "Horizontal gap between windows"
+    },
+    "settings.layout.gaps.inner.vertical": {
+      "description": "Vertical gap between windows"
+    },
+    "settings.layout.gaps.per_display.outer": {
+      "description": "Override outer gaps completely for the display"
+    },
+    "settings.layout.gaps.per_display.outer.top": {
+      "description": "Gap at the top of the screen"
+    },
+    "settings.layout.gaps.per_display.outer.left": {
+      "description": "Gap at the left of the screen"
+    },
+    "settings.layout.gaps.per_display.outer.bottom": {
+      "description": "Gap at the bottom of the screen"
+    },
+    "settings.layout.gaps.per_display.outer.right": {
+      "description": "Gap at the right of the screen"
+    },
+    "settings.layout.gaps.per_display.inner": {
+      "description": "Override inner gaps completely for the display"
+    },
+    "settings.layout.gaps.per_display.inner.horizontal": {
+      "description": "Horizontal gap between windows"
+    },
+    "settings.layout.gaps.per_display.inner.vertical": {
+      "description": "Vertical gap between windows"
     }
   }
 }

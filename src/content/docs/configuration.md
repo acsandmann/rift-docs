@@ -40,6 +40,19 @@ Use the complete [Quick start config](/rift-docs/quick-start/) for a small keyma
 
 An omitted table can have different defaults from an explicitly supplied table. For example, omitting `[settings.gestures]` gives `skip_empty = true`, while including that table without `skip_empty` gives `false`. The reference calls out these exceptions.
 
+## Change settings from the CLI
+
+Configuration commands apply to the running instance. Save explicitly to keep a change after restarting:
+
+```sh
+rift-cli execute config set-animate true
+rift-cli execute config save
+```
+
+`save` writes to the active config path, including a path selected with `--config`. It preserves unrelated comments, formatting, table order, and source keybindings such as `comb1 + H`. New files start from the bundled config template. Writes replace the file atomically, so hot reload does not read a partially written config.
+
+`rift-cli execute config get` shows the normalized runtime config. Modifier aliases and key names may be expanded there; the displayed JSON is not a replacement for your source TOML.
+
 ## Reload and troubleshoot
 
 If a saved change does not apply, ask Rift to reload the file and report any validation error:

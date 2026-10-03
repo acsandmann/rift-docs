@@ -390,7 +390,7 @@ for (const group of executeGroups) {
   fs.writeFileSync(path.join(executeRoot, `${name}.md`), commandPage(
     title,
     readableDescription(group.description),
-    `${sentence(group.description)} All commands act on the running Rift instance.`,
+    `${sentence(group.description)} All commands act on the running Rift instance.${name === 'config' ? '\n\nChanges apply immediately. Run `rift-cli execute config save` to persist them to the active config path. Saving preserves unrelated TOML comments, formatting, ordering, and source keybindings, and replaces the file atomically. `get` displays normalized runtime values; `reload` reads the file again. See [Configuration](/rift-docs/configuration/) for the save and reload workflow.' : ''}`,
     children,
     [['Execute overview', '/rift-docs/reference/cli/execute/'], ['CLI overview', '/rift-docs/reference/cli/']],
   ));

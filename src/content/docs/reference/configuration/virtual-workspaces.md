@@ -9,7 +9,7 @@ tableOfContents:
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.6.2-10-g99f2830c.
+Generated from Rift v0.6.4-2-g526e484b.
 -->
 
 Workspace count, names, focus behavior, and rules for assigning windows to workspaces.

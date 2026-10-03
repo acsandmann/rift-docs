@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Rift configuration",
-  "description": "Generated from Rift v0.6.2-10-g99f2830c.",
+  "description": "Generated from Rift v0.6.4-2-g526e484b.",
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -840,6 +840,11 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "haptics_enabled": {
+              "type": "boolean",
+              "description": "Enable trackpad feedback after a successful window drop.",
+              "default": true
+            },
             "enabled": {
               "type": "boolean",
               "description": "Enables native drag targeting and modifier mouse actions.",

@@ -9,9 +9,19 @@ tableOfContents:
 
 <!-- GENERATED FILE. Do not edit directly. -->
 
-Source version: `v0.6.2-10-g99f2830c`.
+Source version: `v0.6.4-2-g526e484b`.
 
 These commands work with Rift’s complete runtime or saved layout state rather than one command group.
+
+## <span class="cli-command-heading">binding-mode</span>
+
+<article class="cli-command">
+<p class="cli-command__description">Switch to a configured binding mode (use default to reset).</p>
+<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute binding-mode &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-mode">MODE</a>&gt;</code></div></div>
+<section class="cli-parameters"><h3>Arguments</h3><dl class="cli-command__details">
+<div class="cli-parameter"><dt><code>&lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-mode">MODE</a>&gt;</code></dt><dd></dd></div>
+</dl></section>
+</article>
 
 ## <span class="cli-command-heading">save-and-exit</span>
 

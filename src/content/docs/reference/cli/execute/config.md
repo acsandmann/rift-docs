@@ -9,9 +9,11 @@ tableOfContents:
 
 <!-- GENERATED FILE. Do not edit directly. -->
 
-Source version: `v0.6.2-10-g99f2830c`.
+Source version: `v0.6.4-2-g526e484b`.
 
 Configuration management commands. All commands act on the running Rift instance.
+
+Changes apply immediately. Run `rift-cli execute config save` to persist them to the active config path. Saving preserves unrelated TOML comments, formatting, ordering, and source keybindings, and replaces the file atomically. `get` displays normalized runtime values; `reload` reads the file again. See [Configuration](/rift-docs/configuration/) for the save and reload workflow.
 
 ## <span class="cli-command-heading">set-animate</span>
 
