@@ -9,7 +9,7 @@ const riftRoot = process.env.RIFT_ROOT ? path.resolve(process.env.RIFT_ROOT) : p
 const sourcePath = ['src/common/config/types.rs', 'src/common/config.rs']
   .map((file) => path.join(riftRoot, file)).find((file) => fs.existsSync(file));
 if (!sourcePath) throw new Error('Cannot find Rift configuration types');
-const source = fs.readFileSync(sourcePath, 'utf8');
+const source = fs.readFileSync(sourcePath, 'utf8').replace(/^[ \t]*\/\/(?!\/)[^\n]*\n/gm, '');
 const overrides = JSON.parse(fs.readFileSync(path.join(docsRoot, 'config-docs.json'), 'utf8'));
 
 function blockAfter(text, start) {
@@ -19,7 +19,7 @@ function blockAfter(text, start) {
 }
 function rustTypes(text) {
   const out = new Map();
-  for (const m of text.matchAll(/(?:^|\n)([ \t]*(?:(?:#\[[^\n]*\]|\/\/\/[^\n]*)\n[ \t]*)*)(?:pub\s+)?(struct|enum)\s+(\w+)/g)) {
+  for (const m of text.matchAll(/(?:^|\n)([ \t]*(?:(?:#\[[^\]]*\]|\/\/\/[^\n]*)\n[ \t]*)*)(?:pub\s+)?(struct|enum)\s+(\w+)/g)) {
     out.set(m[3], { kind: m[2], attrs: m[1], body: blockAfter(text, m.index) });
   }
   return out;
@@ -28,12 +28,35 @@ const protocolSource = ['layout.rs', 'commands.rs'].map((file) =>
   fs.readFileSync(path.join(riftRoot, 'crates/rift-protocol/src', file), 'utf8')).join('\n');
 const types = rustTypes(`${protocolSource}\n${source}`);
 types.set('crate::layout_engine::Orientation', types.get('Orientation'));
+let cargoMetadata;
+function dependencyConstant(expression) {
+  const match = expression.match(/^(\w+)::(\w+)::([A-Z][A-Z_0-9]*)$/);
+  if (!match) return undefined;
+  const [, crate, type, constant] = match;
+  cargoMetadata ??= JSON.parse(execFileSync('cargo', ['metadata', '--locked', '--format-version=1'], {
+    cwd: riftRoot, encoding: 'utf8', maxBuffer: 32 * 1024 * 1024,
+  }));
+  const rootPackage = cargoMetadata.packages.find((pkg) => path.dirname(pkg.manifest_path) === riftRoot);
+  const dependency = cargoMetadata.resolve.nodes.find((node) => node.id === rootPackage?.id)
+    ?.deps.find((dep) => dep.name === crate);
+  const pkg = cargoMetadata.packages.find((pkg) => pkg.id === dependency?.pkg);
+  if (!pkg) throw new Error(`Cannot resolve dependency for ${expression}`);
+  const src = path.join(path.dirname(pkg.manifest_path), 'src');
+  for (const file of fs.readdirSync(src, { recursive: true }).filter((file) => file.endsWith('.rs'))) {
+    const text = fs.readFileSync(path.join(src, file), 'utf8');
+    for (const impl of text.matchAll(new RegExp(`\\bimpl\\s+${type}\\s*\\{`, 'g'))) {
+      const value = blockAfter(text, impl.index).match(new RegExp(`\\bconst\\s+${constant}\\s*:\\s*\\w+\\s*=\\s*(-?\\d+(?:\\.\\d+)?)\\s*;`))?.[1];
+      if (value !== undefined) return Number(value);
+    }
+  }
+  throw new Error(`Cannot locate numeric constant ${expression}`);
+}
 function snake(name) { return name.replace(/[A-Z]/g, (c) => `_${c.toLowerCase()}`).replace(/^_/, ''); }
 function fields(typeName) {
   const t = types.get(typeName); if (!t || t.kind !== 'struct') return [];
   // Match the final comma on a field line so generic types such as
   // `HashMap<String, String>` are not truncated at their inner comma.
-  return [...t.body.matchAll(/(?:^|\n)([ \t]*(?:(?:#\[[^\n]*\]|\/\/\/[^\n]*)\n[ \t]*)*)(?:pub\s+)?(\w+)\s*:\s*(.+),\s*$/gm)].map((m) => {
+  return [...t.body.matchAll(/(?:^|\n)([ \t]*(?:(?:#\[[^\]]*\]|\/\/\/[^\n]*)\n[ \t]*)*)(?:pub\s+)?(\w+)\s*:\s*(.+),\s*$/gm)].map((m) => {
     const attrs = m[1]; const rust = m[3].trim().replaceAll('std::collections::', '');
     const description = [...attrs.matchAll(/\/\/\/ ?([^\n]*)/g)].map((x) => x[1].trim()).join(' ').replace(/\s+/g, ' ');
     return { name: snake(m[2]), rust, description, flatten: /serde\(flatten\)/.test(attrs), skip: /serde\(skip/.test(attrs), hasDefault: /serde\(default(?:\s*(?:=|,|\)))/.test(attrs), default: (attrs.match(/serde\(default\s*=\s*"([^"]+)"/) || [])[1] || null };
@@ -55,7 +78,7 @@ function enumValues(typeName) {
       default: throw new Error(`Unsupported Serde enum rename rule: ${rule}`);
     }
   }
-  return [...t.body.matchAll(/(?:^|\n)([ \t]*(?:(?:#\[[^\n]*\]|\/\/\/[^\n]*)\n[ \t]*)*)(\w+)(?:\s*[,({])/g)]
+  return [...t.body.matchAll(/(?:^|\n)([ \t]*(?:(?:#\[[^\]]*\]|\/\/\/[^\n]*)\n[ \t]*)*)(\w+)(?:\s*[,({])/g)]
     .map((m) => m[1].match(/rename\s*=\s*"([^"]+)"/)?.[1] ?? rename(m[2]));
 }
 function baseType(rust) {
@@ -124,6 +147,8 @@ function defaultValue(f) {
       if (some) body = some[1].trim();
     }
     if (/^(true|false|-?\d+(?:\.\d+)?)$/.test(body)) return JSON.parse(body);
+    const constant = dependencyConstant(body);
+    if (constant !== undefined) return constant;
     const variant = body.match(/^\w+::(\w+)$/);
     if (variant) return snake(variant[1]);
     const string = body.match(/^PathBuf::from\((".*")\)$/);
@@ -138,6 +163,13 @@ function defaultValue(f) {
       const [r, g, b, a] = color[1].split(',').map((value) => Number(value.trim()));
       if ([r, g, b, a].every(Number.isFinite)) return { r, g, b, a };
     }
+    if (body.startsWith('vec![') && !body.includes('"')) {
+      return body.slice(5, -1).split(',').filter((item) => item.trim()).map((item) => {
+        const ratio = item.trim().match(/^(-?\d+(?:\.\d+)?)(?:\s*\/\s*(\d+(?:\.\d+)?))?$/);
+        if (!ratio) throw new Error(`Unsupported vector default item: ${item}`);
+        return Number(ratio[1]) / Number(ratio[2] ?? 1);
+      });
+    }
     if (body.startsWith('vec![')) return [...body.matchAll(/("[^"\n]*")\.to_string\(\)/g)].map((m) => JSON.parse(m[1]));
     throw new Error(`Unsupported default expression for ${f.default}: ${body}`);
   }
@@ -148,7 +180,7 @@ function defaultValue(f) {
   if (/^(f\d+|usize|u\d+|i\d+)$/.test(f.rust)) return 0;
   const t = types.get(f.rust);
   if (t?.kind === 'enum') {
-    const variant = t.body.match(/#\[default\]\s*(\w+)/)?.[1];
+    const variant = t.body.match(/#\[default\]\s*(?:(?:\/\/\/[^\n]*|#\[[^\]]*\])\s*)*(\w+)/)?.[1];
     if (!variant) throw new Error(`No explicit default found for ${f.rust}`);
     return snake(variant);
   }

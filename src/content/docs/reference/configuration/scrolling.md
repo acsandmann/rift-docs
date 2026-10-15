@@ -9,7 +9,7 @@ tableOfContents:
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.6.4-2-g526e484b.
+Generated from Rift v0.6.9-46-gdea7a23e.
 -->
 
 Settings for the scrolling-column layout and its optional trackpad gestures.
@@ -63,7 +63,7 @@ Options specific to the Scrolling layout.
 
 <section class="config-option config-option--simple">
 <p class="config-description">Proportional column widths cycled in configured order.</p>
-<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>list of numbers</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd>Empty list</dd></div></dl>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>list of numbers</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>[0.3333333333333333, 0.5, 0.6666666666666666]</code></dd></div></dl>
 
 </section>
 
@@ -72,6 +72,14 @@ Options specific to the Scrolling layout.
 <section class="config-option config-option--simple">
 <p class="config-description">Keep a window's existing column width when it enters scrolling layout.</p>
 <dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>boolean</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>true</code></dd></div></dl>
+
+</section>
+
+### `expand_single_column`
+
+<section class="config-option config-option--simple">
+<p class="config-description">Fill the usable width when a workspace has only one scrolling column. The column's stored width is restored when another column is added.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>boolean</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>false</code></dd></div></dl>
 
 </section>
 

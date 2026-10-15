@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Rift configuration",
-  "description": "Generated from Rift v0.6.4-2-g526e484b.",
+  "description": "Generated from Rift v0.6.9-46-gdea7a23e.",
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -405,12 +405,21 @@
                     "type": "number"
                   },
                   "description": "Proportional column widths cycled in configured order.",
-                  "default": []
+                  "default": [
+                    0.3333333333333333,
+                    0.5,
+                    0.6666666666666666
+                  ]
                 },
                 "preserve_window_sizes": {
                   "type": "boolean",
                   "description": "Keep a window's existing column width when it enters scrolling layout.",
                   "default": true
+                },
+                "expand_single_column": {
+                  "type": "boolean",
+                  "description": "Fill the usable width when a workspace has only one scrolling column. The column's stored width is restored when another column is added.",
+                  "default": false
                 },
                 "min_column_width_ratio": {
                   "type": "number",
@@ -536,6 +545,11 @@
                   "description": "Include workspaces that currently have no windows.",
                   "default": false
                 },
+                "show_binding_mode": {
+                  "type": "boolean",
+                  "description": "Show the active binding mode beside workspaces, except in default mode.",
+                  "default": true
+                },
                 "mode": {
                   "type": "string",
                   "enum": [
@@ -578,7 +592,7 @@
                 "enabled": {
                   "type": "boolean",
                   "description": "Enable the stack-line indicator.",
-                  "default": false
+                  "default": true
                 },
                 "hover": {
                   "type": "string",
@@ -588,11 +602,6 @@
                   ],
                   "description": "Choose whether the indicator responds to a click or pointer hover.",
                   "default": "hover"
-                },
-                "thickness": {
-                  "type": "number",
-                  "description": "Thickness of the stack-line indicator in points.",
-                  "default": 20
                 },
                 "horiz_placement": {
                   "type": "string",
@@ -612,133 +621,15 @@
                   "description": "Place the stack line at the left or right edge of the window.",
                   "default": "left"
                 },
+                "thickness": {
+                  "type": "number",
+                  "description": "Thickness of the stack-line indicator in points.",
+                  "default": 28
+                },
                 "spacing": {
                   "type": "number",
                   "description": "Distance from the window edge to the indicator, in macOS points.",
-                  "default": 1
-                },
-                "selected_color": {
-                  "type": "object",
-                  "additionalProperties": false,
-                  "properties": {
-                    "r": {
-                      "type": "number",
-                      "description": "Red component, from 0.0 to 1.0.",
-                      "minimum": 0,
-                      "maximum": 1,
-                      "default": 0
-                    },
-                    "g": {
-                      "type": "number",
-                      "description": "Green component, from 0.0 to 1.0.",
-                      "minimum": 0,
-                      "maximum": 1,
-                      "default": 0
-                    },
-                    "b": {
-                      "type": "number",
-                      "description": "Blue component, from 0.0 to 1.0.",
-                      "minimum": 0,
-                      "maximum": 1,
-                      "default": 0
-                    },
-                    "a": {
-                      "type": "number",
-                      "description": "Opacity component, from 0.0 to 1.0.",
-                      "minimum": 0,
-                      "maximum": 1,
-                      "default": 1
-                    }
-                  },
-                  "description": "RGBA color for the selected stack segment. Each component ranges from 0.0 to 1.0.",
-                  "default": {
-                    "r": 0,
-                    "g": 0.5,
-                    "b": 1,
-                    "a": 1
-                  }
-                },
-                "unselected_color": {
-                  "type": "object",
-                  "additionalProperties": false,
-                  "properties": {
-                    "r": {
-                      "type": "number",
-                      "description": "Red component, from 0.0 to 1.0.",
-                      "minimum": 0,
-                      "maximum": 1,
-                      "default": 0
-                    },
-                    "g": {
-                      "type": "number",
-                      "description": "Green component, from 0.0 to 1.0.",
-                      "minimum": 0,
-                      "maximum": 1,
-                      "default": 0
-                    },
-                    "b": {
-                      "type": "number",
-                      "description": "Blue component, from 0.0 to 1.0.",
-                      "minimum": 0,
-                      "maximum": 1,
-                      "default": 0
-                    },
-                    "a": {
-                      "type": "number",
-                      "description": "Opacity component, from 0.0 to 1.0.",
-                      "minimum": 0,
-                      "maximum": 1,
-                      "default": 1
-                    }
-                  },
-                  "description": "RGBA color for unselected stack segments. Each component ranges from 0.0 to 1.0.",
-                  "default": {
-                    "r": 0.8,
-                    "g": 0.8,
-                    "b": 0.8,
-                    "a": 1
-                  }
-                },
-                "border_color": {
-                  "type": "object",
-                  "additionalProperties": false,
-                  "properties": {
-                    "r": {
-                      "type": "number",
-                      "description": "Red component, from 0.0 to 1.0.",
-                      "minimum": 0,
-                      "maximum": 1,
-                      "default": 0
-                    },
-                    "g": {
-                      "type": "number",
-                      "description": "Green component, from 0.0 to 1.0.",
-                      "minimum": 0,
-                      "maximum": 1,
-                      "default": 0
-                    },
-                    "b": {
-                      "type": "number",
-                      "description": "Blue component, from 0.0 to 1.0.",
-                      "minimum": 0,
-                      "maximum": 1,
-                      "default": 0
-                    },
-                    "a": {
-                      "type": "number",
-                      "description": "Opacity component, from 0.0 to 1.0.",
-                      "minimum": 0,
-                      "maximum": 1,
-                      "default": 1
-                    }
-                  },
-                  "description": "RGBA color for segment borders and separators. Each component ranges from 0.0 to 1.0.",
-                  "default": {
-                    "r": 0.6,
-                    "g": 0.6,
-                    "b": 0.6,
-                    "a": 1
-                  }
+                  "default": 0
                 }
               },
               "description": "Show a small edge indicator for stacked windows."

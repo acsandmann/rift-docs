@@ -9,7 +9,7 @@ tableOfContents:
 
 <!-- GENERATED FILE. Do not edit directly. -->
 
-Source version: `v0.6.4-2-g526e484b`.
+Source version: `v0.6.9-46-gdea7a23e`.
 
 Window management commands. All commands act on the running Rift instance.
 

@@ -9,7 +9,7 @@ tableOfContents:
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.6.4-2-g526e484b.
+Generated from Rift v0.6.9-46-gdea7a23e.
 -->
 
 Optional indicators for the menu bar, stack line, and Mission Control.
@@ -53,6 +53,14 @@ Show workspace status in the macOS menu bar.
 
 </section>
 
+### `show_binding_mode`
+
+<section class="config-option config-option--simple">
+<p class="config-description">Show the active binding mode beside workspaces, except in default mode.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>boolean</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>true</code></dd></div></dl>
+
+</section>
+
 ### `mode`
 
 <section class="config-option config-option--simple">
@@ -93,7 +101,7 @@ Show a small edge indicator for stacked windows.
 
 <section class="config-option config-option--expanded">
 <p class="config-description">Enable the stack-line indicator.</p>
-<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>boolean</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>false</code></dd></div></dl>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>boolean</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>true</code></dd></div></dl>
 <div class="config-example"><div class="config-example__label">Example</div><pre><code class="language-toml">[settings.ui.stack_line]
 enabled = true
 hover = &quot;click&quot;
@@ -106,14 +114,6 @@ hover = &quot;click&quot;
 <p class="config-description">Choose whether the indicator responds to a click or pointer hover.</p>
 <dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd><code>click</code> or <code>hover</code></dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>&quot;hover&quot;</code></dd></div></dl>
 
-</section>
-
-### `thickness`
-
-<section class="config-option config-option--expanded">
-<p class="config-description">Thickness of the stack-line indicator in points.</p>
-<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>20</code></dd></div></dl>
-<aside class="config-note"><strong>Note</strong><span>Omitting the entire containing table gives <code>0</code> instead.</span></aside>
 </section>
 
 ### `horiz_placement`
@@ -132,11 +132,19 @@ hover = &quot;click&quot;
 
 </section>
 
+### `thickness`
+
+<section class="config-option config-option--expanded">
+<p class="config-description">Thickness of the stack-line indicator in points.</p>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>28</code></dd></div></dl>
+<aside class="config-note"><strong>Note</strong><span>Omitting the entire containing table gives <code>0</code> instead.</span></aside>
+</section>
+
 ### `spacing`
 
 <section class="config-option config-option--expanded">
 <p class="config-description">Distance from the window edge to the indicator, in macOS points.</p>
-<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>1</code></dd></div></dl>
+<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>0</code></dd></div></dl>
 <aside class="config-note"><strong>Note</strong><span>Omitting the entire containing table gives <code>0</code> instead.</span></aside>
 </section>
 
@@ -184,114 +192,6 @@ enabled = true
 <p class="config-description">Fade duration in milliseconds.</p>
 <dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>180</code></dd></div></dl>
 <aside class="config-note"><strong>Note</strong><span>Omitting the entire containing table gives <code>0</code> instead.</span></aside>
-</section>
-
-## <span class="config-table-heading">[settings.ui.stack_line.selected_color]</span>
-
-RGBA color for the selected stack segment. Each component ranges from 0.0 to 1.0.
-
-### `r`
-
-<section class="config-option config-option--simple">
-<p class="config-description">Red component, from 0.0 to 1.0.</p>
-<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>0</code></dd></div></dl>
-
-</section>
-
-### `g`
-
-<section class="config-option config-option--simple">
-<p class="config-description">Green component, from 0.0 to 1.0.</p>
-<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>0</code></dd></div></dl>
-
-</section>
-
-### `b`
-
-<section class="config-option config-option--simple">
-<p class="config-description">Blue component, from 0.0 to 1.0.</p>
-<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>0</code></dd></div></dl>
-
-</section>
-
-### `a`
-
-<section class="config-option config-option--simple">
-<p class="config-description">Opacity component, from 0.0 to 1.0.</p>
-<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>1</code></dd></div></dl>
-
-</section>
-
-## <span class="config-table-heading">[settings.ui.stack_line.unselected_color]</span>
-
-RGBA color for unselected stack segments. Each component ranges from 0.0 to 1.0.
-
-### `r`
-
-<section class="config-option config-option--simple">
-<p class="config-description">Red component, from 0.0 to 1.0.</p>
-<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>0</code></dd></div></dl>
-
-</section>
-
-### `g`
-
-<section class="config-option config-option--simple">
-<p class="config-description">Green component, from 0.0 to 1.0.</p>
-<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>0</code></dd></div></dl>
-
-</section>
-
-### `b`
-
-<section class="config-option config-option--simple">
-<p class="config-description">Blue component, from 0.0 to 1.0.</p>
-<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>0</code></dd></div></dl>
-
-</section>
-
-### `a`
-
-<section class="config-option config-option--simple">
-<p class="config-description">Opacity component, from 0.0 to 1.0.</p>
-<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>1</code></dd></div></dl>
-
-</section>
-
-## <span class="config-table-heading">[settings.ui.stack_line.border_color]</span>
-
-RGBA color for segment borders and separators. Each component ranges from 0.0 to 1.0.
-
-### `r`
-
-<section class="config-option config-option--simple">
-<p class="config-description">Red component, from 0.0 to 1.0.</p>
-<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>0</code></dd></div></dl>
-
-</section>
-
-### `g`
-
-<section class="config-option config-option--simple">
-<p class="config-description">Green component, from 0.0 to 1.0.</p>
-<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>0</code></dd></div></dl>
-
-</section>
-
-### `b`
-
-<section class="config-option config-option--simple">
-<p class="config-description">Blue component, from 0.0 to 1.0.</p>
-<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>0</code></dd></div></dl>
-
-</section>
-
-### `a`
-
-<section class="config-option config-option--simple">
-<p class="config-description">Opacity component, from 0.0 to 1.0.</p>
-<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>1</code></dd></div></dl>
-
 </section>
 
 ## See also
