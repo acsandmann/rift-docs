@@ -9,162 +9,208 @@ tableOfContents:
 
 <!-- GENERATED FILE. Do not edit directly. -->
 
-Source version: `v0.6.9-46-gdea7a23e`.
-
 Layout commands. All commands act on the running Rift instance.
 
-## <span class="cli-command-heading">ascend</span>
+Generated from `rift-cli` at `v0.7.0-28-g6c63b50c`.
 
-<article class="cli-command">
-<p class="cli-command__description">Move selection up the tree.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute layout ascend</code></div></div>
-</article>
+<section class="apple-entry">
 
-## <span class="cli-command-heading">descend</span>
+## `ascend`
 
-<article class="cli-command">
-<p class="cli-command__description">Move selection down the tree.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute layout descend</code></div></div>
-</article>
+<p>Move selection up the tree.</p>
+<pre class="apple-declaration"><code>rift-cli execute layout ascend</code></pre>
 
-## <span class="cli-command-heading">move-node</span>
+</section>
 
-<article class="cli-command">
-<p class="cli-command__description">Move the selected node in a direction.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute layout move-node &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;</code></div></div>
-<section class="cli-parameters"><h3>Arguments</h3><dl class="cli-command__details">
-<div class="cli-parameter"><dt><code>&lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;</code></dt><dd></dd></div>
-</dl></section>
-</article>
+<section class="apple-entry">
 
-## <span class="cli-command-heading">join-window</span>
+## `descend`
 
-<article class="cli-command">
-<p class="cli-command__description">Join the selected window with neighbor in a direction.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute layout join-window &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;</code></div></div>
-<section class="cli-parameters"><h3>Arguments</h3><dl class="cli-command__details">
-<div class="cli-parameter"><dt><code>&lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;</code></dt><dd></dd></div>
-</dl></section>
-</article>
+<p>Move selection down the tree.</p>
+<pre class="apple-declaration"><code>rift-cli execute layout descend</code></pre>
 
-## <span class="cli-command-heading">consume-or-expel-window</span>
+</section>
 
-<article class="cli-command">
-<p class="cli-command__description">Join with a neighbor, or unjoin when the selected window is already joined.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute layout consume-or-expel-window &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;</code></div></div>
-<section class="cli-parameters"><h3>Arguments</h3><dl class="cli-command__details">
-<div class="cli-parameter"><dt><code>&lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;</code></dt><dd></dd></div>
-</dl></section>
-</article>
+<section class="apple-entry">
 
-## <span class="cli-command-heading">toggle-stack</span>
+## `move-node`
 
-<article class="cli-command">
-<p class="cli-command__description">Toggle stacked state for the selected container.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute layout toggle-stack</code></div></div>
-</article>
+<p>Move the selected node in a direction.</p>
+<pre class="apple-declaration"><code>rift-cli execute layout move-node &lt;<a href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;</code></pre>
+<p class="apple-label">Arguments</p>
+<dl class="apple-parameters">
+<div><dt><code>&lt;<a href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;</code></dt><dd></dd></div>
+</dl>
 
-## <span class="cli-command-heading">toggle-orientation</span>
+</section>
 
-<article class="cli-command">
-<p class="cli-command__description">Global orientation toggle that works consistently across layout modes (and between splits/stacks).</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute layout toggle-orientation</code></div></div>
-</article>
+<section class="apple-entry">
 
-## <span class="cli-command-heading">unjoin</span>
+## `join-window`
 
-<article class="cli-command">
-<p class="cli-command__description">Unjoin previously joined windows.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute layout unjoin</code></div></div>
-</article>
+<p>Join the selected window with neighbor in a direction.</p>
+<pre class="apple-declaration"><code>rift-cli execute layout join-window &lt;<a href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;</code></pre>
+<p class="apple-label">Arguments</p>
+<dl class="apple-parameters">
+<div><dt><code>&lt;<a href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;</code></dt><dd></dd></div>
+</dl>
 
-## <span class="cli-command-heading">toggle-focus-float</span>
+</section>
 
-<article class="cli-command">
-<p class="cli-command__description">Toggle floating on the focused selection (tree focus).</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute layout toggle-focus-float</code></div></div>
-</article>
+<section class="apple-entry">
 
-## <span class="cli-command-heading">adjust-master-ratio</span>
+## `consume-or-expel-window`
 
-<article class="cli-command">
-<p class="cli-command__description">Adjust master ratio by a delta (master/stack layout only).</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute layout adjust-master-ratio &lt;DELTA&gt;</code></div></div>
-<section class="cli-parameters"><h3>Arguments</h3><dl class="cli-command__details">
-<div class="cli-parameter"><dt><code>&lt;DELTA&gt;</code></dt><dd></dd></div>
-</dl></section>
-</article>
+<p>Join with a neighbor, or unjoin when the selected window is already joined.</p>
+<pre class="apple-declaration"><code>rift-cli execute layout consume-or-expel-window &lt;<a href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;</code></pre>
+<p class="apple-label">Arguments</p>
+<dl class="apple-parameters">
+<div><dt><code>&lt;<a href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;</code></dt><dd></dd></div>
+</dl>
 
-## <span class="cli-command-heading">adjust-master-count</span>
+</section>
 
-<article class="cli-command">
-<p class="cli-command__description">Adjust master count by a delta (master/stack layout only).</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute layout adjust-master-count &lt;DELTA&gt;</code></div></div>
-<section class="cli-parameters"><h3>Arguments</h3><dl class="cli-command__details">
-<div class="cli-parameter"><dt><code>&lt;DELTA&gt;</code></dt><dd></dd></div>
-</dl></section>
-</article>
+<section class="apple-entry">
 
-## <span class="cli-command-heading">promote-to-master</span>
+## `toggle-stack`
 
-<article class="cli-command">
-<p class="cli-command__description">Promote the selected window into the master area (master/stack layout only).</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute layout promote-to-master</code></div></div>
-</article>
+<p>Toggle stacked state for the selected container.</p>
+<pre class="apple-declaration"><code>rift-cli execute layout toggle-stack</code></pre>
 
-## <span class="cli-command-heading">swap-master-stack</span>
+</section>
 
-<article class="cli-command">
-<p class="cli-command__description">Swap the first master with the first stack window (master/stack layout only).</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute layout swap-master-stack</code></div></div>
-</article>
+<section class="apple-entry">
 
-## <span class="cli-command-heading">swap-windows</span>
+## `toggle-orientation`
 
-<article class="cli-command">
-<p class="cli-command__description">Swap two windows by window id (<code>WindowId { pid: ..., idx: ... }</code>).</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute layout swap-windows &lt;A&gt; &lt;B&gt;</code></div></div>
-<section class="cli-parameters"><h3>Arguments</h3><dl class="cli-command__details">
-<div class="cli-parameter"><dt><code>&lt;A&gt;</code></dt><dd></dd></div>
-<div class="cli-parameter"><dt><code>&lt;B&gt;</code></dt><dd></dd></div>
-</dl></section>
-</article>
+<p>Global orientation toggle that works consistently across layout modes (and between splits/stacks).</p>
+<pre class="apple-declaration"><code>rift-cli execute layout toggle-orientation</code></pre>
 
-## <span class="cli-command-heading">scroll-strip</span>
+</section>
 
-<article class="cli-command">
-<p class="cli-command__description">Scroll the strip by a normalized delta (scrolling layout only).</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute layout scroll-strip &lt;DELTA&gt;</code></div></div>
-<section class="cli-parameters"><h3>Arguments</h3><dl class="cli-command__details">
-<div class="cli-parameter"><dt><code>&lt;DELTA&gt;</code></dt><dd></dd></div>
-</dl></section>
-</article>
+<section class="apple-entry">
 
-## <span class="cli-command-heading">snap-strip</span>
+## `unjoin`
 
-<article class="cli-command">
-<p class="cli-command__description">Snap the strip to the nearest column boundary (scrolling layout only).</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute layout snap-strip</code></div></div>
-</article>
+<p>Unjoin previously joined windows.</p>
+<pre class="apple-declaration"><code>rift-cli execute layout unjoin</code></pre>
 
-## <span class="cli-command-heading">switch-preset-column-width</span>
+</section>
 
-<article class="cli-command">
-<p class="cli-command__description">Switch to the next preset column width (scrolling layout only).</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute layout switch-preset-column-width [OPTIONS]</code></div></div>
-<section class="cli-parameters"><h3>Options</h3><dl class="cli-command__details">
-<div class="cli-parameter"><dt><code>--backwards</code></dt><dd></dd></div>
-</dl></section>
-</article>
+<section class="apple-entry">
 
-## <span class="cli-command-heading">center-selection</span>
+## `toggle-focus-float`
 
-<article class="cli-command">
-<p class="cli-command__description">Toggle centering of the selected column in scrolling layout. If invoked again on the same selection, centering is removed.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute layout center-selection</code></div></div>
-</article>
+<p>Toggle floating on the focused selection (tree focus).</p>
+<pre class="apple-declaration"><code>rift-cli execute layout toggle-focus-float</code></pre>
+
+</section>
+
+<section class="apple-entry">
+
+## `adjust-master-ratio`
+
+<p>Adjust master ratio by a delta (master/stack layout only).</p>
+<pre class="apple-declaration"><code>rift-cli execute layout adjust-master-ratio &lt;DELTA&gt;</code></pre>
+<p class="apple-label">Arguments</p>
+<dl class="apple-parameters">
+<div><dt><code>&lt;DELTA&gt;</code></dt><dd></dd></div>
+</dl>
+
+</section>
+
+<section class="apple-entry">
+
+## `adjust-master-count`
+
+<p>Adjust master count by a delta (master/stack layout only).</p>
+<pre class="apple-declaration"><code>rift-cli execute layout adjust-master-count &lt;DELTA&gt;</code></pre>
+<p class="apple-label">Arguments</p>
+<dl class="apple-parameters">
+<div><dt><code>&lt;DELTA&gt;</code></dt><dd></dd></div>
+</dl>
+
+</section>
+
+<section class="apple-entry">
+
+## `promote-to-master`
+
+<p>Promote the selected window into the master area (master/stack layout only).</p>
+<pre class="apple-declaration"><code>rift-cli execute layout promote-to-master</code></pre>
+
+</section>
+
+<section class="apple-entry">
+
+## `swap-master-stack`
+
+<p>Swap the first master with the first stack window (master/stack layout only).</p>
+<pre class="apple-declaration"><code>rift-cli execute layout swap-master-stack</code></pre>
+
+</section>
+
+<section class="apple-entry">
+
+## `swap-windows`
+
+<p>Swap two windows by window id (<code>WindowId { pid: ..., idx: ... }</code>).</p>
+<pre class="apple-declaration"><code>rift-cli execute layout swap-windows &lt;A&gt; &lt;B&gt;</code></pre>
+<p class="apple-label">Arguments</p>
+<dl class="apple-parameters">
+<div><dt><code>&lt;A&gt;</code></dt><dd></dd></div>
+<div><dt><code>&lt;B&gt;</code></dt><dd></dd></div>
+</dl>
+
+</section>
+
+<section class="apple-entry">
+
+## `scroll-strip`
+
+<p>Scroll the strip by a normalized delta (scrolling layout only).</p>
+<pre class="apple-declaration"><code>rift-cli execute layout scroll-strip &lt;DELTA&gt;</code></pre>
+<p class="apple-label">Arguments</p>
+<dl class="apple-parameters">
+<div><dt><code>&lt;DELTA&gt;</code></dt><dd></dd></div>
+</dl>
+
+</section>
+
+<section class="apple-entry">
+
+## `snap-strip`
+
+<p>Snap the strip to the nearest column boundary (scrolling layout only).</p>
+<pre class="apple-declaration"><code>rift-cli execute layout snap-strip</code></pre>
+
+</section>
+
+<section class="apple-entry">
+
+## `switch-preset-column-width`
+
+<p>Switch to the next preset column width (scrolling layout only).</p>
+<pre class="apple-declaration"><code>rift-cli execute layout switch-preset-column-width [OPTIONS]</code></pre>
+<p class="apple-label">Options</p>
+<dl class="apple-parameters">
+<div><dt><code>--backwards</code></dt><dd></dd></div>
+</dl>
+
+</section>
+
+<section class="apple-entry">
+
+## `center-selection`
+
+<p>Toggle centering of the selected column in scrolling layout. If invoked again on the same selection, centering is removed.</p>
+<pre class="apple-declaration"><code>rift-cli execute layout center-selection</code></pre>
+
+</section>
 
 ## See also
 
-- [Execute overview](/rift-docs/reference/cli/execute/)
-- [CLI overview](/rift-docs/reference/cli/)
+<ul class="apple-topics">
+<li><a href="/rift-docs/reference/cli/execute/">Execute overview</a></li>
+<li><a href="/rift-docs/reference/cli/">CLI overview</a></li>
+</ul>

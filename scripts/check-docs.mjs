@@ -7,10 +7,12 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const contentRoot = path.join(root, 'src/content/docs');
 const publicRoot = path.join(root, 'public');
 
-function filesUnder(directory, suffix) {
+function filesUnder(directory, ...suffixes) {
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
     const target = path.join(directory, entry.name);
-    return entry.isDirectory() ? filesUnder(target, suffix) : entry.name.endsWith(suffix) ? [target] : [];
+    return entry.isDirectory()
+      ? filesUnder(target, ...suffixes)
+      : suffixes.some((suffix) => entry.name.endsWith(suffix)) ? [target] : [];
   });
 }
 
@@ -20,7 +22,8 @@ function routeExists(target) {
   const relative = clean.slice('/rift-docs/'.length);
   if (!relative || relative.endsWith('/')) {
     const route = relative ? relative.slice(0, -1) : '';
-    return fs.existsSync(path.join(contentRoot, `${route}.md`)) || fs.existsSync(path.join(contentRoot, route, 'index.md'));
+    return ['.md', '.mdx'].some((extension) =>
+      fs.existsSync(path.join(contentRoot, `${route}${extension}`)) || fs.existsSync(path.join(contentRoot, route, `index${extension}`)));
   }
   return fs.existsSync(path.join(publicRoot, relative));
 }
@@ -64,7 +67,7 @@ function matchesType(value, type) {
 
 const schema = JSON.parse(fs.readFileSync(path.join(publicRoot, 'schema/rift-config.schema.json'), 'utf8'));
 const errors = [];
-const docs = filesUnder(contentRoot, '.md');
+const docs = filesUnder(contentRoot, '.md', '.mdx');
 let snippets = 0;
 let localLinks = 0;
 
@@ -79,8 +82,9 @@ for (const file of docs) {
       errors.push(`${path.relative(root, file)} has invalid TOML: ${error.message}`);
     }
   }
-  for (const match of source.matchAll(/!?\[[^\]]*\]\(([^)]+)\)/g)) {
-    const target = match[1];
+  // Markdown links and the href attributes of generated reference markup.
+  for (const match of source.matchAll(/!?\[[^\]]*\]\(([^)]+)\)|\bhref="([^"]+)"/g)) {
+    const target = match[1] ?? match[2];
     if (target.startsWith('/rift-docs/')) {
       localLinks += 1;
       if (!routeExists(target)) errors.push(`${path.relative(root, file)} links to missing ${target}`);
@@ -97,7 +101,7 @@ for (const file of docs) {
     && relative !== 'src/content/docs/reference/configuration/index.md';
   if (generatedReference) {
     if (!source.includes('## See also')) errors.push(`${relative} is missing See also links`);
-    if (!source.includes('config-intro-example-label')) errors.push(`${relative} has an unlabeled introductory example`);
+    if (!source.includes('<p class="apple-label">Example</p>')) errors.push(`${relative} has an unlabeled introductory example`);
     if (source.includes('<dt>Default</dt><dd>Required</dd>')) errors.push(`${relative} presents Required as a default`);
     if (/Currently has no effect/i.test(source)) errors.push(`${relative} contains an unmarked unavailable setting`);
     if (/\["[^"\n]+","/.test(source)) errors.push(`${relative} contains a densely formatted string-list default`);
@@ -109,8 +113,8 @@ const generatedReferenceText = docs
   .filter((file) => path.relative(root, file).startsWith('src/content/docs/reference/configuration/'))
   .map((file) => fs.readFileSync(file, 'utf8'))
   .join('\n');
-if (!generatedReferenceText.includes('config-availability')) errors.push('Generated reference does not mark unavailable settings');
-if (!generatedReferenceText.includes('config-setting-link')) errors.push('Generated reference does not link related settings');
+if (!generatedReferenceText.includes('<li data-variant="caution">Unavailable</li>')) errors.push('Generated reference does not mark unavailable settings');
+if (!/href="\/rift-docs\/reference\/configuration\/[a-z-]+\/#setting-/.test(generatedReferenceText)) errors.push('Generated reference does not link related settings');
 
 const cliReference = filesUnder(path.join(contentRoot, 'reference/cli'), '.md')
   .map((file) => fs.readFileSync(file, 'utf8'))

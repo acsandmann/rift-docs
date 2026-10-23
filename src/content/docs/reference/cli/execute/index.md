@@ -9,25 +9,27 @@ tableOfContents:
 
 <!-- GENERATED FILE. Do not edit directly. -->
 
-Source version: `v0.6.9-46-gdea7a23e`.
-
 Commands under `execute` change windows, workspaces, layouts, and runtime state.
+
+Generated from `rift-cli` at `v0.7.0-28-g6c63b50c`.
 
 ## Choose a command group
 
-| Group | Use it to |
-| --- | --- |
-| [window](/rift-docs/reference/cli/execute/window/) | Window management commands |
-| [workspace](/rift-docs/reference/cli/execute/workspace/) | Virtual workspace commands |
-| [layout](/rift-docs/reference/cli/execute/layout/) | Layout commands |
-| [config](/rift-docs/reference/cli/execute/config/) | Configuration management commands |
-| [mission-control](/rift-docs/reference/cli/execute/mission-control/) | Mission control commands |
-| [display](/rift-docs/reference/cli/execute/display/) | Display/mouse commands |
-| [space](/rift-docs/reference/cli/execute/space/) | macOS space commands (Mission Control spaces, not virtual workspaces) |
-| [Other actions](/rift-docs/reference/cli/execute/other/) | Save or restore layouts, inspect debug state, and exit Rift |
+<ul class="apple-topics">
+<li><a href="/rift-docs/reference/cli/execute/window/"><code>window</code></a><p>Window management commands</p></li>
+<li><a href="/rift-docs/reference/cli/execute/workspace/"><code>workspace</code></a><p>Virtual workspace commands</p></li>
+<li><a href="/rift-docs/reference/cli/execute/layout/"><code>layout</code></a><p>Layout commands</p></li>
+<li><a href="/rift-docs/reference/cli/execute/config/"><code>config</code></a><p>Configuration management commands</p></li>
+<li><a href="/rift-docs/reference/cli/execute/mission-control/"><code>mission-control</code></a><p>Mission control commands</p></li>
+<li><a href="/rift-docs/reference/cli/execute/display/"><code>display</code></a><p>Display/mouse commands</p></li>
+<li><a href="/rift-docs/reference/cli/execute/space/"><code>space</code></a><p>macOS space commands (Mission Control spaces, not virtual workspaces)</p></li>
+<li><a href="/rift-docs/reference/cli/execute/other/">Other actions</a><p>Save or restore layouts, inspect debug state, and exit Rift</p></li>
+</ul>
 
 ## See also
 
-- [Queries](/rift-docs/reference/cli/query/)
-- [CLI overview](/rift-docs/reference/cli/)
+<ul class="apple-topics">
+<li><a href="/rift-docs/reference/cli/query/">Queries</a></li>
+<li><a href="/rift-docs/reference/cli/">CLI overview</a></li>
+</ul>
 

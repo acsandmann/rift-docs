@@ -6,20 +6,13 @@ export default defineConfig({
   site: 'https://acsandmann.github.io',
   base: process.env.SITE_BASE ?? '/rift-docs',
   integrations: [starlight({
-    title: 'Rift',
+    title: 'rift',
     description: 'Documentation for Rift, a macOS tiling window manager.',
-	  social: [
-		  { icon: 'github', label: 'GitHub', href: `https://github.com/acsandmann/rift` },
-		  { icon: 'matrix', label: 'Matrix', href: `https://matrix.to/#/%23rift:matrix.org` },
-		  { icon: 'heart', label: 'Sponsor Rift', href: `https://github.com/sponsors/acsandmann` }
-	  ],
-    customCss: ['./src/styles/custom.css'],
-    components: {
-      Footer: './src/components/Footer.astro',
-      Header: './src/components/Header.astro',
-      SocialIcons: './src/components/SocialIcons.astro',
-      ThemeSelect: './src/components/ThemeSelect.astro',
-    },
+    social: [
+      { icon: 'github', label: 'GitHub', href: 'https://github.com/acsandmann/rift' },
+      { icon: 'matrix', label: 'Matrix', href: 'https://matrix.to/#/%23rift:matrix.org' },
+      { icon: 'heart', label: 'Sponsor Rift', href: 'https://github.com/sponsors/acsandmann' },
+    ],
     sidebar: [
       { label: 'Start here', items: ['index', 'quick-start', 'installation', 'configuration', 'changelog'] },
       {
@@ -92,8 +85,32 @@ export default defineConfig({
       },
     ],
     editLink: { baseUrl: 'https://github.com/acsandmann/rift-docs/edit/main/' },
-	plugins: [starlightThemeApple()],
-	head: [{
+    plugins: [
+      starlightThemeApple({
+        nav: [
+          { label: 'Install', link: '/installation/' },
+          { label: 'Guides', link: '/guides/layouts/' },
+          { label: 'Reference', link: '/reference/configuration/' },
+        ],
+        socialAttrs: {
+          github: { 'data-umami-event': 'github_link' },
+          matrix: { 'data-umami-event': 'matrix_link' },
+          heart: { 'data-umami-event': 'sponsor_header_link' },
+        },
+        footer: {
+          groups: [],
+          links: [
+            {
+              label: 'support rift’s development',
+              link: 'https://github.com/sponsors/acsandmann',
+              icon: 'heart',
+              attrs: { 'data-umami-event': 'sponsor_footer_link' },
+            },
+          ],
+        },
+      }),
+    ],
+    head: [{
       tag: 'script',
       attrs: {
         defer: true,

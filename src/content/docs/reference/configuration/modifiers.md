@@ -9,7 +9,7 @@ tableOfContents:
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.6.9-46-gdea7a23e.
+Generated from Rift v0.7.0-28-g6c63b50c.
 -->
 
 Name a combination of modifier keys, such as Option + Shift, and reuse it in shortcuts.
@@ -20,7 +20,7 @@ Use spaces around `+` when referencing a name: `main + H`.
 Edit matching tables in your existing config; do not repeat their headers. Keep your `[keys]` shortcuts. For a complete file, start with [Quick start](/rift-docs/quick-start/).
 :::
 
-<div class="config-intro-example-label">Example</div>
+<p class="apple-label">Example</p>
 
 ```toml
 [modifier_combinations]
@@ -32,5 +32,7 @@ main = "Alt + Shift"
 
 ## See also
 
-- [Keybindings guide](/rift-docs/guides/keybindings/)
-- [Keybinding reference](/rift-docs/reference/configuration/keybindings/)
+<ul class="apple-topics">
+<li><a href="/rift-docs/guides/keybindings/">Keybindings guide</a></li>
+<li><a href="/rift-docs/reference/configuration/keybindings/">Keybinding reference</a></li>
+</ul>

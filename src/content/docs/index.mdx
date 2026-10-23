@@ -1,0 +1,75 @@
+---
+title: Rift
+description: A keyboard-driven tiling window manager for macOS.
+template: splash
+hero:
+  tagline: A keyboard-driven tiling window manager for macOS.
+  image:
+    html: <figure class="apple-figure" data-frame><img src="/rift-docs/rift-demo.webp" alt="Rift arranging and resizing windows on a macOS desktop" width="960" height="623" fetchpriority="high"></figure>
+  actions:
+    - text: Get started
+      link: /rift-docs/quick-start/
+      variant: primary
+    - text: Explore layouts
+      link: /rift-docs/layouts/
+      icon: right-caret
+      variant: minimal
+---
+
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+Rift lets you move, resize, and rearrange windows from the keyboard. Choose from several layout styles and give different parts of your workflow their own virtual workspaces.
+
+## Arrange windows without the mouse
+
+Rift tiles the windows on your desktop and keeps them organized as you open, close, and move between apps.
+
+<CardGrid>
+  <Card title="Keyboard-driven" icon="laptop">
+    Focus, move, resize, float, and swap windows with shortcuts. Press Option + Z to tile the current desktop.
+  </Card>
+  <Card title="Five layouts" icon="window">
+    Use familiar split-screen tiling, scrolling columns, master-stack, and more, everywhere or per workspace.
+  </Card>
+  <Card title="Virtual workspaces" icon="desktop">
+    Give coding, reading, or chat its own workspace within a macOS Space, and let app rules place windows automatically.
+  </Card>
+  <Card title="Ready without configuration" icon="setting">
+    The bundled configuration works out of the box. When you want changes, one TOML file covers settings and shortcuts.
+  </Card>
+</CardGrid>
+
+## Try Rift
+
+Install Rift, grant macOS Accessibility permission, and press Option + Z to tile the windows on your current desktop. You do not need to write a configuration file before trying it.
+
+<CardGrid>
+  <LinkCard title="Quick start" description="Install Rift, activate a Space, and make your first small config." href="/rift-docs/quick-start/" />
+  <LinkCard title="Installation" description="Install Rift on macOS and grant the permission it needs." href="/rift-docs/installation/" />
+</CardGrid>
+
+## Choose how windows are arranged
+
+Rift includes five layouts, from familiar split-screen tiling to scrolling columns and master-stack. Choose one layout everywhere or assign different layouts to individual workspaces. App rules can place windows automatically, while floating mode keeps dialogs and utility windows out of the tiled layout.
+
+<CardGrid>
+  <LinkCard title="Traditional" description="Arrange windows in horizontal and vertical groups." href="/rift-docs/layouts/traditional/" />
+  <LinkCard title="BSP" description="Divide the screen into a tree of two-way splits." href="/rift-docs/layouts/bsp/" />
+  <LinkCard title="Master-stack" description="Keep a primary window beside a supporting group." href="/rift-docs/layouts/master-stack/" />
+  <LinkCard title="Stack" description="Keep a group of overlapping windows large." href="/rift-docs/layouts/stack/" />
+  <LinkCard title="Scrolling" description="A horizontal strip of windows inspired by niri." href="/rift-docs/layouts/scrolling/" />
+  <LinkCard title="Compare layouts" description="See how Rift arranges windows and choose a starting point." href="/rift-docs/layouts/" />
+</CardGrid>
+
+## Configure Rift
+
+The bundled configuration is ready to use. To change it, start with the configuration guide, then look up settings, defaults, and accepted values in the reference.
+
+<CardGrid>
+  <LinkCard title="Configuration guide" description="Learn the shape of Rift’s TOML configuration before tuning it." href="/rift-docs/configuration/" />
+  <LinkCard title="Keybindings" description="Configure Rift keyboard shortcuts." href="/rift-docs/guides/keybindings/" />
+  <LinkCard title="Configuration reference" description="Find Rift settings, accepted values, defaults, and examples." href="/rift-docs/reference/configuration/" />
+  <LinkCard title="CLI reference" description="Inspect and control Rift from Terminal or a script." href="/rift-docs/reference/cli/" />
+</CardGrid>
+
+Releases, source code, and issue tracking are available on <a href="https://github.com/acsandmann/rift" data-umami-event="github_link">GitHub</a>.

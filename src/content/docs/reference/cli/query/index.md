@@ -9,95 +9,120 @@ tableOfContents:
 
 <!-- GENERATED FILE. Do not edit directly. -->
 
-Source version: `v0.6.9-46-gdea7a23e`.
-
 Queries read state without changing it. Set `RIFT_CLI_PRETTY=1` to format returned JSON for reading.
 
-## <span class="cli-command-heading">workspaces</span>
+Generated from `rift-cli` at `v0.7.0-28-g6c63b50c`.
 
-<article class="cli-command">
-<p class="cli-command__description">List virtual workspaces (optionally for a specific macOS space).</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli query workspaces [OPTIONS]</code></div></div>
-<section class="cli-parameters"><h3>Options</h3><dl class="cli-command__details">
-<div class="cli-parameter"><dt><code>--space-id &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-space-id">SPACE_ID</a>&gt;</code></dt><dd>macOS space ID; defaults to the active display space.</dd></div>
-<div class="cli-parameter"><dt><code>--display &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;</code></dt><dd>Display UUID; uses the display's current macOS space.</dd></div>
-</dl></section>
-</article>
+<section class="apple-entry">
 
-## <span class="cli-command-heading">windows</span>
+## `workspaces`
 
-<article class="cli-command">
-<p class="cli-command__description">List windows (optionally filtered by space).</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli query windows [OPTIONS]</code></div></div>
-<section class="cli-parameters"><h3>Options</h3><dl class="cli-command__details">
-<div class="cli-parameter"><dt><code>--space-id &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-space-id">SPACE_ID</a>&gt;</code></dt><dd>macOS space ID; defaults to the active display space.</dd></div>
-<div class="cli-parameter"><dt><code>--display &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;</code></dt><dd>Display UUID; uses the display's current macOS space.</dd></div>
-</dl></section>
-</article>
+<p>List virtual workspaces (optionally for a specific macOS space).</p>
+<pre class="apple-declaration"><code>rift-cli query workspaces [OPTIONS]</code></pre>
+<p class="apple-label">Options</p>
+<dl class="apple-parameters">
+<div><dt><code>--space-id &lt;<a href="/rift-docs/reference/cli/#value-space-id">SPACE_ID</a>&gt;</code></dt><dd><p>macOS space ID; defaults to the active display space.</p></dd></div>
+<div><dt><code>--display &lt;<a href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;</code></dt><dd><p>Display UUID; uses the display's current macOS space.</p></dd></div>
+</dl>
 
-## <span class="cli-command-heading">displays</span>
+</section>
 
-<article class="cli-command">
-<p class="cli-command__description">List connected displays.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli query displays</code></div></div>
-</article>
+<section class="apple-entry">
 
-## <span class="cli-command-heading">window</span>
+## `windows`
 
-<article class="cli-command">
-<p class="cli-command__description">Get information about a specific window.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli query window &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-window-id">WINDOW_ID</a>&gt;</code></div></div>
-<section class="cli-parameters"><h3>Arguments</h3><dl class="cli-command__details">
-<div class="cli-parameter"><dt><code>&lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-window-id">WINDOW_ID</a>&gt;</code></dt><dd></dd></div>
-</dl></section>
-</article>
+<p>List windows (optionally filtered by space).</p>
+<pre class="apple-declaration"><code>rift-cli query windows [OPTIONS]</code></pre>
+<p class="apple-label">Options</p>
+<dl class="apple-parameters">
+<div><dt><code>--space-id &lt;<a href="/rift-docs/reference/cli/#value-space-id">SPACE_ID</a>&gt;</code></dt><dd><p>macOS space ID; defaults to the active display space.</p></dd></div>
+<div><dt><code>--display &lt;<a href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;</code></dt><dd><p>Display UUID; uses the display's current macOS space.</p></dd></div>
+</dl>
 
-## <span class="cli-command-heading">applications</span>
+</section>
 
-<article class="cli-command">
-<p class="cli-command__description">List running applications.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli query applications</code></div></div>
-</article>
+<section class="apple-entry">
 
-## <span class="cli-command-heading">layout</span>
+## `displays`
 
-<article class="cli-command">
-<p class="cli-command__description">Get layout state and normalized container tree for a space.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli query layout [OPTIONS]</code></div></div>
-<section class="cli-parameters"><h3>Options</h3><dl class="cli-command__details">
-<div class="cli-parameter"><dt><code>--space-id &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-space-id">SPACE_ID</a>&gt;</code></dt><dd>macOS space ID; defaults to the active display space.</dd></div>
-<div class="cli-parameter"><dt><code>--display &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;</code></dt><dd>Display UUID; uses the display's current macOS space.</dd></div>
-<div class="cli-parameter"><dt><code>--workspace-id &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-workspace-id">WORKSPACE_ID</a>&gt;</code></dt><dd>Virtual workspace index; defaults to the active workspace.</dd></div>
-</dl></section>
-</article>
+<p>List connected displays.</p>
+<pre class="apple-declaration"><code>rift-cli query displays</code></pre>
 
-## <span class="cli-command-heading">workspace-layout</span>
+</section>
 
-<article class="cli-command">
-<p class="cli-command__description">Get workspace layout-engine mode(s).</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli query workspace-layout [OPTIONS]</code></div></div>
-<section class="cli-parameters"><h3>Options</h3><dl class="cli-command__details">
-<div class="cli-parameter"><dt><code>--space-id &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-space-id">SPACE_ID</a>&gt;</code></dt><dd>macOS space ID; defaults to the active display space.</dd></div>
-<div class="cli-parameter"><dt><code>--display &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;</code></dt><dd>Display UUID; uses the display's current macOS space.</dd></div>
-<div class="cli-parameter"><dt><code>--workspace-id &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-workspace-id">WORKSPACE_ID</a>&gt;</code></dt><dd></dd></div>
-</dl></section>
-</article>
+<section class="apple-entry">
 
-## <span class="cli-command-heading">binding-mode</span>
+## `window`
 
-<article class="cli-command">
-<p class="cli-command__description">Get the active binding mode name.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli query binding-mode</code></div></div>
-</article>
+<p>Get information about a specific window.</p>
+<pre class="apple-declaration"><code>rift-cli query window &lt;<a href="/rift-docs/reference/cli/#value-window-id">WINDOW_ID</a>&gt;</code></pre>
+<p class="apple-label">Arguments</p>
+<dl class="apple-parameters">
+<div><dt><code>&lt;<a href="/rift-docs/reference/cli/#value-window-id">WINDOW_ID</a>&gt;</code></dt><dd></dd></div>
+</dl>
 
-## <span class="cli-command-heading">metrics</span>
+</section>
 
-<article class="cli-command">
-<p class="cli-command__description">Get performance metrics.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli query metrics</code></div></div>
-</article>
+<section class="apple-entry">
+
+## `applications`
+
+<p>List running applications.</p>
+<pre class="apple-declaration"><code>rift-cli query applications</code></pre>
+
+</section>
+
+<section class="apple-entry">
+
+## `layout`
+
+<p>Get layout state and normalized container tree for a space.</p>
+<pre class="apple-declaration"><code>rift-cli query layout [OPTIONS]</code></pre>
+<p class="apple-label">Options</p>
+<dl class="apple-parameters">
+<div><dt><code>--space-id &lt;<a href="/rift-docs/reference/cli/#value-space-id">SPACE_ID</a>&gt;</code></dt><dd><p>macOS space ID; defaults to the active display space.</p></dd></div>
+<div><dt><code>--display &lt;<a href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;</code></dt><dd><p>Display UUID; uses the display's current macOS space.</p></dd></div>
+<div><dt><code>--workspace-id &lt;<a href="/rift-docs/reference/cli/#value-workspace-id">WORKSPACE_ID</a>&gt;</code></dt><dd><p>Virtual workspace index; defaults to the active workspace.</p></dd></div>
+</dl>
+
+</section>
+
+<section class="apple-entry">
+
+## `workspace-layout`
+
+<p>Get workspace layout-engine mode(s).</p>
+<pre class="apple-declaration"><code>rift-cli query workspace-layout [OPTIONS]</code></pre>
+<p class="apple-label">Options</p>
+<dl class="apple-parameters">
+<div><dt><code>--space-id &lt;<a href="/rift-docs/reference/cli/#value-space-id">SPACE_ID</a>&gt;</code></dt><dd><p>macOS space ID; defaults to the active display space.</p></dd></div>
+<div><dt><code>--display &lt;<a href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;</code></dt><dd><p>Display UUID; uses the display's current macOS space.</p></dd></div>
+<div><dt><code>--workspace-id &lt;<a href="/rift-docs/reference/cli/#value-workspace-id">WORKSPACE_ID</a>&gt;</code></dt><dd></dd></div>
+</dl>
+
+</section>
+
+<section class="apple-entry">
+
+## `binding-mode`
+
+<p>Get the active binding mode name.</p>
+<pre class="apple-declaration"><code>rift-cli query binding-mode</code></pre>
+
+</section>
+
+<section class="apple-entry">
+
+## `metrics`
+
+<p>Get performance metrics.</p>
+<pre class="apple-declaration"><code>rift-cli query metrics</code></pre>
+
+</section>
 
 ## See also
 
-- [Execute commands](/rift-docs/reference/cli/execute/)
-- [Subscriptions](/rift-docs/reference/cli/subscribe/)
+<ul class="apple-topics">
+<li><a href="/rift-docs/reference/cli/execute/">Execute commands</a></li>
+<li><a href="/rift-docs/reference/cli/subscribe/">Subscriptions</a></li>
+</ul>

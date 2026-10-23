@@ -9,81 +9,101 @@ tableOfContents:
 
 <!-- GENERATED FILE. Do not edit directly. -->
 
-Source version: `v0.6.9-46-gdea7a23e`.
-
 Display/mouse commands. All commands act on the running Rift instance.
 
-## <span class="cli-command-heading">focus</span>
+Generated from `rift-cli` at `v0.7.0-28-g6c63b50c`.
 
-<article class="cli-command">
-<p class="cli-command__description">Focus a display by direction, index, or UUID.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute display focus &lt;--direction &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;|--index &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-index">INDEX</a>&gt;|--uuid &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;&gt;</code></div></div>
-<section class="cli-parameters"><h3>Options</h3><dl class="cli-command__details">
-<div class="cli-parameter"><dt><code>--direction &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;</code></dt><dd>Direction relative to the current display (left, right, up, down).</dd></div>
-<div class="cli-parameter"><dt><code>--index &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-index">INDEX</a>&gt;</code></dt><dd>Display index (0-based).</dd></div>
-<div class="cli-parameter"><dt><code>--uuid &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;</code></dt><dd>Display UUID.</dd></div>
-</dl></section>
-</article>
+<section class="apple-entry">
 
-## <span class="cli-command-heading">move-mouse</span>
+## `focus`
 
-<article class="cli-command">
-<p class="cli-command__description">Move the mouse cursor to a display by direction, index, or UUID.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute display move-mouse &lt;--direction &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;|--index &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-index">INDEX</a>&gt;|--uuid &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;&gt;</code></div></div>
-<section class="cli-parameters"><h3>Options</h3><dl class="cli-command__details">
-<div class="cli-parameter"><dt><code>--direction &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;</code></dt><dd>Direction relative to the current display (left, right, up, down).</dd></div>
-<div class="cli-parameter"><dt><code>--index &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-index">INDEX</a>&gt;</code></dt><dd>Display index (0-based).</dd></div>
-<div class="cli-parameter"><dt><code>--uuid &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;</code></dt><dd>Display UUID.</dd></div>
-</dl></section>
-</article>
+<p>Focus a display by direction, index, or UUID.</p>
+<pre class="apple-declaration"><code>rift-cli execute display focus &lt;--direction &lt;<a href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;|--index &lt;<a href="/rift-docs/reference/cli/#value-index">INDEX</a>&gt;|--uuid &lt;<a href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;&gt;</code></pre>
+<p class="apple-label">Options</p>
+<dl class="apple-parameters">
+<div><dt><code>--direction &lt;<a href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;</code></dt><dd><p>Direction relative to the current display (left, right, up, down).</p></dd></div>
+<div><dt><code>--index &lt;<a href="/rift-docs/reference/cli/#value-index">INDEX</a>&gt;</code></dt><dd><p>Display index (0-based).</p></dd></div>
+<div><dt><code>--uuid &lt;<a href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;</code></dt><dd><p>Display UUID.</p></dd></div>
+</dl>
 
-## <span class="cli-command-heading">move-mouse-to-index</span>
+</section>
 
-<article class="cli-command">
-<p class="cli-command__description">Move mouse cursor to a display by index (0-based).</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute display move-mouse-to-index &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-index">INDEX</a>&gt;</code></div></div>
-<section class="cli-parameters"><h3>Arguments</h3><dl class="cli-command__details">
-<div class="cli-parameter"><dt><code>&lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-index">INDEX</a>&gt;</code></dt><dd>Display index (0-based).</dd></div>
-</dl></section>
-</article>
+<section class="apple-entry">
 
-## <span class="cli-command-heading">move-mouse-to-uuid</span>
+## `move-mouse`
 
-<article class="cli-command">
-<p class="cli-command__description">Move mouse cursor to a display by UUID.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute display move-mouse-to-uuid &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;</code></div></div>
-<section class="cli-parameters"><h3>Arguments</h3><dl class="cli-command__details">
-<div class="cli-parameter"><dt><code>&lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;</code></dt><dd>Display UUID.</dd></div>
-</dl></section>
-</article>
+<p>Move the mouse cursor to a display by direction, index, or UUID.</p>
+<pre class="apple-declaration"><code>rift-cli execute display move-mouse &lt;--direction &lt;<a href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;|--index &lt;<a href="/rift-docs/reference/cli/#value-index">INDEX</a>&gt;|--uuid &lt;<a href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;&gt;</code></pre>
+<p class="apple-label">Options</p>
+<dl class="apple-parameters">
+<div><dt><code>--direction &lt;<a href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;</code></dt><dd><p>Direction relative to the current display (left, right, up, down).</p></dd></div>
+<div><dt><code>--index &lt;<a href="/rift-docs/reference/cli/#value-index">INDEX</a>&gt;</code></dt><dd><p>Display index (0-based).</p></dd></div>
+<div><dt><code>--uuid &lt;<a href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;</code></dt><dd><p>Display UUID.</p></dd></div>
+</dl>
 
-## <span class="cli-command-heading">move-window</span>
+</section>
 
-<article class="cli-command">
-<p class="cli-command__description">Move a window to a display by direction, index, or UUID.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute display move-window [OPTIONS] &lt;--direction &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;|--index &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-index">INDEX</a>&gt;|--uuid &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;&gt;</code></div></div>
-<section class="cli-parameters"><h3>Options</h3><dl class="cli-command__details">
-<div class="cli-parameter"><dt><code>--direction &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;</code></dt><dd>Direction relative to the current display (left, right, up, down).</dd></div>
-<div class="cli-parameter"><dt><code>--index &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-index">INDEX</a>&gt;</code></dt><dd>Display index (0-based).</dd></div>
-<div class="cli-parameter"><dt><code>--uuid &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;</code></dt><dd>Display UUID.</dd></div>
-<div class="cli-parameter"><dt><code>--window-id &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-window-id">WINDOW_ID</a>&gt;</code></dt><dd>Optional window id (window idx); defaults to the focused window if omitted.</dd></div>
-</dl></section>
-</article>
+<section class="apple-entry">
 
-## <span class="cli-command-heading">move-workspace</span>
+## `move-mouse-to-index`
 
-<article class="cli-command">
-<p class="cli-command__description">Move the active workspace to a display by direction, index, or UUID.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute display move-workspace [OPTIONS] &lt;--direction &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;|--index &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-index">INDEX</a>&gt;|--uuid &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;&gt;</code></div></div>
-<section class="cli-parameters"><h3>Options</h3><dl class="cli-command__details">
-<div class="cli-parameter"><dt><code>--direction &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;</code></dt><dd>Direction relative to the current display (left, right, up, down).</dd></div>
-<div class="cli-parameter"><dt><code>--index &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-index">INDEX</a>&gt;</code></dt><dd>Display index (0-based).</dd></div>
-<div class="cli-parameter"><dt><code>--uuid &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;</code></dt><dd>Display UUID.</dd></div>
-<div class="cli-parameter"><dt><code>--wrap-around</code></dt><dd>Continue from the opposite edge for directional selectors.</dd></div>
-</dl></section>
-</article>
+<p>Move mouse cursor to a display by index (0-based).</p>
+<pre class="apple-declaration"><code>rift-cli execute display move-mouse-to-index &lt;<a href="/rift-docs/reference/cli/#value-index">INDEX</a>&gt;</code></pre>
+<p class="apple-label">Arguments</p>
+<dl class="apple-parameters">
+<div><dt><code>&lt;<a href="/rift-docs/reference/cli/#value-index">INDEX</a>&gt;</code></dt><dd><p>Display index (0-based).</p></dd></div>
+</dl>
+
+</section>
+
+<section class="apple-entry">
+
+## `move-mouse-to-uuid`
+
+<p>Move mouse cursor to a display by UUID.</p>
+<pre class="apple-declaration"><code>rift-cli execute display move-mouse-to-uuid &lt;<a href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;</code></pre>
+<p class="apple-label">Arguments</p>
+<dl class="apple-parameters">
+<div><dt><code>&lt;<a href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;</code></dt><dd><p>Display UUID.</p></dd></div>
+</dl>
+
+</section>
+
+<section class="apple-entry">
+
+## `move-window`
+
+<p>Move a window to a display by direction, index, or UUID.</p>
+<pre class="apple-declaration"><code>rift-cli execute display move-window [OPTIONS] &lt;--direction &lt;<a href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;|--index &lt;<a href="/rift-docs/reference/cli/#value-index">INDEX</a>&gt;|--uuid &lt;<a href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;&gt;</code></pre>
+<p class="apple-label">Options</p>
+<dl class="apple-parameters">
+<div><dt><code>--direction &lt;<a href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;</code></dt><dd><p>Direction relative to the current display (left, right, up, down).</p></dd></div>
+<div><dt><code>--index &lt;<a href="/rift-docs/reference/cli/#value-index">INDEX</a>&gt;</code></dt><dd><p>Display index (0-based).</p></dd></div>
+<div><dt><code>--uuid &lt;<a href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;</code></dt><dd><p>Display UUID.</p></dd></div>
+<div><dt><code>--window-id &lt;<a href="/rift-docs/reference/cli/#value-window-id">WINDOW_ID</a>&gt;</code></dt><dd><p>Optional window id (window idx); defaults to the focused window if omitted.</p></dd></div>
+</dl>
+
+</section>
+
+<section class="apple-entry">
+
+## `move-workspace`
+
+<p>Move the active workspace to a display by direction, index, or UUID.</p>
+<pre class="apple-declaration"><code>rift-cli execute display move-workspace [OPTIONS] &lt;--direction &lt;<a href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;|--index &lt;<a href="/rift-docs/reference/cli/#value-index">INDEX</a>&gt;|--uuid &lt;<a href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;&gt;</code></pre>
+<p class="apple-label">Options</p>
+<dl class="apple-parameters">
+<div><dt><code>--direction &lt;<a href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;</code></dt><dd><p>Direction relative to the current display (left, right, up, down).</p></dd></div>
+<div><dt><code>--index &lt;<a href="/rift-docs/reference/cli/#value-index">INDEX</a>&gt;</code></dt><dd><p>Display index (0-based).</p></dd></div>
+<div><dt><code>--uuid &lt;<a href="/rift-docs/reference/cli/#value-uuid">UUID</a>&gt;</code></dt><dd><p>Display UUID.</p></dd></div>
+<div><dt><code>--wrap-around</code></dt><dd><p>Continue from the opposite edge for directional selectors.</p></dd></div>
+</dl>
+
+</section>
 
 ## See also
 
-- [Execute overview](/rift-docs/reference/cli/execute/)
-- [CLI overview](/rift-docs/reference/cli/)
+<ul class="apple-topics">
+<li><a href="/rift-docs/reference/cli/execute/">Execute overview</a></li>
+<li><a href="/rift-docs/reference/cli/">CLI overview</a></li>
+</ul>

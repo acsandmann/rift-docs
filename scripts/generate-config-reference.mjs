@@ -212,8 +212,9 @@ function escapeHtml(value) {
 }
 
 // Override copy only uses links and inline code. Rendering that small subset here
-// lets generated fields live in semantic cards without changing the source docs
-// to MDX or pulling presentation details into config-docs.json.
+// lets generated fields use the theme's reference markup (`apple-entry`, `apple-meta`,
+// …) without changing the source docs to MDX or pulling presentation details into
+// config-docs.json.
 function routeForSetting(path) {
   if (path === 'settings.drag_drop' || path.startsWith('settings.drag_drop.')) return 'drag-drop';
   if (path.startsWith('settings.layout.scrolling')) return 'scrolling';
@@ -241,10 +242,13 @@ function settingReference(code, contextPath, knownPaths) {
   const route = routeForSetting(candidate);
   if (!route) return null;
   const row = knownPaths.get(candidate);
-  const anchor = row.container || row.arrayContainer
-    ? candidate.replaceAll('.', '')
-    : candidate.split('.').at(-1);
-  return `/rift-docs/reference/configuration/${route}/#${anchor}`;
+  return `/rift-docs/reference/configuration/${route}/#${settingAnchor(row)}`;
+}
+
+// Tables link to their heading. Fields link to their entry, whose id is the full path so
+// that fields sharing a name in different tables (such as `enabled`) stay distinct.
+function settingAnchor(row) {
+  return row.container || row.arrayContainer ? row.path.replaceAll('.', '') : `setting-${row.path.replaceAll('.', '-')}`;
 }
 
 function typeReference(row) {
@@ -264,15 +268,22 @@ function inlineHtml(value, contextPath = null, knownPaths = new Map()) {
     .replace(/`([^`]+)`/g, (_, code) => {
       const href = settingReference(code, contextPath, knownPaths);
       const rendered = `<code>${escapeHtml(code)}</code>`;
-      return token(href ? `<a class="config-setting-link" href="${href}">${rendered}</a>` : rendered);
+      return token(href ? `<a href="${href}">${rendered}</a>` : rendered);
     })
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, href) => token(`<a href="${escapeHtml(href)}">${escapeHtml(label)}</a>`));
   output = escapeHtml(output);
   return output.replace(/\u0000(\d+)\u0000/g, (_, index) => tokens[Number(index)]);
 }
 
-function metadataHtml(label, value, kind) {
-  return `<div class="config-meta__item config-meta__item--${kind}"><dt>${label}</dt><dd>${inlineHtml(value)}</dd></div>`;
+function metadataHtml(label, value) {
+  return `<div><dt>${label}</dt><dd>${inlineHtml(value)}</dd></div>`;
+}
+
+const exampleLabel = '<p class="apple-label">Example</p>';
+
+function topicList(topics) {
+  return `<ul class="apple-topics">\n${topics.map(({ label, href, description }) =>
+    `<li><a href="${href}">${escapeHtml(label)}</a>${description ? `<p>${escapeHtml(description)}</p>` : ''}</li>`).join('\n')}\n</ul>`;
 }
 
 function markdownGroup(title, prefix, version) {
@@ -306,12 +317,12 @@ function markdownGroup(title, prefix, version) {
   for (const r of [...tables.values()].flat()) {
     const parts = r.path.split('.');
     if (r.arrayContainer) {
-      content.push(`## <span class="config-table-heading config-array-table-heading">[[${r.path}]]</span>\n\n${r.description}${r.customExample ? `\n\n<div class="config-intro-example-label">Example</div>\n\n\`\`\`toml\n${r.customExample}\n\`\`\`` : ''}`);
+      content.push(`<p class="apple-label">Array of tables</p>\n\n## \`[[${r.path}]]\`\n\n${r.description}${r.customExample ? `\n\n${exampleLabel}\n\n\`\`\`toml\n${r.customExample}\n\`\`\`` : ''}`);
       currentTable = r.path;
       continue;
     }
     if (r.container) {
-      content.push(`## <span class="config-table-heading">[${r.path}]</span>\n\n${r.description}`);
+      content.push(`<p class="apple-label">Table</p>\n\n## \`[${r.path}]\`\n\n${r.description}`);
       currentTable = r.path;
       continue;
     }
@@ -321,23 +332,32 @@ function markdownGroup(title, prefix, version) {
       continue;
     }
     const table = parts.slice(0, -1).join('.');
-    if (table !== currentTable) { content.push(`## <span class="config-table-heading">[${table}]</span>`); currentTable = table; }
+    if (table !== currentTable) { content.push(`<p class="apple-label">Table</p>\n\n## \`[${table}]\``); currentTable = table; }
     const hasLongValues = r.enum?.length > 4;
     const type = hasLongValues ? 'text' : typeReference(r);
     const defaultText = shownDefault(r.value);
     const accepted = hasLongValues
-      ? `<div class="config-values"><strong>Possible values</strong><div>${r.enum.map((value) => `<code>${escapeHtml(value)}</code>`).join(' ')}</div></div>`
+      ? `<p class="apple-label">Possible values</p>\n<ul class="apple-values">${r.enum.map((value) => `<li><code>${escapeHtml(value)}</code></li>`).join('')}</ul>`
       : '';
     const unavailable = /currently has no effect\.?$/i.test(r.description);
-    const availability = unavailable ? '<div class="config-availability">Unavailable</div>' : '';
+    const availability = unavailable ? '<ul class="apple-availability"><li data-variant="caution">Unavailable</li></ul>\n' : '';
     const description = unavailable ? 'Reserved for future use.' : inlineHtml(r.description, r.path, knownPaths);
-    const note = r.note ? `<aside class="config-note"><strong>Note</strong><span>${inlineHtml(r.note, r.path, knownPaths)}</span></aside>` : '';
-    const example = r.customExample ? `<div class="config-example"><div class="config-example__label">Example</div><pre><code class="language-toml">${escapeHtml(r.customExample)}\n</code></pre></div>` : '';
     const defaultMeta = r.value === undefined
-      ? metadataHtml('Requirement', 'Required', 'required')
-      : metadataHtml('Default', defaultText, 'default');
-    const expanded = unavailable || hasLongValues || r.note || r.customExample;
-    content.push(`### \`${parts.at(-1)}\`\n\n<section class="config-option${expanded ? ' config-option--expanded' : ' config-option--simple'}">\n${availability}<p class="config-description">${description}</p>\n<dl class="config-meta">${metadataHtml('Type', type, 'type')}${defaultMeta}</dl>\n${accepted}${note}${example}\n</section>`);
+      ? metadataHtml('Requirement', 'Required')
+      : metadataHtml('Default', defaultText);
+    const blocks = [
+      `<section class="apple-entry" id="${settingAnchor(r)}">`,
+      `### \`${parts.at(-1)}\``,
+      [
+        `${availability}<p>${description}</p>`,
+        `<dl class="apple-meta">${metadataHtml('Type', type)}${defaultMeta}</dl>`,
+        accepted,
+      ].filter(Boolean).join('\n'),
+      r.note ? `:::note\n${inlineHtml(r.note, r.path, knownPaths)}\n:::` : '',
+      r.customExample ? `${exampleLabel}\n\n\`\`\`toml\n${r.customExample}\n\`\`\`` : '',
+      '</section>',
+    ];
+    content.push(blocks.filter(Boolean).join('\n\n'));
   }
   const examples = {
     General: '```toml\n[settings]\nanimate = true\nanimation_duration = 0.2\n```',
@@ -355,10 +375,10 @@ function markdownGroup(title, prefix, version) {
   const fragmentNote = ':::note[Examples are config fragments]\nEdit matching tables in your existing config; do not repeat their headers. Keep your `[keys]` shortcuts. For a complete file, start with [Quick start](/rift-docs/quick-start/).\n:::';
   const warning = group.warning ? `:::caution[${group.warning.title}]\n${group.warning.body}\n:::` : '';
   const introExample = examples[title]
-    ? examples[title].replace('```toml', '<div class="config-intro-example-label">Example</div>\n\n```toml')
+    ? examples[title].replace('```toml', `${exampleLabel}\n\n\`\`\`toml`)
     : '';
   const intro = [group.description, group.next, warning, fragmentNote, introExample].filter(Boolean).join('\n\n');
-  const appRuleIntro = title === 'App rules' ? 'This example uses the default workspace name `Development`. Replace it if you renamed that workspace:\n\n<div class="config-intro-example-label">Example</div>\n\n```toml\n[[virtual_workspaces.app_rules]]\napp_id = "com.apple.Terminal"\nworkspace = "Development"\n\n[[virtual_workspaces.app_rules]]\napp_id = "com.apple.Calculator"\nfloating = true\n```' : '';
+  const appRuleIntro = title === 'App rules' ? 'This example uses the default workspace name `Development`. Replace it if you renamed that workspace:\n\n' + exampleLabel + '\n\n```toml\n[[virtual_workspaces.app_rules]]\napp_id = "com.apple.Terminal"\nworkspace = "Development"\n\n[[virtual_workspaces.app_rules]]\napp_id = "com.apple.Calculator"\nfloating = true\n```' : '';
   const commandNotes = title === 'Commands and startup' ? 'For a helper that must restart after failure, use a macOS LaunchAgent (a background service). CLI subscriptions accept `workspace_changed`, `windows_changed`, `window_title_changed`, `focused_window_changed`, `stacks_changed`, `layout_changed`, `selection_changed`, or `*`. Each event’s JSON data is passed as the command’s final argument and in `RIFT_EVENT_JSON`. `RIFT_EVENT_TYPE` identifies the event; other variables depend on its contents. See [Integrations](/rift-docs/ecosystem/integrations/) for a working subscription.' : '';
   const seeAlso = {
     General: ['[Quick start](/rift-docs/quick-start/)', '[Configuration guide](/rift-docs/configuration/)', '[Keybindings](/rift-docs/guides/keybindings/)'],
@@ -374,7 +394,10 @@ function markdownGroup(title, prefix, version) {
     'Modifier combinations': ['[Keybindings guide](/rift-docs/guides/keybindings/)', '[Keybinding reference](/rift-docs/reference/configuration/keybindings/)'],
     'Commands and startup': ['[Integrations](/rift-docs/ecosystem/integrations/)', '[Keybindings](/rift-docs/guides/keybindings/)'],
   }[title] || [];
-  const related = seeAlso.length ? `## See also\n\n${seeAlso.map((link) => `- ${link}`).join('\n')}` : '';
+  const related = seeAlso.length ? `## See also\n\n${topicList(seeAlso.map((link) => {
+    const [, label, href] = link.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+    return { label, href };
+  }))}` : '';
   return `<!--\nGENERATED FILE. Do not edit directly.\nGenerated from Rift ${version}.\n-->\n\n${[intro, appRuleIntro, commandNotes, content.join('\n\n'), related].filter(Boolean).join('\n\n')}`;
 }
 let version = process.env.RIFT_REF || 'the checked-out Rift source';
@@ -384,12 +407,53 @@ fs.writeFileSync(path.join(schemaDir, 'rift-config.schema.json'), JSON.stringify
 const refDir = path.join(docsRoot, 'src/content/docs/reference/configuration'); fs.mkdirSync(refDir, { recursive: true });
 const groups = [['general', 'General', 'settings'], ['drag-drop', 'Drag and drop', 'settings.drag_drop'], ['layouts', 'Layouts', 'settings.layout'], ['scrolling', 'Scrolling layout', 'settings.layout.scrolling'], ['gestures', 'Gestures', 'settings.gestures'], ['ui', 'User interface', 'settings.ui'], ['app-rules', 'App rules', 'virtual_workspaces.app_rules'], ['virtual-workspaces', 'Virtual workspaces', 'virtual_workspaces'], ['keybindings', 'Keybindings', 'keys'], ['binding-modes', 'Binding modes', 'binding_modes'], ['modifiers', 'Modifier combinations', 'modifier_combinations'], ['commands', 'Commands and startup', 'settings.run_on_start']];
 for (const [file, title, prefix] of groups) fs.writeFileSync(path.join(refDir, `${file}.md`), `---\ntitle: ${title}\ndescription: ${JSON.stringify(overrides.groups[title].description)}\neditUrl: false\ntableOfContents:\n  minHeadingLevel: 2\n  maxHeadingLevel: 3\n---\n\n${markdownGroup(title, prefix, version)}\n`);
-fs.writeFileSync(path.join(refDir, 'index.md'), `---\ntitle: Configuration reference\ndescription: Find Rift settings, accepted values, defaults, and examples.\neditUrl: false\n---\n\n<!-- GENERATED FILE. Do not edit directly. -->\n\nLook up setting names, accepted values, and defaults. For your first file, use [Quick start](/rift-docs/quick-start/).\n\nSource version: \`${version}\`. Newer settings may not exist in older releases.\n\n:::caution[Keybindings are different]\nA custom config must contain \`[settings]\` and \`[keys]\`. Omitted settings use defaults, but \`[keys]\` replaces the bundled keymap. An empty table registers no keyboard shortcuts.\n:::\n\n## Find a setting\n\n| Category | What you can change |\n| --- | --- |\n| [General](/rift-docs/reference/configuration/general/) | Animation, focus, pointer behavior, activation, dragging |\n| [Layouts](/rift-docs/reference/configuration/layouts/) | Mode, gaps, Traditional, BSP, Stack, Master-stack |\n| [Scrolling](/rift-docs/reference/configuration/scrolling/) | Column widths, focus navigation, column gestures |\n| [Gestures](/rift-docs/reference/configuration/gestures/) | Trackpad workspace navigation |\n| [User interface](/rift-docs/reference/configuration/ui/) | Menu bar, stack indicators, Mission Control |\n| [Virtual workspaces](/rift-docs/reference/configuration/virtual-workspaces/) | Names, count, navigation, per-workspace layouts |\n| [App rules](/rift-docs/reference/configuration/app-rules/) | Match windows and control placement |\n| [Keybindings](/rift-docs/reference/configuration/keybindings/) | Keyboard shortcuts and command syntax |\n| [Binding modes](/rift-docs/reference/configuration/binding-modes/) | Named keymaps and mode transitions |\n| [Modifiers](/rift-docs/reference/configuration/modifiers/) | Reusable shortcut combinations |\n| [Startup commands](/rift-docs/reference/configuration/commands/) | Launch helpers and event subscriptions |\n\n## How to use this reference\n\n1. Open the category that matches what you want to change.\n2. Merge the example into the matching table in your config. Do not repeat an existing table header.\n3. Change the value, save, and run \`rift-cli execute config reload\` if hot reload is disabled or the change does not appear.\n\n## Read defaults and types\n\n- **Default** applies when the containing table exists but the field is omitted. Notes explain exceptions when a whole table is omitted. The bundled config may set a different value.\n- **Not set** means an optional field is omitted. Its description explains any inherited value. TOML has no \`null\`.\n- **Required** means you must supply the field when using its containing table.\n- **Boolean** means \`true\` or \`false\`, without quotes. Text values need quotes; lists use square brackets.\n\nThe [JSON Schema](/rift-docs/schema/rift-config.schema.json) supports editor autocomplete and checks names, types, and some bounds. Use config reload to also check shortcuts, commands, and relationships between settings.\n`);
-const configurationIndex = path.join(refDir, 'index.md');
-fs.writeFileSync(configurationIndex, fs.readFileSync(configurationIndex, 'utf8')
-  .replaceAll('**', '')
-  .replace(
-    '| [General](/rift-docs/reference/configuration/general/) | Animation, focus, pointer behavior, activation, dragging |',
-    '| [General](/rift-docs/reference/configuration/general/) | Animation, focus behavior, activation, hot reload |\n| [Drag and drop](/rift-docs/reference/configuration/drag-drop/) | Modifier-assisted movement and tiled-window drops |',
-  ));
+const categories = [
+  ['General', 'general', 'Animation, focus behavior, activation, hot reload'],
+  ['Drag and drop', 'drag-drop', 'Modifier-assisted movement and tiled-window drops'],
+  ['Layouts', 'layouts', 'Mode, gaps, Traditional, BSP, Stack, Master-stack'],
+  ['Scrolling', 'scrolling', 'Column widths, focus navigation, column gestures'],
+  ['Gestures', 'gestures', 'Trackpad workspace navigation'],
+  ['User interface', 'ui', 'Menu bar, stack indicators, Mission Control'],
+  ['Virtual workspaces', 'virtual-workspaces', 'Names, count, navigation, per-workspace layouts'],
+  ['App rules', 'app-rules', 'Match windows and control placement'],
+  ['Keybindings', 'keybindings', 'Keyboard shortcuts and command syntax'],
+  ['Binding modes', 'binding-modes', 'Named keymaps and mode transitions'],
+  ['Modifiers', 'modifiers', 'Reusable shortcut combinations'],
+  ['Startup commands', 'commands', 'Launch helpers and event subscriptions'],
+].map(([label, file, description]) => ({ label, href: `/rift-docs/reference/configuration/${file}/`, description }));
+fs.writeFileSync(path.join(refDir, 'index.md'), `---
+title: Configuration reference
+description: Find Rift settings, accepted values, defaults, and examples.
+editUrl: false
+---
+
+<!-- GENERATED FILE. Do not edit directly. -->
+
+Look up setting names, accepted values, and defaults. For your first file, use [Quick start](/rift-docs/quick-start/).
+
+Source version: \`${version}\`. Newer settings may not exist in older releases.
+
+:::caution[Keybindings are different]
+A custom config must contain \`[settings]\` and \`[keys]\`. Omitted settings use defaults, but \`[keys]\` replaces the bundled keymap. An empty table registers no keyboard shortcuts.
+:::
+
+## Find a setting
+
+${topicList(categories)}
+
+## How to use this reference
+
+1. Open the category that matches what you want to change.
+2. Merge the example into the matching table in your config. Do not repeat an existing table header.
+3. Change the value, save, and run \`rift-cli execute config reload\` if hot reload is disabled or the change does not appear.
+
+## Read defaults and types
+
+- Default applies when the containing table exists but the field is omitted. Notes explain exceptions when a whole table is omitted. The bundled config may set a different value.
+- Not set means an optional field is omitted. Its description explains any inherited value. TOML has no \`null\`.
+- Required means you must supply the field when using its containing table.
+- Boolean means \`true\` or \`false\`, without quotes. Text values need quotes; lists use square brackets.
+
+The [JSON Schema](/rift-docs/schema/rift-config.schema.json) supports editor autocomplete and checks names, types, and some bounds. Use config reload to also check shortcuts, commands, and relationships between settings.
+`);
 console.log(`Generated schema and ${groups.length + 1} reference pages from ${sourcePath} (${version}).`);

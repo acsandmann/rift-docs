@@ -9,32 +9,40 @@ tableOfContents:
 
 <!-- GENERATED FILE. Do not edit directly. -->
 
-Source version: `v0.6.9-46-gdea7a23e`.
-
 Mission control commands. All commands act on the running Rift instance.
 
-## <span class="cli-command-heading">show-all</span>
+Generated from `rift-cli` at `v0.7.0-28-g6c63b50c`.
 
-<article class="cli-command">
-<p class="cli-command__description">Show all workspaces in mission control.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute mission-control show-all</code></div></div>
-</article>
+<section class="apple-entry">
 
-## <span class="cli-command-heading">show-current</span>
+## `show-all`
 
-<article class="cli-command">
-<p class="cli-command__description">Show current workspace in mission control.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute mission-control show-current</code></div></div>
-</article>
+<p>Show all workspaces in mission control.</p>
+<pre class="apple-declaration"><code>rift-cli execute mission-control show-all</code></pre>
 
-## <span class="cli-command-heading">dismiss</span>
+</section>
 
-<article class="cli-command">
-<p class="cli-command__description">Dismiss mission control.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute mission-control dismiss</code></div></div>
-</article>
+<section class="apple-entry">
+
+## `show-current`
+
+<p>Show current workspace in mission control.</p>
+<pre class="apple-declaration"><code>rift-cli execute mission-control show-current</code></pre>
+
+</section>
+
+<section class="apple-entry">
+
+## `dismiss`
+
+<p>Dismiss mission control.</p>
+<pre class="apple-declaration"><code>rift-cli execute mission-control dismiss</code></pre>
+
+</section>
 
 ## See also
 
-- [Execute overview](/rift-docs/reference/cli/execute/)
-- [CLI overview](/rift-docs/reference/cli/)
+<ul class="apple-topics">
+<li><a href="/rift-docs/reference/cli/execute/">Execute overview</a></li>
+<li><a href="/rift-docs/reference/cli/">CLI overview</a></li>
+</ul>

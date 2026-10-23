@@ -50,9 +50,9 @@ function formatCount(count) {
 
 function linkReferences(body) {
   return body
-    .replace(/(^|[^\w])@([a-z\d](?:[a-z\d-]{0,38}))/gi, '$1<a class="changelog-reference changelog-reference--author" href="https://github.com/$2">@$2</a>')
-    .replace(/(^|[^\w/])#(\d+)\b/g, '$1<a class="changelog-reference changelog-reference--issue" href="' + githubBase + '/issues/$2">#$2</a>')
-    .replace(/(^|[^\w/])([0-9a-f]{7,40})\b/gi, '$1<a class="changelog-reference changelog-reference--commit" href="' + githubBase + '/commit/$2"><code>$2</code></a>');
+    .replace(/(^|[^\w])@([a-z\d](?:[a-z\d-]{0,38}))/gi, '$1<a href="https://github.com/$2">@$2</a>')
+    .replace(/(^|[^\w/])#(\d+)\b/g, '$1<a href="' + githubBase + '/issues/$2">#$2</a>')
+    .replace(/(^|[^\w/])([0-9a-f]{7,40})\b/gi, '$1<a href="' + githubBase + '/commit/$2"><code>$2</code></a>');
 }
 
 function indentReleaseHeadings(body) {
@@ -71,7 +71,7 @@ function indentReleaseHeadings(body) {
     .replace(/[ \t]+$/gm, '');
 }
 
-function renderRelease(release, index, releases) {
+function renderRelease(release) {
   const label = release.name?.trim() || release.tag_name;
   // Early beta releases use a -beta label, but their Git tags omit that suffix.
   const configRef = release.tag_name.replace(/-beta$/, '');
@@ -84,23 +84,30 @@ function renderRelease(release, index, releases) {
   const linkedBody = linkReferences(body) || '_No release notes were provided._';
   const assets = Array.isArray(release.assets) ? release.assets : [];
   const downloadCount = assets.reduce((total, asset) => total + (asset.download_count ?? 0), 0);
-  const downloadStat = assets.length > 0
-    ? `<span class="changelog-release-downloads" title="Across ${assets.length} release asset${assets.length === 1 ? '' : 's'}">${formatCount(downloadCount)} download${downloadCount === 1 ? '' : 's'}</span>`
-    : '';
-  const divider = index < releases.length - 1 ? '<hr class="changelog-release-divider" />' : '';
+  const meta = [
+    `<div><dt>Released</dt><dd><time datetime="${release.published_at}">${formatDate(release.published_at)}</time></dd></div>`,
+    assets.length > 0
+      ? `<div><dt>Downloads</dt><dd title="Across ${assets.length} release asset${assets.length === 1 ? '' : 's'}">${formatCount(downloadCount)}</dd></div>`
+      : '',
+  ].filter(Boolean).join('');
+  const links = [
+    `<a href="${release.html_url}">GitHub release</a>`,
+    `<a href="${configUrl}">Default config</a>`,
+    compareUrl ? `<a href="${compareUrl}">Compare changes</a>` : '',
+  ].filter(Boolean).join('');
 
-  return `## ${label}
+  // Each release is a theme reference entry: version heading, metadata, then its notes.
+  return `<section class="apple-entry">
 
-<div class="changelog-release-meta">
-  <time datetime="${release.published_at}">${formatDate(release.published_at)}</time>
-  ${downloadStat}
-  <a href="${release.html_url}">GitHub release ↗</a>
-  <a href="${configUrl}">Default config ↗</a>
-</div>
+## ${label}
+
+<dl class="apple-meta">${meta}</dl>
 
 ${linkedBody}
-${compareUrl ? `<p class="changelog-compare"><a href="${compareUrl}">Compare changes →</a></p>` : ''}
-${divider}`;
+
+<p class="apple-meta">${links}</p>
+
+</section>`;
 }
 
 const releases = await fetchReleases();

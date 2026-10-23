@@ -9,28 +9,35 @@ tableOfContents:
 
 <!-- GENERATED FILE. Do not edit directly. -->
 
-Source version: `v0.6.9-46-gdea7a23e`.
-
 macOS space commands (Mission Control spaces, not virtual workspaces). All commands act on the running Rift instance.
 
-## <span class="cli-command-heading">toggle-activated</span>
+Generated from `rift-cli` at `v0.7.0-28-g6c63b50c`.
 
-<article class="cli-command">
-<p class="cli-command__description">Toggle whether rift manages the current macOS space.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute space toggle-activated</code></div></div>
-</article>
+<section class="apple-entry">
 
-## <span class="cli-command-heading">switch</span>
+## `toggle-activated`
 
-<article class="cli-command">
-<p class="cli-command__description">Switch to an adjacent macOS space (Mission Control spaces, not virtual workspaces).</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute space switch &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;</code></div></div>
-<section class="cli-parameters"><h3>Arguments</h3><dl class="cli-command__details">
-<div class="cli-parameter"><dt><code>&lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;</code></dt><dd>Direction to switch (left, right, up, down).</dd></div>
-</dl></section>
-</article>
+<p>Toggle whether rift manages the current macOS space.</p>
+<pre class="apple-declaration"><code>rift-cli execute space toggle-activated</code></pre>
+
+</section>
+
+<section class="apple-entry">
+
+## `switch`
+
+<p>Switch to an adjacent macOS space (Mission Control spaces, not virtual workspaces).</p>
+<pre class="apple-declaration"><code>rift-cli execute space switch &lt;<a href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;</code></pre>
+<p class="apple-label">Arguments</p>
+<dl class="apple-parameters">
+<div><dt><code>&lt;<a href="/rift-docs/reference/cli/#value-direction">DIRECTION</a>&gt;</code></dt><dd><p>Direction to switch (left, right, up, down).</p></dd></div>
+</dl>
+
+</section>
 
 ## See also
 
-- [Execute overview](/rift-docs/reference/cli/execute/)
-- [CLI overview](/rift-docs/reference/cli/)
+<ul class="apple-topics">
+<li><a href="/rift-docs/reference/cli/execute/">Execute overview</a></li>
+<li><a href="/rift-docs/reference/cli/">CLI overview</a></li>
+</ul>

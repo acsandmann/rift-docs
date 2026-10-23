@@ -9,7 +9,7 @@ tableOfContents:
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.6.9-46-gdea7a23e.
+Generated from Rift v0.7.0-28-g6c63b50c.
 -->
 
 Animation, focus behavior, Space activation, and hot reload.
@@ -18,7 +18,7 @@ Animation, focus behavior, Space activation, and hot reload.
 Edit matching tables in your existing config; do not repeat their headers. Keep your `[keys]` shortcuts. For a complete file, start with [Quick start](/rift-docs/quick-start/).
 :::
 
-<div class="config-intro-example-label">Example</div>
+<p class="apple-label">Example</p>
 
 ```toml
 [settings]
@@ -26,112 +26,140 @@ animate = true
 animation_duration = 0.2
 ```
 
-## <span class="config-table-heading">[settings]</span>
+<p class="apple-label">Table</p>
+
+## `[settings]`
 
 Global behavior shared by the active layout and the rest of Rift.
 
+<section class="apple-entry" id="setting-settings-animate">
+
 ### `animate`
 
-<section class="config-option config-option--simple">
-<p class="config-description">Animate layout changes and focus transitions. Keep this off while troubleshooting layout behavior.</p>
-<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>boolean</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>false</code></dd></div></dl>
+<p>Animate layout changes and focus transitions. Keep this off while troubleshooting layout behavior.</p>
+<dl class="apple-meta"><div><dt>Type</dt><dd>boolean</dd></div><div><dt>Default</dt><dd><code>false</code></dd></div></dl>
 
 </section>
+
+<section class="apple-entry" id="setting-settings-animation_duration">
 
 ### `animation_duration`
 
-<section class="config-option config-option--simple">
-<p class="config-description">Animation duration in seconds when <a class="config-setting-link" href="/rift-docs/reference/configuration/general/#animate"><code>animate</code></a> is enabled. Must not be negative.</p>
-<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>0.3</code></dd></div></dl>
+<p>Animation duration in seconds when <a href="/rift-docs/reference/configuration/general/#setting-settings-animate"><code>animate</code></a> is enabled. Must not be negative.</p>
+<dl class="apple-meta"><div><dt>Type</dt><dd>number</dd></div><div><dt>Default</dt><dd><code>0.3</code></dd></div></dl>
 
 </section>
+
+<section class="apple-entry" id="setting-settings-animation_fps">
 
 ### `animation_fps`
 
-<section class="config-option config-option--simple">
-<p class="config-description">Target animation frame rate. Higher values look smoother but use more CPU. Must be greater than zero.</p>
-<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>number</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>100</code></dd></div></dl>
+<p>Target animation frame rate. Higher values look smoother but use more CPU. Must be greater than zero.</p>
+<dl class="apple-meta"><div><dt>Type</dt><dd>number</dd></div><div><dt>Default</dt><dd><code>100</code></dd></div></dl>
 
 </section>
+
+<section class="apple-entry" id="setting-settings-animation_easing">
 
 ### `animation_easing`
 
-<section class="config-option config-option--expanded">
-<p class="config-description">Curve used to accelerate and decelerate animations.</p>
-<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>text</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>&quot;ease_in_out&quot;</code></dd></div></dl>
-<div class="config-values"><strong>Possible values</strong><div><code>ease_in_out</code> <code>linear</code> <code>ease_in_sine</code> <code>ease_out_sine</code> <code>ease_in_out_sine</code> <code>ease_in_quad</code> <code>ease_out_quad</code> <code>ease_in_out_quad</code> <code>ease_in_cubic</code> <code>ease_out_cubic</code> <code>ease_in_out_cubic</code> <code>ease_in_quart</code> <code>ease_out_quart</code> <code>ease_in_out_quart</code> <code>ease_in_quint</code> <code>ease_out_quint</code> <code>ease_in_out_quint</code> <code>ease_in_expo</code> <code>ease_out_expo</code> <code>ease_in_out_expo</code> <code>ease_in_circ</code> <code>ease_out_circ</code> <code>ease_in_out_circ</code></div></div>
+<p>Curve used to accelerate and decelerate animations.</p>
+<dl class="apple-meta"><div><dt>Type</dt><dd>text</dd></div><div><dt>Default</dt><dd><code>&quot;ease_in_out&quot;</code></dd></div></dl>
+<p class="apple-label">Possible values</p>
+<ul class="apple-values"><li><code>ease_in_out</code></li><li><code>linear</code></li><li><code>ease_in_sine</code></li><li><code>ease_out_sine</code></li><li><code>ease_in_out_sine</code></li><li><code>ease_in_quad</code></li><li><code>ease_out_quad</code></li><li><code>ease_in_out_quad</code></li><li><code>ease_in_cubic</code></li><li><code>ease_out_cubic</code></li><li><code>ease_in_out_cubic</code></li><li><code>ease_in_quart</code></li><li><code>ease_out_quart</code></li><li><code>ease_in_out_quart</code></li><li><code>ease_in_quint</code></li><li><code>ease_out_quint</code></li><li><code>ease_in_out_quint</code></li><li><code>ease_in_expo</code></li><li><code>ease_out_expo</code></li><li><code>ease_in_out_expo</code></li><li><code>ease_in_circ</code></li><li><code>ease_out_circ</code></li><li><code>ease_in_out_circ</code></li></ul>
+
 </section>
+
+<section class="apple-entry" id="setting-settings-default_disable">
 
 ### `default_disable`
 
-<section class="config-option config-option--simple">
-<p class="config-description">Start each newly encountered macOS Space inactive. Press your activation key before Rift manages it.</p>
-<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>boolean</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>true</code></dd></div></dl>
+<p>Start each newly encountered macOS Space inactive. Press your activation key before Rift manages it.</p>
+<dl class="apple-meta"><div><dt>Type</dt><dd>boolean</dd></div><div><dt>Default</dt><dd><code>true</code></dd></div></dl>
 
 </section>
+
+<section class="apple-entry" id="setting-settings-mouse_follows_focus">
 
 ### `mouse_follows_focus`
 
-<section class="config-option config-option--simple">
-<p class="config-description">Allow Rift to move the pointer with keyboard-driven focus and workspace changes.</p>
-<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>boolean</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>true</code></dd></div></dl>
+<p>Allow Rift to move the pointer with keyboard-driven focus and workspace changes.</p>
+<dl class="apple-meta"><div><dt>Type</dt><dd>boolean</dd></div><div><dt>Default</dt><dd><code>true</code></dd></div></dl>
 
 </section>
+
+<section class="apple-entry" id="setting-settings-mouse_hides_on_focus">
 
 ### `mouse_hides_on_focus`
 
-<section class="config-option config-option--simple">
-<p class="config-description">Hide the pointer after Rift changes the focused window. Rift also hides it after a pointer warp when <a class="config-setting-link" href="/rift-docs/reference/configuration/general/#mouse_follows_focus"><code>mouse_follows_focus</code></a> is enabled.</p>
-<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>boolean</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>true</code></dd></div></dl>
+<p>Hide the pointer after Rift changes the focused window. Rift also hides it after a pointer warp when <a href="/rift-docs/reference/configuration/general/#setting-settings-mouse_follows_focus"><code>mouse_follows_focus</code></a> is enabled.</p>
+<dl class="apple-meta"><div><dt>Type</dt><dd>boolean</dd></div><div><dt>Default</dt><dd><code>true</code></dd></div></dl>
 
 </section>
+
+<section class="apple-entry" id="setting-settings-focus_follows_mouse">
 
 ### `focus_follows_mouse`
 
-<section class="config-option config-option--simple">
-<p class="config-description">Ask Rift to focus a managed window when the pointer moves over it.</p>
-<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>boolean</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>true</code></dd></div></dl>
+<p>Ask Rift to focus a managed window when the pointer moves over it.</p>
+<dl class="apple-meta"><div><dt>Type</dt><dd>boolean</dd></div><div><dt>Default</dt><dd><code>true</code></dd></div></dl>
 
 </section>
+
+<section class="apple-entry" id="setting-settings-horizontal_mouse_warp">
 
 ### `horizontal_mouse_warp`
 
-<section class="config-option config-option--expanded">
-<p class="config-description">Treat displays stacked in macOS as a horizontal mouse chain when they are physically side-by-side. <code>top-to-bottom</code> puts the upper display logically left; <code>bottom-to-top</code> reverses that order. Crossing a left/right edge enters the neighboring display at the same vertical offset only if that position exists. This does not change macOS display arrangement.</p>
-<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd><code>top-to-bottom</code> or <code>bottom-to-top</code> (optional)</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd>Not set</dd></div></dl>
-<div class="config-example"><div class="config-example__label">Example</div><pre><code class="language-toml">[settings]
-horizontal_mouse_warp = &quot;top-to-bottom&quot;
-</code></pre></div>
+<p>Treat displays stacked in macOS as a horizontal mouse chain when they are physically side-by-side. <code>top-to-bottom</code> puts the upper display logically left; <code>bottom-to-top</code> reverses that order. Crossing a left/right edge enters the neighboring display at the same vertical offset only if that position exists. This does not change macOS display arrangement.</p>
+<dl class="apple-meta"><div><dt>Type</dt><dd><code>top-to-bottom</code> or <code>bottom-to-top</code> (optional)</dd></div><div><dt>Default</dt><dd>Not set</dd></div></dl>
+
+<p class="apple-label">Example</p>
+
+```toml
+[settings]
+horizontal_mouse_warp = "top-to-bottom"
+```
+
 </section>
+
+<section class="apple-entry" id="setting-settings-focus_follows_mouse_disable_hotkey">
 
 ### `focus_follows_mouse_disable_hotkey`
 
-<section class="config-option config-option--expanded">
-<p class="config-description">Optional hotkey held to temporarily suspend focus-follows-mouse. Use a full hotkey such as <code>Ctrl + A</code> or a modifier such as <code>Ctrl</code>.</p>
-<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>hotkey (optional)</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd>Not set</dd></div></dl>
-<div class="config-example"><div class="config-example__label">Example</div><pre><code class="language-toml">[settings]
-focus_follows_mouse_disable_hotkey = &quot;Ctrl&quot;
-</code></pre></div>
+<p>Optional hotkey held to temporarily suspend focus-follows-mouse. Use a full hotkey such as <code>Ctrl + A</code> or a modifier such as <code>Ctrl</code>.</p>
+<dl class="apple-meta"><div><dt>Type</dt><dd>hotkey (optional)</dd></div><div><dt>Default</dt><dd>Not set</dd></div></dl>
+
+<p class="apple-label">Example</p>
+
+```toml
+[settings]
+focus_follows_mouse_disable_hotkey = "Ctrl"
+```
+
 </section>
+
+<section class="apple-entry" id="setting-settings-auto_focus_blacklist">
 
 ### `auto_focus_blacklist`
 
-<section class="config-option config-option--simple">
-<p class="config-description">Bundle identifiers that should not cause Rift to switch workspaces when those applications become active, such as Spotlight.</p>
-<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>list of text values</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd>Empty list</dd></div></dl>
+<p>Bundle identifiers that should not cause Rift to switch workspaces when those applications become active, such as Spotlight.</p>
+<dl class="apple-meta"><div><dt>Type</dt><dd>list of text values</dd></div><div><dt>Default</dt><dd>Empty list</dd></div></dl>
 
 </section>
 
+<section class="apple-entry" id="setting-settings-hot_reload">
+
 ### `hot_reload`
 
-<section class="config-option config-option--simple">
-<p class="config-description">Reload the config file when it changes. Even when this is false, Rift watches for keymap changes and reloads when the parsed bindings differ.</p>
-<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>boolean</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd><code>true</code></dd></div></dl>
+<p>Reload the config file when it changes. Even when this is false, Rift watches for keymap changes and reloads when the parsed bindings differ.</p>
+<dl class="apple-meta"><div><dt>Type</dt><dd>boolean</dd></div><div><dt>Default</dt><dd><code>true</code></dd></div></dl>
 
 </section>
 
 ## See also
 
-- [Quick start](/rift-docs/quick-start/)
-- [Configuration guide](/rift-docs/configuration/)
-- [Keybindings](/rift-docs/guides/keybindings/)
+<ul class="apple-topics">
+<li><a href="/rift-docs/quick-start/">Quick start</a></li>
+<li><a href="/rift-docs/configuration/">Configuration guide</a></li>
+<li><a href="/rift-docs/guides/keybindings/">Keybindings</a></li>
+</ul>

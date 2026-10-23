@@ -8,7 +8,7 @@ editUrl: false
 
 Look up setting names, accepted values, and defaults. For your first file, use [Quick start](/rift-docs/quick-start/).
 
-Source version: `v0.6.9-46-gdea7a23e`. Newer settings may not exist in older releases.
+Source version: `v0.7.0-28-g6c63b50c`. Newer settings may not exist in older releases.
 
 :::caution[Keybindings are different]
 A custom config must contain `[settings]` and `[keys]`. Omitted settings use defaults, but `[keys]` replaces the bundled keymap. An empty table registers no keyboard shortcuts.
@@ -16,20 +16,20 @@ A custom config must contain `[settings]` and `[keys]`. Omitted settings use def
 
 ## Find a setting
 
-| Category | What you can change |
-| --- | --- |
-| [General](/rift-docs/reference/configuration/general/) | Animation, focus behavior, activation, hot reload |
-| [Drag and drop](/rift-docs/reference/configuration/drag-drop/) | Modifier-assisted movement and tiled-window drops |
-| [Layouts](/rift-docs/reference/configuration/layouts/) | Mode, gaps, Traditional, BSP, Stack, Master-stack |
-| [Scrolling](/rift-docs/reference/configuration/scrolling/) | Column widths, focus navigation, column gestures |
-| [Gestures](/rift-docs/reference/configuration/gestures/) | Trackpad workspace navigation |
-| [User interface](/rift-docs/reference/configuration/ui/) | Menu bar, stack indicators, Mission Control |
-| [Virtual workspaces](/rift-docs/reference/configuration/virtual-workspaces/) | Names, count, navigation, per-workspace layouts |
-| [App rules](/rift-docs/reference/configuration/app-rules/) | Match windows and control placement |
-| [Keybindings](/rift-docs/reference/configuration/keybindings/) | Keyboard shortcuts and command syntax |
-| [Binding modes](/rift-docs/reference/configuration/binding-modes/) | Named keymaps and mode transitions |
-| [Modifiers](/rift-docs/reference/configuration/modifiers/) | Reusable shortcut combinations |
-| [Startup commands](/rift-docs/reference/configuration/commands/) | Launch helpers and event subscriptions |
+<ul class="apple-topics">
+<li><a href="/rift-docs/reference/configuration/general/">General</a><p>Animation, focus behavior, activation, hot reload</p></li>
+<li><a href="/rift-docs/reference/configuration/drag-drop/">Drag and drop</a><p>Modifier-assisted movement and tiled-window drops</p></li>
+<li><a href="/rift-docs/reference/configuration/layouts/">Layouts</a><p>Mode, gaps, Traditional, BSP, Stack, Master-stack</p></li>
+<li><a href="/rift-docs/reference/configuration/scrolling/">Scrolling</a><p>Column widths, focus navigation, column gestures</p></li>
+<li><a href="/rift-docs/reference/configuration/gestures/">Gestures</a><p>Trackpad workspace navigation</p></li>
+<li><a href="/rift-docs/reference/configuration/ui/">User interface</a><p>Menu bar, stack indicators, Mission Control</p></li>
+<li><a href="/rift-docs/reference/configuration/virtual-workspaces/">Virtual workspaces</a><p>Names, count, navigation, per-workspace layouts</p></li>
+<li><a href="/rift-docs/reference/configuration/app-rules/">App rules</a><p>Match windows and control placement</p></li>
+<li><a href="/rift-docs/reference/configuration/keybindings/">Keybindings</a><p>Keyboard shortcuts and command syntax</p></li>
+<li><a href="/rift-docs/reference/configuration/binding-modes/">Binding modes</a><p>Named keymaps and mode transitions</p></li>
+<li><a href="/rift-docs/reference/configuration/modifiers/">Modifiers</a><p>Reusable shortcut combinations</p></li>
+<li><a href="/rift-docs/reference/configuration/commands/">Startup commands</a><p>Launch helpers and event subscriptions</p></li>
+</ul>
 
 ## How to use this reference
 

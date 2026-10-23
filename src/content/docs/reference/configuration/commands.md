@@ -9,7 +9,7 @@ tableOfContents:
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.6.9-46-gdea7a23e.
+Generated from Rift v0.7.0-28-g6c63b50c.
 -->
 
 Launch helper programs when Rift starts.
@@ -20,7 +20,7 @@ Edit matching tables in your existing config; do not repeat their headers. Keep 
 
 To open Terminal when Rift starts:
 
-<div class="config-intro-example-label">Example</div>
+<p class="apple-label">Example</p>
 
 ```toml
 [settings]
@@ -29,17 +29,26 @@ run_on_start = ["open -a Terminal"]
 
 For a helper that must restart after failure, use a macOS LaunchAgent (a background service). CLI subscriptions accept `workspace_changed`, `windows_changed`, `window_title_changed`, `focused_window_changed`, `stacks_changed`, `layout_changed`, `selection_changed`, or `*`. Each event’s JSON data is passed as the command’s final argument and in `RIFT_EVENT_JSON`. `RIFT_EVENT_TYPE` identifies the event; other variables depend on its contents. See [Integrations](/rift-docs/ecosystem/integrations/) for a working subscription.
 
-## <span class="config-table-heading">[settings]</span>
+<p class="apple-label">Table</p>
+
+## `[settings]`
+
+<section class="apple-entry" id="setting-settings-run_on_start">
 
 ### `run_on_start`
 
-<section class="config-option config-option--expanded">
-<p class="config-description">Command lines to run once Rift starts. Rift splits quoted arguments and launches the executable directly; use <code>sh -c</code> explicitly when shell syntax is required.</p>
-<dl class="config-meta"><div class="config-meta__item config-meta__item--type"><dt>Type</dt><dd>list of text values</dd></div><div class="config-meta__item config-meta__item--default"><dt>Default</dt><dd>Empty list</dd></div></dl>
-<aside class="config-note"><strong>Note</strong><span>Reloading does not run these entries again. Restart Rift after changing startup commands. Commands launch independently, so do not rely on list order to wait for another helper.</span></aside>
+<p>Command lines to run once Rift starts. Rift splits quoted arguments and launches the executable directly; use <code>sh -c</code> explicitly when shell syntax is required.</p>
+<dl class="apple-meta"><div><dt>Type</dt><dd>list of text values</dd></div><div><dt>Default</dt><dd>Empty list</dd></div></dl>
+
+:::note
+Reloading does not run these entries again. Restart Rift after changing startup commands. Commands launch independently, so do not rely on list order to wait for another helper.
+:::
+
 </section>
 
 ## See also
 
-- [Integrations](/rift-docs/ecosystem/integrations/)
-- [Keybindings](/rift-docs/guides/keybindings/)
+<ul class="apple-topics">
+<li><a href="/rift-docs/ecosystem/integrations/">Integrations</a></li>
+<li><a href="/rift-docs/guides/keybindings/">Keybindings</a></li>
+</ul>

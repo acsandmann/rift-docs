@@ -9,48 +9,60 @@ tableOfContents:
 
 <!-- GENERATED FILE. Do not edit directly. -->
 
-Source version: `v0.6.9-46-gdea7a23e`.
-
 :::note[Use the `rift` binary]
 These legacy `rift-cli service` names redirect you to the `rift` binary. Use `rift service install`, `start`, `restart`, `stop`, or `uninstall`.
 :::
 
-## <span class="cli-command-heading">install</span>
+Generated from `rift-cli` at `v0.7.0-28-g6c63b50c`.
 
-<article class="cli-command">
-<p class="cli-command__description">Install the per-user launchd service.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli service install</code></div></div>
-</article>
+<section class="apple-entry">
 
-## <span class="cli-command-heading">uninstall</span>
+## `install`
 
-<article class="cli-command">
-<p class="cli-command__description">Uninstall the per-user launchd service.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli service uninstall</code></div></div>
-</article>
+<p>Install the per-user launchd service.</p>
+<pre class="apple-declaration"><code>rift-cli service install</code></pre>
 
-## <span class="cli-command-heading">start</span>
+</section>
 
-<article class="cli-command">
-<p class="cli-command__description">Start (or bootstrap) the service.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli service start</code></div></div>
-</article>
+<section class="apple-entry">
 
-## <span class="cli-command-heading">stop</span>
+## `uninstall`
 
-<article class="cli-command">
-<p class="cli-command__description">Stop (or bootout/kill) the service.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli service stop</code></div></div>
-</article>
+<p>Uninstall the per-user launchd service.</p>
+<pre class="apple-declaration"><code>rift-cli service uninstall</code></pre>
 
-## <span class="cli-command-heading">restart</span>
+</section>
 
-<article class="cli-command">
-<p class="cli-command__description">Restart the service (kickstart -k).</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli service restart</code></div></div>
-</article>
+<section class="apple-entry">
+
+## `start`
+
+<p>Start (or bootstrap) the service.</p>
+<pre class="apple-declaration"><code>rift-cli service start</code></pre>
+
+</section>
+
+<section class="apple-entry">
+
+## `stop`
+
+<p>Stop (or bootout/kill) the service.</p>
+<pre class="apple-declaration"><code>rift-cli service stop</code></pre>
+
+</section>
+
+<section class="apple-entry">
+
+## `restart`
+
+<p>Restart the service (kickstart -k).</p>
+<pre class="apple-declaration"><code>rift-cli service restart</code></pre>
+
+</section>
 
 ## See also
 
-- [Installation](/rift-docs/installation/)
-- [CLI overview](/rift-docs/reference/cli/)
+<ul class="apple-topics">
+<li><a href="/rift-docs/installation/">Installation</a></li>
+<li><a href="/rift-docs/reference/cli/">CLI overview</a></li>
+</ul>

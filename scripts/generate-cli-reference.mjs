@@ -172,7 +172,7 @@ function linkedSyntax(value) {
     const name = match[0];
     if (!valueReference[name]) continue;
     output.push(escapeHtml(value.slice(cursor, match.index)));
-    output.push(`<a class="cli-value-link" href="/rift-docs/reference/cli/#${valueId(name)}">${name}</a>`);
+    output.push(`<a href="/rift-docs/reference/cli/#${valueId(name)}">${name}</a>`);
     cursor = match.index + name.length;
   }
   output.push(escapeHtml(value.slice(cursor)));
@@ -197,18 +197,22 @@ function detailDescription(value = '') {
   const defaultValue = source.match(/\[default: ([^\]]+)\]/)?.[1];
   const possibleValues = source.match(/\[possible values: ([^\]]+)\]/)?.[1]?.split(',').map((item) => item.trim());
   const description = source.replace(/\s*\[(?:default|possible values): [^\]]+\]/g, '').trim();
-  const parts = description ? [inlineCode(sentence(description))] : [];
-  if (defaultValue) parts.push(`<span class="cli-command__constraint">Default: <code>${escapeHtml(defaultValue)}</code>.</span>`);
-  if (possibleValues) parts.push(`<span class="cli-command__constraint">Accepted values: ${possibleValues.map((item) => `<code>${escapeHtml(item)}</code>`).join(', ')}.</span>`);
-  return parts.join(' ');
+  const meta = [
+    defaultValue && `<div><dt>Default</dt><dd><code>${escapeHtml(defaultValue)}</code></dd></div>`,
+    possibleValues && `<div><dt>Values</dt><dd>${possibleValues.map((item) => `<code>${escapeHtml(item)}</code>`).join(', ')}</dd></div>`,
+  ].filter(Boolean).join('');
+  return [
+    description && `<p>${inlineCode(sentence(description))}</p>`,
+    meta && `<dl class="apple-meta">${meta}</dl>`,
+  ].filter(Boolean).join('');
 }
 
 function parameterGroup(label, entries) {
   if (!entries.length) return '';
   const rows = entries.map(({ label: syntax, description }) => {
-    return `<div class="cli-parameter"><dt><code>${linkedSyntax(syntax)}</code></dt><dd>${detailDescription(description)}</dd></div>`;
+    return `<div><dt><code>${linkedSyntax(syntax)}</code></dt><dd>${detailDescription(description)}</dd></div>`;
   }).join('\n');
-  return `<section class="cli-parameters"><h3>${label}</h3><dl class="cli-command__details">\n${rows}\n</dl></section>`;
+  return `<p class="apple-label">${label}</p>\n<dl class="apple-parameters">\n${rows}\n</dl>`;
 }
 
 function details(command) {
@@ -218,15 +222,23 @@ function details(command) {
   ].filter(Boolean).join('\n');
 }
 
-function card(command, headingLevel = 2) {
+// Each command is a theme reference entry: name, abstract, declaration, then parameters.
+function entry(command, headingLevel = 2) {
   const displayName = command.parts.at(-1);
   const description = readableDescription(command.description);
   const body = [
-    description ? `<p class="cli-command__description">${inlineCode(sentence(description))}</p>` : '',
-    `<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>${linkedSyntax(command.usage)}</code></div></div>`,
+    description ? `<p>${inlineCode(sentence(description))}</p>` : '',
+    `<pre class="apple-declaration"><code>${linkedSyntax(command.usage)}</code></pre>`,
     details(command),
   ].filter(Boolean).join('\n');
-  return `${'#'.repeat(headingLevel)} <span class="cli-command-heading">${displayName}</span>\n\n<article class="cli-command">\n${body}\n</article>`;
+  return `<section class="apple-entry">\n\n${'#'.repeat(headingLevel)} \`${displayName}\`\n\n${body}\n\n</section>`;
+}
+
+function topicList(topics) {
+  return `<ul class="apple-topics">\n${topics.map(({ label, href, description, code }) => {
+    const title = code ? `<code>${escapeHtml(label)}</code>` : escapeHtml(label);
+    return `<li><a href="${href}">${title}</a>${description ? `<p>${inlineCode(description)}</p>` : ''}</li>`;
+  }).join('\n')}\n</ul>`;
 }
 
 const commands = await collect();
@@ -238,20 +250,20 @@ if (helpCachePath) {
   fs.writeFileSync(helpCachePath, `${JSON.stringify(helpCache)}\n`);
 }
 
-const valueReferenceMarkup = valueReferenceGroups.map(([title, description, names]) => `<section class="cli-value-group">
-<h2>${title}</h2>
-<p>${description}</p>
-<dl class="cli-value-reference">
-${names.map((name) => `<div id="${valueId(name)}" class="cli-value-reference__item"><dt><code>&lt;${name}&gt;</code></dt><dd>${inlineCode(valueReference[name])}</dd></div>`).join('\n')}
-</dl>
-</section>`).join('\n');
+const valueReferenceMarkup = valueReferenceGroups.map(([title, description, names]) => `## ${title}
+
+${description}
+
+<dl class="apple-parameters">
+${names.map((name) => `<div id="${valueId(name)}"><dt><code>&lt;${name}&gt;</code></dt><dd>${inlineCode(valueReference[name])}</dd></div>`).join('\n')}
+</dl>`).join('\n\n');
 
 let version = process.env.RIFT_REF || 'the checked-out Rift source';
 try {
   version = process.env.RIFT_REF || execFileSync('git', ['-C', riftRoot, 'describe', '--tags', '--always', '--dirty'], { encoding: 'utf8' }).trim();
 } catch {}
 
-function page(title, description, content, maxHeadingLevel = 2) {
+function page(title, description, intro, content, maxHeadingLevel = 2) {
   return `---
 title: ${JSON.stringify(title)}
 description: ${JSON.stringify(description)}
@@ -263,15 +275,20 @@ tableOfContents:
 
 <!-- GENERATED FILE. Do not edit directly. -->
 
-Source version: \`${version}\`.
+${intro}
+
+Generated from \`rift-cli\` at \`${version}\`.
 
 ${content}
 `;
 }
 
+function seeAlso(related) {
+  return related.length ? `\n\n## See also\n\n${topicList(related.map(([label, href]) => ({ label, href })))}` : '';
+}
+
 function commandPage(title, description, intro, pageCommands, related = []) {
-  const seeAlso = related.length ? `\n\n## See also\n\n${related.map(([label, href]) => `- [${label}](${href})`).join('\n')}` : '';
-  return page(title, description, `${intro}\n\n${pageCommands.map((command) => card(command)).join('\n\n')}${seeAlso}`);
+  return page(title, description, intro, `${pageCommands.map((command) => entry(command)).join('\n\n')}${seeAlso(related)}`);
 }
 
 const cliRoot = path.join(docsRoot, 'src/content/docs/reference/cli');
@@ -283,20 +300,18 @@ for (const directory of [executeRoot, queryRoot, subscribeRoot, serviceRoot]) fs
 const oldSinglePage = path.join(docsRoot, 'src/content/docs/reference/cli.md');
 if (fs.existsSync(oldSinglePage)) fs.rmSync(oldSinglePage);
 
-const overview = page('CLI reference', 'Inspect and control Rift from Terminal or a script.', `Use \`rift-cli\` to inspect Rift, control windows and workspaces, change runtime settings, and subscribe to events. Every command, description, argument, and option in this reference comes directly from the checked-out CLI.
-
-:::tip[Explore from Terminal]
+const overview = page('CLI reference', 'Inspect and control Rift from Terminal or a script.', 'Use `rift-cli` to inspect Rift, control windows and workspaces, change runtime settings, and subscribe to events. Every command, description, argument, and option in this reference comes directly from the checked-out CLI.', `:::tip[Explore from Terminal]
 Add \`--help\` at any level to see what comes next. For example, \`rift-cli execute window --help\` lists every window action.
 :::
 
 ## Choose an area
 
-| Area | Use it to |
-| --- | --- |
-| [Queries](/rift-docs/reference/cli/query/) | Inspect workspaces, windows, displays, layouts, and metrics |
-| [Execute](/rift-docs/reference/cli/execute/) | Control windows, workspaces, layouts, configuration, displays, and macOS Spaces |
-| [Subscriptions](/rift-docs/reference/cli/subscribe/) | Stream events or run a command when Rift changes |
-| [Service](/rift-docs/reference/cli/service/) | Find the corresponding \`rift service\` commands |
+${topicList([
+  { label: 'Queries', href: '/rift-docs/reference/cli/query/', description: 'Inspect workspaces, windows, displays, layouts, and metrics' },
+  { label: 'Execute', href: '/rift-docs/reference/cli/execute/', description: 'Control windows, workspaces, layouts, configuration, displays, and macOS Spaces' },
+  { label: 'Subscriptions', href: '/rift-docs/reference/cli/subscribe/', description: 'Stream events or run a command when Rift changes' },
+  { label: 'Service', href: '/rift-docs/reference/cli/service/', description: 'Find the corresponding `rift service` commands' },
+])}
 
 ## Quick examples
 
@@ -320,18 +335,16 @@ Queries print JSON; set \`RIFT_CLI_PRETTY=1\` for readable output. Commands unde
 
 Command synopses use angle brackets for required values and square brackets for optional values:
 
-<div class="cli-value-legend"><span><code>&lt;VALUE&gt;</code> Required</span><span><code>[VALUE]</code> Optional</span><span><a class="cli-value-link" href="#value-direction"><code>&lt;DIRECTION&gt;</code></a> Linked to its definition</span></div>
+<dl class="apple-meta"><div><dt>Required</dt><dd><code>&lt;VALUE&gt;</code></dd></div><div><dt>Optional</dt><dd><code>[VALUE]</code></dd></div><div><dt>Linked to its definition</dt><dd><a href="#value-direction"><code>&lt;DIRECTION&gt;</code></a></dd></div></dl>
 
-Underlined placeholders are links. Select one in a synopsis or parameter list, such as <a class="cli-value-link" href="#value-direction"><code>&lt;DIRECTION&gt;</code></a>, to see its accepted values or identifier format.
+Placeholders shown as links, such as <a href="#value-direction"><code>&lt;DIRECTION&gt;</code></a>, lead to their accepted values or identifier format.
 
-${valueReferenceMarkup}
-
-## See also
-
-- [Window management](/rift-docs/guides/window-management/)
-- [Virtual workspaces](/rift-docs/guides/workspaces/)
-- [Keybindings](/rift-docs/guides/keybindings/)
-- [Configuration reference](/rift-docs/reference/configuration/)
+${valueReferenceMarkup}${seeAlso([
+  ['Window management', '/rift-docs/guides/window-management/'],
+  ['Virtual workspaces', '/rift-docs/guides/workspaces/'],
+  ['Keybindings', '/rift-docs/guides/keybindings/'],
+  ['Configuration reference', '/rift-docs/reference/configuration/'],
+])}
 `);
 fs.writeFileSync(path.join(cliRoot, 'index.md'), overview);
 
@@ -362,24 +375,22 @@ generateArea(
 
 const executeGroups = direct('execute').filter((command) => command.children.length);
 const executeOther = direct('execute').filter((command) => !command.children.length);
-const executeRows = executeGroups.map((command) =>
-  `| [${command.parts.at(-1)}](/rift-docs/reference/cli/execute/${command.parts.at(-1)}/) | ${readableDescription(command.description)} |`).join('\n');
+const executeTopics = [
+  ...executeGroups.map((command) => ({
+    label: command.parts.at(-1),
+    href: `/rift-docs/reference/cli/execute/${command.parts.at(-1)}/`,
+    description: readableDescription(command.description),
+    code: true,
+  })),
+  { label: 'Other actions', href: '/rift-docs/reference/cli/execute/other/', description: 'Save or restore layouts, inspect debug state, and exit Rift' },
+];
 fs.writeFileSync(path.join(executeRoot, 'index.md'), page(
   'Execute commands',
   'Control the running Rift instance.',
-  `Commands under \`execute\` change windows, workspaces, layouts, and runtime state.
+  'Commands under `execute` change windows, workspaces, layouts, and runtime state.',
+  `## Choose a command group
 
-## Choose a command group
-
-| Group | Use it to |
-| --- | --- |
-${executeRows}
-| [Other actions](/rift-docs/reference/cli/execute/other/) | Save or restore layouts, inspect debug state, and exit Rift |
-
-## See also
-
-- [Queries](/rift-docs/reference/cli/query/)
-- [CLI overview](/rift-docs/reference/cli/)
+${topicList(executeTopics)}${seeAlso([['Queries', '/rift-docs/reference/cli/query/'], ['CLI overview', '/rift-docs/reference/cli/']])}
 `,
 ));
 

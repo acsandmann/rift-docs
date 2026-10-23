@@ -9,82 +9,105 @@ tableOfContents:
 
 <!-- GENERATED FILE. Do not edit directly. -->
 
-Source version: `v0.6.9-46-gdea7a23e`.
-
 Virtual workspace commands. All commands act on the running Rift instance.
 
-## <span class="cli-command-heading">next</span>
+Generated from `rift-cli` at `v0.7.0-28-g6c63b50c`.
 
-<article class="cli-command">
-<p class="cli-command__description">Switch to next workspace.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute workspace next [SKIP_EMPTY]</code></div></div>
-<section class="cli-parameters"><h3>Arguments</h3><dl class="cli-command__details">
-<div class="cli-parameter"><dt><code>[SKIP_EMPTY]</code></dt><dd><span class="cli-command__constraint">Accepted values: <code>true</code>, <code>false</code>.</span></dd></div>
-</dl></section>
-</article>
+<section class="apple-entry">
 
-## <span class="cli-command-heading">prev</span>
+## `next`
 
-<article class="cli-command">
-<p class="cli-command__description">Switch to previous workspace.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute workspace prev [SKIP_EMPTY]</code></div></div>
-<section class="cli-parameters"><h3>Arguments</h3><dl class="cli-command__details">
-<div class="cli-parameter"><dt><code>[SKIP_EMPTY]</code></dt><dd><span class="cli-command__constraint">Accepted values: <code>true</code>, <code>false</code>.</span></dd></div>
-</dl></section>
-</article>
+<p>Switch to next workspace.</p>
+<pre class="apple-declaration"><code>rift-cli execute workspace next [SKIP_EMPTY]</code></pre>
+<p class="apple-label">Arguments</p>
+<dl class="apple-parameters">
+<div><dt><code>[SKIP_EMPTY]</code></dt><dd><dl class="apple-meta"><div><dt>Values</dt><dd><code>true</code>, <code>false</code></dd></div></dl></dd></div>
+</dl>
 
-## <span class="cli-command-heading">switch</span>
+</section>
 
-<article class="cli-command">
-<p class="cli-command__description">Switch to specific workspace.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute workspace switch &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-workspace-id">WORKSPACE_ID</a>&gt;</code></div></div>
-<section class="cli-parameters"><h3>Arguments</h3><dl class="cli-command__details">
-<div class="cli-parameter"><dt><code>&lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-workspace-id">WORKSPACE_ID</a>&gt;</code></dt><dd></dd></div>
-</dl></section>
-</article>
+<section class="apple-entry">
 
-## <span class="cli-command-heading">move-window</span>
+## `prev`
 
-<article class="cli-command">
-<p class="cli-command__description">Move current window to workspace.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute workspace move-window [OPTIONS] &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-workspace-id">WORKSPACE_ID</a>&gt; [<a class="cli-value-link" href="/rift-docs/reference/cli/#value-window-id">WINDOW_ID</a>]</code></div></div>
-<section class="cli-parameters"><h3>Arguments</h3><dl class="cli-command__details">
-<div class="cli-parameter"><dt><code>&lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-workspace-id">WORKSPACE_ID</a>&gt;</code></dt><dd></dd></div>
-<div class="cli-parameter"><dt><code>[<a class="cli-value-link" href="/rift-docs/reference/cli/#value-window-id">WINDOW_ID</a>]</code></dt><dd></dd></div>
-</dl></section>
-<section class="cli-parameters"><h3>Options</h3><dl class="cli-command__details">
-<div class="cli-parameter"><dt><code>--follow</code></dt><dd>Switch to the destination workspace after moving the window.</dd></div>
-</dl></section>
-</article>
+<p>Switch to previous workspace.</p>
+<pre class="apple-declaration"><code>rift-cli execute workspace prev [SKIP_EMPTY]</code></pre>
+<p class="apple-label">Arguments</p>
+<dl class="apple-parameters">
+<div><dt><code>[SKIP_EMPTY]</code></dt><dd><dl class="apple-meta"><div><dt>Values</dt><dd><code>true</code>, <code>false</code></dd></div></dl></dd></div>
+</dl>
 
-## <span class="cli-command-heading">create</span>
+</section>
 
-<article class="cli-command">
-<p class="cli-command__description">Create a new workspace.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute workspace create</code></div></div>
-</article>
+<section class="apple-entry">
 
-## <span class="cli-command-heading">last</span>
+## `switch`
 
-<article class="cli-command">
-<p class="cli-command__description">Switch to the last workspace.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute workspace last</code></div></div>
-</article>
+<p>Switch to specific workspace.</p>
+<pre class="apple-declaration"><code>rift-cli execute workspace switch &lt;<a href="/rift-docs/reference/cli/#value-workspace-id">WORKSPACE_ID</a>&gt;</code></pre>
+<p class="apple-label">Arguments</p>
+<dl class="apple-parameters">
+<div><dt><code>&lt;<a href="/rift-docs/reference/cli/#value-workspace-id">WORKSPACE_ID</a>&gt;</code></dt><dd></dd></div>
+</dl>
 
-## <span class="cli-command-heading">set-layout</span>
+</section>
 
-<article class="cli-command">
-<p class="cli-command__description">Set layout mode for a workspace (or active workspace when omitted).</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli execute workspace set-layout [OPTIONS] &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-mode">MODE</a>&gt;</code></div></div>
-<section class="cli-parameters"><h3>Arguments</h3><dl class="cli-command__details">
-<div class="cli-parameter"><dt><code>&lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-mode">MODE</a>&gt;</code></dt><dd>Layout mode: traditional, bsp, stack, master_stack, scrolling, floating.</dd></div>
-</dl></section>
-<section class="cli-parameters"><h3>Options</h3><dl class="cli-command__details">
-<div class="cli-parameter"><dt><code>--workspace-id &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-workspace-id">WORKSPACE_ID</a>&gt;</code></dt><dd>Workspace index (0-based). Defaults to active workspace if omitted.</dd></div>
-</dl></section>
-</article>
+<section class="apple-entry">
+
+## `move-window`
+
+<p>Move current window to workspace.</p>
+<pre class="apple-declaration"><code>rift-cli execute workspace move-window [OPTIONS] &lt;<a href="/rift-docs/reference/cli/#value-workspace-id">WORKSPACE_ID</a>&gt; [<a href="/rift-docs/reference/cli/#value-window-id">WINDOW_ID</a>]</code></pre>
+<p class="apple-label">Arguments</p>
+<dl class="apple-parameters">
+<div><dt><code>&lt;<a href="/rift-docs/reference/cli/#value-workspace-id">WORKSPACE_ID</a>&gt;</code></dt><dd></dd></div>
+<div><dt><code>[<a href="/rift-docs/reference/cli/#value-window-id">WINDOW_ID</a>]</code></dt><dd></dd></div>
+</dl>
+<p class="apple-label">Options</p>
+<dl class="apple-parameters">
+<div><dt><code>--follow</code></dt><dd><p>Switch to the destination workspace after moving the window.</p></dd></div>
+</dl>
+
+</section>
+
+<section class="apple-entry">
+
+## `create`
+
+<p>Create a new workspace.</p>
+<pre class="apple-declaration"><code>rift-cli execute workspace create</code></pre>
+
+</section>
+
+<section class="apple-entry">
+
+## `last`
+
+<p>Switch to the last workspace.</p>
+<pre class="apple-declaration"><code>rift-cli execute workspace last</code></pre>
+
+</section>
+
+<section class="apple-entry">
+
+## `set-layout`
+
+<p>Set layout mode for a workspace (or active workspace when omitted).</p>
+<pre class="apple-declaration"><code>rift-cli execute workspace set-layout [OPTIONS] &lt;<a href="/rift-docs/reference/cli/#value-mode">MODE</a>&gt;</code></pre>
+<p class="apple-label">Arguments</p>
+<dl class="apple-parameters">
+<div><dt><code>&lt;<a href="/rift-docs/reference/cli/#value-mode">MODE</a>&gt;</code></dt><dd><p>Layout mode: traditional, bsp, stack, master_stack, scrolling, floating.</p></dd></div>
+</dl>
+<p class="apple-label">Options</p>
+<dl class="apple-parameters">
+<div><dt><code>--workspace-id &lt;<a href="/rift-docs/reference/cli/#value-workspace-id">WORKSPACE_ID</a>&gt;</code></dt><dd><p>Workspace index (0-based). Defaults to active workspace if omitted.</p></dd></div>
+</dl>
+
+</section>
 
 ## See also
 
-- [Execute overview](/rift-docs/reference/cli/execute/)
-- [CLI overview](/rift-docs/reference/cli/)
+<ul class="apple-topics">
+<li><a href="/rift-docs/reference/cli/execute/">Execute overview</a></li>
+<li><a href="/rift-docs/reference/cli/">CLI overview</a></li>
+</ul>

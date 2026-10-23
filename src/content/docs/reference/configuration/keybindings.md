@@ -9,7 +9,7 @@ tableOfContents:
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.6.9-46-gdea7a23e.
+Generated from Rift v0.7.0-28-g6c63b50c.
 -->
 
 Assign keyboard shortcuts to Rift commands in the `[keys]` table.
@@ -20,7 +20,7 @@ Your `[keys]` table replaces the bundled keymap; an empty table registers no sho
 Edit matching tables in your existing config; do not repeat their headers. Keep your `[keys]` shortcuts. For a complete file, start with [Quick start](/rift-docs/quick-start/).
 :::
 
-<div class="config-intro-example-label">Example</div>
+<p class="apple-label">Example</p>
 
 ```toml
 [keys]
@@ -35,7 +35,9 @@ Simple commands are quoted strings. Commands that need a direction, workspace, a
 
 ## See also
 
-- [Keybindings guide](/rift-docs/guides/keybindings/)
-- [Binding modes](/rift-docs/reference/configuration/binding-modes/)
-- [Modifier combinations](/rift-docs/reference/configuration/modifiers/)
-- [Commands and startup](/rift-docs/reference/configuration/commands/)
+<ul class="apple-topics">
+<li><a href="/rift-docs/guides/keybindings/">Keybindings guide</a></li>
+<li><a href="/rift-docs/reference/configuration/binding-modes/">Binding modes</a></li>
+<li><a href="/rift-docs/reference/configuration/modifiers/">Modifier combinations</a></li>
+<li><a href="/rift-docs/reference/configuration/commands/">Commands and startup</a></li>
+</ul>

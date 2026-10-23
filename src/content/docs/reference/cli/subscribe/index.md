@@ -9,60 +9,76 @@ tableOfContents:
 
 <!-- GENERATED FILE. Do not edit directly. -->
 
-Source version: `v0.6.9-46-gdea7a23e`.
-
 Subscribe to events over Mach IPC, or ask Rift to run another command when an event occurs.
 
-## <span class="cli-command-heading">mach</span>
+Generated from `rift-cli` at `v0.7.0-28-g6c63b50c`.
 
-<article class="cli-command">
-<p class="cli-command__description">Subscribe to Mach IPC events.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli subscribe mach &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-event">EVENT</a>&gt;</code></div></div>
-<section class="cli-parameters"><h3>Arguments</h3><dl class="cli-command__details">
-<div class="cli-parameter"><dt><code>&lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-event">EVENT</a>&gt;</code></dt><dd>Event to subscribe to (workspace_changed, windows_changed, window_title_changed, focused_window_changed, stacks_changed, layout_changed, selection_changed, binding_mode_changed, config_changed, *).</dd></div>
-</dl></section>
-</article>
+<section class="apple-entry">
 
-## <span class="cli-command-heading">cli</span>
+## `mach`
 
-<article class="cli-command">
-<p class="cli-command__description">Subscribe to events via CLI command execution.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli subscribe cli [OPTIONS] --event &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-event">EVENT</a>&gt; --command &lt;COMMAND&gt;</code></div></div>
-<section class="cli-parameters"><h3>Options</h3><dl class="cli-command__details">
-<div class="cli-parameter"><dt><code>--event &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-event">EVENT</a>&gt;</code></dt><dd>Event to subscribe to (workspace_changed, windows_changed, window_title_changed, focused_window_changed, stacks_changed, layout_changed, selection_changed, binding_mode_changed, config_changed, *).</dd></div>
-<div class="cli-parameter"><dt><code>--command &lt;COMMAND&gt;</code></dt><dd>Command to execute when event occurs.</dd></div>
-<div class="cli-parameter"><dt><code>--args &lt;ARGS&gt;</code></dt><dd>Arguments to pass to command (event data will be appended as JSON).</dd></div>
-</dl></section>
-</article>
+<p>Subscribe to Mach IPC events.</p>
+<pre class="apple-declaration"><code>rift-cli subscribe mach &lt;<a href="/rift-docs/reference/cli/#value-event">EVENT</a>&gt;</code></pre>
+<p class="apple-label">Arguments</p>
+<dl class="apple-parameters">
+<div><dt><code>&lt;<a href="/rift-docs/reference/cli/#value-event">EVENT</a>&gt;</code></dt><dd><p>Event to subscribe to (workspace_changed, windows_changed, window_title_changed, focused_window_changed, stacks_changed, layout_changed, selection_changed, binding_mode_changed, config_changed, *).</p></dd></div>
+</dl>
 
-## <span class="cli-command-heading">unsub-mach</span>
+</section>
 
-<article class="cli-command">
-<p class="cli-command__description">Unsubscribe from Mach IPC events.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli subscribe unsub-mach &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-event">EVENT</a>&gt;</code></div></div>
-<section class="cli-parameters"><h3>Arguments</h3><dl class="cli-command__details">
-<div class="cli-parameter"><dt><code>&lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-event">EVENT</a>&gt;</code></dt><dd>Event to unsubscribe from.</dd></div>
-</dl></section>
-</article>
+<section class="apple-entry">
 
-## <span class="cli-command-heading">unsub-cli</span>
+## `cli`
 
-<article class="cli-command">
-<p class="cli-command__description">Unsubscribe from CLI events.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli subscribe unsub-cli &lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-event">EVENT</a>&gt;</code></div></div>
-<section class="cli-parameters"><h3>Arguments</h3><dl class="cli-command__details">
-<div class="cli-parameter"><dt><code>&lt;<a class="cli-value-link" href="/rift-docs/reference/cli/#value-event">EVENT</a>&gt;</code></dt><dd>Event to unsubscribe from.</dd></div>
-</dl></section>
-</article>
+<p>Subscribe to events via CLI command execution.</p>
+<pre class="apple-declaration"><code>rift-cli subscribe cli [OPTIONS] --event &lt;<a href="/rift-docs/reference/cli/#value-event">EVENT</a>&gt; --command &lt;COMMAND&gt;</code></pre>
+<p class="apple-label">Options</p>
+<dl class="apple-parameters">
+<div><dt><code>--event &lt;<a href="/rift-docs/reference/cli/#value-event">EVENT</a>&gt;</code></dt><dd><p>Event to subscribe to (workspace_changed, windows_changed, window_title_changed, focused_window_changed, stacks_changed, layout_changed, selection_changed, binding_mode_changed, config_changed, *).</p></dd></div>
+<div><dt><code>--command &lt;COMMAND&gt;</code></dt><dd><p>Command to execute when event occurs.</p></dd></div>
+<div><dt><code>--args &lt;ARGS&gt;</code></dt><dd><p>Arguments to pass to command (event data will be appended as JSON).</p></dd></div>
+</dl>
 
-## <span class="cli-command-heading">list-cli</span>
+</section>
 
-<article class="cli-command">
-<p class="cli-command__description">List current CLI subscriptions.</p>
-<div class="cli-command__synopsis"><span>Synopsis</span><div class="cli-command__usage"><span aria-hidden="true">$</span><code>rift-cli subscribe list-cli</code></div></div>
-</article>
+<section class="apple-entry">
+
+## `unsub-mach`
+
+<p>Unsubscribe from Mach IPC events.</p>
+<pre class="apple-declaration"><code>rift-cli subscribe unsub-mach &lt;<a href="/rift-docs/reference/cli/#value-event">EVENT</a>&gt;</code></pre>
+<p class="apple-label">Arguments</p>
+<dl class="apple-parameters">
+<div><dt><code>&lt;<a href="/rift-docs/reference/cli/#value-event">EVENT</a>&gt;</code></dt><dd><p>Event to unsubscribe from.</p></dd></div>
+</dl>
+
+</section>
+
+<section class="apple-entry">
+
+## `unsub-cli`
+
+<p>Unsubscribe from CLI events.</p>
+<pre class="apple-declaration"><code>rift-cli subscribe unsub-cli &lt;<a href="/rift-docs/reference/cli/#value-event">EVENT</a>&gt;</code></pre>
+<p class="apple-label">Arguments</p>
+<dl class="apple-parameters">
+<div><dt><code>&lt;<a href="/rift-docs/reference/cli/#value-event">EVENT</a>&gt;</code></dt><dd><p>Event to unsubscribe from.</p></dd></div>
+</dl>
+
+</section>
+
+<section class="apple-entry">
+
+## `list-cli`
+
+<p>List current CLI subscriptions.</p>
+<pre class="apple-declaration"><code>rift-cli subscribe list-cli</code></pre>
+
+</section>
 
 ## See also
 
-- [Queries](/rift-docs/reference/cli/query/)
-- [Integrations](/rift-docs/ecosystem/integrations/)
+<ul class="apple-topics">
+<li><a href="/rift-docs/reference/cli/query/">Queries</a></li>
+<li><a href="/rift-docs/ecosystem/integrations/">Integrations</a></li>
+</ul>
