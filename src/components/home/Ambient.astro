@@ -1,0 +1,131 @@
+<div class="ambient" aria-hidden="true">
+  <div class="plane">
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+  </div>
+</div>
+
+<style>
+  .ambient {
+    position: absolute;
+    inset: -4rem -10vw 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+    mask-image: linear-gradient(#000 35%, transparent 95%);
+  }
+  .plane {
+    position: absolute;
+    inset: 1rem 0 8%;
+    transform: perspective(1100px) rotateX(16deg) rotateZ(-7deg);
+  }
+  i {
+    position: absolute;
+    display: block;
+    border: 1px solid color-mix(in srgb, var(--apple-link) 13%, transparent);
+    border-radius: 18px;
+    background: linear-gradient(
+      140deg,
+      color-mix(in srgb, var(--apple-link) 3%, transparent),
+      transparent 75%
+    );
+    box-shadow: inset 0 1px 0
+      color-mix(in srgb, var(--apple-foreground) 4%, transparent);
+  }
+  i:nth-child(1) {
+    inset: 5% 71% 44% -5%;
+    --x: 18px;
+    --y: 22px;
+  }
+  i:nth-child(2) {
+    inset: 10% -5% 57% 76%;
+    --x: -22px;
+    --y: 16px;
+    animation-delay: -6s;
+  }
+  i:nth-child(3) {
+    inset: 62% 78% 3% -8%;
+    --x: 24px;
+    --y: -18px;
+    animation-delay: -9s;
+  }
+  i:nth-child(4) {
+    inset: 48% -10% 5% 81%;
+    --x: -18px;
+    --y: -20px;
+    animation-delay: -3s;
+  }
+  i:nth-child(5) {
+    inset: 3% 36% 76% 32%;
+    opacity: 0.3;
+    --x: 8px;
+    --y: 15px;
+    animation-delay: -12s;
+  }
+  i:nth-child(6) {
+    inset: 41% 48% 12% 21%;
+    opacity: 0.3;
+    --x: -15px;
+    --y: 10px;
+    animation-delay: -7s;
+  }
+  @keyframes arrange {
+    to {
+      transform: translate(var(--x), var(--y));
+    }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .ambient i {
+      animation-name: arrange;
+      animation-duration: 14s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+      animation-play-state: paused;
+    }
+    .ambient[data-running] i {
+      animation-play-state: running;
+    }
+  }
+  @media (max-width: 40rem) {
+    .ambient {
+      inset-inline: -35vw;
+    }
+    .plane {
+      opacity: 0.7;
+    }
+  }
+</style>
+<script>
+  const background = document.querySelector<HTMLElement>(".ambient");
+  if (background) {
+    const motion = matchMedia("(prefers-reduced-motion: reduce)");
+    let visible = false;
+    const update = () =>
+      background.toggleAttribute(
+        "data-running",
+        visible && !document.hidden && !motion.matches,
+      );
+    const observer = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      update();
+    });
+    observer.observe(background);
+    document.addEventListener("visibilitychange", update);
+    motion.addEventListener("change", update);
+    window.addEventListener("pageshow", update);
+    window.addEventListener("pagehide", (event) => {
+      background.removeAttribute("data-running");
+      if (event.persisted) return;
+      observer.disconnect();
+      window.removeEventListener("pageshow", update);
+      document.removeEventListener("visibilitychange", update);
+      motion.removeEventListener("change", update);
+      background.removeAttribute("data-running");
+    });
+  }
+</script>

@@ -1,0 +1,9 @@
+---
+import DefaultHero from "@astrojs/starlight/components/Hero.astro";
+import Homepage from "./Homepage.astro";
+const isHomepage =
+  Astro.locals.starlightRoute.entry.id === "" ||
+  Astro.locals.starlightRoute.entry.id === "index";
+---
+
+{isHomepage ? <Homepage /> : <DefaultHero />}

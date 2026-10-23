@@ -7,6 +7,7 @@ export default defineConfig({
   base: process.env.SITE_BASE ?? '/rift-docs',
   integrations: [starlight({
     title: 'rift',
+    components: { Hero: './src/components/home/HomeHero.astro' },
     description: 'Documentation for Rift, a macOS tiling window manager.',
     social: [
       { icon: 'github', label: 'GitHub', href: 'https://github.com/acsandmann/rift' },

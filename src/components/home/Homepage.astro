@@ -1,0 +1,546 @@
+---
+import { Image } from "astro:assets";
+import { LinkButton } from "@astrojs/starlight/components";
+import Ambient from "./Ambient.astro";
+import Layouts from "./Layouts.astro";
+import desktop from "../../assets/rift-desktop.png";
+import menu from "../../assets/rift-menu.png";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const href = (path: string) => `${base}/${path}/`;
+---
+
+<div class="rift-home not-content">
+  <section class="intro" aria-labelledby="_top">
+    <Ambient />
+    <h1 id="_top">
+      A place for
+      <br />
+      every window.
+    </h1>
+    <p class="lead">
+      A tiling window manager for macOS.
+      <br class="desktop-break" /> Flexible layouts. Control from your keyboard.
+    </p>
+    <div class="actions">
+      <LinkButton
+        href={href("quick-start")}
+        data-umami-event="homepage_get_started"
+      >
+        Get started
+      </LinkButton>
+      <LinkButton href={href("layouts")} variant="minimal" icon="right-arrow">
+        Explore the docs
+      </LinkButton>
+    </div>
+    <figure class="demo">
+      <div class="screen">
+        <Image
+          src={desktop}
+          alt="Rift tiling a browser and Terminal side by side on a macOS desktop"
+          widths={[480, 768, 960]}
+          sizes="(max-width: 700px) 92vw, 960px"
+          format="webp"
+          loading="eager"
+          fetchpriority="high"
+        />
+        <video
+          controls
+          playsinline
+          preload="none"
+          aria-label="Rift window management demonstration"
+          hidden
+        >
+          <source src={`${base}/rift-demo.mp4`} type="video/mp4" />
+        </video>
+      </div>
+      <figcaption>
+        <button class="play-demo" type="button" hidden>
+          Watch Rift in action <span aria-hidden="true">↗</span>
+        </button>
+      </figcaption>
+    </figure>
+  </section>
+  <section class="section" aria-labelledby="layouts-title">
+    <div class="section-heading">
+      <h2 id="layouts-title">Find your kind of space.</h2>
+      <p>
+        A screen full of windows, or one thing in focus.
+        <br class="desktop-break" /> Choose a layout for each workspace.
+      </p>
+    </div>
+    <Layouts />
+  </section>
+  <section class="workspace-section section" aria-labelledby="workspaces-title">
+    <div class="section-heading left">
+      <h2 id="workspaces-title">
+        Keep each project
+        <br />
+        in its own space.
+      </h2>
+    </div>
+    <div class="workspace-body">
+      <p>
+        Give code, research, and conversations their own space. Rift’s virtual
+        workspaces organize groups of windows within a macOS Space.
+      </p>
+      <a class="text-link" href={href("guides/workspaces")}>
+        Get to know workspaces <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </section>
+  <section class="controls section" aria-labelledby="controls-title">
+    <div>
+      <h2 id="controls-title">Stay on the keyboard.</h2>
+      <p>
+        Move between windows, rearrange them, and adjust their size with
+        shortcuts you can make your own.
+      </p>
+      <div
+        class="keys"
+        aria-label="Option H, J, K, and L for directional focus"
+      >
+        <kbd>⌥</kbd>
+        <span>+</span>
+        <kbd>H</kbd>
+        <kbd>J</kbd>
+        <kbd>K</kbd>
+        <kbd>L</kbd>
+      </div>
+      <a class="text-link" href={href("guides/keybindings")}>
+        Learn the controls <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+    <div class="mac-details">
+      <div>
+        <h3>A familiar gesture.</h3>
+        <p>
+          Enable trackpad gestures to swipe between Rift workspaces or navigate
+          scrolling columns.
+        </p>
+        <a class="text-link" href={href("guides/gestures")}>
+          Set up gestures <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <div>
+        <h3>Space for macOS.</h3>
+        <p>
+          Rift works with “Displays have separate Spaces” enabled and supports
+          native macOS window tabs.
+        </p>
+        <a class="text-link" href={href("installation")}>
+          Read the requirements <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+  <section class="customize section" aria-labelledby="customize-title">
+    <figure>
+      <Image
+        src={menu}
+        alt="Rift’s macOS menu bar controls for layouts, workspaces, tiling, and settings"
+        widths={[350, 700]}
+        sizes="(max-width: 700px) 84vw, 480px"
+        format="webp"
+        loading="lazy"
+      />
+    </figure>
+    <div>
+      <h2 id="customize-title">Make it your own.</h2>
+      <p>
+        Start with the bundled configuration. Then adjust layouts, shortcuts,
+        and app rules in settings or in one TOML file.
+      </p>
+      <a class="text-link" href={href("configuration")}>
+        Make your first changes <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </section>
+  <section class="install section" aria-labelledby="install-title">
+    <h2 id="install-title">Make yourself some room.</h2>
+    <p>
+      Install with Homebrew. Then follow the quick start to set up the service,
+      <br class="desktop-break" /> grant Accessibility access, and activate
+      tiling on your current Space.
+    </p>
+    <div class="command">
+      <code>brew install acsandmann/tap/rift</code>
+      <button
+        type="button"
+        class="copy"
+        aria-label="Copy Homebrew installation command"
+        hidden
+      >
+        Copy
+      </button>
+    </div>
+    <span class="copy-status sr-only" role="status"></span>
+    <LinkButton href={href("quick-start")} data-umami-event="homepage_install">
+      Follow the quick start
+    </LinkButton>
+    <a class="text-link install-link" href={href("installation")}>
+      All installation options <span aria-hidden="true">↗</span>
+    </a>
+  </section>
+</div>
+<style>
+  /* Only this homepage adjusts the existing Starlight content shell. */
+  :global(main:has(.rift-home) > .content-panel) {
+    border: 0;
+    padding-top: 0;
+  }
+  :global(main:has(.rift-home) .sl-container) {
+    max-width: 72rem;
+  }
+  .rift-home {
+    color: var(--apple-foreground);
+    isolation: isolate;
+    overflow: clip;
+  }
+  .rift-home :is(h1, h2, h3, p, figure) {
+    margin: 0;
+  }
+  .intro {
+    position: relative;
+    padding-top: clamp(56px, 7vw, 92px);
+    text-align: center;
+  }
+  h1 {
+    font-size: clamp(48px, 7vw, 84px);
+    font-weight: 600;
+    letter-spacing: -0.05em;
+    line-height: 1.02;
+    text-wrap: balance;
+  }
+  .lead {
+    margin-top: 25px !important;
+    font-size: clamp(18px, 1.8vw, 22px);
+    line-height: 1.5;
+    letter-spacing: -0.018em;
+    color: var(--apple-secondary-foreground);
+  }
+  .actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 24px;
+    margin-top: 28px;
+  }
+  .actions :global(a) {
+    margin: 0;
+  }
+  .demo {
+    max-width: 960px;
+    margin: clamp(44px, 6vw, 72px) auto 0 !important;
+    text-align: left;
+  }
+  .screen {
+    border: 1px solid
+      color-mix(in srgb, var(--apple-foreground) 16%, transparent);
+    border-radius: 13px;
+    overflow: hidden;
+    box-shadow:
+      0 32px 72px -36px rgb(0 0 0 / 0.35),
+      0 2px 8px rgb(0 0 0 / 0.06);
+    background: var(--apple-secondary-background);
+    aspect-ratio: 960 / 623;
+  }
+  .screen img,
+  .screen video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  [hidden] {
+    display: none !important;
+  }
+  figcaption {
+    font-size: 12px;
+    color: var(--apple-secondary-foreground);
+    line-height: 1.5;
+  }
+  .demo figcaption {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 2px;
+  }
+  button {
+    font: inherit;
+    cursor: pointer;
+  }
+  .play-demo {
+    padding: 5px 0;
+    border: 0;
+    background: none;
+    color: var(--apple-link);
+    font-size: 14px;
+  }
+  .section {
+    margin-top: clamp(80px, 10vw, 128px);
+  }
+  .section-heading {
+    max-width: 760px;
+    margin: 0 auto 36px;
+    text-align: center;
+  }
+  h2 {
+    font-size: clamp(32px, 3.8vw, 48px);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+  }
+  .section p {
+    font-size: 18px;
+    line-height: 1.55;
+    letter-spacing: -0.015em;
+    color: var(--apple-secondary-foreground);
+  }
+  .section h2 + p {
+    margin-top: 22px;
+  }
+  .left {
+    text-align: left;
+    margin: 0 0 38px;
+    max-width: 620px;
+  }
+  .text-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: var(--apple-link);
+    font-size: 16px;
+    text-decoration: none;
+  }
+  .text-link:hover,
+  .play-demo:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .workspace-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 8%;
+    border-block: 1px solid var(--apple-hairline);
+    padding-block: clamp(36px, 6vw, 64px);
+  }
+  .workspace-section .left {
+    margin: 0;
+  }
+  .controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10%;
+    padding-block: 30px;
+  }
+  .keys {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 30px;
+  }
+  .keys span {
+    color: var(--apple-secondary-foreground);
+    padding: 0 7px;
+  }
+  kbd {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 46px;
+    border: 1px solid var(--apple-hairline);
+    border-bottom-width: 3px;
+    border-radius: 8px;
+    font: 18px var(--apple-font-sans);
+    background: var(--apple-secondary-background);
+  }
+  .mac-details {
+    display: grid;
+    align-content: center;
+    gap: 40px;
+  }
+  .mac-details > div + div {
+    border-top: 1px solid var(--apple-hairline);
+    padding-top: 34px;
+  }
+  h3 {
+    font-size: 24px;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+    font-weight: 600;
+  }
+  .mac-details p {
+    margin-top: 12px !important;
+  }
+  .mac-details .text-link {
+    margin-top: 10px;
+  }
+  .customize {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 8%;
+    padding-block: clamp(32px, 5vw, 56px);
+    border-block: 1px solid var(--apple-hairline);
+  }
+  .customize figure {
+    padding: clamp(20px, 4vw, 44px);
+    border-radius: 20px;
+    background: var(--apple-secondary-background);
+  }
+  .customize img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 18px 40px -20px #0006;
+  }
+  .customize h2 {
+    font-size: clamp(32px, 3.8vw, 48px);
+  }
+  .install {
+    text-align: center;
+    padding: 0 0 70px;
+  }
+  .install p {
+    margin-top: 24px;
+  }
+  .command {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 32px auto;
+    padding: 18px 20px;
+    max-width: 560px;
+    background: var(--apple-secondary-background);
+    border: 1px solid var(--apple-hairline);
+    border-radius: 12px;
+    text-align: left;
+  }
+  .command code {
+    min-width: 0;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-block: 4px;
+    font: clamp(12px, 2.8vw, 15px) var(--apple-font-mono);
+    color: var(--apple-foreground);
+  }
+  .copy {
+    border: 0;
+    border-radius: 5px;
+    padding: 6px 9px;
+    background: var(--apple-fill);
+    color: var(--apple-foreground);
+    font-size: 12px;
+  }
+  .install-link {
+    display: block;
+    margin-top: 18px;
+    font-size: 14px;
+  }
+  :is(a, button):focus-visible {
+    outline: 3px solid var(--apple-focus);
+    outline-offset: 5px;
+  }
+  @media (max-width: 40rem) {
+    .desktop-break {
+      display: none;
+    }
+    .intro {
+      padding-top: 44px;
+    }
+    .lead {
+      max-width: 340px;
+      margin-inline: auto !important;
+    }
+    .demo {
+      margin-top: 34px !important;
+    }
+    .demo figcaption {
+      font-size: 10px;
+    }
+    .play-demo {
+      font-size: 13px;
+      min-height: 32px;
+    }
+    .controls,
+    .customize,
+    .workspace-section {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .customize figure {
+      order: 2;
+    }
+    .section p {
+      font-size: 17px;
+    }
+    .section-heading {
+      margin-bottom: 28px;
+    }
+    .install {
+      padding-bottom: 35px;
+    }
+    .command {
+      gap: 8px;
+      padding: 16px 12px;
+    }
+    .screen {
+      border-radius: 8px;
+    }
+  }
+</style>
+<script>
+  const home = document.querySelector(".rift-home");
+  if (home) {
+    const copy = home.querySelector<HTMLButtonElement>(".copy");
+    const status = home.querySelector<HTMLElement>(".copy-status");
+    if (copy && navigator.clipboard) {
+      copy.hidden = false;
+      copy.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(
+            "brew install acsandmann/tap/rift",
+          );
+          if (status) status.textContent = "Installation command copied.";
+          copy.textContent = "Copied";
+        } catch {
+          if (status)
+            status.textContent =
+              "Unable to copy. Select the command and copy it manually.";
+        }
+      });
+    }
+    const play = home.querySelector<HTMLButtonElement>(".play-demo");
+    const video = home.querySelector<HTMLVideoElement>("video");
+    const poster = home.querySelector<HTMLImageElement>(".screen img");
+    if (play && video && poster) {
+      play.hidden = false;
+      play.addEventListener("click", () => {
+        poster.hidden = true;
+        video.hidden = false;
+        play.hidden = true;
+        video.play().catch(() => {});
+        video.focus();
+      });
+      const pause = () => {
+        if (document.hidden) video.pause();
+      };
+      document.addEventListener("visibilitychange", pause);
+      const observer = new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting) video.pause();
+      });
+      observer.observe(video);
+      window.addEventListener("pagehide", (event) => {
+        video.pause();
+        if (event.persisted) return;
+        observer.disconnect();
+        document.removeEventListener("visibilitychange", pause);
+      });
+    }
+  }
+</script>
