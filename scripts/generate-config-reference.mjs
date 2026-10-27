@@ -84,6 +84,8 @@ function enumValues(typeName) {
 function baseType(rust) {
   const optional = rust.startsWith('Option<'); const array = rust.startsWith('Vec<');
   const inner = (optional || array) ? rust.slice(rust.indexOf('<') + 1, -1).trim() : rust;
+  if (rust === 'Option<Vec<String>>') return { oneOf: [{ type: 'string' }, { type: 'array', items: { type: 'string' } }], optional, displayType: 'text or array of text' };
+  if (inner === 'MouseModifier') return { type: 'string', optional };
   if (inner === 'WorkspaceSelector') return { oneOf: [{ type: 'integer', minimum: 0 }, { type: 'string' }], optional, displayType: 'workspace name or zero-based index' };
   let type = ({ bool: 'boolean', f64: 'number', f32: 'number', usize: 'integer', u32: 'integer', u64: 'integer', i32: 'integer', String: 'string', PathBuf: 'string', HotkeySpec: 'string' }[inner] || null);
   const values = enumValues(inner); if (values) type = 'string';

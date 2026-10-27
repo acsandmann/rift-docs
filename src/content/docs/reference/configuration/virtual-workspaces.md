@@ -167,7 +167,7 @@ layout = "traditional"
 ### `display`
 
 <p>Ordered display UUIDs, names, or builtin/left/right/top/bottom selectors. The first eligible preference wins. Only applies when <code>mode = &quot;global&quot;</code>.</p>
-<dl class="apple-meta"><div><dt>Type</dt><dd>table (optional)</dd></div><div><dt>Default</dt><dd>Not set</dd></div></dl>
+<dl class="apple-meta"><div><dt>Type</dt><dd>text or array of text (optional)</dd></div><div><dt>Default</dt><dd>Not set</dd></div></dl>
 
 </section>
 

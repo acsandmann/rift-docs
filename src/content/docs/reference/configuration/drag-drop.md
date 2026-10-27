@@ -61,7 +61,7 @@ Modifier-assisted window movement and tiled-window drops with previews.
 ### `modifier`
 
 <p>Modifier held with <a href="/rift-docs/reference/configuration/drag-drop/#setting-settings-drag_drop-action1"><code>action1</code></a> or <a href="/rift-docs/reference/configuration/drag-drop/#setting-settings-drag_drop-action2"><code>action2</code></a>: <code>cmd</code>, <code>alt</code>, <code>shift</code>, <code>ctrl</code>, <code>fn</code>, or a combination such as <code>Ctrl + Alt + Shift + Meta</code> (<code>fn</code> can't be combined). Left/right spellings such as <code>AltRight</code> match either side. A single modifier works while held; a combination must be held exactly.</p>
-<dl class="apple-meta"><div><dt>Type</dt><dd><code>Fn</code> or <code>Keys</code></dd></div><div><dt>Default</dt><dd><code>&quot;fn&quot;</code></dd></div></dl>
+<dl class="apple-meta"><div><dt>Type</dt><dd>string</dd></div><div><dt>Default</dt><dd><code>&quot;fn&quot;</code></dd></div></dl>
 
 </section>
 

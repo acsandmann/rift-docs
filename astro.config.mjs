@@ -35,6 +35,7 @@ export default defineConfig({
           { label: 'Adjust layouts', slug: 'guides/layouts' },
           { label: 'Window management', slug: 'guides/window-management' },
           { label: 'Virtual workspaces', slug: 'guides/workspaces' },
+          { label: 'Multiple displays', slug: 'guides/multiple-displays' },
           { label: 'Keybindings', slug: 'guides/keybindings' },
           { label: 'App rules', slug: 'guides/app-rules' },
           { label: 'Gestures', slug: 'guides/gestures' },

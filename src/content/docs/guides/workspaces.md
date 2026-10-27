@@ -66,4 +66,4 @@ Workspaces without a matching rule use `[settings.layout].mode`. To route new ap
 
 In `[virtual_workspaces]`, `prevent_wrapping = true` stops next/previous navigation at the ends of the workspace list. `workspace_auto_back_and_forth = true` makes selecting the current workspace return to the previous one.
 
-For trackpad navigation, see [Gestures](/rift-docs/guides/gestures/). The [workspace reference](/rift-docs/reference/configuration/virtual-workspaces/) explains every setting, including fields currently accepted by the config parser that have no runtime effect.
+For workspace modes and display placement, see [Multiple displays](/rift-docs/guides/multiple-displays/). For trackpad navigation, see [Gestures](/rift-docs/guides/gestures/). The [workspace reference](/rift-docs/reference/configuration/virtual-workspaces/) explains every setting, including fields currently accepted by the config parser that have no runtime effect.

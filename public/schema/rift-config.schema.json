@@ -753,10 +753,6 @@
             },
             "modifier": {
               "type": "string",
-              "enum": [
-                "Fn",
-                "Keys"
-              ],
               "description": "Modifier held with `action1` or `action2`: `cmd`, `alt`, `shift`, `ctrl`, `fn`, or a combination such as `Ctrl + Alt + Shift + Meta` (`fn` can't be combined). Left/right spellings such as `AltRight` match either side. A single modifier works while held; a combination must be held exactly.",
               "default": "fn"
             },
@@ -1030,7 +1026,17 @@
                 "description": "Layout to use in the matching workspace."
               },
               "display": {
-                "type": "object",
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ],
                 "description": "Ordered display UUIDs, names, or builtin/left/right/top/bottom selectors. The first eligible preference wins. Only applies when `mode = \"global\"`."
               }
             },
