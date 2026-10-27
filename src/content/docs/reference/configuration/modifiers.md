@@ -33,6 +33,6 @@ main = "Alt + Shift"
 ## See also
 
 <ul class="apple-topics">
-<li><a href="/rift-docs/guides/keybindings/">Keybindings guide</a></li>
+<li><a href="/rift-docs/guides/window-management/#customize-keyboard-shortcuts">Keybindings guide</a></li>
 <li><a href="/rift-docs/reference/configuration/keybindings/">Keybinding reference</a></li>
 </ul>

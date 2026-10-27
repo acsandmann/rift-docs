@@ -82,7 +82,7 @@ These placeholders identify Rift or macOS objects rather than choosing from a fi
 <ul class="apple-topics">
 <li><a href="/rift-docs/guides/window-management/">Window management</a></li>
 <li><a href="/rift-docs/guides/workspaces/">Virtual workspaces</a></li>
-<li><a href="/rift-docs/guides/keybindings/">Keybindings</a></li>
+<li><a href="/rift-docs/guides/window-management/#customize-keyboard-shortcuts">Keybindings</a></li>
 <li><a href="/rift-docs/reference/configuration/">Configuration reference</a></li>
 </ul>
 

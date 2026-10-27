@@ -122,6 +122,6 @@ Omitting the entire <a href="/rift-docs/reference/configuration/gestures/#settin
 ## See also
 
 <ul class="apple-topics">
-<li><a href="/rift-docs/guides/gestures/">Gestures guide</a></li>
+<li><a href="/rift-docs/guides/window-management/#trackpad-gestures">Gestures guide</a></li>
 <li><a href="/rift-docs/guides/workspaces/">Virtual workspaces</a></li>
 </ul>

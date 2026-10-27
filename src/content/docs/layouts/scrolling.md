@@ -3,13 +3,13 @@ title: Scrolling layout
 description: A horizontal strip of windows inspired by niri.
 ---
 
-Scrolling layout arranges windows as a horizontal strip of columns. Rift keeps the focused column in view, so many windows can remain open without shrinking every window.
+Scrolling arranges windows in a horizontal row of columns. The row can extend beyond the display, so you can keep many windows open without squeezing them all onto the screen.
 
 The TOML below is a fragment to add to an existing config; it is not a complete config file.
 
 ## Behavior
 
-Imagine a long row of columns that can extend past both sides of your display. A column may contain one window or several windows stacked vertically. Moving focus left or right scrolls the row until the selected column is visible; moving up or down changes the selected window within a column.
+A column can contain one window or several stacked vertically. Move focus left or right to bring another column into view; move up or down to select a window within a column.
 
 :::caution[Multiple displays]
 With Scrolling, arrange multiple displays in a vertical stack in macOS. Because macOS places all display coordinates in one shared space, side-by-side displays can allow off-screen columns to leak onto another display.

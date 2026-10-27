@@ -3,9 +3,9 @@ title: Stack layout
 description: Keep a group of overlapping windows large.
 ---
 
-Stack overlaps windows and offsets them along one axis, leaving an edge of each window visible. Changing focus raises another window in the group without dividing the group into separate panes.
+Stack overlaps windows, leaving an edge of each visible. Focus a window to bring it forward. Unlike tiled panes, each window can use most of the available space.
 
-Use it for a few related documents or terminal windows when you want a large working area and quick access to the others. It is less useful when you need to read every window at once.
+It is useful for a few related documents or terminals when you only need to read one at a time.
 
 ## Set it up
 

@@ -3,9 +3,9 @@ title: Traditional layout
 description: Arrange windows in horizontal and vertical groups.
 ---
 
-Traditional is Rift’s default layout. It organizes windows into a tree of horizontal and vertical groups, so one side of your desktop can hold an editor while the other contains a terminal above a browser.
+Traditional is Rift’s default layout. It arranges windows in horizontal and vertical groups. For example, you can keep an editor on the left and a terminal above a browser on the right.
 
-Choose it when you want to control how windows are grouped. Its tree structure will be familiar if you have used i3 or Sway.
+Groups can contain other groups, giving you control over how the screen is divided. This structure will feel familiar if you have used i3 or Sway.
 
 ## Set it up
 
@@ -23,7 +23,7 @@ New windows appear next to the current selection by default. `equalize_nodes = t
 
 ## Work with groups
 
-A group can contain windows and other groups. Moving or resizing a selected group affects its contents together. Start with directional focus and movement, then add group commands as you need them; see [Keybindings](/rift-docs/guides/keybindings/).
+A group can contain windows and other groups. Use `ascend` to select the group containing the current window; moving or resizing the selection then affects the whole group. See [Window management](/rift-docs/guides/window-management/) and [Keybindings](/rift-docs/guides/window-management/#customize-keyboard-shortcuts) for controls.
 
 To append new windows at the end of the tree:
 

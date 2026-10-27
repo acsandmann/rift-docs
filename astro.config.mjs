@@ -2,9 +2,16 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import starlightThemeApple from 'starlight-theme-apple';
 
+const base = (process.env.SITE_BASE ?? '/rift-docs').replace(/\/$/, '');
+
 export default defineConfig({
   site: 'https://acsandmann.github.io',
-  base: process.env.SITE_BASE ?? '/rift-docs',
+  base: base || '/',
+  redirects: {
+    '/guides/keybindings/': `${base}/guides/window-management/#customize-keyboard-shortcuts`,
+    '/guides/gestures/': `${base}/guides/window-management/#trackpad-gestures`,
+    '/guides/multiple-displays/': `${base}/guides/workspaces/#multiple-displays`,
+  },
   integrations: [starlight({
     title: 'rift',
     components: { Hero: './src/components/home/HomeHero.astro' },
@@ -17,6 +24,17 @@ export default defineConfig({
     sidebar: [
       { label: 'Start here', items: ['index', 'quick-start', 'installation', 'configuration', 'changelog'] },
       {
+        label: 'Guides',
+        collapsed: true,
+        items: [
+          { label: 'Adjust layouts', slug: 'guides/layouts' },
+          { label: 'Windows and controls', slug: 'guides/window-management' },
+          { label: 'Workspaces and displays', slug: 'guides/workspaces' },
+          { label: 'App rules', slug: 'guides/app-rules' },
+          { label: 'Troubleshooting', slug: 'guides/troubleshooting' },
+        ],
+      },
+      {
         label: 'Layouts',
         collapsed: false,
         items: [
@@ -26,20 +44,6 @@ export default defineConfig({
           { label: 'Master-stack', slug: 'layouts/master-stack' },
           { label: 'Stack', slug: 'layouts/stack' },
           { label: 'Scrolling', slug: 'layouts/scrolling' },
-        ],
-      },
-      {
-        label: 'Guides',
-        collapsed: true,
-        items: [
-          { label: 'Adjust layouts', slug: 'guides/layouts' },
-          { label: 'Window management', slug: 'guides/window-management' },
-          { label: 'Virtual workspaces', slug: 'guides/workspaces' },
-          { label: 'Multiple displays', slug: 'guides/multiple-displays' },
-          { label: 'Keybindings', slug: 'guides/keybindings' },
-          { label: 'App rules', slug: 'guides/app-rules' },
-          { label: 'Gestures', slug: 'guides/gestures' },
-          { label: 'Troubleshooting', slug: 'guides/troubleshooting' },
         ],
       },
       {
@@ -91,7 +95,7 @@ export default defineConfig({
       starlightThemeApple({
         nav: [
           { label: 'Install', link: '/installation/' },
-          { label: 'Guides', link: '/guides/layouts/' },
+          { label: 'Guides', link: '/guides/window-management/' },
           { label: 'Reference', link: '/reference/configuration/' },
         ],
         socialAttrs: {

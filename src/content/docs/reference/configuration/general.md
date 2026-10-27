@@ -161,5 +161,5 @@ focus_follows_mouse_disable_hotkey = "Ctrl"
 <ul class="apple-topics">
 <li><a href="/rift-docs/quick-start/">Quick start</a></li>
 <li><a href="/rift-docs/configuration/">Configuration guide</a></li>
-<li><a href="/rift-docs/guides/keybindings/">Keybindings</a></li>
+<li><a href="/rift-docs/guides/window-management/#customize-keyboard-shortcuts">Keybindings</a></li>
 </ul>

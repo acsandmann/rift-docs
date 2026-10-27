@@ -50,5 +50,5 @@ Reloading does not run these entries again. Restart Rift after changing startup 
 
 <ul class="apple-topics">
 <li><a href="/rift-docs/ecosystem/integrations/">Integrations</a></li>
-<li><a href="/rift-docs/guides/keybindings/">Keybindings</a></li>
+<li><a href="/rift-docs/guides/window-management/#customize-keyboard-shortcuts">Keybindings</a></li>
 </ul>

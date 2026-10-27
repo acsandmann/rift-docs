@@ -369,7 +369,7 @@ function markdownGroup(title, prefix, version) {
     'Scrolling layout': '```toml\n[settings.layout]\nmode = "scrolling"\n\n[settings.layout.scrolling]\ncolumn_width_ratio = 0.7\nalignment = "center"\n```',
     Gestures: '```toml\n[settings.gestures]\nenabled = true\nfingers = 3\n```',
     'Virtual workspaces': '```toml\n[virtual_workspaces]\ndefault_workspace_count = 3\nworkspace_names = ["Main", "Code", "Chat"]\ndefault_workspace = 0\n```',
-    Keybindings: '```toml\n[keys]\n"Alt + Z" = "toggle_space_activated"\n"Alt + H" = { move_focus = "left" }\n"Alt + Shift + H" = { move_node = "left" }\n"Alt + 1" = { switch_to_workspace = 0 }\n"Alt + Shift + Space" = "toggle_window_floating"\n```\n\nSimple commands are quoted strings. Commands that need a direction, workspace, amount, or other option use an inline table. See [Keybindings](/rift-docs/guides/keybindings/) for more commands.',
+    Keybindings: '```toml\n[keys]\n"Alt + Z" = "toggle_space_activated"\n"Alt + H" = { move_focus = "left" }\n"Alt + Shift + H" = { move_node = "left" }\n"Alt + 1" = { switch_to_workspace = 0 }\n"Alt + Shift + Space" = "toggle_window_floating"\n```\n\nSimple commands are quoted strings. Commands that need a direction, workspace, amount, or other option use an inline table. See [Keybindings](/rift-docs/guides/window-management/#customize-keyboard-shortcuts) for more commands.',
     'Binding modes': '```toml\n[keys]\n"Alt + R" = { binding_mode = "resize" }\n\n[binding_modes.resize]\n"H" = { resize_window_shrink = "horizontal" }\n"L" = { resize_window_grow = "horizontal" }\n"Escape" = { binding_mode = "default" }\n```\n\nMode names can be any TOML key. The default mode is reserved and is defined by `[keys]`.',
     'Modifier combinations': '```toml\n[modifier_combinations]\nmain = "Alt + Shift"\n\n[keys]\n"main + H" = { move_focus = "left" }\n```',
     'Commands and startup': 'To open Terminal when Rift starts:\n\n```toml\n[settings]\nrun_on_start = ["open -a Terminal"]\n```',
@@ -383,18 +383,18 @@ function markdownGroup(title, prefix, version) {
   const appRuleIntro = title === 'App rules' ? 'This example uses the default workspace name `Development`. Replace it if you renamed that workspace:\n\n' + exampleLabel + '\n\n```toml\n[[virtual_workspaces.app_rules]]\napp_id = "com.apple.Terminal"\nworkspace = "Development"\n\n[[virtual_workspaces.app_rules]]\napp_id = "com.apple.Calculator"\nfloating = true\n```' : '';
   const commandNotes = title === 'Commands and startup' ? 'For a helper that must restart after failure, use a macOS LaunchAgent (a background service). CLI subscriptions accept `workspace_changed`, `windows_changed`, `window_title_changed`, `focused_window_changed`, `stacks_changed`, `layout_changed`, `selection_changed`, or `*`. Each event’s JSON data is passed as the command’s final argument and in `RIFT_EVENT_JSON`. `RIFT_EVENT_TYPE` identifies the event; other variables depend on its contents. See [Integrations](/rift-docs/ecosystem/integrations/) for a working subscription.' : '';
   const seeAlso = {
-    General: ['[Quick start](/rift-docs/quick-start/)', '[Configuration guide](/rift-docs/configuration/)', '[Keybindings](/rift-docs/guides/keybindings/)'],
+    General: ['[Quick start](/rift-docs/quick-start/)', '[Configuration guide](/rift-docs/configuration/)', '[Keybindings](/rift-docs/guides/window-management/#customize-keyboard-shortcuts)'],
     'Drag and drop': ['[Window management](/rift-docs/guides/window-management/)', '[Layout settings](/rift-docs/reference/configuration/layouts/)', '[Configuration guide](/rift-docs/configuration/)'],
     Layouts: ['[Compare layouts](/rift-docs/layouts/)', '[Adjust layouts](/rift-docs/guides/layouts/)', '[Scrolling settings](/rift-docs/reference/configuration/scrolling/)'],
     'Scrolling layout': ['[Scrolling layout guide](/rift-docs/layouts/scrolling/)', '[Layout settings](/rift-docs/reference/configuration/layouts/)', '[Gesture settings](/rift-docs/reference/configuration/gestures/)'],
-    Gestures: ['[Gestures guide](/rift-docs/guides/gestures/)', '[Virtual workspaces](/rift-docs/guides/workspaces/)'],
+    Gestures: ['[Gestures guide](/rift-docs/guides/window-management/#trackpad-gestures)', '[Virtual workspaces](/rift-docs/guides/workspaces/)'],
     'User interface': ['[Configuration guide](/rift-docs/configuration/)', '[Window management](/rift-docs/guides/window-management/)'],
     'App rules': ['[App rules guide](/rift-docs/guides/app-rules/)', '[Virtual workspaces](/rift-docs/guides/workspaces/)'],
     'Virtual workspaces': ['[Virtual workspaces guide](/rift-docs/guides/workspaces/)', '[App rules](/rift-docs/reference/configuration/app-rules/)', '[Layout settings](/rift-docs/reference/configuration/layouts/)'],
-    Keybindings: ['[Keybindings guide](/rift-docs/guides/keybindings/)', '[Binding modes](/rift-docs/reference/configuration/binding-modes/)', '[Modifier combinations](/rift-docs/reference/configuration/modifiers/)', '[Commands and startup](/rift-docs/reference/configuration/commands/)'],
+    Keybindings: ['[Keybindings guide](/rift-docs/guides/window-management/#customize-keyboard-shortcuts)', '[Binding modes](/rift-docs/reference/configuration/binding-modes/)', '[Modifier combinations](/rift-docs/reference/configuration/modifiers/)', '[Commands and startup](/rift-docs/reference/configuration/commands/)'],
     'Binding modes': ['[Keybindings](/rift-docs/reference/configuration/keybindings/)', '[Modifier combinations](/rift-docs/reference/configuration/modifiers/)'],
-    'Modifier combinations': ['[Keybindings guide](/rift-docs/guides/keybindings/)', '[Keybinding reference](/rift-docs/reference/configuration/keybindings/)'],
-    'Commands and startup': ['[Integrations](/rift-docs/ecosystem/integrations/)', '[Keybindings](/rift-docs/guides/keybindings/)'],
+    'Modifier combinations': ['[Keybindings guide](/rift-docs/guides/window-management/#customize-keyboard-shortcuts)', '[Keybinding reference](/rift-docs/reference/configuration/keybindings/)'],
+    'Commands and startup': ['[Integrations](/rift-docs/ecosystem/integrations/)', '[Keybindings](/rift-docs/guides/window-management/#customize-keyboard-shortcuts)'],
   }[title] || [];
   const related = seeAlso.length ? `## See also\n\n${topicList(seeAlso.map((link) => {
     const [, label, href] = link.match(/^\[([^\]]+)\]\(([^)]+)\)$/);

@@ -140,7 +140,7 @@ if (!schema.required?.includes('settings') || !schema.required?.includes('keys')
 const requiredKeymapWarnings = [
   'src/content/docs/quick-start.md',
   'src/content/docs/configuration.md',
-  'src/content/docs/guides/keybindings.md',
+  'src/content/docs/guides/window-management.md',
 ];
 for (const relative of requiredKeymapWarnings) {
   const source = fs.readFileSync(path.join(root, relative), 'utf8');

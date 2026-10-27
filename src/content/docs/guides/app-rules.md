@@ -3,7 +3,7 @@ title: App rules
 description: Automatically place, float, focus, or ignore windows.
 ---
 
-App rules control windows when Rift discovers them. Use a rule to send an app to a workspace, make it float, or leave it unmanaged.
+App rules tell Rift what to do when it finds a window. For example, you can send Terminal to a workspace and let Calculator float:
 
 Merge these examples into your existing `[virtual_workspaces]` table and `app_rules` list. `Development` is a default workspace name; replace it if you use your own names.
 
@@ -15,11 +15,11 @@ app_rules = [
 ]
 ```
 
-Test one app and one action before adding conditions.
+Reload your config, then open the app to try the rule. Start with one app and add conditions as you need them.
 
 ## Rule matching
 
-Each rule has match fields and action fields. Match fields answer “which windows does this apply to?” Action fields answer “what should Rift do with them?”
+A rule has two parts: fields that identify a window, and fields that tell Rift what to do with it.
 
 All match fields in one rule must match the same window. This only matches Terminal windows whose title contains `ssh`:
 
@@ -98,7 +98,7 @@ app_rules = [
 
 ### Send apps to named workspaces
 
-Names are easier to remember than numbers:
+For example, send Safari to `web` and VS Code to `coding`:
 
 ```toml
 [virtual_workspaces]
@@ -148,6 +148,6 @@ This is off by default so ordinary title changes do not repeatedly move or focus
 
 ## Test a rule
 
-Run `rift-cli execute config reload` after editing, then open a matching window. If the rule misses it, start with only `app_id` and add one condition at a time. `rift-cli query windows` shows windows Rift knows about.
+After editing, run `rift-cli execute config reload` and open a matching window. If it does not match, start with just `app_id`, then add conditions one at a time. Run `rift-cli query windows` to see the windows Rift knows about.
 
 See the [app-rule reference](/rift-docs/reference/configuration/app-rules/) for all fields and accepted values.

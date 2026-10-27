@@ -31,12 +31,12 @@ Edit matching tables in your existing config; do not repeat their headers. Keep 
 "Alt + Shift + Space" = "toggle_window_floating"
 ```
 
-Simple commands are quoted strings. Commands that need a direction, workspace, amount, or other option use an inline table. See [Keybindings](/rift-docs/guides/keybindings/) for more commands.
+Simple commands are quoted strings. Commands that need a direction, workspace, amount, or other option use an inline table. See [Keybindings](/rift-docs/guides/window-management/#customize-keyboard-shortcuts) for more commands.
 
 ## See also
 
 <ul class="apple-topics">
-<li><a href="/rift-docs/guides/keybindings/">Keybindings guide</a></li>
+<li><a href="/rift-docs/guides/window-management/#customize-keyboard-shortcuts">Keybindings guide</a></li>
 <li><a href="/rift-docs/reference/configuration/binding-modes/">Binding modes</a></li>
 <li><a href="/rift-docs/reference/configuration/modifiers/">Modifier combinations</a></li>
 <li><a href="/rift-docs/reference/configuration/commands/">Commands and startup</a></li>

@@ -342,7 +342,7 @@ Placeholders shown as links, such as <a href="#value-direction"><code>&lt;DIRECT
 ${valueReferenceMarkup}${seeAlso([
   ['Window management', '/rift-docs/guides/window-management/'],
   ['Virtual workspaces', '/rift-docs/guides/workspaces/'],
-  ['Keybindings', '/rift-docs/guides/keybindings/'],
+  ['Keybindings', '/rift-docs/guides/window-management/#customize-keyboard-shortcuts'],
   ['Configuration reference', '/rift-docs/reference/configuration/'],
 ])}
 `);

@@ -5,7 +5,7 @@ description: Keep a primary window beside a supporting group.
 
 Master-stack divides the tiled area into two parts. With multiple windows and the default settings, one occupies the left 60% and the others share the right side. The supporting “stack” is tiled; it does not overlap like the separate Stack layout.
 
-Use it for an editor with terminals beside it, or a document with reference windows. Choose [BSP](/rift-docs/layouts/bsp/) if every window should have the same role.
+For example, keep an editor in the main area and terminals beside it. If you do not need a fixed main area, try [BSP](/rift-docs/layouts/bsp/).
 
 ## Set it up
 
@@ -22,7 +22,7 @@ master_side = "left"
 new_window_placement = "stack"
 ```
 
-This example keeps new windows in the supporting area once the master area is full. It is useful when you want your editor to stay in the main area.
+With this configuration, new windows go into the supporting area once the main area is full. The default is different: new windows enter the main area.
 
 ## Decide where new windows go
 

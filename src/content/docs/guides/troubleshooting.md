@@ -2,11 +2,11 @@
 title: Troubleshooting
 description: Diagnose common Rift setup and configuration issues.
 ---
-Start with the symptom below. Most setup problems involve the service, Accessibility permission, Space activation, or the config file.
+Find the symptom below for a few checks you can make. If you need more detail, the error log often points to the cause.
 
 ## The terminal tool cannot connect
 
-Run `rift-cli query displays`. A successful response lists displays as JSON, a structured text format. If it cannot connect, restart the background service:
+Run `rift-cli query displays`. A successful response lists your displays. If it cannot connect, restart the background service:
 
 ```sh
 rift service restart
@@ -16,7 +16,7 @@ If Rift exits immediately, check the logs below and confirm Displays have separa
 
 ## Windows are not being managed
 
-Make sure Rift has Accessibility permission in System Settings → Privacy & Security → Accessibility. Also check whether the Space is inactive; `default_disable = true` means Spaces start disabled until you activate them.
+Make sure Rift has Accessibility permission in System Settings → Privacy & Security → Accessibility. Then check that the current Space is activated. With `default_disable = true`, each Space starts disabled; use your activation shortcut or run `rift-cli execute space toggle-activated`.
 
 ## A config change fails to reload
 

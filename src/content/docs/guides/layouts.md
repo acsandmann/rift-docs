@@ -3,11 +3,13 @@ title: Adjust layouts
 description: Set a default layout, add gaps, and choose layouts by workspace.
 ---
 
-Choose a layout in the [comparison](/rift-docs/layouts/). Then add the relevant settings to your config. If a table already exists, edit it instead of repeating its header.
+Rift can use one layout everywhere or a different layout for each workspace. Start with the [layout overview](/rift-docs/layouts/) if you are not sure which to choose.
+
+Add the examples below to your config. If a table already exists, add the fields to it rather than repeating its header.
 
 ## Set the default layout
 
-Choose the layout in `[settings.layout]`, then reload:
+For example, to use Master-stack by default, add:
 
 ```toml
 [settings.layout]
@@ -48,7 +50,7 @@ workspace_rules = [
 
 Use a workspace name or a zero-based index. If a workspace rule does not match, Rift uses the normal layout setting.
 
-## Troubleshoot layout choices
+## Make the layout comfortable
 
 - Windows too small: try Master-stack or Scrolling, or adjust `master_ratio` or `column_width_ratio` for those layouts.
 - Windows too tightly packed: add inner and outer gaps.

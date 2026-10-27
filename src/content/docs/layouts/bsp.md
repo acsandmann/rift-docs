@@ -3,9 +3,9 @@ title: BSP layout
 description: Divide the screen into a tree of two-way splits.
 ---
 
-BSP stands for binary space partitioning. Each split divides a region into two children, which can be windows or further splits. This creates a tiled layout without a permanent primary window.
+BSP divides the screen into two regions, then divides those regions again as you add windows. Each region holds either a window or another split. There is no fixed primary window.
 
-Choose BSP when you want several terminals, a browser, and other windows to share the screen. Recursive splitting does not guarantee that every window has the same size; their positions in the tree and any resizing affect the result.
+It works well when several windows should share the screen. They will not necessarily be the same size: their place in the split tree and any resizing both matter. BSP stands for binary space partitioning.
 
 ## Set it up
 

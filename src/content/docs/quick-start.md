@@ -97,6 +97,6 @@ Later edits normally apply automatically when you save. To retain all starter sh
 
 - Compare the [five layouts](/rift-docs/layouts/) and choose one for your work.
 - Learn the [basic window controls](/rift-docs/guides/window-management/).
-- Customize [keybindings](/rift-docs/guides/keybindings/) one command at a time.
+- Customize [keybindings](/rift-docs/guides/window-management/#customize-keyboard-shortcuts) one command at a time.
 - Organize apps into [virtual workspaces](/rift-docs/guides/workspaces/).
 - Use [app rules](/rift-docs/guides/app-rules/) when a particular app should always float or go to a named workspace.
