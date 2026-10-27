@@ -16,7 +16,7 @@ const href = (path: string) => `${base}/${path}/`;
       rift
     </h1>
     <p class="lead">
-      A tiling window manager for macOS with flexible layouts, keyboard shortcuts, and virtual workspaces.
+      A tiling window manager for macOS.
     </p>
     <div class="actions">
       <LinkButton
@@ -26,7 +26,7 @@ const href = (path: string) => `${base}/${path}/`;
         Get started
       </LinkButton>
       <LinkButton href={href("layouts")} variant="minimal" icon="right-arrow">
-        Explore the docs
+        Browse documentation
       </LinkButton>
     </div>
     <figure class="demo">
@@ -52,7 +52,7 @@ const href = (path: string) => `${base}/${path}/`;
       </div>
       <figcaption>
         <button class="play-demo" type="button" hidden>
-          Watch Rift in action <span aria-hidden="true">↗</span>
+          Watch the demo <span aria-hidden="true">↗</span>
         </button>
       </figcaption>
     </figure>
@@ -61,7 +61,7 @@ const href = (path: string) => `${base}/${path}/`;
     <div class="section-heading">
       <h2 id="layouts-title">Layouts</h2>
       <p>
-        Choose a layout for each workspace.
+        Arrange windows the way you work. Choose a layout for each workspace.
       </p>
     </div>
     <Layouts />
@@ -74,10 +74,10 @@ const href = (path: string) => `${base}/${path}/`;
     </div>
     <div class="workspace-body">
       <p>
-        Organize windows into workspaces on each display or share one workspace list across displays.
+        Group windows into workspaces, with a separate set on each display or one shared list across all of them.
       </p>
       <a class="text-link" href={href("guides/workspaces")}>
-        Learn about workspaces <span aria-hidden="true">↗</span>
+        Explore workspaces <span aria-hidden="true">↗</span>
       </a>
     </div>
   </section>
@@ -85,8 +85,7 @@ const href = (path: string) => `${base}/${path}/`;
     <div>
       <h2 id="controls-title">Keyboard controls</h2>
       <p>
-        Move between windows, rearrange them, and adjust their size with
-        shortcuts you can make your own.
+        Move, resize, and focus windows without leaving the keyboard. Configure shortcuts to suit your setup.
       </p>
       <div
         class="keys"
@@ -100,28 +99,26 @@ const href = (path: string) => `${base}/${path}/`;
         <kbd>L</kbd>
       </div>
       <a class="text-link" href={href("guides/keybindings")}>
-        Learn the controls <span aria-hidden="true">↗</span>
+        Explore keybindings <span aria-hidden="true">↗</span>
       </a>
     </div>
     <div class="mac-details">
       <div>
         <h3>Trackpad gestures</h3>
         <p>
-          Enable trackpad gestures to swipe between Rift workspaces or navigate
-          scrolling columns.
+          Swipe between workspaces and navigate scrolling layouts with your trackpad.
         </p>
         <a class="text-link" href={href("guides/gestures")}>
           Set up gestures <span aria-hidden="true">↗</span>
         </a>
       </div>
       <div>
-        <h3>macOS support</h3>
+        <h3>Built for macOS</h3>
         <p>
-          Rift works with “Displays have separate Spaces” enabled and supports
-          native macOS window tabs.
+          Use Rift alongside macOS Spaces and native window tabs.
         </p>
         <a class="text-link" href={href("installation")}>
-          Read the requirements <span aria-hidden="true">↗</span>
+          View requirements <span aria-hidden="true">↗</span>
         </a>
       </div>
     </div>
@@ -140,20 +137,17 @@ const href = (path: string) => `${base}/${path}/`;
     <div>
       <h2 id="customize-title">Configuration</h2>
       <p>
-        Start with the bundled configuration. Then adjust layouts, shortcuts,
-        and app rules in settings or in one TOML file.
+        Adjust layouts, shortcuts, and app rules in settings or a TOML file.
       </p>
       <a class="text-link" href={href("configuration")}>
-        Make your first changes <span aria-hidden="true">↗</span>
+        Configure Rift <span aria-hidden="true">↗</span>
       </a>
     </div>
   </section>
   <section class="install section" aria-labelledby="install-title">
     <h2 id="install-title">Install Rift</h2>
     <p>
-      Install with Homebrew. Then follow the quick start to set up the service,
-      <br class="desktop-break" /> grant Accessibility access, and activate
-      tiling on your current Space.
+      Install with Homebrew, then follow the quick start to set up Rift.
     </p>
     <div class="command">
       <code>brew install acsandmann/tap/rift</code>
@@ -171,7 +165,7 @@ const href = (path: string) => `${base}/${path}/`;
       Follow the quick start
     </LinkButton>
     <a class="text-link install-link" href={href("installation")}>
-      All installation options <span aria-hidden="true">↗</span>
+      Other installation options <span aria-hidden="true">↗</span>
     </a>
   </section>
 </div>
@@ -198,15 +192,15 @@ const href = (path: string) => `${base}/${path}/`;
     text-align: center;
   }
   h1 {
-    font-size: clamp(48px, 7vw, 84px);
+    font-size: clamp(64px, 10vw, 120px);
     font-weight: 600;
-    letter-spacing: -0.05em;
-    line-height: 1.02;
+    letter-spacing: -0.055em;
+    line-height: 1;
     text-wrap: balance;
   }
   .lead {
-    margin-top: 25px !important;
-    font-size: clamp(18px, 1.8vw, 22px);
+    margin-top: 20px !important;
+    font-size: clamp(19px, 2vw, 24px);
     line-height: 1.5;
     letter-spacing: -0.018em;
     color: var(--apple-secondary-foreground);
