@@ -3,13 +3,13 @@ title: Windows and controls
 description: Move and resize windows, customize shortcuts, and set up gestures.
 ---
 
-Once you activate a Space, Rift arranges its tiled windows for you. You can also make individual windows float, so they stay outside the layout and can be positioned freely.
+When you activate a Space, Rift arranges its windows according to the current layout. You can also make a window float, which lets you position it freely.
 
 ## Focus, move, and resize
 
 The focused window receives keyboard input. Change focus to work in another window; move a window to change the arrangement.
 
-With the [Quick start keymap](/rift-docs/quick-start/):
+The [Quick start keymap](/rift-docs/quick-start/) includes these shortcuts:
 
 | Shortcut | Action |
 | --- | --- |
@@ -41,8 +41,7 @@ See [App rules](/rift-docs/guides/app-rules/) for initial size and position sett
 
 Drag one tiled window over another to swap their positions. If swaps trigger too easily, increase `settings.window_snapping.drag_swap_fraction`; decrease it to require less overlap. See the [general reference](/rift-docs/reference/configuration/general/) for the threshold details.
 
-To move windows between workspaces, see [Virtual workspaces](/rift-docs/guides/workspaces/).
-
+To move windows between workspaces, see [Workspaces and displays](/rift-docs/guides/workspaces/).
 
 ## Customize keyboard shortcuts
 
@@ -54,7 +53,7 @@ A custom `[keys]` table replaces the bundled keymap. Keep an activation binding 
 
 ### Add a shortcut
 
-Merge these examples into an existing config; keep its `[settings]` table and all shortcuts you still need.
+Add these shortcuts to your existing `[keys]` table. Keep the other shortcuts you still need.
 
 Put each shortcut in quotes. Commands without arguments are quoted too; commands with arguments use braces:
 
@@ -66,7 +65,7 @@ Put each shortcut in quotes. Commands without arguments are quoted too; commands
 "Alt + R" = { resize_window_grow = "horizontal" }
 ```
 
-`Alt` is Option on macOS and `Meta` is Command. Rift also accepts `Ctrl` or `Control`, `Shift`, arrow names such as `Left` or `ArrowLeft`. Spacing around `+` is optional for ordinary shortcuts. Named modifier combinations require the form `main + H`, with spaces around `+`.
+`Alt` is Option on macOS and `Meta` is Command. Rift also accepts `Ctrl` or `Control`, `Shift`, and arrow names such as `Left` or `ArrowLeft`. Spacing around `+` is optional for ordinary shortcuts. Named modifier combinations require the form `main + H`, with spaces around `+`.
 
 ### Everyday commands
 
@@ -104,11 +103,11 @@ With hot reload enabled, saving a valid config updates the keymap. You can also 
 rift-cli execute config reload
 ```
 
-If reload fails, read the reported command name or hotkey. Rift rejects the new config instead of partially installing its bindings.
+If reload fails, check the reported command or shortcut. Rift keeps the previous configuration until the new one passes validation.
 
 ### More commands
 
-The checked-in [bundled config](https://github.com/acsandmann/rift/blob/main/rift.default.toml) lists Rift's starter keymap and documents additional command shapes in its comments. The [CLI reference](/rift-docs/reference/cli/) covers terminal commands; CLI syntax and TOML keybinding syntax are related, but they are not interchangeable.
+The [bundled config](https://github.com/acsandmann/rift/blob/main/rift.default.toml) lists the starter shortcuts and includes more command examples. The [CLI reference](/rift-docs/reference/cli/) covers terminal commands; CLI syntax and TOML keybinding syntax are related, but they are not interchangeable.
 
 ## Trackpad gestures
 

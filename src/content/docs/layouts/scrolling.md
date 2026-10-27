@@ -5,9 +5,9 @@ description: A horizontal strip of windows inspired by niri.
 
 Scrolling arranges windows in a horizontal row of columns. The row can extend beyond the display, so you can keep many windows open without squeezing them all onto the screen.
 
-The TOML below is a fragment to add to an existing config; it is not a complete config file.
+Add the examples on this page to your existing config.
 
-## Behavior
+## How scrolling works
 
 A column can contain one window or several stacked vertically. Move focus left or right to bring another column into view; move up or down to select a window within a column.
 
@@ -42,7 +42,7 @@ Crossing also works while dragging. The pointer keeps its distance from the sour
 
 The feature is disabled by default. Remove the setting to disable it again. See [`horizontal_mouse_warp`](/rift-docs/reference/configuration/general/#horizontal_mouse_warp) for the configuration reference.
 
-## Set it up
+## Configure scrolling
 
 ```toml
 [settings.layout]

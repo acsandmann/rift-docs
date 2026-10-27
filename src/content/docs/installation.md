@@ -3,9 +3,9 @@ title: Installation
 description: Install Rift on macOS and grant the permission it needs.
 ---
 
-Rift is distributed as a universal macOS binary for Apple silicon and Intel Macs. The <a href="https://github.com/acsandmann/homebrew-tap/blob/main/Formula/rift.rb" data-umami-event="homebrew_formula">Homebrew formula</a> installs both `rift` and `rift-cli`. Keep the two binaries from the same release.
+Rift supports Apple silicon and Intel Macs. The <a href="https://github.com/acsandmann/homebrew-tap/blob/main/Formula/rift.rb" data-umami-event="homebrew_formula">Homebrew formula</a> installs both `rift` and `rift-cli`. Keep the two binaries from the same release.
 
-Before starting, turn on Displays have separate Spaces in System Settings → Desktop & Dock → Mission Control. Rift checks this setting at launch and exits with an explanation when it is disabled.
+Before starting Rift, turn on **Displays have separate Spaces** in System Settings → Desktop & Dock → Mission Control. Rift needs this setting to manage windows.
 
 ## Homebrew
 
@@ -20,7 +20,7 @@ rift service install
 rift service start
 ```
 
-The first launch may stop after asking for Accessibility access. Grant the permission, then run `rift service restart`.
+The first launch may stop after asking for Accessibility access. Allow Rift in System Settings → Privacy & Security → Accessibility, then run `rift service restart`.
 
 To upgrade later:
 
@@ -31,7 +31,7 @@ rift service restart
 
 ## Release archive
 
-If you prefer not to use Homebrew, download the latest archive from the <a href="https://github.com/acsandmann/rift/releases" data-umami-event="release_download">Rift releases page</a>. Extract it, put the `rift` and `rift-cli` binaries somewhere on your `PATH`, and make sure they are executable:
+To install without Homebrew, download the latest archive from the <a href="https://github.com/acsandmann/rift/releases" data-umami-event="release_download">Rift releases page</a>. Extract it, put the `rift` and `rift-cli` binaries somewhere on your `PATH`, and make sure they are executable:
 
 ```sh
 tar -xzf rift-universal-macos-VERSION.tar.gz
@@ -58,7 +58,7 @@ To stop the background service:
 rift service stop
 ```
 
-Run `rift service start` when you want to use it again.
+To start it again, run `rift service start`.
 
 ## Verify the install
 

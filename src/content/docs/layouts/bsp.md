@@ -18,7 +18,7 @@ mode = "bsp"
 
 Use directional focus and movement bindings to navigate the layout. The [window management guide](/rift-docs/guides/window-management/) explains those controls.
 
-## Control new windows and spacing
+## Choose where new windows go
 
 New windows are inserted next to the selection by default. To append them at the end of the tree instead:
 

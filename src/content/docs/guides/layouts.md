@@ -9,12 +9,14 @@ Add the examples below to your config. If a table already exists, add the fields
 
 ## Set the default layout
 
-For example, to use Master-stack by default, add:
+To use Master-stack by default, add:
 
 ```toml
 [settings.layout]
 mode = "master_stack"
 ```
+
+Save your config, then reload it if the change has not already applied:
 
 ```sh
 rift-cli execute config reload
@@ -38,6 +40,8 @@ vertical = 8.0
 
 ## Set a layout per workspace
 
+For example, use Traditional for `Code` and Scrolling for `Reading`:
+
 ```toml
 [virtual_workspaces]
 default_workspace_count = 3
@@ -48,7 +52,7 @@ workspace_rules = [
 ]
 ```
 
-Use a workspace name or a zero-based index. If a workspace rule does not match, Rift uses the normal layout setting.
+Use a workspace name or a zero-based index. A workspace without a matching rule uses the default layout.
 
 ## Make the layout comfortable
 

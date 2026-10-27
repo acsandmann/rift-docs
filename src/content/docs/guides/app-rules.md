@@ -5,7 +5,7 @@ description: Automatically place, float, focus, or ignore windows.
 
 App rules tell Rift what to do when it finds a window. For example, you can send Terminal to a workspace and let Calculator float:
 
-Merge these examples into your existing `[virtual_workspaces]` table and `app_rules` list. `Development` is a default workspace name; replace it if you use your own names.
+Add these examples to your existing `[virtual_workspaces]` table and `app_rules` list. `Development` is a default workspace name; replace it if you use your own names.
 
 ```toml
 [virtual_workspaces]
@@ -77,9 +77,9 @@ app_rules = [
 
 Position and size apply when the rule is applied; they do not lock the window in place. `position` requires `floating = true`. A size can also be applied once to a tiled window after it is inserted, but it does not turn that window into a floating window. When `manage = false`, Rift ignores the rule's workspace, floating, position, size, and focus actions.
 
-## Which rule wins?
+## When more than one rule matches
 
-More specific rules win. Rift counts the non-empty match fields, and the rule with the most match fields wins. If two matching rules are equally specific, the one that appears first wins.
+Rift uses the matching rule with the most non-empty match fields. If two rules are equally specific, the first one wins.
 
 Only the winning rule supplies the actions; Rift does not combine matching rules. This example floats Terminal windows with titles beginning `ssh ` while keeping other Terminal windows tiled:
 

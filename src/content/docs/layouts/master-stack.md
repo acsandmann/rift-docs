@@ -24,7 +24,7 @@ new_window_placement = "stack"
 
 With this configuration, new windows go into the supporting area once the main area is full. The default is different: new windows enter the main area.
 
-## Decide where new windows go
+## Choose where new windows go
 
 The default `new_window_placement` is `master`. A new window enters the master area, and an existing window moves to the stack to maintain `master_count`.
 

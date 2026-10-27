@@ -7,11 +7,11 @@ Rift workspaces let you keep groups of windows separate. For example, you might 
 
 A Rift workspace is different from a macOS Space: it exists within a managed macOS desktop and does not create another Mission Control desktop.
 
-If the Space is inactive, enable it with the bundled Option + Z shortcut or `rift-cli execute space toggle-activated` in Terminal.
+If the current Space is inactive, press Option + Z with the bundled keymap, or run `rift-cli execute space toggle-activated` in Terminal.
 
 ## Name your workspaces
 
-Merge this fragment into your config:
+Add these settings to your config:
 
 ```toml
 [virtual_workspaces]
@@ -42,7 +42,7 @@ To move the focused window to the second workspace and follow it from the termin
 rift-cli execute workspace move-window 1 --follow
 ```
 
-Inspect the current workspaces with:
+To see the current workspaces, run:
 
 ```sh
 rift-cli query workspaces
@@ -62,14 +62,13 @@ workspace = "Web"
 layout = "scrolling"
 ```
 
-Workspaces without a matching rule use `[settings.layout].mode`. To route new app windows to one of these workspaces, add an [app rule](/rift-docs/guides/app-rules/).
+Workspaces without a rule use the default layout in `[settings.layout].mode`. To send new app windows to a workspace, add an [app rule](/rift-docs/guides/app-rules/).
 
 ## Adjust navigation
 
 In `[virtual_workspaces]`, `prevent_wrapping = true` stops next/previous navigation at the ends of the workspace list. `workspace_auto_back_and_forth = true` makes selecting the current workspace return to the previous one.
 
 For trackpad navigation, see [Trackpad gestures](/rift-docs/guides/window-management/#trackpad-gestures). The [workspace reference](/rift-docs/reference/configuration/virtual-workspaces/) explains every setting.
-
 
 ## Multiple displays
 
@@ -92,7 +91,7 @@ You can also turn off **Displays have separate workspaces** in Rift's settings. 
 
 ### Choose displays for workspaces
 
-In global mode, workspace rules can specify an ordered list of display preferences. The first available eligible display is used. Merge this example into your config, adjusting the workspace name to match your own:
+In global mode, you can give a workspace an ordered list of preferred displays. Rift uses the first available display that can host it. Add this example to your config, changing the workspace name to match your own:
 
 ```toml
 [virtual_workspaces]
@@ -111,7 +110,7 @@ If a display disconnects, Rift can move its workspaces to an available display a
 
 ### Move between displays
 
-Use the CLI to focus a display, move the focused window, or move the active workspace:
+Use these commands to focus the display to the right, move the focused window there, or move the active workspace there:
 
 ```sh
 rift-cli execute display focus --direction right

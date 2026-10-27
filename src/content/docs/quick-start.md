@@ -3,11 +3,11 @@ title: Quick start
 description: Install Rift, activate a Space, and make your first small config.
 ---
 
-Start with a fresh install and no custom configuration. You will arrange two windows, try keyboard navigation, and optionally save your own settings. Run the shell commands in Terminal.
+Install Rift, arrange your first windows, and try the keyboard controls. The commands on this page run in Terminal. The final step shows how to create a configuration of your own.
 
 ## 1. Install Rift
 
-Enable Displays have separate Spaces in System Settings → Desktop & Dock → Mission Control. If you use Homebrew, install Rift:
+Turn on **Displays have separate Spaces** in System Settings → Desktop & Dock → Mission Control. Then install Rift with Homebrew:
 
 ```sh
 brew install acsandmann/tap/rift
@@ -40,9 +40,9 @@ If the windows do not move, check [service, permission, and shortcut problems](/
 
 ## 4. Use keyboard navigation
 
-Press Option + H to focus the window on the left, or Option + L for the right. Focus means the window that receives your typing. Option + J and Option + K select windows below and above. These shortcuts come with Rift.
+Press Option + H to focus the window on the left, or Option + L to focus the window on the right. Use Option + J and Option + K to focus windows below and above. The focused window receives your keyboard input.
 
-The bundled settings are enough for regular use. Continue below if you want to customize them.
+These shortcuts are included with Rift. Continue if you want to make a configuration of your own.
 
 ## 5. Save your own settings
 
@@ -81,11 +81,11 @@ horizontal = 8.0
 vertical = 8.0
 ```
 
-This `[keys]` table replaces the bundled keymap. Keep every shortcut you want to use.
+Your `[keys]` table replaces the bundled keymap, so include every shortcut you want to keep.
 
 The example adds Shift to the direction keys to move a window. Option + Shift + Space toggles floating, which lets you position that window freely. Master-stack gives one window a larger area; the gaps leave space between windows.
 
-Apply the file with `rift-cli`, Rift’s terminal control tool:
+Apply the file with `rift-cli`:
 
 ```sh
 rift-cli execute config reload

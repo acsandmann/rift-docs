@@ -22,7 +22,7 @@ default_orientation = "perpendicular"
 
 `stack_offset` is the spacing between successive windows along the stack’s axis, in logical pixels. A larger offset exposes more of each background window but leaves less room for its contents. `0` makes the windows overlap completely.
 
-## Choose the direction
+## Choose a stack direction
 
 | Value | Stack direction |
 | --- | --- |

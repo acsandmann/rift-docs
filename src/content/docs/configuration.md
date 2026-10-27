@@ -3,7 +3,9 @@ title: Configuration
 description: Learn the shape of Rift's TOML configuration before tuning it.
 ---
 
-Rift reads `~/.config/rift/config.toml`, a plain-text file in TOML format. A TOML table groups settings under a header such as `[settings]`. A custom file must contain `[settings]` and `[keys]`. Settings and sections you leave out use their defaults, but keybindings are different: your `[keys]` table replaces the bundled keymap instead of extending it. An empty table means no keyboard shortcuts are registered.
+Rift reads its configuration from `~/.config/rift/config.toml`. The file is plain text in TOML format, with settings grouped under headers such as `[settings]`.
+
+A custom file must contain `[settings]` and `[keys]`. Omitted settings use their defaults. The `[keys]` table replaces the bundled keymap rather than extending it, so an empty table leaves Rift without keyboard shortcuts.
 
 ## Where settings belong
 
@@ -16,7 +18,7 @@ Rift reads `~/.config/rift/config.toml`, a plain-text file in TOML format. A TOM
 | `[virtual_workspaces]` | Workspace names, counts, app rules, and per-workspace layouts |
 | `[modifier_combinations]` | Names for combinations of keys such as Option + Shift |
 
-Look up field names, accepted values, and defaults in the [configuration reference](/rift-docs/reference/configuration/).
+For field names, accepted values, and defaults, see the [configuration reference](/rift-docs/reference/configuration/).
 
 ## Add examples to an existing file
 
@@ -24,7 +26,7 @@ A TOML header applies to every setting below it until the next header. For examp
 
 If an example uses a table you already have, edit that table instead of pasting a second copy of its header. Repeating `[settings.layout]` is a TOML error. Headers with double brackets, such as `[[virtual_workspaces.app_rules]]`, are different: each one adds an entry to a list.
 
-`[settings.layout]` also creates its parent `[settings]` table, so files using it do not need a separate empty `[settings]` header. Optional fields are left out when you do not need them; TOML does not support `null`.
+`[settings.layout]` also creates its parent `[settings]` table, so files using it do not need a separate empty `[settings]` header. Leave out optional fields you do not need; TOML does not support `null`.
 
 ## Start from a working file
 
@@ -55,7 +57,7 @@ rift-cli execute config save
 
 ## Reload and troubleshoot
 
-If a saved change does not apply, ask Rift to reload the file and report any validation error:
+If a saved change does not apply, reload the file to check for an error:
 
 ```sh
 rift-cli execute config reload

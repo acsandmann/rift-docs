@@ -17,6 +17,6 @@ A layout determines how Rift arranges tiled windows. Choose a default for all wo
 
 ## Getting started
 
-Traditional is the default and the most general-purpose option. Use Master-stack when one app should have a dedicated main area, or Scrolling when you keep many windows open and want the active one to stay large.
+Traditional is the default and a good place to start. Try Master-stack if one window needs a larger area, or Scrolling if you want to keep many windows open at a readable size.
 
 The [layout guide](/rift-docs/guides/layouts/) shows how to set a default, add gaps, and assign a layout to a workspace.

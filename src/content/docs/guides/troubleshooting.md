@@ -2,7 +2,7 @@
 title: Troubleshooting
 description: Diagnose common Rift setup and configuration issues.
 ---
-Find the symptom below for a few checks you can make. If you need more detail, the error log often points to the cause.
+Find the issue below to check the most common causes. If you need more detail, look at the error log.
 
 ## The terminal tool cannot connect
 
@@ -20,7 +20,7 @@ Make sure Rift has Accessibility permission in System Settings → Privacy & Sec
 
 ## A config change fails to reload
 
-Rift reads `~/.config/rift/config.toml`. If you launched Rift with `--config`, edit that file instead. TOML is sensitive to spelling, quotes, and table names. Check for a repeated table header after copying an example. If needed, undo the last edit and reload.
+Rift reads `~/.config/rift/config.toml`. If you launched Rift with `--config`, edit that file instead. Check the spelling, quotes, and table names in your TOML file. A repeated table header is a common issue after copying an example. If needed, undo your last edit and reload.
 
 Compare the reported field with the [configuration reference](/rift-docs/reference/configuration/), then reload:
 
