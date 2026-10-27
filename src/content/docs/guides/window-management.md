@@ -37,9 +37,11 @@ floating = true
 
 See [App rules](/rift-docs/guides/app-rules/) for initial size and position settings.
 
-## Drag to swap
+## Drag tiled windows
 
-Drag one tiled window over another to swap their positions. If swaps trigger too easily, increase `settings.window_snapping.drag_swap_fraction`; decrease it to require less overlap. See the [general reference](/rift-docs/reference/configuration/general/) for the threshold details.
+Drag a tiled window by its title bar and move it over another window. A preview shows where the window will go. By default, dropping it in the center swaps the two windows; dropping it near an edge moves it to that side.
+
+You can also hold Fn and drag with the primary mouse button. To change the modifier or drop behavior, see the [drag-and-drop reference](/rift-docs/reference/configuration/drag-drop/).
 
 To move windows between workspaces, see [Workspaces and displays](/rift-docs/guides/workspaces/).
 

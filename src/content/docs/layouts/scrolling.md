@@ -40,7 +40,7 @@ With `top-to-bottom`, higher displays behave as being farther left: moving right
 
 Crossing also works while dragging. The pointer keeps its distance from the source display’s top edge, so crossing into a shorter display only works where the corresponding vertical position exists. This changes pointer crossing only; it does not change the macOS display arrangement.
 
-The feature is disabled by default. Remove the setting to disable it again. See [`horizontal_mouse_warp`](/rift-docs/reference/configuration/general/#horizontal_mouse_warp) for the configuration reference.
+The feature is disabled by default. Remove the setting to disable it again. See [`horizontal_mouse_warp`](/rift-docs/reference/configuration/general/#setting-settings-horizontal_mouse_warp) for the configuration reference.
 
 ## Configure scrolling
 

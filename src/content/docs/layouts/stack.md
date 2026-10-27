@@ -31,6 +31,6 @@ default_orientation = "perpendicular"
 | `horizontal` | Force a horizontal stack |
 | `vertical` | Force a vertical stack |
 
-You can also enable an edge indicator under `[settings.ui.stack_line]`; see the [UI reference](/rift-docs/reference/configuration/ui/).
+Rift shows tabs beside stacked windows by default. To adjust or turn off the tabs, see the [UI reference](/rift-docs/reference/configuration/ui/).
 
 The supporting area in [Master-stack](/rift-docs/layouts/master-stack/) is a different arrangement: its windows are tiled rather than overlapped.

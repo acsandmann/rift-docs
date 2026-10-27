@@ -75,7 +75,7 @@ app_rules = [
 - `focus = true` focuses the window after applying the rule, switching workspaces if needed.
 - `manage = false` tells Rift not to manage the window at all. `manage = true` overrides Rift's normal manageability checks for a visible window.
 
-Position and size apply when the rule is applied; they do not lock the window in place. `position` requires `floating = true`. A size can also be applied once to a tiled window after it is inserted, but it does not turn that window into a floating window. When `manage = false`, Rift ignores the rule's workspace, floating, position, size, and focus actions.
+Position and size apply when the rule is applied; they do not lock the window in place. `position` requires `floating = true`. A size can also be applied once to a tiled window after it is inserted, but it does not turn that window into a floating window. Do not combine `manage = false` with workspace, floating, position, size, or focus actions; Rift rejects that configuration.
 
 ## When more than one rule matches
 
