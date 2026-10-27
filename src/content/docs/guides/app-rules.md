@@ -3,7 +3,7 @@ title: App rules
 description: Automatically place, float, focus, or ignore windows.
 ---
 
-App rules tell Rift what to do when it finds a window. For example, you can send Terminal to a workspace and let Calculator float:
+App rules tell Rift what to do when it finds a window. You can create them in Rift’s [Settings window](/rift-docs/configuration/#open-settings) or in your config file. For example, these rules send Terminal to a workspace and let Calculator float:
 
 Add these examples to your existing `[virtual_workspaces]` table and `app_rules` list. `Development` is a default workspace name; replace it if you use your own names.
 

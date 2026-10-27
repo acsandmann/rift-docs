@@ -3,7 +3,7 @@ title: Quick start
 description: Install Rift, activate a Space, and make your first small config.
 ---
 
-Install Rift, arrange your first windows, and try the keyboard controls. The commands on this page run in Terminal. The final step shows how to create a configuration of your own.
+Install Rift, arrange your first windows, and try the keyboard controls. The commands on this page run in Terminal. The final step shows how to customize Rift.
 
 ## 1. Install Rift
 
@@ -44,7 +44,17 @@ Press Option + H to focus the window on the left, or Option + L to focus the win
 
 These shortcuts are included with Rift. Continue if you want to make a configuration of your own.
 
-## 5. Save your own settings
+## 5. Customize Rift
+
+With Rift running, click its menu bar icon and choose **Settings…** to adjust layouts, workspaces, shortcuts, and other options. You can also open Settings from Terminal:
+
+```sh
+rift --settings
+```
+
+If you prefer to edit a file, follow the steps below. See [Configuration](/rift-docs/configuration/) for more about both approaches.
+
+### Create a config file
 
 Create the configuration folder:
 

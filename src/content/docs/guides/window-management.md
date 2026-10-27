@@ -47,7 +47,7 @@ To move windows between workspaces, see [Workspaces and displays](/rift-docs/gui
 
 ## Customize keyboard shortcuts
 
-Keybindings let you control Rift from the keyboard. In your config’s `[keys]` table, put the shortcut on the left and the command on the right.
+You can edit shortcuts in Rift’s [Settings window](/rift-docs/configuration/#open-settings) or in your config file. In the `[keys]` table, put the shortcut on the left and the command on the right.
 
 :::caution[Your keymap is not merged]
 A custom `[keys]` table replaces the bundled keymap. Keep an activation binding such as `"Alt + Z" = "toggle_space_activated"`. An empty table disables keyboard controls; you can still activate a Space from Terminal with `rift-cli execute space toggle-activated`.

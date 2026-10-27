@@ -1,7 +1,21 @@
 ---
 title: Configuration
-description: Learn the shape of Rift's TOML configuration before tuning it.
+description: Configure Rift in Settings or edit its TOML file.
 ---
+
+You can configure Rift in its Settings window or edit a TOML file. Settings is a good place to start if you prefer a graphical interface.
+
+## Open Settings
+
+With Rift running, click the Rift icon in the menu bar and choose **Settings…**. You can also open the window from Terminal:
+
+```sh
+rift --settings
+```
+
+Use Settings to adjust options such as layouts, workspaces, shortcuts, and app rules. Rift must be running for the window to connect to it.
+
+## Edit the config file
 
 Rift reads its configuration from `~/.config/rift/config.toml`. The file is plain text in TOML format, with settings grouped under headers such as `[settings]`.
 

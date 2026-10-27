@@ -11,7 +11,7 @@ If the current Space is inactive, press Option + Z with the bundled keymap, or r
 
 ## Name your workspaces
 
-Add these settings to your config:
+You can name workspaces in Rift’s [Settings window](/rift-docs/configuration/#open-settings), or add these settings to your config:
 
 ```toml
 [virtual_workspaces]

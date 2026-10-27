@@ -3,7 +3,7 @@ title: Adjust layouts
 description: Set a default layout, add gaps, and choose layouts by workspace.
 ---
 
-Rift can use one layout everywhere or a different layout for each workspace. Start with the [layout overview](/rift-docs/layouts/) if you are not sure which to choose.
+Rift can use one layout everywhere or a different layout for each workspace. You can change layouts in Rift’s Settings window, or edit the config as shown below. See [Configuration](/rift-docs/configuration/#open-settings) to open Settings, and the [layout overview](/rift-docs/layouts/) to compare layouts.
 
 Add the examples below to your config. If a table already exists, add the fields to it rather than repeating its header.
 
