@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Rift configuration",
-  "description": "Generated from Rift v0.7.0-28-g6c63b50c.",
+  "description": "Generated from Rift v0.7.0-27-g0a6ceb7f-dirty.",
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -550,6 +550,11 @@
                   "description": "Show the active binding mode beside workspaces, except in default mode.",
                   "default": true
                 },
+                "current_display_only": {
+                  "type": "boolean",
+                  "description": "Only show workspaces from the display currently hosting the active menu bar.",
+                  "default": false
+                },
                 "mode": {
                   "type": "string",
                   "enum": [
@@ -576,6 +581,11 @@
                   ],
                   "description": "Draw a miniature representation of each workspace’s windows (`layout`) or show a number or name (`label`).",
                   "default": "layout"
+                },
+                "show_fullscreen_indicator": {
+                  "type": "boolean",
+                  "description": "Wrap workspace labels or layout indicators in brackets when a window is fullscreen.",
+                  "default": false
                 },
                 "layout_folder": {
                   "type": "string",
@@ -744,13 +754,10 @@
             "modifier": {
               "type": "string",
               "enum": [
-                "cmd",
-                "alt",
-                "shift",
-                "ctrl",
-                "fn"
+                "Fn",
+                "Keys"
               ],
-              "description": "Modifier held with `action1` or `action2`.",
+              "description": "Modifier held with `action1` or `action2`: `cmd`, `alt`, `shift`, `ctrl`, `fn`, or a combination such as `Ctrl + Alt + Shift + Meta` (`fn` can't be combined). Left/right spellings such as `AltRight` match either side. A single modifier works while held; a combination must be held exactly.",
               "default": "fn"
             },
             "action1": {
@@ -826,14 +833,14 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "display_mode": {
+        "mode": {
           "type": "string",
           "enum": [
-            "independent",
-            "shared"
+            "per_display",
+            "global"
           ],
-          "description": "Workspace namespace across visible managed displays.",
-          "default": "independent"
+          "description": "`per_display`: each display has its own workspaces, numbered from 1. Like macOS Spaces, each desktop on a display has its own set. `global`: workspaces are numbered across all displays. Each one stays on a single display and is never mirrored; selecting it focuses that display.",
+          "default": "per_display"
         },
         "enabled": {
           "type": "boolean",
@@ -1023,8 +1030,8 @@
                 "description": "Layout to use in the matching workspace."
               },
               "display": {
-                "type": "string",
-                "description": "Display UUID or name that owns this workspace. Only applies when `display_mode = \"shared\"`."
+                "type": "object",
+                "description": "Ordered display UUIDs, names, or builtin/left/right/top/bottom selectors. The first eligible preference wins. Only applies when `mode = \"global\"`."
               }
             },
             "required": [

@@ -9,7 +9,7 @@ tableOfContents:
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.7.0-28-g6c63b50c.
+Generated from Rift v0.7.0-27-g0a6ceb7f-dirty.
 -->
 
 Workspace count, names, focus behavior, and rules for assigning windows to workspaces.
@@ -35,12 +35,12 @@ default_workspace = 0
 
 Rift’s named or numbered work areas. A workspace is a logical layer on top of a macOS Space.
 
-<section class="apple-entry" id="setting-virtual_workspaces-display_mode">
+<section class="apple-entry" id="setting-virtual_workspaces-mode">
 
-### `display_mode`
+### `mode`
 
-<p>Workspace namespace across visible managed displays.</p>
-<dl class="apple-meta"><div><dt>Type</dt><dd><code>independent</code> or <code>shared</code></dd></div><div><dt>Default</dt><dd><code>&quot;independent&quot;</code></dd></div></dl>
+<p><code>per_display</code>: each display has its own workspaces, numbered from 1. Like macOS Spaces, each desktop on a display has its own set. <code>global</code>: workspaces are numbered across all displays. Each one stays on a single display and is never mirrored; selecting it focuses that display.</p>
+<dl class="apple-meta"><div><dt>Type</dt><dd><code>per_display</code> or <code>global</code></dd></div><div><dt>Default</dt><dd><code>&quot;per_display&quot;</code></dd></div></dl>
 
 </section>
 
@@ -166,8 +166,8 @@ layout = "traditional"
 
 ### `display`
 
-<p>Display UUID or name that owns this workspace. Only applies when <code>display_mode = &quot;shared&quot;</code>.</p>
-<dl class="apple-meta"><div><dt>Type</dt><dd>text (optional)</dd></div><div><dt>Default</dt><dd>Not set</dd></div></dl>
+<p>Ordered display UUIDs, names, or builtin/left/right/top/bottom selectors. The first eligible preference wins. Only applies when <code>mode = &quot;global&quot;</code>.</p>
+<dl class="apple-meta"><div><dt>Type</dt><dd>table (optional)</dd></div><div><dt>Default</dt><dd>Not set</dd></div></dl>
 
 </section>
 

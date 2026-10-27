@@ -9,7 +9,7 @@ tableOfContents:
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.7.0-28-g6c63b50c.
+Generated from Rift v0.7.0-27-g0a6ceb7f-dirty.
 -->
 
 Optional indicators for the menu bar, stack line, and Mission Control.
@@ -68,6 +68,15 @@ Show workspace status in the macOS menu bar.
 
 </section>
 
+<section class="apple-entry" id="setting-settings-ui-menu_bar-current_display_only">
+
+### `current_display_only`
+
+<p>Only show workspaces from the display currently hosting the active menu bar.</p>
+<dl class="apple-meta"><div><dt>Type</dt><dd>boolean</dd></div><div><dt>Default</dt><dd><code>false</code></dd></div></dl>
+
+</section>
+
 <section class="apple-entry" id="setting-settings-ui-menu_bar-mode">
 
 ### `mode`
@@ -92,6 +101,15 @@ Show workspace status in the macOS menu bar.
 
 <p>Draw a miniature representation of each workspace’s windows (<code>layout</code>) or show a number or name (<code>label</code>).</p>
 <dl class="apple-meta"><div><dt>Type</dt><dd><code>layout</code> or <code>label</code></dd></div><div><dt>Default</dt><dd><code>&quot;layout&quot;</code></dd></div></dl>
+
+</section>
+
+<section class="apple-entry" id="setting-settings-ui-menu_bar-show_fullscreen_indicator">
+
+### `show_fullscreen_indicator`
+
+<p>Wrap workspace labels or layout indicators in brackets when a window is fullscreen.</p>
+<dl class="apple-meta"><div><dt>Type</dt><dd>boolean</dd></div><div><dt>Default</dt><dd><code>false</code></dd></div></dl>
 
 </section>
 

@@ -11,7 +11,7 @@ tableOfContents:
 
 Layout commands. All commands act on the running Rift instance.
 
-Generated from `rift-cli` at `v0.7.0-28-g6c63b50c`.
+Generated from `rift-cli` at `v0.7.0-27-g0a6ceb7f-dirty`.
 
 <section class="apple-entry">
 
@@ -85,6 +85,15 @@ Generated from `rift-cli` at `v0.7.0-28-g6c63b50c`.
 
 <p>Global orientation toggle that works consistently across layout modes (and between splits/stacks).</p>
 <pre class="apple-declaration"><code>rift-cli execute layout toggle-orientation</code></pre>
+
+</section>
+
+<section class="apple-entry">
+
+## `balance`
+
+<p>Even out split sizes along each axis (bsp and traditional layouts only).</p>
+<pre class="apple-declaration"><code>rift-cli execute layout balance</code></pre>
 
 </section>
 

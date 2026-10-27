@@ -9,7 +9,7 @@ tableOfContents:
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.7.0-28-g6c63b50c.
+Generated from Rift v0.7.0-27-g0a6ceb7f-dirty.
 -->
 
 Configure modifier-assisted window movement and tiled-window drop behavior.
@@ -60,10 +60,8 @@ Modifier-assisted window movement and tiled-window drops with previews.
 
 ### `modifier`
 
-<p>Modifier held with <a href="/rift-docs/reference/configuration/drag-drop/#setting-settings-drag_drop-action1"><code>action1</code></a> or <a href="/rift-docs/reference/configuration/drag-drop/#setting-settings-drag_drop-action2"><code>action2</code></a>.</p>
-<dl class="apple-meta"><div><dt>Type</dt><dd>text</dd></div><div><dt>Default</dt><dd><code>&quot;fn&quot;</code></dd></div></dl>
-<p class="apple-label">Possible values</p>
-<ul class="apple-values"><li><code>cmd</code></li><li><code>alt</code></li><li><code>shift</code></li><li><code>ctrl</code></li><li><code>fn</code></li></ul>
+<p>Modifier held with <a href="/rift-docs/reference/configuration/drag-drop/#setting-settings-drag_drop-action1"><code>action1</code></a> or <a href="/rift-docs/reference/configuration/drag-drop/#setting-settings-drag_drop-action2"><code>action2</code></a>: <code>cmd</code>, <code>alt</code>, <code>shift</code>, <code>ctrl</code>, <code>fn</code>, or a combination such as <code>Ctrl + Alt + Shift + Meta</code> (<code>fn</code> can't be combined). Left/right spellings such as <code>AltRight</code> match either side. A single modifier works while held; a combination must be held exactly.</p>
+<dl class="apple-meta"><div><dt>Type</dt><dd><code>Fn</code> or <code>Keys</code></dd></div><div><dt>Default</dt><dd><code>&quot;fn&quot;</code></dd></div></dl>
 
 </section>
 

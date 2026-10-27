@@ -616,6 +616,9 @@
     },
     "settings.layout.gaps.per_display.inner.vertical": {
       "description": "Vertical gap between windows"
+    },
+    "virtual_workspaces.mode": {
+      "description": "`per_display`: each display has its own workspaces, numbered from 1. Like macOS Spaces, each desktop on a display has its own set. `global`: workspaces are numbered across all displays. Each one stays on a single display and is never mirrored; selecting it focuses that display."
     }
   }
 }
