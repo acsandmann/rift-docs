@@ -151,15 +151,6 @@ Optional horizontal gestures for moving between columns in a Scrolling workspace
 
 </section>
 
-<section class="apple-entry" id="setting-settings-layout-scrolling-gestures-animate">
-
-### `animate`
-
-<p>Animate gesture release independently of structural layout animations. When omitted, inherit the scrolling layout/global animation setting.</p>
-<dl class="apple-meta"><div><dt>Type</dt><dd>boolean (optional)</dd></div><div><dt>Default</dt><dd>Not set</dd></div></dl>
-
-</section>
-
 <section class="apple-entry" id="setting-settings-layout-scrolling-gestures-invert_horizontal">
 
 ### `invert_horizontal`
