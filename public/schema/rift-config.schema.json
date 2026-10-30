@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Rift configuration",
-  "description": "Generated from Rift v0.7.0-27-g0a6ceb7f-dirty.",
+  "description": "Generated from Rift v0.7.1-19-g572b9425-dirty.",
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -485,7 +485,7 @@
                     },
                     "animate": {
                       "type": "boolean",
-                      "description": "Animate gesture release independently of structural layout animations. When omitted, inherit the scrolling layout/global animation setting."
+                      "description": "Legacy value accepted for compatibility; scrolling animation controls gesture release."
                     },
                     "invert_horizontal": {
                       "type": "boolean",

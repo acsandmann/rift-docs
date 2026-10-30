@@ -13,7 +13,7 @@ Configuration management commands. All commands act on the running Rift instance
 
 Changes apply immediately. Run `rift-cli execute config save` to persist them to the active config path. Saving preserves unrelated TOML comments, formatting, ordering, and source keybindings, and replaces the file atomically. `get` displays normalized runtime values; `reload` reads the file again. See [Configuration](/rift-docs/configuration/) for the save and reload workflow.
 
-Generated from `rift-cli` at `v0.7.0-27-g0a6ceb7f-dirty`.
+Generated from `rift-cli` at `v0.7.1-19-g572b9425-dirty`.
 
 <section class="apple-entry">
 

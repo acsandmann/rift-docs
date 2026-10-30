@@ -30,7 +30,7 @@ const types = rustTypes(`${protocolSource}\n${source}`);
 types.set('crate::layout_engine::Orientation', types.get('Orientation'));
 let cargoMetadata;
 function dependencyConstant(expression) {
-  const match = expression.match(/^(\w+)::(\w+)::([A-Z][A-Z_0-9]*)$/);
+  const match = expression.match(/^(\w+)::(?:\w+::)*(\w+)::([A-Z][A-Z_0-9]*)$/);
   if (!match) return undefined;
   const [, crate, type, constant] = match;
   cargoMetadata ??= JSON.parse(execFileSync('cargo', ['metadata', '--locked', '--format-version=1'], {

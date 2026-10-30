@@ -9,7 +9,7 @@ tableOfContents:
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.7.0-27-g0a6ceb7f-dirty.
+Generated from Rift v0.7.1-19-g572b9425-dirty.
 -->
 
 Settings for the scrolling-column layout and its optional trackpad gestures.
@@ -148,6 +148,15 @@ Optional horizontal gestures for moving between columns in a Scrolling workspace
 
 <p>Enable horizontal swipes for moving between columns in a Scrolling workspace.</p>
 <dl class="apple-meta"><div><dt>Type</dt><dd>boolean</dd></div><div><dt>Default</dt><dd><code>false</code></dd></div></dl>
+
+</section>
+
+<section class="apple-entry" id="setting-settings-layout-scrolling-gestures-animate">
+
+### `animate`
+
+<p>Legacy value accepted for compatibility; scrolling animation controls gesture release.</p>
+<dl class="apple-meta"><div><dt>Type</dt><dd>boolean (optional)</dd></div><div><dt>Default</dt><dd>Not set</dd></div></dl>
 
 </section>
 

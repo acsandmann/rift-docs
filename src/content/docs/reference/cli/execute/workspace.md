@@ -11,7 +11,7 @@ tableOfContents:
 
 Virtual workspace commands. All commands act on the running Rift instance.
 
-Generated from `rift-cli` at `v0.7.0-27-g0a6ceb7f-dirty`.
+Generated from `rift-cli` at `v0.7.1-19-g572b9425-dirty`.
 
 <section class="apple-entry">
 
