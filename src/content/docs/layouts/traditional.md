@@ -25,7 +25,7 @@ New windows appear next to the current selection by default. `equalize_nodes = t
 
 A group can contain windows and other groups. Use `ascend` to select the group containing the current window; moving or resizing the selection then affects the whole group. See [Window management](/rift-docs/guides/window-management/) and [Keybindings](/rift-docs/guides/window-management/#customize-keyboard-shortcuts) for controls.
 
-To append new windows at the end of the tree:
+To append new windows at the end of the tree, add this field to your existing `[settings.layout.traditional]` table:
 
 ```toml
 [settings.layout.traditional]

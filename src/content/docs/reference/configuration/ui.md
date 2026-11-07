@@ -9,7 +9,7 @@ tableOfContents:
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.7.1-19-g572b9425-dirty.
+Generated from Rift v0.7.2-32-gcd791977-dirty.
 -->
 
 Optional indicators for the menu bar, stack line, and Mission Control.
@@ -203,6 +203,15 @@ Omitting the entire containing table gives <code>0</code> instead.
 ## `[settings.ui.mission_control]`
 
 Rift’s own Mission Control-style workspace overview.
+
+<section class="apple-entry" id="setting-settings-ui-mission_control-activate_on_hotkey_release">
+
+### `activate_on_hotkey_release`
+
+<p>Release the shortcut key and all modifier keys to switch to the selected window or workspace. When turned off, press Return or click to switch.</p>
+<dl class="apple-meta"><div><dt>Type</dt><dd>boolean</dd></div><div><dt>Default</dt><dd><code>false</code></dd></div></dl>
+
+</section>
 
 <section class="apple-entry" id="setting-settings-ui-mission_control-show_empty_workspaces">
 

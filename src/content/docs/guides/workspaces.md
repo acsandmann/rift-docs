@@ -5,7 +5,7 @@ description: Organize windows into workspaces and use Rift across displays.
 
 Rift workspaces let you keep groups of windows separate. For example, you might put an editor and terminal in one workspace and a browser in another. Switching workspaces shows the group you want to work with.
 
-A Rift workspace is different from a macOS Space: it exists within a managed macOS desktop and does not create another Mission Control desktop.
+A Rift workspace is different from a macOS Space: it groups windows managed by Rift and does not create another Mission Control desktop.
 
 If the current Space is inactive, press Option + Z with the bundled keymap, or run `rift-cli execute space toggle-activated` in Terminal.
 
@@ -76,18 +76,16 @@ Rift can manage windows on each connected display. Before starting Rift, turn on
 
 ### Choose a workspace mode
 
-By default, each macOS desktop has its own set of Rift workspaces, numbered independently. This is called `per_display` mode. Switching workspaces changes the current display.
+By default, `global` mode uses one numbered list across your displays. For example, workspaces 1 and 2 might be on your laptop while 3 and 4 are on an external monitor. Each workspace lives on one display at a time. Selecting one on another display moves focus there; next and previous navigation can cross displays too.
 
-With `global` mode, there is one numbered list across your displays. For example, workspaces 1 and 2 might be on your laptop while 3 and 4 are on an external monitor. Each workspace lives on one display at a time. Selecting one on another display moves focus there; next and previous navigation can cross displays too.
-
-To use global mode, merge this into your config:
+For separate workspace lists, use `per_display` mode instead. Each macOS desktop then has its own set of Rift workspaces, numbered independently, and switching workspaces changes the current display. To enable it, merge this into your config:
 
 ```toml
 [virtual_workspaces]
-mode = "global"
+mode = "per_display"
 ```
 
-You can also turn off **Displays have separate workspaces** in Rift's settings. This is different from the macOS **Displays have separate Spaces** setting, which must remain enabled.
+You can also turn on **Displays have separate workspaces** in Rift's settings. This is different from the macOS **Displays have separate Spaces** setting, which must remain enabled for multiple displays.
 
 ### Choose displays for workspaces
 
@@ -95,7 +93,6 @@ In global mode, you can give a workspace an ordered list of preferred displays. 
 
 ```toml
 [virtual_workspaces]
-mode = "global"
 default_workspace_count = 4
 workspace_names = ["Main", "Code", "Web", "Chat"]
 

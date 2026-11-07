@@ -9,7 +9,7 @@ tableOfContents:
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.7.1-19-g572b9425-dirty.
+Generated from Rift v0.7.2-32-gcd791977-dirty.
 -->
 
 Workspace count, names, focus behavior, and rules for assigning windows to workspaces.
@@ -40,7 +40,7 @@ Rift’s named or numbered work areas. A workspace is a logical layer on top of 
 ### `mode`
 
 <p><code>per_display</code>: each display has its own workspaces, numbered from 1. Like macOS Spaces, each desktop on a display has its own set. <code>global</code>: workspaces are numbered across all displays. Each one stays on a single display and is never mirrored; selecting it focuses that display.</p>
-<dl class="apple-meta"><div><dt>Type</dt><dd><code>per_display</code> or <code>global</code></dd></div><div><dt>Default</dt><dd><code>&quot;per_display&quot;</code></dd></div></dl>
+<dl class="apple-meta"><div><dt>Type</dt><dd><code>per_display</code> or <code>global</code></dd></div><div><dt>Default</dt><dd><code>&quot;global&quot;</code></dd></div></dl>
 
 </section>
 

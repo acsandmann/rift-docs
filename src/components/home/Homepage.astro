@@ -29,6 +29,15 @@ const href = (path: string) => `${base}/${path}/`;
         Browse documentation
       </LinkButton>
     </div>
+    <div class="install-command">
+      <div class="command">
+        <code>brew install acsandmann/tap/rift</code>
+        <button type="button" class="copy" aria-label="Copy Homebrew installation command" hidden>
+          Copy
+        </button>
+      </div>
+    </div>
+    <span class="copy-status sr-only" role="status"></span>
     <figure class="demo">
       <div class="screen">
         <Image
@@ -74,7 +83,7 @@ const href = (path: string) => `${base}/${path}/`;
     </div>
     <div class="workspace-body">
       <p>
-        Group windows into workspaces, with a separate set on each display or one shared list across all of them.
+        Group windows into workspaces, with one shared list across displays by default or a separate set on each display.
       </p>
       <a class="text-link" href={href("guides/workspaces")}>
         Explore workspaces <span aria-hidden="true">↗</span>
@@ -149,18 +158,6 @@ const href = (path: string) => `${base}/${path}/`;
     <p>
       Install with Homebrew, then follow the quick start to set up Rift.
     </p>
-    <div class="command">
-      <code>brew install acsandmann/tap/rift</code>
-      <button
-        type="button"
-        class="copy"
-        aria-label="Copy Homebrew installation command"
-        hidden
-      >
-        Copy
-      </button>
-    </div>
-    <span class="copy-status sr-only" role="status"></span>
     <LinkButton href={href("quick-start")} data-umami-event="homepage_install">
       Follow the quick start
     </LinkButton>
@@ -394,17 +391,21 @@ const href = (path: string) => `${base}/${path}/`;
   .install p {
     margin-top: 24px;
   }
+  .install-command {
+    display: grid;
+    justify-items: center;
+    gap: 10px;
+    margin-top: 36px;
+  }
   .command {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    margin: 32px auto;
-    padding: 18px 20px;
-    max-width: 560px;
-    background: var(--apple-secondary-background);
+    gap: 20px;
+    max-width: 100%;
+    padding: 6px 6px 6px 16px;
+    background: color-mix(in srgb, var(--apple-secondary-background) 75%, transparent);
     border: 1px solid var(--apple-hairline);
-    border-radius: 12px;
+    border-radius: 10px;
     text-align: left;
   }
   .command code {
@@ -412,17 +413,19 @@ const href = (path: string) => `${base}/${path}/`;
     overflow-x: auto;
     white-space: nowrap;
     padding-block: 4px;
-    font: clamp(12px, 2.8vw, 15px) var(--apple-font-mono);
+    font: 13px var(--apple-font-mono);
     color: var(--apple-foreground);
   }
   .copy {
     border: 0;
-    border-radius: 5px;
-    padding: 6px 9px;
+    border-radius: 6px;
+    padding: 7px 10px;
     background: var(--apple-fill);
     color: var(--apple-foreground);
     font-size: 12px;
+    cursor: pointer;
   }
+  .copy:hover { background: color-mix(in srgb, var(--apple-foreground) 18%, transparent); }
   .install-link {
     display: block;
     margin-top: 18px;
@@ -473,7 +476,7 @@ const href = (path: string) => `${base}/${path}/`;
     }
     .command {
       gap: 8px;
-      padding: 16px 12px;
+      padding: 6px 6px 6px 12px;
     }
     .screen {
       border-radius: 8px;

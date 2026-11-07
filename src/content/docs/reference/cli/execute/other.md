@@ -11,7 +11,7 @@ tableOfContents:
 
 These commands work with Rift’s complete runtime or saved layout state rather than one command group.
 
-Generated from `rift-cli` at `v0.7.1-19-g572b9425-dirty`.
+Generated from `rift-cli` at `v0.7.2-32-gcd791977-dirty`.
 
 <section class="apple-entry">
 
@@ -56,7 +56,7 @@ Generated from `rift-cli` at `v0.7.1-19-g572b9425-dirty`.
 
 ## `load-layout`
 
-<p>Restore a layout file to the current workspace or macOS Space.</p>
+<p>Restore a layout file to the current workspace, macOS Space, or every display.</p>
 <pre class="apple-declaration"><code>rift-cli execute load-layout [OPTIONS] &lt;PATH|--master&gt;</code></pre>
 <p class="apple-label">Arguments</p>
 <dl class="apple-parameters">
@@ -65,7 +65,7 @@ Generated from `rift-cli` at `v0.7.1-19-g572b9425-dirty`.
 <p class="apple-label">Options</p>
 <dl class="apple-parameters">
 <div><dt><code>--master</code></dt><dd><p>Use Rift's master file (~/.rift/layout.ron).</p></dd></div>
-<div><dt><code>--scope &lt;<a href="/rift-docs/reference/cli/#value-scope">SCOPE</a>&gt;</code></dt><dd><p>Restore one workspace or all saved workspaces for the current macOS Space.</p><dl class="apple-meta"><div><dt>Default</dt><dd><code>workspace</code></dd></div><div><dt>Values</dt><dd><code>workspace</code>, <code>space</code></dd></div></dl></dd></div>
+<div><dt><code>--scope &lt;<a href="/rift-docs/reference/cli/#value-scope">SCOPE</a>&gt;</code></dt><dd><p>Restore one workspace, the current macOS Space, or the current Space of every display.</p><dl class="apple-meta"><div><dt>Default</dt><dd><code>workspace</code></dd></div><div><dt>Values</dt><dd><code>workspace</code>, <code>space</code>, <code>displays</code></dd></div></dl></dd></div>
 </dl>
 
 </section>

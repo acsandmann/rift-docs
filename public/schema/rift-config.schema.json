@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Rift configuration",
-  "description": "Generated from Rift v0.7.1-19-g572b9425-dirty.",
+  "description": "Generated from Rift v0.7.2-32-gcd791977-dirty.",
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -648,6 +648,11 @@
               "type": "object",
               "additionalProperties": false,
               "properties": {
+                "activate_on_hotkey_release": {
+                  "type": "boolean",
+                  "description": "Release the shortcut key and all modifier keys to switch to the selected window or workspace. When turned off, press Return or click to switch.",
+                  "default": false
+                },
                 "show_empty_workspaces": {
                   "type": "boolean",
                   "description": "Include workspaces without windows in Overview.",
@@ -836,7 +841,7 @@
             "global"
           ],
           "description": "`per_display`: each display has its own workspaces, numbered from 1. Like macOS Spaces, each desktop on a display has its own set. `global`: workspaces are numbered across all displays. Each one stays on a single display and is never mirrored; selecting it focuses that display.",
-          "default": "per_display"
+          "default": "global"
         },
         "enabled": {
           "type": "boolean",

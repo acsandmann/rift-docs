@@ -11,7 +11,7 @@ tableOfContents:
 
 Queries read state without changing it. Set `RIFT_CLI_PRETTY=1` to format returned JSON for reading.
 
-Generated from `rift-cli` at `v0.7.1-19-g572b9425-dirty`.
+Generated from `rift-cli` at `v0.7.2-32-gcd791977-dirty`.
 
 <section class="apple-entry">
 

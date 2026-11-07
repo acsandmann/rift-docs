@@ -52,6 +52,7 @@ Use the complete [Quick start config](/rift-docs/quick-start/) for a small keyma
 - With the default settings, new Spaces start inactive. The bundled config uses `Alt + Z` for activation; a custom config uses whichever key you bind to `toggle_space_activated`.
 - Hot reload is enabled, so a valid saved file normally applies without a restart.
 - Four virtual workspaces are created when `default_workspace_count` is omitted. Workspace names can be set explicitly.
+- Workspaces use a shared global list across displays by default. You can choose separate lists in [Workspaces and displays](/rift-docs/guides/workspaces/#choose-a-workspace-mode).
 - Gestures, menu bar workspace indicators, and the workspace Overview are disabled by default. Tabs beside stacked windows are enabled.
 
 An omitted table can have different defaults from an explicitly supplied table. For example, omitting `[settings.gestures]` gives `skip_empty = true`, while including that table without `skip_empty` gives `false`. The reference calls out these exceptions.

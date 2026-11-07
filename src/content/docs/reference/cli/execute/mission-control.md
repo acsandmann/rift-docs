@@ -11,7 +11,7 @@ tableOfContents:
 
 Mission control commands. All commands act on the running Rift instance.
 
-Generated from `rift-cli` at `v0.7.1-19-g572b9425-dirty`.
+Generated from `rift-cli` at `v0.7.2-32-gcd791977-dirty`.
 
 <section class="apple-entry">
 
