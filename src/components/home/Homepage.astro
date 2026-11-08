@@ -1,7 +1,6 @@
 ---
 import { Image } from "astro:assets";
 import { LinkButton } from "@astrojs/starlight/components";
-import Ambient from "./Ambient.astro";
 import Layouts from "./Layouts.astro";
 import desktop from "../../assets/rift-desktop.png";
 import menu from "../../assets/rift-menu.png";
@@ -11,12 +10,11 @@ const href = (path: string) => `${base}/${path}/`;
 
 <div class="rift-home not-content">
   <section class="intro" aria-labelledby="_top">
-    <Ambient />
     <h1 id="_top">
       rift
     </h1>
     <p class="lead">
-      A tiling window manager for macOS.
+      A calmer way to arrange your windows on macOS.
     </p>
     <div class="actions">
       <LinkButton
@@ -26,7 +24,7 @@ const href = (path: string) => `${base}/${path}/`;
         Get started
       </LinkButton>
       <LinkButton href={href("layouts")} variant="minimal" icon="right-arrow">
-        Browse documentation
+        Explore the docs
       </LinkButton>
     </div>
     <div class="install-command">
@@ -68,9 +66,9 @@ const href = (path: string) => `${base}/${path}/`;
   </section>
   <section class="section" aria-labelledby="layouts-title">
     <div class="section-heading">
-      <h2 id="layouts-title">Layouts</h2>
+      <h2 id="layouts-title">Make room for your work.</h2>
       <p>
-        Arrange windows the way you work. Choose a layout for each workspace.
+        Choose a layout that fits what you’re doing, and let Rift take care of the arranging.
       </p>
     </div>
     <Layouts />
@@ -78,12 +76,12 @@ const href = (path: string) => `${base}/${path}/`;
   <section class="workspace-section section" aria-labelledby="workspaces-title">
     <div class="section-heading left">
       <h2 id="workspaces-title">
-        Virtual workspaces
+        A place for everything.
       </h2>
     </div>
     <div class="workspace-body">
       <p>
-        Group windows into workspaces, with one shared list across displays by default or a separate set on each display.
+        Keep related windows together in workspaces, and move between them whenever you need a change of focus.
       </p>
       <a class="text-link" href={href("guides/workspaces")}>
         Explore workspaces <span aria-hidden="true">↗</span>
@@ -92,9 +90,9 @@ const href = (path: string) => `${base}/${path}/`;
   </section>
   <section class="controls section" aria-labelledby="controls-title">
     <div>
-      <h2 id="controls-title">Keyboard controls</h2>
+      <h2 id="controls-title">Stay in your flow.</h2>
       <p>
-        Move, resize, and focus windows without leaving the keyboard. Configure shortcuts to suit your setup.
+        Focus, move, and resize windows from the keyboard. Make the shortcuts your own as you go.
       </p>
       <div
         class="keys"
@@ -144,9 +142,9 @@ const href = (path: string) => `${base}/${path}/`;
       />
     </figure>
     <div>
-      <h2 id="customize-title">Configuration</h2>
+      <h2 id="customize-title">Make it yours.</h2>
       <p>
-        Adjust layouts, shortcuts, and app rules in settings or a TOML file.
+        Adjust layouts, shortcuts, and app rules in Settings, or use a TOML file if you prefer.
       </p>
       <a class="text-link" href={href("configuration")}>
         Configure Rift <span aria-hidden="true">↗</span>
@@ -154,9 +152,9 @@ const href = (path: string) => `${base}/${path}/`;
     </div>
   </section>
   <section class="install section" aria-labelledby="install-title">
-    <h2 id="install-title">Install Rift</h2>
+    <h2 id="install-title">Ready to get started?</h2>
     <p>
-      Install with Homebrew, then follow the quick start to set up Rift.
+      The quick start will help you set up Rift and arrange your first windows.
     </p>
     <LinkButton href={href("quick-start")} data-umami-event="homepage_install">
       Follow the quick start
@@ -184,7 +182,7 @@ const href = (path: string) => `${base}/${path}/`;
   }
   .intro {
     position: relative;
-    padding-top: clamp(56px, 7vw, 92px);
+    padding-top: clamp(64px, 8vw, 104px);
     text-align: center;
   }
   h1 {
@@ -195,7 +193,8 @@ const href = (path: string) => `${base}/${path}/`;
     text-wrap: balance;
   }
   .lead {
-    margin-top: 20px !important;
+    max-width: 520px;
+    margin: 20px auto 0 !important;
     font-size: clamp(19px, 2vw, 24px);
     line-height: 1.5;
     letter-spacing: -0.018em;
@@ -213,14 +212,14 @@ const href = (path: string) => `${base}/${path}/`;
     margin: 0;
   }
   .demo {
-    max-width: 960px;
-    margin: clamp(44px, 6vw, 72px) auto 0 !important;
+    max-width: 900px;
+    margin: clamp(56px, 7vw, 88px) auto 0 !important;
     text-align: left;
   }
   .screen {
     border: 1px solid
       color-mix(in srgb, var(--apple-foreground) 16%, transparent);
-    border-radius: 13px;
+    border-radius: 16px;
     overflow: hidden;
     box-shadow:
       0 32px 72px -36px rgb(0 0 0 / 0.35),
@@ -262,7 +261,7 @@ const href = (path: string) => `${base}/${path}/`;
     font-size: 14px;
   }
   .section {
-    margin-top: clamp(80px, 10vw, 128px);
+    margin-top: clamp(88px, 11vw, 144px);
   }
   .section-heading {
     max-width: 760px;
@@ -389,7 +388,8 @@ const href = (path: string) => `${base}/${path}/`;
     padding: 0 0 70px;
   }
   .install p {
-    margin-top: 24px;
+    max-width: 440px;
+    margin: 20px auto 28px !important;
   }
   .install-command {
     display: grid;
