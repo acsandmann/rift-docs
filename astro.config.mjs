@@ -14,6 +14,7 @@ export default defineConfig({
   },
   integrations: [starlight({
     title: 'rift',
+    customCss: ['./src/styles/wordmark.css'],
     components: { Hero: './src/components/home/HomeHero.astro' },
     description: 'Documentation for Rift, a macOS tiling window manager.',
     social: [

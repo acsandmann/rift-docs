@@ -13,7 +13,7 @@ tableOfContents:
 These legacy `rift-cli service` names redirect you to the `rift` binary. Use `rift service install`, `start`, `restart`, `stop`, or `uninstall`.
 :::
 
-Generated from `rift-cli` at `v0.7.2-32-gcd791977-dirty`.
+Generated from `rift-cli` at `v0.8.2-11-gfbf4bb6b-dirty`.
 
 <section class="apple-entry">
 

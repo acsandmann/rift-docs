@@ -9,7 +9,7 @@ tableOfContents:
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.7.2-32-gcd791977-dirty.
+Generated from Rift v0.8.2-11-gfbf4bb6b-dirty.
 -->
 
 Match windows and control their placement, size, focus, or management.
@@ -163,6 +163,15 @@ size = { w = 420.0, h = 680.0 }
 
 <p>Exact macOS Accessibility subrole, such as <code>AXDialog</code>, to distinguish dialogs from normal windows.</p>
 <dl class="apple-meta"><div><dt>Type</dt><dd>text (optional)</dd></div><div><dt>Default</dt><dd>Not set</dd></div></dl>
+
+</section>
+
+<section class="apple-entry" id="setting-virtual_workspaces-app_rules-window_tags">
+
+### `window_tags`
+
+<p>Required SLS window tags; all bits must be present.</p>
+<dl class="apple-meta"><div><dt>Type</dt><dd>whole number (optional)</dd></div><div><dt>Default</dt><dd>Not set</dd></div></dl>
 
 </section>
 
