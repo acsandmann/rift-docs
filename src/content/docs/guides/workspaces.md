@@ -78,6 +78,8 @@ Rift can manage windows on each connected display. Before starting Rift, turn on
 
 By default, `global` mode uses one numbered list across your displays. For example, workspaces 1 and 2 might be on your laptop while 3 and 4 are on an external monitor. Each workspace lives on one display at a time. Selecting one on another display moves focus there; next and previous navigation can cross displays too.
 
+Rift initially groups consecutive workspace numbers on each display where display rules allow it. Every active, managed display has an active workspace: connecting a display or moving its last workspace away creates one empty workspace when needed. Existing workspaces keep their identities and order. Reconnecting or rearranging displays does not rebalance existing workspace blocks; departure fallback, remembered placement, and explicit display rules still apply. Automatic seeds for otherwise empty displays can exceed the workspace creation limit to keep displays usable. Moving a display’s last workspace is refused at that limit because it would require another replacement.
+
 For separate workspace lists, use `per_display` mode instead. Each macOS desktop then has its own set of Rift workspaces, numbered independently, and switching workspaces changes the current display. To enable it, merge this into your config:
 
 ```toml
