@@ -1,9 +1,10 @@
 ---
+import distanceField from "../../assets/glass/rift-distance.png?url";
 // Glyph outlines: Macintosh Skeletal Filled; stroke order: McIntosh Writer's
 // reconstruction of the licensed Macintosh Skeletal font (smooth: 0).
 // The original font is read locally during extraction and is not bundled here.
 ---
-      <div class="glass-wrap"><svg class="wordmark" viewBox="-250 -2400 5800 3700" role="img" aria-label="rift">
+      <div class="glass-wrap" data-distance={distanceField}><svg class="wordmark" viewBox="-250 -2400 5800 3700" role="img" aria-label="rift">
         <defs>
           <linearGradient id="rift-gradient" x1="0" y1="0" x2="0.35" y2="1">
             <stop class="metal-1" offset="0" />
@@ -37,7 +38,7 @@
         <use href="#rift-line" class="wordmark-highlight" />
       </svg><canvas class="glass-canvas" aria-hidden="true"></canvas></div>
 <style>
-  .glass-wrap { background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(83,118,155,.10), transparent); position: relative; width: clamp(240px, 30vw, 340px); max-width: 100%; margin: -25px auto -30px; }
+  .glass-wrap { background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(83,118,155,.10), transparent); position: relative; width: clamp(240px, 30vw, 340px); max-width: 100%; margin: -25px auto -30px; pointer-events: none; }
   :global(:root[data-theme="dark"]) .glass-wrap { background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(120,165,205,.12), transparent); }
   .glass-canvas { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; }
   .glass-wrap.ready .glass-canvas { opacity: 1; }
@@ -72,17 +73,16 @@
 
 </style>
 <script>
-  // The distance transform is computed once from the licensed glyph outline.
-  // The shader treats the interior distance as a rounded tube cross section.
+  // The precomputed distance field defines the rounded tube cross section.
   const vs = `#version 300 es
     in vec2 p; out vec2 uv; void main(){uv=p*.5+.5;gl_Position=vec4(p,0.,1.);}`;
   const fs = `#version 300 es
     precision highp float; in vec2 uv; out vec4 color;
-    uniform sampler2D field; uniform sampler2D reveal; uniform vec2 pixel; uniform float progress; uniform float dark;
-    float dist(vec2 p){return (texture(field,p).r-.5)*40.;}
+    uniform sampler2D field; uniform sampler2D reveal; uniform vec2 pixel; uniform float dark; uniform vec3 pageBackground;
+    float dist(vec2 p){return (texture(field,p).a-.5)*40.;}
     vec3 backdrop(vec2 p){
       float falloff=1.-clamp(length((p-.5)*2.),0.,1.);
-      vec3 bg=mix(vec3(1.),vec3(0.),dark);
+      vec3 bg=pageBackground;
       vec3 wash=mix(vec3(83.,118.,155.)/255.,vec3(120.,165.,205.)/255.,dark);
       return mix(bg,wash,falloff*mix(.10,.12,dark));
     }
@@ -91,7 +91,7 @@
       float d=dist(pos); float aa=max(fwidth(d),.5);
       float coverage=smoothstep(-aa,aa,d)*texture(reveal,pos).a;
       if(coverage<.001){color=vec4(0);return;}
-      vec2 g=vec2(dist(pos+vec2(pixel.x*3.,0.))-dist(pos-vec2(pixel.x*3.,0.)),dist(pos+vec2(0.,pixel.y*3.))-dist(pos-vec2(0.,pixel.y*3.)));
+      vec2 g=vec2(dist(pos+vec2(pixel.x*5.,0.))-dist(pos-vec2(pixel.x*5.,0.)),dist(pos+vec2(0.,pixel.y*5.))-dist(pos-vec2(0.,pixel.y*5.)));
       vec2 direction=normalize(g+vec2(.00001));
       float radius=14.0; float h=clamp(d/radius,0.,1.); float slope=sqrt(max(0.,1.-h*h));
       vec3 n=normalize(vec3(-direction*slope,max(.08,h)));
@@ -105,44 +105,34 @@
       vec3 ray=refract(vec3(0.,0.,-1.),n,1.0/1.48);
       vec2 shift=ray.xy/max(abs(ray.z),.2)*pixel*8.0;
       vec3 base=backdrop(pos+shift);
-      base=mix(base,mix(vec3(.42,.48,.54),vec3(.25,.31,.38),dark),mix(.34,.12,dark)+fresnel*.12);
-      base+=vec3(.85,.92,1.)*(spec*.75+second*.3+fresnel*.2);
-      base+=vec3(.85,.92,1.)*edge*(.10+max(-facing,0.)*.65);
-      base+=vec3(.78,.86,.94)*pow(max(-facing,0.),8.)*smoothstep(.5,4.,d)*(1.-smoothstep(7.,12.,d))*.45;
-      base-=edge*(max(facing,0.)*.2+(1.-dark)*.12);
+      base=mix(base,mix(vec3(.32,.38,.44),vec3(.25,.31,.38),dark),mix(.43,.12,dark)+fresnel*.12);
+      base+=vec3(.85,.92,1.)*(spec*.75+second*.3+fresnel*.2)*mix(.65,1.,dark);
+      base+=dark*vec3(.09,.10,.12)*pow(max(dot(n,normalize(vec3(-.2,-.35,1.))),0.),4.);
+      base+=vec3(.85,.92,1.)*edge*(.10+dark*.10+max(-facing,0.)*.75)*mix(.65,1.,dark);
+      base+=vec3(.78,.86,.94)*pow(max(-facing,0.),8.)*smoothstep(.5,4.,d)*(1.-smoothstep(7.,12.,d))*.45*mix(.65,1.,dark);
+      base-=edge*(max(facing,0.)*.2+(1.-dark)*.16);
       float opacity=1.;
       color=vec4(clamp(base,0.,1.),coverage*clamp(opacity,0.,1.));
     }`;
-  function distanceTransform(mask: Uint8Array, width: number, height: number, feature: number) {
-    const infinity=1e12, f=new Float64Array(Math.max(width,height)), d=new Float64Array(f.length);
-    const v=new Int32Array(f.length), z=new Float64Array(f.length+1), intermediate=new Float64Array(width*height), out=new Float64Array(width*height);
-    function line(n: number) {
-      let k=0; v[0]=0; z[0]=-infinity; z[1]=infinity;
-      for(let q=1;q<n;q++){let s; do {const vk=v[k]; s=((f[q]+q*q)-(f[vk]+vk*vk))/(2*(q-vk)); if(s<=z[k]) k--; else break;} while(k>=0); k++;v[k]=q;z[k]=s;z[k+1]=infinity;}
-      k=0;for(let q=0;q<n;q++){while(z[k+1]<q)k++; const delta=q-v[k];d[q]=delta*delta+f[v[k]];}
-    }
-    for(let y=0;y<height;y++){for(let x=0;x<width;x++)f[x]=mask[y*width+x]===feature?0:infinity;line(width);for(let x=0;x<width;x++)intermediate[y*width+x]=d[x];}
-    for(let x=0;x<width;x++){for(let y=0;y<height;y++)f[y]=intermediate[y*width+x];line(height);for(let y=0;y<height;y++)out[y*width+x]=Math.sqrt(d[y]);}
-    return out;
-  }
   async function initGlass(wrap: HTMLElement) {
     const canvas=wrap.querySelector('canvas')!; const gl=canvas.getContext('webgl2',{alpha:true,antialias:true,premultipliedAlpha:false});
     if(!gl) return;
     const compile=(type:number,source:string)=>{const sh=gl.createShader(type);if(!sh)return null;gl.shaderSource(sh,source);gl.compileShader(sh);if(!gl.getShaderParameter(sh,gl.COMPILE_STATUS)){gl.deleteShader(sh);return null;}return sh;};
     const vertex=compile(gl.VERTEX_SHADER,vs), fragment=compile(gl.FRAGMENT_SHADER,fs);if(!vertex||!fragment)return;
     const program=gl.createProgram();if(!program)return;gl.attachShader(program,vertex);gl.attachShader(program,fragment);gl.linkProgram(program);if(!gl.getProgramParameter(program,gl.LINK_STATUS))return;
-    const path=wrap.querySelector<SVGPathElement>('#rift-line')?.getAttribute('d');if(!path)return;
-    const width=512,height=327;const img=new Image();
-    const markup=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="-250 -2400 5800 3700"><path fill="white" d="${path}"/></svg>`;
-    const url=URL.createObjectURL(new Blob([markup],{type:'image/svg+xml'}));
-    try {img.src=url;await img.decode();} catch {return;} finally {URL.revokeObjectURL(url);}
-    const raster=document.createElement('canvas');raster.width=width;raster.height=height;const context=raster.getContext('2d');if(!context)return;
-    context.drawImage(img,0,0,width,height);const pixels=context.getImageData(0,0,width,height).data;const mask=new Uint8Array(width*height);
-    for(let i=0;i<mask.length;i++)mask[i]=pixels[i*4+3]>127?1:0;
-    const inside=distanceTransform(mask,width,height,0),outside=distanceTransform(mask,width,height,1), data=new Uint8Array(mask.length);
-    for(let i=0;i<data.length;i++){const distance=mask[i]?inside[i]:-outside[i];data[i]=Math.round(Math.max(0,Math.min(255,128+distance*255/40)));}
+    const source=wrap.dataset.distance;if(!source)return;
+    const img=new Image();img.src=source;
+    try {await img.decode();} catch {return;}
+    const width=512,height=327;
     gl.useProgram(program);const buffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);const p=gl.getAttribLocation(program,'p');gl.enableVertexAttribArray(p);gl.vertexAttribPointer(p,2,gl.FLOAT,false,0,0);
-    const texture=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,texture);gl.pixelStorei(gl.UNPACK_ALIGNMENT,1);gl.texImage2D(gl.TEXTURE_2D,0,gl.R8,width,height,0,gl.RED,gl.UNSIGNED_BYTE,data);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);gl.uniform2f(gl.getUniformLocation(program,'pixel'),1/width,1/height);
+    const texture=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,texture);
+    // Distance fields are data, not colors; preserve identical values across browsers.
+    gl.pixelStorei(gl.UNPACK_COLORSPACE_CONVERSION_WEBGL,gl.NONE);
+    gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL,0);
+    gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,img);
+    gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
+    gl.uniform2f(gl.getUniformLocation(program,'pixel'),1/1024,1/654);
     const main=wrap.querySelector<SVGPathElement>('.write-main');
     const cross=wrap.querySelector<SVGPathElement>('.write-cross');
     if(!main || !cross) return;
@@ -156,7 +146,7 @@
     gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
     gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,revealCanvas);
     gl.uniform1i(gl.getUniformLocation(program,'field'),0);gl.uniform1i(gl.getUniformLocation(program,'reveal'),1);
-    const dark=gl.getUniformLocation(program,'dark');let frame=0,elapsed=0,last=0,finished=false,inView=false;
+    const dark=gl.getUniformLocation(program,'dark'),pageBackground=gl.getUniformLocation(program,'pageBackground');let frame=0,elapsed=0,last=0,finished=false,inView=false;
     const motion=matchMedia('(prefers-reduced-motion: reduce)');
     function draw(seconds:number){
       if(!gl || !revealContext)return;
@@ -169,17 +159,24 @@
       const crossT=Math.max(0,Math.min(1,(seconds-3)/.45));
       if(crossT>0){c.lineWidth=99.2;c.setLineDash([Math.max(.001,crossLength*crossT),crossLength+1]);c.stroke(crossPath);}
       gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D,revealTexture);gl.texSubImage2D(gl.TEXTURE_2D,0,0,0,gl.RGBA,gl.UNSIGNED_BYTE,revealCanvas);
-      const rect=canvas.getBoundingClientRect(),ratio=Math.min(devicePixelRatio||1,2),w=Math.max(1,Math.round(rect.width*ratio)),h=Math.max(1,Math.round(rect.height*ratio));
-      if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;}gl.viewport(0,0,w,h);
-      gl.uniform1f(dark,document.documentElement.dataset.theme==='dark'?1:0);gl.drawArrays(gl.TRIANGLE_STRIP,0,4);
+      gl.viewport(0,0,canvas.width,canvas.height);gl.drawArrays(gl.TRIANGLE_STRIP,0,4);
+    }
+    function updateSize(){const rect=canvas.getBoundingClientRect(),ratio=Math.min(devicePixelRatio||1,2);const w=Math.max(1,Math.round(rect.width*ratio)),h=Math.max(1,Math.round(rect.height*ratio));if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;}}
+    function updateTheme(){
+      if(!gl)return;
+      const color=getComputedStyle(document.documentElement).getPropertyValue('--apple-background').trim();
+      const hex=/^#([0-9a-f]{3}|[0-9a-f]{6})$/i.exec(color)?.[1] || 'fff';
+      const expanded=hex.length===3 ? [...hex].map(c=>c+c).join('') : hex;
+      const rgb=[0,2,4].map(i=>parseInt(expanded.slice(i,i+2),16)/255);
+      gl.uniform3f(pageBackground,rgb[0],rgb[1],rgb[2]);gl.uniform1f(dark,document.documentElement.dataset.theme==='dark'?1:0);
     }
     function tick(now:number){frame=0;if(!inView||document.hidden||finished){last=0;return;}if(last)elapsed+=Math.min(now-last,100);last=now;draw(elapsed/1000);if(elapsed<3450)frame=requestAnimationFrame(tick);else finished=true;}
     function start(){if(!frame&&!finished&&inView&&!document.hidden){last=0;frame=requestAnimationFrame(tick);}}
-    elapsed=motion.matches?3450:0;finished=motion.matches;draw(elapsed/1000);wrap.classList.add('ready');
+    updateSize();updateTheme();elapsed=motion.matches?3450:0;finished=motion.matches;draw(elapsed/1000);wrap.classList.add('ready');
     const visible=new IntersectionObserver(([entry])=>{inView=entry.isIntersecting;if(inView)start();else{cancelAnimationFrame(frame);frame=0;last=0;}});visible.observe(wrap);
     const onVisibility=()=>{if(document.hidden){cancelAnimationFrame(frame);frame=0;last=0;}else start();};document.addEventListener('visibilitychange',onVisibility);
     canvas.addEventListener('webglcontextlost',(event)=>{event.preventDefault();wrap.classList.remove('ready');});
-    const resize=new ResizeObserver(()=>draw(elapsed/1000));resize.observe(wrap);const theme=new MutationObserver(()=>draw(elapsed/1000));theme.observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+    const resize=new ResizeObserver(()=>{updateSize();draw(elapsed/1000);});resize.observe(wrap);const theme=new MutationObserver(()=>{updateTheme();draw(elapsed/1000);});theme.observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
     const cleanup=(event:PageTransitionEvent)=>{if(event.persisted)return;cancelAnimationFrame(frame);resize.disconnect();theme.disconnect();visible.disconnect();document.removeEventListener('visibilitychange',onVisibility);gl.deleteTexture(texture);gl.deleteTexture(revealTexture);gl.deleteBuffer(buffer);gl.deleteProgram(program);gl.deleteShader(vertex);gl.deleteShader(fragment);};window.addEventListener('pagehide',cleanup);
 
   }
