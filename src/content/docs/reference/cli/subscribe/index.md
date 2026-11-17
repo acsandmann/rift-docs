@@ -11,7 +11,7 @@ tableOfContents:
 
 Subscribe to events over Mach IPC, or ask Rift to run another command when an event occurs.
 
-Generated from `rift-cli` at `v0.8.2-11-gfbf4bb6b-dirty`.
+Generated from `rift-cli` at `v0.8.2-12-gecdee64e`.
 
 <section class="apple-entry">
 

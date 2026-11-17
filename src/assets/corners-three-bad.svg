@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 350">
+<rect width="720" height="350" rx="18" fill="#151b29"/>
+<g font-family="system-ui, sans-serif" text-anchor="middle">
+<rect x="115" y="130" width="145" height="100" rx="5" fill="#283b56" stroke="#83a9dc" stroke-width="2"/>
+<text x="187.5" y="185.0" fill="#e7eef9" font-size="15">Display 1</text>
+<rect x="260" y="105" width="180" height="125" rx="5" fill="#283b56" stroke="#83a9dc" stroke-width="2"/>
+<text x="350.0" y="172.5" fill="#e7eef9" font-size="15">Display 2</text>
+<rect x="440" y="35" width="145" height="195" rx="5" fill="#283b56" stroke="#83a9dc" stroke-width="2"/>
+<text x="512.5" y="137.5" fill="#e7eef9" font-size="15">Display 3</text>
+<rect x="10" y="220" width="130" height="72" rx="5" fill="#75d9a9" fill-opacity=".22" stroke="#75d9a9" stroke-width="2"/>
+<text x="75" y="260" fill="#75d9a9" font-size="13" font-weight="700">Clear</text>
+<rect x="140" y="220" width="130" height="72" rx="5" fill="#ff8585" fill-opacity=".22" stroke="#ff8585" stroke-width="2"/>
+<text x="205" y="260" fill="#ff8585" font-size="13" font-weight="700">Blocked</text>
+<rect x="425" y="220" width="130" height="72" rx="5" fill="#ff8585" fill-opacity=".22" stroke="#ff8585" stroke-width="2"/>
+<text x="490" y="260" fill="#ff8585" font-size="13" font-weight="700">Blocked</text>
+<rect x="575" y="220" width="130" height="72" rx="5" fill="#75d9a9" fill-opacity=".22" stroke="#75d9a9" stroke-width="2"/>
+<text x="640" y="260" fill="#75d9a9" font-size="13" font-weight="700">Clear</text>
+</g></svg>

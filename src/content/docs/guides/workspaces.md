@@ -74,6 +74,28 @@ For trackpad navigation, see [Trackpad gestures](/rift-docs/guides/window-manage
 
 Rift can manage windows on each connected display. Before starting Rift, turn on **Displays have separate Spaces** in macOS System Settings → Desktop & Dock → Mission Control. This macOS setting is separate from Rift’s workspace mode.
 
+### Arrange displays in macOS
+
+Open **System Settings → Displays → Arrange** to adjust the macOS arrangement. Rift moves windows from inactive workspaces just outside their display. It tries both bottom corners and side edges, choosing the position with the least overlap with other displays. When displays surround those positions, a parked window can still appear on another display. Leaving clear space around a display gives Rift more room to hide windows; the space needed depends on the window size.
+
+The shaded rectangles below illustrate possible window positions at the bottom corners. Red positions overlap another display; green positions are clear in these examples. The small overlap at each anchor is exaggerated for visibility; Rift leaves one pixel on the original display. Window size and display alignment affect whether a position stays clear.
+
+**Three displays:** When their bottom edges line up, both corners of the middle display overlap its neighbors. Raising the right display opens the middle display’s bottom-right corner.
+
+![Three displays with aligned bottom edges: both bottom corners of the middle display overlap neighboring displays.](../../../assets/corners-three-bad.svg)
+
+![Three displays with the right display raised: the middle display has a clear bottom-right corner.](../../../assets/corners-three-good.svg)
+
+**Stacked displays:** Directly aligned displays can block both bottom corners of the upper display. Offset the lower display to open one of those corners.
+
+![Two aligned stacked displays: both bottom corners of the upper display overlap the lower display.](../../../assets/corners-stacked-bad.svg)
+
+![Two offset stacked displays: the upper display has a clear bottom-left corner.](../../../assets/corners-stacked-good.svg)
+
+These examples are inspired by the [AeroSpace monitor arrangement diagrams](https://nikitabobko.github.io/AeroSpace/guide.html#_proper_monitor_arrangement). Rift also considers side placements, so a blocked bottom corner does not necessarily mean a window will appear on another display.
+
+For the scrolling layout, a vertical stack is recommended; see [multiple displays with scrolling](/rift-docs/layouts/scrolling/#how-scrolling-works). The macOS arrangement can differ from your physical setup.
+
 ### Choose a workspace mode
 
 By default, `global` mode uses one numbered list across your displays. For example, workspaces 1 and 2 might be on your laptop while 3 and 4 are on an external monitor. Each workspace lives on one display at a time. Selecting one on another display moves focus there; next and previous navigation can cross displays too.

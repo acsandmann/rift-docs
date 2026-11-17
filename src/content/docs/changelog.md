@@ -10,9 +10,187 @@ Rift's release notes, newest first. Each entry links back to its original [GitHu
 
 <section class="apple-entry">
 
+## v0.8.3
+
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-11-16T02:48:23Z">November 16, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 2 release assets">249</dd></div></dl>
+
+### Changes
+* feat: bundle rift as .App <a href="https://github.com/acsandmann/rift/commit/92e086d3"><code>92e086d3</code></a>
+* feat: improve add app rule experience <a href="https://github.com/acsandmann/rift/commit/9a8408b8"><code>9a8408b8</code></a>
+* fix: scope native shortcut test lookup to command popover (<a href="https://github.com/acsandmann/rift/issues/680">#680</a>) <a href="https://github.com/acsandmann/rift/commit/8a012e88"><code>8a012e88</code></a>
+* fix: account for no windowserver in tests (<a href="https://github.com/acsandmann/rift/issues/679">#679</a>) <a href="https://github.com/acsandmann/rift/commit/cda9a6e1"><code>cda9a6e1</code></a>
+* feat: match app rule by slswindowtags <a href="https://github.com/acsandmann/rift/commit/b273aed9"><code>b273aed9</code></a>
+* perf: only do eui stuff on frames that include a resize (no position only) <a href="https://github.com/acsandmann/rift/commit/ba80b9d9"><code>ba80b9d9</code></a>
+* fix: no reraise after window removal (<a href="https://github.com/acsandmann/rift/issues/677">#677</a>) <a href="https://github.com/acsandmann/rift/commit/b571fe76"><code>b571fe76</code></a>
+
+<p class="apple-meta"><a href="https://github.com/acsandmann/rift/releases/tag/v0.8.3">GitHub release</a><a href="https://github.com/acsandmann/rift/blob/v0.8.3/rift.default.toml">Default config</a><a href="https://github.com/acsandmann/rift/compare/v0.8.2...v0.8.3">Compare changes</a></p>
+
+</section>
+
+<section class="apple-entry">
+
+## v0.8.2
+
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-11-13T04:27:42Z">November 13, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">390</dd></div></dl>
+
+### Changes
+* fix: dont run space creation logic for non user/fullscreen spaces <a href="https://github.com/acsandmann/rift/commit/4ae023ea"><code>4ae023ea</code></a>
+* fix: keep inactive windows when AX identity is invalidated (<a href="https://github.com/acsandmann/rift/issues/676">#676</a>) <a href="https://github.com/acsandmann/rift/commit/970c5035"><code>970c5035</code></a>
+* chore: run cargo test on one thread (<a href="https://github.com/acsandmann/rift/issues/638">#638</a>) <a href="https://github.com/acsandmann/rift/commit/6101a78a"><code>6101a78a</code></a>
+* fix: manage an app whose window shows before it turns regular (<a href="https://github.com/acsandmann/rift/issues/642">#642</a>) <a href="https://github.com/acsandmann/rift/commit/a88a35fe"><code>a88a35fe</code></a>
+* fix: ascend selection being lost when focus is re-reported <a href="https://github.com/acsandmann/rift/commit/bc5d5b99"><code>bc5d5b99</code></a>
+* fix: incompleye move_window_to_display animation <a href="https://github.com/acsandmann/rift/commit/ccd12e8f"><code>ccd12e8f</code></a>
+* fix: windows snapping back after drag <a href="https://github.com/acsandmann/rift/commit/cbc526bd"><code>cbc526bd</code></a>
+* feat: consume and expel in mission control (<a href="https://github.com/acsandmann/rift/issues/670">#670</a>) <a href="https://github.com/acsandmann/rift/commit/2e4a0b91"><code>2e4a0b91</code></a>
+* fix: native frame changes incorrectly persisting layout widths (<a href="https://github.com/acsandmann/rift/issues/674">#674</a>) <a href="https://github.com/acsandmann/rift/commit/6e9d9a9a"><code>6e9d9a9a</code></a>
+* feat: stable codesign identity <a href="https://github.com/acsandmann/rift/commit/c4551653"><code>c4551653</code></a>
+* fix: mission control not using non image wallpapers (<a href="https://github.com/acsandmann/rift/issues/662">#662</a>) <a href="https://github.com/acsandmann/rift/commit/13d07aad"><code>13d07aad</code></a>
+* fix: scrolling stale frame anim on window close (<a href="https://github.com/acsandmann/rift/issues/668">#668</a>) <a href="https://github.com/acsandmann/rift/commit/3b1cfd2d"><code>3b1cfd2d</code></a>
+* fix: run layout pass after window visibility changes (<a href="https://github.com/acsandmann/rift/issues/669">#669</a>) <a href="https://github.com/acsandmann/rift/commit/d23f5aa4"><code>d23f5aa4</code></a>
+* fix: allow app rules for different apps to share matchers (<a href="https://github.com/acsandmann/rift/issues/671">#671</a>) <a href="https://github.com/acsandmann/rift/commit/7b8db22d"><code>7b8db22d</code></a>
+
+### Contributors
+* <a href="https://github.com/fizzxed">@fizzxed</a> made their first contribution in https://github.com/acsandmann/rift/pull/671
+* <a href="https://github.com/scadoshi">@scadoshi</a> made their first contribution in https://github.com/acsandmann/rift/pull/638
+
+<p class="apple-meta"><a href="https://github.com/acsandmann/rift/releases/tag/v0.8.2">GitHub release</a><a href="https://github.com/acsandmann/rift/blob/v0.8.2/rift.default.toml">Default config</a><a href="https://github.com/acsandmann/rift/compare/v0.8.1...v0.8.2">Compare changes</a></p>
+
+</section>
+
+<section class="apple-entry">
+
+## v0.8.1
+
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-11-10T00:57:00Z">November 10, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">266</dd></div></dl>
+
+### Changes
+* fix: dont show drag/drop preview for windows arent being tiled <a href="https://github.com/acsandmann/rift/commit/8088ebc3"><code>8088ebc3</code></a>
+* fix: windows moving across displays and not recv frame update (<a href="https://github.com/acsandmann/rift/issues/665">#665</a>) <a href="https://github.com/acsandmann/rift/commit/93ee022e"><code>93ee022e</code></a>
+* fix: switch to workspace following unhide (<a href="https://github.com/acsandmann/rift/issues/661">#661</a>) <a href="https://github.com/acsandmann/rift/commit/78b710bc"><code>78b710bc</code></a>
+* fix: erroneous window suspension blocking focus (<a href="https://github.com/acsandmann/rift/issues/661">#661</a>) <a href="https://github.com/acsandmann/rift/commit/880ae5c9"><code>880ae5c9</code></a>
+* fix: hidden windows in mission control (<a href="https://github.com/acsandmann/rift/issues/658">#658</a>) <a href="https://github.com/acsandmann/rift/commit/70cfa353"><code>70cfa353</code></a>
+* fix: update stack z order in mission control so focused window is always top <a href="https://github.com/acsandmann/rift/commit/50967142"><code>50967142</code></a>
+* feat: use existing move_node, move_focus, switch_to_workspace, and move_window_to_workspace hotkeys in mission control <a href="https://github.com/acsandmann/rift/commit/2fcccbe9"><code>2fcccbe9</code></a>
+
+<p class="apple-meta"><a href="https://github.com/acsandmann/rift/releases/tag/v0.8.1">GitHub release</a><a href="https://github.com/acsandmann/rift/blob/v0.8.1/rift.default.toml">Default config</a><a href="https://github.com/acsandmann/rift/compare/v0.8.0...v0.8.1">Compare changes</a></p>
+
+</section>
+
+<section class="apple-entry">
+
+## v0.8.0
+
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-11-08T00:08:36Z">November 8, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">326</dd></div></dl>
+
+### Changes
+rift 0.8.0 introduces shared workspaces across all connected displays by default, making multi-display setups simpler and more intuitive.
+
+focus follows mouse has also been reworked to automatically disable when dialogs, popups, or sheets are on screen, preventing them from being immediately hidden. Additionally, minimized, hidden, and fullscreened windows now return to their original positions in the layout when restored.
+
+The new window claim API in `rift-client` also allows third-party applications to take ownership of windows from rift, opening the door to features like scratchpads, always-on-top windows, and other custom window management functionality.
+
+This release also brings significant performance improvements to workspace switching and Mission Control, alongside numerous bug fixes and refinements throughout.
+
+now for rift's regular changelog:
+* fix: preserve workspace when windows turn into axdialog (<a href="https://github.com/acsandmann/rift/issues/652">#652</a>) <a href="https://github.com/acsandmann/rift/commit/cd791977"><code>cd791977</code></a>
+* fix: app rule > spawned window display (<a href="https://github.com/acsandmann/rift/issues/651">#651</a>) <a href="https://github.com/acsandmann/rift/commit/3c032b92"><code>3c032b92</code></a>
+* fix: move_focus running on wrong window (<a href="https://github.com/acsandmann/rift/issues/653">#653</a>) <a href="https://github.com/acsandmann/rift/commit/062650ee"><code>062650ee</code></a>
+* fix: ffm hiding sheets/dialogs/popups (<a href="https://github.com/acsandmann/rift/issues/650">#650</a>) <a href="https://github.com/acsandmann/rift/commit/e12683db"><code>e12683db</code></a>
+* feat: menubar display type uses a nice TabSelector <a href="https://github.com/acsandmann/rift/commit/669d7db1"><code>669d7db1</code></a>
+* feat: option so mission control will switch window enhancement releasing all hotkeys <a href="https://github.com/acsandmann/rift/commit/b92de623"><code>b92de623</code></a>
+* chore: enable global workspace on by default !BREAKING! <a href="https://github.com/acsandmann/rift/commit/643ee84f"><code>643ee84f</code></a>
+* fix: keep scrolling windows on display by parking 1px (<a href="https://github.com/acsandmann/rift/issues/648">#648</a>) <a href="https://github.com/acsandmann/rift/commit/2c43f528"><code>2c43f528</code></a>
+* feat: preserve window position across hides/minimizes/fullscreens (<a href="https://github.com/acsandmann/rift/issues/647">#647</a>) <a href="https://github.com/acsandmann/rift/commit/0677b05b"><code>0677b05b</code></a> <a href="https://github.com/acsandmann/rift/commit/5962d021"><code>5962d021</code></a>
+* feat: close mission control to window being focused <a href="https://github.com/acsandmann/rift/commit/38440016"><code>38440016</code></a>
+* fix: spaces should be 100% separate in global mode when there is only one display <a href="https://github.com/acsandmann/rift/commit/ab131085"><code>ab131085</code></a>
+* fix: layout persistence subsystem <a href="https://github.com/acsandmann/rift/commit/79c1b7b0"><code>79c1b7b0</code></a>
+* fix: re-hide inactive workspace windows after app-initiated moves <a href="https://github.com/acsandmann/rift/commit/2a2a064f"><code>2a2a064f</code></a>
+* perf: workspace switching <a href="https://github.com/acsandmann/rift/commit/17c3b7f5"><code>17c3b7f5</code></a>
+* fix: config healing (<a href="https://github.com/acsandmann/rift/issues/645">#645</a>) <a href="https://github.com/acsandmann/rift/commit/3ca08fea"><code>3ca08fea</code></a>
+* fix: preserve column px after moving displays (<a href="https://github.com/acsandmann/rift/issues/646">#646</a>) <a href="https://github.com/acsandmann/rift/commit/3def70b8"><code>3def70b8</code></a>
+* fix: prevent stale rift window recovery instances <a href="https://github.com/acsandmann/rift/commit/6113879d"><code>6113879d</code></a>
+* feat: claim ownership of a window from rift (<a href="https://github.com/acsandmann/rift/issues/639">#639</a>) <a href="https://github.com/acsandmann/rift/commit/5556371f"><code>5556371f</code></a>
+* test: keep the window server's Space window lists out of unit tests (<a href="https://github.com/acsandmann/rift/issues/640">#640</a>) <a href="https://github.com/acsandmann/rift/commit/aa295be1"><code>aa295be1</code></a>
+* fix: swap_windows not focusing (<a href="https://github.com/acsandmann/rift/issues/635">#635</a>) <a href="https://github.com/acsandmann/rift/commit/74353458"><code>74353458</code></a>
+* feat: much improved shortcuts page <a href="https://github.com/acsandmann/rift/commit/89387232"><code>89387232</code></a>
+* fix: annoying macos window resize (<a href="https://github.com/acsandmann/rift/issues/598">#598</a>) <a href="https://github.com/acsandmann/rift/commit/572b9425"><code>572b9425</code></a>
+* fix: clipping in animation (<a href="https://github.com/acsandmann/rift/issues/598">#598</a>) <a href="https://github.com/acsandmann/rift/commit/ed459644"><code>ed459644</code></a>
+* fix: stale drag state (<a href="https://github.com/acsandmann/rift/issues/631">#631</a>) <a href="https://github.com/acsandmann/rift/commit/f15643d3"><code>f15643d3</code></a>
+
+### Contributors
+* <a href="https://github.com/joonhoekim">@joonhoekim</a> made their first contribution in https://github.com/acsandmann/rift/pull/640
+
+<p class="apple-meta"><a href="https://github.com/acsandmann/rift/releases/tag/v0.8.0">GitHub release</a><a href="https://github.com/acsandmann/rift/blob/v0.8.0/rift.default.toml">Default config</a><a href="https://github.com/acsandmann/rift/compare/v0.7.2...v0.8.0">Compare changes</a></p>
+
+</section>
+
+<section class="apple-entry">
+
+## v0.7.2
+
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-10-29T00:01:59Z">October 29, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">846</dd></div></dl>
+
+### Changes
+* feat: ui cleanup and beautification <a href="https://github.com/acsandmann/rift/commit/c35a4f88"><code>c35a4f88</code></a>
+* fix: run arrange after display connect in shared workspace mode (<a href="https://github.com/acsandmann/rift/issues/632">#632</a>) <a href="https://github.com/acsandmann/rift/commit/75b9d65b"><code>75b9d65b</code></a>
+* fix: make next/prev match swipe behavior when mode=shared (<a href="https://github.com/acsandmann/rift/issues/630">#630</a>) <a href="https://github.com/acsandmann/rift/commit/f4feb458"><code>f4feb458</code></a>
+* fix: hide stackline when only one window (<a href="https://github.com/acsandmann/rift/issues/629">#629</a>) <a href="https://github.com/acsandmann/rift/commit/7df3b59b"><code>7df3b59b</code></a>
+* chore: stop making app rule formatting in config weird <a href="https://github.com/acsandmann/rift/commit/b3a1135e"><code>b3a1135e</code></a>
+* chore: better entry animation in mission control <a href="https://github.com/acsandmann/rift/commit/bd9d5909"><code>bd9d5909</code></a>
+* chore: mission control animations <a href="https://github.com/acsandmann/rift/commit/465486db"><code>465486db</code></a>
+* perf: much more memory/cpu efficient mission control v2 <a href="https://github.com/acsandmann/rift/commit/34615ee9"><code>34615ee9</code></a>
+* perf: parallelize release workflow <a href="https://github.com/acsandmann/rift/commit/96dd46dc"><code>96dd46dc</code></a>
+* fix: keep parked windows when app inventory is incomplete (<a href="https://github.com/acsandmann/rift/issues/626">#626</a>) <a href="https://github.com/acsandmann/rift/commit/f921d12d"><code>f921d12d</code></a>
+* feat: retain a spatial Mission Control scene with coherent focus handoff <a href="https://github.com/acsandmann/rift/commit/2c933da8"><code>2c933da8</code></a>
+
+<p class="apple-meta"><a href="https://github.com/acsandmann/rift/releases/tag/v0.7.2">GitHub release</a><a href="https://github.com/acsandmann/rift/blob/v0.7.2/rift.default.toml">Default config</a><a href="https://github.com/acsandmann/rift/compare/v0.7.1...v0.7.2">Compare changes</a></p>
+
+</section>
+
+<section class="apple-entry">
+
+## v0.7.1
+
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-10-27T13:16:54Z">October 27, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">307</dd></div></dl>
+
+### Changes
+* perf: move Mission Control previews with shared cached canvases <a href="https://github.com/acsandmann/rift/commit/75b69eda"><code>75b69eda</code></a>
+* fix: re-arrange windows restored from the dock after deminiaturize <a href="https://github.com/acsandmann/rift/commit/a91b36c8"><code>a91b36c8</code></a>
+* chore: damn test <a href="https://github.com/acsandmann/rift/commit/c3aa368e"><code>c3aa368e</code></a>
+* fix: remember focus paths across displays (<a href="https://github.com/acsandmann/rift/issues/579">#579</a>) <a href="https://github.com/acsandmann/rift/commit/bb6dc693"><code>bb6dc693</code></a>
+* fix: always make rift request screen recording permission when opening mission control (<a href="https://github.com/acsandmann/rift/issues/592">#592</a>) <a href="https://github.com/acsandmann/rift/commit/dc8a7d30"><code>dc8a7d30</code></a>
+* fix: switching between windows of the same app doesn't follow them to another workspace (<a href="https://github.com/acsandmann/rift/issues/562">#562</a>) <a href="https://github.com/acsandmann/rift/commit/eec1e9ab"><code>eec1e9ab</code></a>
+* fix: mouse_follows_focus skips newly revealed off-screen windows in scrolling (<a href="https://github.com/acsandmann/rift/issues/591">#591</a>) <a href="https://github.com/acsandmann/rift/commit/710af878"><code>710af878</code></a>
+* fix: move_node at the layout edge is a no-op on a single display (<a href="https://github.com/acsandmann/rift/issues/604">#604</a>) <a href="https://github.com/acsandmann/rift/commit/5e0ee3b2"><code>5e0ee3b2</code></a>
+* feat: add balance command to even out bsp splits (<a href="https://github.com/acsandmann/rift/issues/611">#611</a>) <a href="https://github.com/acsandmann/rift/commit/e536f3c5"><code>e536f3c5</code></a>
+* feat: allow key bindings to run a sequence of commands (<a href="https://github.com/acsandmann/rift/issues/612">#612</a>) <a href="https://github.com/acsandmann/rift/commit/6fd55c16"><code>6fd55c16</code></a>
+* fix: menu bar nits (<a href="https://github.com/acsandmann/rift/issues/617">#617</a>) <a href="https://github.com/acsandmann/rift/commit/e9b9c60f"><code>e9b9c60f</code></a>
+* fix: popup focus theft (<a href="https://github.com/acsandmann/rift/issues/622">#622</a>) <a href="https://github.com/acsandmann/rift/commit/0f0a2bd9"><code>0f0a2bd9</code></a>
+* feat: recover parked windows in a cascade when rift exits (<a href="https://github.com/acsandmann/rift/issues/616">#616</a>) <a href="https://github.com/acsandmann/rift/commit/accfbc7d"><code>accfbc7d</code></a>
+* fix: unjoin bsp stacks in place (<a href="https://github.com/acsandmann/rift/issues/615">#615</a>) <a href="https://github.com/acsandmann/rift/commit/3114cc5e"><code>3114cc5e</code></a>
+* feat: menu bar fullscreen indicator (<a href="https://github.com/acsandmann/rift/issues/596">#596</a>) <a href="https://github.com/acsandmann/rift/commit/3a3cf79d"><code>3a3cf79d</code></a>
+* feat: support modifier combinations for window dragging (<a href="https://github.com/acsandmann/rift/issues/613">#613</a>) <a href="https://github.com/acsandmann/rift/commit/4edbc814"><code>4edbc814</code></a>
+* feat: optionally share workspaces across displays (<a href="https://github.com/acsandmann/rift/issues/603">#603</a>) <a href="https://github.com/acsandmann/rift/commit/e963b612"><code>e963b612</code></a>
+* fix: append input tap after existing HID remappers (<a href="https://github.com/acsandmann/rift/issues/614">#614</a>) <a href="https://github.com/acsandmann/rift/commit/80d54f0d"><code>80d54f0d</code></a>
+* fix: display churn bugs & general simplification (<a href="https://github.com/acsandmann/rift/issues/601">#601</a>) <a href="https://github.com/acsandmann/rift/commit/4309b11b"><code>4309b11b</code></a>
+* fix: recover untracked windows on focus and activation (<a href="https://github.com/acsandmann/rift/issues/590">#590</a>) <a href="https://github.com/acsandmann/rift/commit/f5717097"><code>f5717097</code></a>
+* feat: drag tabs to reorder in stackline <a href="https://github.com/acsandmann/rift/commit/0dd5fcaf"><code>0dd5fcaf</code></a>
+* perf: optimize stackline <a href="https://github.com/acsandmann/rift/commit/7803767d"><code>7803767d</code></a>
+* fix: stackline multi display behavior (<a href="https://github.com/acsandmann/rift/issues/585">#585</a>) <a href="https://github.com/acsandmann/rift/commit/d05915c7"><code>d05915c7</code></a>
+
+### Contributors
+* <a href="https://github.com/exsesx">@exsesx</a> made their first contribution in https://github.com/acsandmann/rift/pull/614
+* <a href="https://github.com/jasjamjos">@jasjamjos</a> made their first contribution in https://github.com/acsandmann/rift/pull/596
+
+<p class="apple-meta"><a href="https://github.com/acsandmann/rift/releases/tag/v0.7.1">GitHub release</a><a href="https://github.com/acsandmann/rift/blob/v0.7.1/rift.default.toml">Default config</a><a href="https://github.com/acsandmann/rift/compare/v0.7.0...v0.7.1">Compare changes</a></p>
+
+</section>
+
+<section class="apple-entry">
+
 ## v0.7.0
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-10-15T23:12:29Z">October 15, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">586</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-10-15T23:12:29Z">October 15, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">812</dd></div></dl>
 
 ### Changes
 * native tab support! rift now handles native macos tabs in apps like finder and ghostty with no problem
@@ -47,7 +225,7 @@ now, for the regularly scheduled programing:
 
 ## v0.6.9
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-10-07T03:52:22Z">October 7, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">591</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-10-07T03:52:22Z">October 7, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">595</dd></div></dl>
 
 ### Changes
 * fix: dont focus inactivate workspaces (<a href="https://github.com/acsandmann/rift/issues/567">#567</a>) <a href="https://github.com/acsandmann/rift/commit/8bf3f53"><code>8bf3f53</code></a>
@@ -60,7 +238,7 @@ now, for the regularly scheduled programing:
 
 ## v0.6.8
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-10-06T22:20:18Z">October 6, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">40</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-10-06T22:20:18Z">October 6, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">42</dd></div></dl>
 
 ### Changes
 * fix: preserve focus after toggle_stack <a href="https://github.com/acsandmann/rift/commit/49d2f6c"><code>49d2f6c</code></a>
@@ -78,7 +256,7 @@ now, for the regularly scheduled programing:
 
 ## v0.6.7
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-10-05T01:35:43Z">October 5, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">312</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-10-05T01:35:43Z">October 5, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">314</dd></div></dl>
 
 ### Changes
 * feat: animate window moves in scrolling layout <a href="https://github.com/acsandmann/rift/commit/f405968"><code>f405968</code></a>
@@ -92,7 +270,7 @@ now, for the regularly scheduled programing:
 
 ## v0.6.6
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-10-04T20:46:02Z">October 4, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">37</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-10-04T20:46:02Z">October 4, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">38</dd></div></dl>
 
 ### Changes
 * feat: expand_single_column (<a href="https://github.com/acsandmann/rift/issues/550">#550</a>) <a href="https://github.com/acsandmann/rift/commit/2710c1b"><code>2710c1b</code></a>
@@ -110,7 +288,7 @@ now, for the regularly scheduled programing:
 
 ## v0.6.5
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-10-04T03:28:43Z">October 4, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">100</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-10-04T03:28:43Z">October 4, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">103</dd></div></dl>
 
 ### Changes
 * fix: give animations a txid (<a href="https://github.com/acsandmann/rift/issues/553">#553</a>) <a href="https://github.com/acsandmann/rift/commit/6f78ad3"><code>6f78ad3</code></a>
@@ -123,7 +301,7 @@ now, for the regularly scheduled programing:
 
 ## v0.6.4
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-10-03T00:21:57Z">October 3, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">122</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-10-03T00:21:57Z">October 3, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">126</dd></div></dl>
 
 ### Changes
 * feat: sort windows by layout in query <a href="https://github.com/acsandmann/rift/commit/3ef20d43"><code>3ef20d43</code></a>
@@ -141,7 +319,7 @@ now, for the regularly scheduled programing:
 
 ## v0.6.3
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-10-02T02:13:18Z">October 2, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">161</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-10-02T02:13:18Z">October 2, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">164</dd></div></dl>
 
 ### Changes
 * feat: rewrite scrolling layout & gestures (<a href="https://github.com/acsandmann/rift/issues/544">#544</a>) <a href="https://github.com/acsandmann/rift/commit/95cd9bad"><code>95cd9bad</code></a>
@@ -162,7 +340,7 @@ This update releases a completely new Mission Control and scrolling layout. They
 
 ## v0.6.2
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-09-27T23:19:44Z">September 27, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">419</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-09-27T23:19:44Z">September 27, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">422</dd></div></dl>
 
 ### Changes
 * fix: rift not handling some java windows, compute_window_manageabilit… (<a href="https://github.com/acsandmann/rift/issues/537">#537</a>) <a href="https://github.com/acsandmann/rift/commit/6bb3b7c"><code>6bb3b7c</code></a>
@@ -190,7 +368,7 @@ This update releases a completely new Mission Control and scrolling layout. They
 
 ## v0.6.1
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-09-25T01:55:20Z">September 25, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">333</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-09-25T01:55:20Z">September 25, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">337</dd></div></dl>
 
 ### Changes
 * fix: preserve_window_sizes all times a window enters layout <a href="https://github.com/acsandmann/rift/commit/9b87edc"><code>9b87edc</code></a>
@@ -216,7 +394,7 @@ This update releases a completely new Mission Control and scrolling layout. They
 
 ## v0.6.0
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-09-23T19:37:57Z">September 23, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">235</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-09-23T19:37:57Z">September 23, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">238</dd></div></dl>
 
 ### Changes
 * fix: make focus_display focus_desktop_if_active_workspace_empty (<a href="https://github.com/acsandmann/rift/issues/516">#516</a>) <a href="https://github.com/acsandmann/rift/commit/3eceac1"><code>3eceac1</code></a>
@@ -237,7 +415,7 @@ This update releases a completely new Mission Control and scrolling layout. They
 
 ## v0.5.10
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-09-19T00:13:54Z">September 19, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">567</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-09-19T00:13:54Z">September 19, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">568</dd></div></dl>
 
 ### Changes
 * fix: apply a rule's focus only when the window is placed (<a href="https://github.com/acsandmann/rift/issues/507">#507</a>) <a href="https://github.com/acsandmann/rift/commit/445f31d"><code>445f31d</code></a>
@@ -260,7 +438,7 @@ This update releases a completely new Mission Control and scrolling layout. They
 
 ## v0.5.9
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-09-16T13:44:18Z">September 16, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">222</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-09-16T13:44:18Z">September 16, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">223</dd></div></dl>
 
 ### Changes
 * feat: move-workspace-to-display (<a href="https://github.com/acsandmann/rift/issues/314">#314</a>) <a href="https://github.com/acsandmann/rift/commit/52b2846"><code>52b2846</code></a>
@@ -282,7 +460,7 @@ This update releases a completely new Mission Control and scrolling layout. They
 
 ## v0.5.8.1
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-09-11T00:55:10Z">September 11, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">320</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-09-11T00:55:10Z">September 11, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">321</dd></div></dl>
 
 _No release notes were provided._
 
@@ -307,7 +485,7 @@ _No release notes were provided._
 
 ## v0.5.7
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-09-09T22:00:35Z">September 9, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">115</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-09-09T22:00:35Z">September 9, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">117</dd></div></dl>
 
 ### Changes
 * fix: memory leaks in ipc <a href="https://github.com/acsandmann/rift/commit/be3bbea"><code>be3bbea</code></a>
@@ -328,7 +506,7 @@ After over a year of being out in the open, rift now has a docs site! Check it o
 
 ## v0.5.6
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-09-06T20:35:40Z">September 6, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">237</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-09-06T20:35:40Z">September 6, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">238</dd></div></dl>
 
 ### Changes
 * fix: only rerun title rule <a href="https://github.com/acsandmann/rift/commit/556b7ad"><code>556b7ad</code></a>
@@ -361,7 +539,7 @@ After over a year of being out in the open, rift now has a docs site! Check it o
 
 ## v0.5.5-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-09-01T01:02:31Z">September 1, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">328</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-09-01T01:02:31Z">September 1, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">329</dd></div></dl>
 
 ### Changes
 * fix: warp cursor to the focused window on focus_display <a href="https://github.com/acsandmann/rift/commit/b67cf2e"><code>b67cf2e</code></a>
@@ -381,7 +559,7 @@ After over a year of being out in the open, rift now has a docs site! Check it o
 
 ## v0.5.4-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-08-31T20:39:20Z">August 31, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">24</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-08-31T20:39:20Z">August 31, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">25</dd></div></dl>
 
 ### Changes
 * fix: duplication of child windows (<a href="https://github.com/acsandmann/rift/issues/462">#462</a>) <a href="https://github.com/acsandmann/rift/commit/f9b152d"><code>f9b152d</code></a>
@@ -422,7 +600,7 @@ After over a year of being out in the open, rift now has a docs site! Check it o
 
 ## v0.5.3-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-08-04T01:27:41Z">August 4, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">802</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-08-04T01:27:41Z">August 4, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">805</dd></div></dl>
 
 ### Changes
 * feat: more app rule fields (<a href="https://github.com/acsandmann/rift/issues/375">#375</a>) <a href="https://github.com/acsandmann/rift/commit/6c64d8b"><code>6c64d8b</code></a>
@@ -443,7 +621,7 @@ After over a year of being out in the open, rift now has a docs site! Check it o
 
 ## v0.5.2-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-08-03T14:28:21Z">August 3, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">56</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-08-03T14:28:21Z">August 3, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">57</dd></div></dl>
 
 ### Changes
 * fix: make animations respect config (<a href="https://github.com/acsandmann/rift/issues/432">#432</a>) <a href="https://github.com/acsandmann/rift/commit/3185d1c"><code>3185d1c</code></a>
@@ -481,7 +659,7 @@ After over a year of being out in the open, rift now has a docs site! Check it o
 
 ## v0.5.1-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-07-23T16:01:55Z">July 23, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">348</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-07-23T16:01:55Z">July 23, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">349</dd></div></dl>
 
 ### Changes
 * fix: smarter restoration <a href="https://github.com/acsandmann/rift/commit/f2a2e56"><code>f2a2e56</code></a>  <a href="https://github.com/acsandmann/rift/commit/b47bb75"><code>b47bb75</code></a>
@@ -498,7 +676,7 @@ After over a year of being out in the open, rift now has a docs site! Check it o
 
 ## v0.5.0-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-07-22T22:02:04Z">July 22, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">73</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-07-22T22:02:04Z">July 22, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">74</dd></div></dl>
 
 ### Changes
 * fix: app kvo observers <a href="https://github.com/acsandmann/rift/commit/023cd33"><code>023cd33</code></a>
@@ -523,7 +701,7 @@ After over a year of being out in the open, rift now has a docs site! Check it o
 
 ## v0.4.4-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-07-13T19:18:08Z">July 13, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">348</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-07-13T19:18:08Z">July 13, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">349</dd></div></dl>
 
 ### Changes
 * feat: consume_and_expel (<a href="https://github.com/acsandmann/rift/issues/373">#373</a>) <a href="https://github.com/acsandmann/rift/commit/2933c3e"><code>2933c3e</code></a>
@@ -545,7 +723,7 @@ After over a year of being out in the open, rift now has a docs site! Check it o
 
 ## v0.4.3-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-06-15T17:00:47Z">June 15, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">657</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-06-15T17:00:47Z">June 15, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">659</dd></div></dl>
 
 **Whats Changed**
 * feat: async animations <a href="https://github.com/acsandmann/rift/commit/1852328"><code>1852328</code></a>
@@ -565,7 +743,7 @@ After over a year of being out in the open, rift now has a docs site! Check it o
 
 ## v0.4.2-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-06-14T20:36:10Z">June 14, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">78</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-06-14T20:36:10Z">June 14, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">79</dd></div></dl>
 
 ### Changes
 * fix: stop floating window ping-pong across displays <a href="https://github.com/acsandmann/rift/commit/2f0b55d"><code>2f0b55d</code></a>
@@ -595,7 +773,7 @@ After over a year of being out in the open, rift now has a docs site! Check it o
 
 ## v0.4.1-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-05-15T19:20:04Z">May 15, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">959</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-05-15T19:20:04Z">May 15, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">960</dd></div></dl>
 
 ### Changes
 * fix: stabilize cross-display drag snapback by <a href="https://github.com/leokeba">@leokeba</a> in https://github.com/acsandmann/rift/pull/310
@@ -626,7 +804,7 @@ After over a year of being out in the open, rift now has a docs site! Check it o
 
 ## v0.4.0
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-03-03T13:44:57Z">March 3, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">1,486</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-03-03T13:44:57Z">March 3, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">1,487</dd></div></dl>
 
 ### Changes
 * feat: stack layout <a href="https://github.com/acsandmann/rift/commit/50b50b3"><code>50b50b3</code></a>
@@ -699,7 +877,7 @@ After over a year of being out in the open, rift now has a docs site! Check it o
 
 ## v0.4.0-alpha.7
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-02-28T22:14:13Z">February 28, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">134</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-02-28T22:14:13Z">February 28, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">135</dd></div></dl>
 
 _No release notes were provided._
 
@@ -711,7 +889,7 @@ _No release notes were provided._
 
 ## v0.4.0-alpha.6
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-02-27T04:17:54Z">February 27, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">122</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-02-27T04:17:54Z">February 27, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">123</dd></div></dl>
 
 _No release notes were provided._
 
@@ -723,7 +901,7 @@ _No release notes were provided._
 
 ## v0.4.0-alpha.5
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-02-26T18:49:37Z">February 26, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">33</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-02-26T18:49:37Z">February 26, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">34</dd></div></dl>
 
 _No release notes were provided._
 
@@ -735,7 +913,7 @@ _No release notes were provided._
 
 ## v0.4.0-alpha.4
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-02-25T16:14:38Z">February 25, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">82</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-02-25T16:14:38Z">February 25, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">83</dd></div></dl>
 
 _No release notes were provided._
 
@@ -747,7 +925,7 @@ _No release notes were provided._
 
 ## v0.4.0-alpha.3
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-02-20T14:21:50Z">February 20, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">216</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-02-20T14:21:50Z">February 20, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">217</dd></div></dl>
 
 _No release notes were provided._
 
@@ -759,7 +937,7 @@ _No release notes were provided._
 
 ## v0.4.0-alpha.2
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-02-20T02:49:11Z">February 20, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">49</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-02-20T02:49:11Z">February 20, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">50</dd></div></dl>
 
 ### Changes
 * fix: multi display handling <a href="https://github.com/acsandmann/rift/commit/1bf16a9"><code>1bf16a9</code></a>
@@ -772,7 +950,7 @@ _No release notes were provided._
 
 ## v0.4.0-alpha
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-02-20T02:36:34Z">February 20, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">7</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-02-20T02:36:34Z">February 20, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">8</dd></div></dl>
 
 ### Changes
 * feat: event streaming via mach server <a href="https://github.com/acsandmann/rift/commit/b5e8114"><code>b5e8114</code></a>
@@ -819,7 +997,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
 
 ## v0.3.9-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-01-30T22:47:57Z">January 30, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">524</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-01-30T22:47:57Z">January 30, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">525</dd></div></dl>
 
 ### Changes
 * feat: master/stack layout engine (<a href="https://github.com/acsandmann/rift/issues/249">#249</a>) <a href="https://github.com/acsandmann/rift/commit/c0f63ec"><code>c0f63ec</code></a>
@@ -836,7 +1014,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
 
 ## v0.3.8-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-01-23T17:48:22Z">January 23, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">197</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-01-23T17:48:22Z">January 23, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">198</dd></div></dl>
 
 ### Changes
 - fix: autoraise intermittently not working (<a href="https://github.com/acsandmann/rift/issues/133">#133</a>) <a href="https://github.com/acsandmann/rift/commit/98c3b87"><code>98c3b87</code></a>
@@ -852,7 +1030,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
 
 ## v0.3.7-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-01-20T14:06:42Z">January 20, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">137</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-01-20T14:06:42Z">January 20, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">138</dd></div></dl>
 
 ### Whats New
 - fix: crash when mission control is disabled
@@ -865,7 +1043,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
 
 ## v0.3.6-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-01-20T00:57:11Z">January 20, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">53</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-01-20T00:57:11Z">January 20, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">54</dd></div></dl>
 
 ### Changes
 - feat: improve pattern of querying state from reactor <a href="https://github.com/acsandmann/rift/commit/b262166"><code>b262166</code></a>
@@ -882,7 +1060,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
 
 ## v0.3.5-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-01-17T22:29:15Z">January 17, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">117</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-01-17T22:29:15Z">January 17, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">118</dd></div></dl>
 
 ### Changes
 - fix: windows tiling in middle of tree instead of end <a href="https://github.com/acsandmann/rift/commit/0e6f6e8"><code>0e6f6e8</code></a>
@@ -896,7 +1074,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
 
 ## v0.3.4-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-01-16T21:50:35Z">January 16, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">55</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-01-16T21:50:35Z">January 16, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">56</dd></div></dl>
 
 ### Changes
 - fix: space activation tracking
@@ -909,7 +1087,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
 
 ## v0.3.3
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-01-16T05:24:11Z">January 16, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">69</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-01-16T05:24:11Z">January 16, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">70</dd></div></dl>
 
 ### Changes
 - fix: slow window destroys <a href="https://github.com/acsandmann/rift/commit/12b91ca"><code>12b91ca</code></a>
@@ -925,7 +1103,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
 
 ## v0.3.2-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-01-16T03:11:00Z">January 16, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">8</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-01-16T03:11:00Z">January 16, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">11</dd></div></dl>
 
 ### Changes
 - fix: browsers sometime jitter when multiple windows of same app are opened
@@ -939,7 +1117,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
 
 ## v0.3.1-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-01-15T22:53:48Z">January 15, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">15</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-01-15T22:53:48Z">January 15, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">16</dd></div></dl>
 
 ### Changes
 - fix: needing to uninstall/reinstall between updates <a href="https://github.com/acsandmann/rift/commit/e482b8d"><code>e482b8d</code></a>
@@ -953,7 +1131,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
 
 ## v0.3.0-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-01-15T21:14:29Z">January 15, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">16</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2026-01-15T21:14:29Z">January 15, 2026</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">17</dd></div></dl>
 
 ### Changes
 - fix: properly disable move/resize events during animation <a href="https://github.com/acsandmann/rift/commit/25f858f"><code>25f858f</code></a>
@@ -997,7 +1175,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
 
 ## v0.2.8-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-12-05T15:48:41Z">December 5, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">709</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-12-05T15:48:41Z">December 5, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">711</dd></div></dl>
 
 ### Changes
 * fix: display getting disabled (<a href="https://github.com/acsandmann/rift/issues/180">#180</a>) <a href="https://github.com/acsandmann/rift/commit/0915d2b"><code>0915d2b</code></a> + <a href="https://github.com/acsandmann/rift/commit/ce9a32a"><code>ce9a32a</code></a>
@@ -1010,7 +1188,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
 
 ## v0.2.7-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-12-05T04:20:19Z">December 5, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">38</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-12-05T04:20:19Z">December 5, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">39</dd></div></dl>
 
 ### Changes
 * feat: side specific modifier keys (<a href="https://github.com/acsandmann/rift/issues/160">#160</a>) <a href="https://github.com/acsandmann/rift/commit/9c28bc0"><code>9c28bc0</code></a>
@@ -1030,7 +1208,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
 
 ## v0.2.6-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-12-01T20:46:24Z">December 1, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">130</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-12-01T20:46:24Z">December 1, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">131</dd></div></dl>
 
 ### Changes
 * feat: optimize ipc; median latency down to ~5ms from ~15ms (<a href="https://github.com/acsandmann/rift/issues/184">#184</a>) <a href="https://github.com/acsandmann/rift/commit/0ff6212"><code>0ff6212</code></a> + <a href="https://github.com/acsandmann/rift/commit/7f316da"><code>7f316da</code></a>
@@ -1046,7 +1224,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
 
 ## v0.2.5-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-11-24T06:04:08Z">November 24, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">179</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-11-24T06:04:08Z">November 24, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">180</dd></div></dl>
 
 ### Changes
 * fix: not triggering layout refresh aggressively enough (<a href="https://github.com/acsandmann/rift/issues/156">#156</a>) <a href="https://github.com/acsandmann/rift/commit/cfedd22"><code>cfedd22</code></a>
@@ -1079,7 +1257,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
 
 ## v0.2.4-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-11-13T22:05:57Z">November 13, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">196</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-11-13T22:05:57Z">November 13, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">198</dd></div></dl>
 
 ### Changes
 * feat: close windows via cli <a href="https://github.com/acsandmann/rift/commit/583d5e6"><code>583d5e6</code></a>
@@ -1102,7 +1280,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
 
 ## v0.2.3-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-11-12T16:29:34Z">November 12, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">48</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-11-12T16:29:34Z">November 12, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">49</dd></div></dl>
 
 ### Changes
 * fix: handle mouse warp better when there are no windows present <a href="https://github.com/acsandmann/rift/commit/10e41b0"><code>10e41b0</code></a>
@@ -1118,7 +1296,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
 
 ## v0.2.2-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-11-12T15:21:27Z">November 12, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">8</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-11-12T15:21:27Z">November 12, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">9</dd></div></dl>
 
 ### Changes
 * fix: menu bar cpu usage (<a href="https://github.com/acsandmann/rift/issues/129">#129</a>) <a href="https://github.com/acsandmann/rift/commit/3b921bb"><code>3b921bb</code></a>
@@ -1139,7 +1317,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
 
 ## v0.2.1-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-11-10T20:10:22Z">November 10, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">52</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-11-10T20:10:22Z">November 10, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">54</dd></div></dl>
 
 ### Changes
 * fix: app activation race (<a href="https://github.com/acsandmann/rift/issues/108">#108</a>) <a href="https://github.com/acsandmann/rift/commit/4b742f3"><code>4b742f3</code></a>
@@ -1155,7 +1333,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
 
 ## v0.2.0-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-11-09T21:04:24Z">November 9, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">46</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-11-09T21:04:24Z">November 9, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">47</dd></div></dl>
 
 ### Changes
 * fix: crashes with normalizedPosition (<a href="https://github.com/acsandmann/rift/issues/117">#117</a>) <a href="https://github.com/acsandmann/rift/commit/cdb1f35"><code>cdb1f35</code></a>
@@ -1175,7 +1353,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
 
 ## v0.1.1-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-11-06T03:14:01Z">November 6, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">68</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-11-06T03:14:01Z">November 6, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">69</dd></div></dl>
 
 **Whats Changed:**
 * fix: handle native macos app hides <a href="https://github.com/acsandmann/rift/commit/8344394"><code>8344394</code></a>
@@ -1192,7 +1370,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
 
 ## v0.1.0-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-10-30T02:24:38Z">October 30, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">133</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-10-30T02:24:38Z">October 30, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">134</dd></div></dl>
 
 **Whats Changed**
 * fix: mission control invocation via cli (<a href="https://github.com/acsandmann/rift/issues/100">#100</a>) <a href="https://github.com/acsandmann/rift/commit/8372a0d"><code>8372a0d</code></a>
@@ -1217,7 +1395,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
 
 ## v0.0.10.1-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-10-27T21:12:52Z">October 27, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">51</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-10-27T21:12:52Z">October 27, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">52</dd></div></dl>
 
 **Whats Changed**
 * chore: workspace_auto_back_and_forth default to off <a href="https://github.com/acsandmann/rift/commit/1d534a3"><code>1d534a3</code></a>
@@ -1230,7 +1408,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
 
 ## v0.0.10-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-10-27T20:30:20Z">October 27, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">4</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-10-27T20:30:20Z">October 27, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">5</dd></div></dl>
 
 ### Changes
 * refactor: decompose and reduce reactor code complexity (<a href="https://github.com/acsandmann/rift/issues/78">#78</a>) <a href="https://github.com/acsandmann/rift/commit/3d34191"><code>3d34191</code></a>
@@ -1246,7 +1424,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
 
 ## v0.0.9-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-10-25T16:21:44Z">October 25, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">51</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-10-25T16:21:44Z">October 25, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">53</dd></div></dl>
 
 ### Changes
 * Update path for embedding Info.plist by <a href="https://github.com/sytherax">@sytherax</a> in https://github.com/acsandmann/rift/pull/74
@@ -1262,7 +1440,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
 
 ## v0.0.8-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-10-23T18:56:10Z">October 23, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">48</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-10-23T18:56:10Z">October 23, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">49</dd></div></dl>
 
 ### Changes
 * refactor: rewrite and fix fn `get_focused_frame_for_index` by <a href="https://github.com/alle-ox">@alle-ox</a> in https://github.com/acsandmann/rift/pull/77
@@ -1275,7 +1453,7 @@ Window's in IPC payloads now have the proper bundle_id and the value that it use
 
 ## v0.0.7-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-10-23T01:43:46Z">October 23, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">20</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-10-23T01:43:46Z">October 23, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">21</dd></div></dl>
 
 _No release notes were provided._
 
@@ -1287,7 +1465,7 @@ _No release notes were provided._
 
 ## v0.0.6.2-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-10-22T21:26:36Z">October 22, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">8</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-10-22T21:26:36Z">October 22, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">9</dd></div></dl>
 
 _No release notes were provided._
 
@@ -1299,7 +1477,7 @@ _No release notes were provided._
 
 ## v0.0.6.1-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-10-22T21:02:31Z">October 22, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">4</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-10-22T21:02:31Z">October 22, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">5</dd></div></dl>
 
 _No release notes were provided._
 
@@ -1311,7 +1489,7 @@ _No release notes were provided._
 
 ## v0.0.6-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-10-22T18:40:00Z">October 22, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">10</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-10-22T18:40:00Z">October 22, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">11</dd></div></dl>
 
 ### Changes
 * fix: dragging windows via mission control no longer *sometimes* loses windows <a href="https://github.com/acsandmann/rift/commit/dba79c4"><code>dba79c4</code></a>
@@ -1334,7 +1512,7 @@ _No release notes were provided._
 
 ## v0.0.5-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-10-21T21:54:41Z">October 21, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">28</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-10-21T21:54:41Z">October 21, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">29</dd></div></dl>
 
 ### Changes
 * fix: improved focus behavior for traditional stack layouts by <a href="https://github.com/sytherax">@sytherax</a> in https://github.com/acsandmann/rift/pull/64
@@ -1352,7 +1530,7 @@ huuuugggeee improvements relating to fullscreening windows, moving windows btwn 
 
 ## v0.0.4.1-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-10-20T20:33:15Z">October 20, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">30</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-10-20T20:33:15Z">October 20, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">32</dd></div></dl>
 
 _No release notes were provided._
 
@@ -1364,7 +1542,7 @@ _No release notes were provided._
 
 ## v0.0.4-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-10-19T22:48:05Z">October 19, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">29</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-10-19T22:48:05Z">October 19, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">30</dd></div></dl>
 
 ### Changes
 * fix: instant menu disappearing and mouse warping behavior by <a href="https://github.com/sytherax">@sytherax</a> in https://github.com/acsandmann/rift/pull/55
@@ -1382,7 +1560,7 @@ _No release notes were provided._
 
 ## v0.0.3-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-10-16T03:08:24Z">October 16, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">62</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-10-16T03:08:24Z">October 16, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">63</dd></div></dl>
 
 _No release notes were provided._
 
@@ -1394,7 +1572,7 @@ _No release notes were provided._
 
 ## v0.0.2-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-10-15T19:19:47Z">October 15, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">9</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-10-15T19:19:47Z">October 15, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">11</dd></div></dl>
 
 ### Changes
 * fix: jetbrains/wezterm by <a href="https://github.com/acsandmann">@acsandmann</a> in https://github.com/acsandmann/rift/pull/43
@@ -1409,7 +1587,7 @@ _No release notes were provided._
 
 ## v0.0.1.1-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-10-15T01:26:20Z">October 15, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">20</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-10-15T01:26:20Z">October 15, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">21</dd></div></dl>
 
 emergency fix for pathfinding in service builder
 
@@ -1421,7 +1599,7 @@ emergency fix for pathfinding in service builder
 
 ## v0.0.1-beta
 
-<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-10-15T00:59:19Z">October 15, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">8</dd></div></dl>
+<dl class="apple-meta"><div><dt>Released</dt><dd><time datetime="2025-10-15T00:59:19Z">October 15, 2025</time></dd></div><div><dt>Downloads</dt><dd title="Across 1 release asset">9</dd></div></dl>
 
 rifts first release, and also a test
 

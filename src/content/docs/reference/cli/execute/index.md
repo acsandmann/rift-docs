@@ -11,7 +11,7 @@ tableOfContents:
 
 Commands under `execute` change windows, workspaces, layouts, and runtime state.
 
-Generated from `rift-cli` at `v0.8.2-11-gfbf4bb6b-dirty`.
+Generated from `rift-cli` at `v0.8.2-12-gecdee64e`.
 
 ## Choose a command group
 

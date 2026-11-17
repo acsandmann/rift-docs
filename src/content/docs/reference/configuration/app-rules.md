@@ -9,7 +9,7 @@ tableOfContents:
 
 <!--
 GENERATED FILE. Do not edit directly.
-Generated from Rift v0.8.2-11-gfbf4bb6b-dirty.
+Generated from Rift v0.8.2-12-gecdee64e.
 -->
 
 Match windows and control their placement, size, focus, or management.

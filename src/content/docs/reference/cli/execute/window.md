@@ -11,7 +11,7 @@ tableOfContents:
 
 Window management commands. All commands act on the running Rift instance.
 
-Generated from `rift-cli` at `v0.8.2-11-gfbf4bb6b-dirty`.
+Generated from `rift-cli` at `v0.8.2-12-gecdee64e`.
 
 <section class="apple-entry">
 

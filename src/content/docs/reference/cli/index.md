@@ -11,7 +11,7 @@ tableOfContents:
 
 Use `rift-cli` to inspect Rift, control windows and workspaces, change runtime settings, and subscribe to events. Every command, description, argument, and option in this reference comes directly from the checked-out CLI.
 
-Generated from `rift-cli` at `v0.8.2-11-gfbf4bb6b-dirty`.
+Generated from `rift-cli` at `v0.8.2-12-gecdee64e`.
 
 :::tip[Explore from Terminal]
 Add `--help` at any level to see what comes next. For example, `rift-cli execute window --help` lists every window action.
