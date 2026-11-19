@@ -13,6 +13,7 @@ Companion tools run alongside Rift and communicate through its terminal tool or 
 | [Rift App Indicator](https://github.com/Chandraprakash-Darji/rift-companian) | Shows application icons grouped by workspace in the macOS menu bar |
 | [rift-pip](https://github.com/acsandmann/rift-pip) | Mirrors the focused window in a picture-in-picture window |
 | [stackline](https://github.com/acsandmann/stackline) | Shows an alternative style of indicator for window stacks |
+| [rift-scratchpad](https://github.com/rojnwa/rift-scratchpad) | Use i3-style scratchpads in rift |
 
 The highlighter is useful with Traditional and BSP, where the grouping is otherwise hard to see. Rift App Indicator’s repository is named `rift-companian`; its executable is `rift-app-indicator`.
 
