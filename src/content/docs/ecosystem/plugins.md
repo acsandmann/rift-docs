@@ -19,7 +19,7 @@ The highlighter is useful with Traditional and BSP, where the grouping is otherw
 ## Libraries for scripts
 
 - [rift.lua](https://github.com/acsandmann/rift.lua): Lua client for Rift’s IPC interface.
-- [riftapi](https://github.com/pyrorhythm/riftapi): Lua helpers for workspaces, windows, layouts, displays, and events, built on `rift.lua`.
+- [riftapi](https://github.com/zacharyeller13/riftapi): Lua helpers for workspaces, windows, layouts, displays, and events, built on `rift.lua`.
 
 See [Integrations](/rift-docs/ecosystem/integrations/) to write your own scripts.
 
